@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets / runtime
+.env
+*.log
+
+# Local data the server does NOT need (CES is baked into warroom.db):
+#   scrape caches (hundreds of MB), nfl_career.json, etc.
+data/
+
+# Prebuilt DB: ship by copying to the VM (scp), not via git — keeps live
+# daily_scores from being overwritten on every redeploy.
+warroom.db
+
+# IDE
+.idea/

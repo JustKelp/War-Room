@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WarRoom — The Draft</title>
+<meta name="description" content="WarRoom — a blind NFL scouting draft. Read real prospects off their stats, draft a roster, and reveal who you took and how their careers turned out.">
+<meta property="og:title" content="WarRoom — The Draft">
+<meta property="og:description" content="Scout real NFL prospects blind, draft your five, and see how their careers actually turned out.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/static/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WarRoom — The Draft">
+<meta name="twitter:description" content="Scout real NFL prospects blind, draft your five, and see how their careers actually turned out.">
+<meta name="twitter:image" content="/static/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+<style>
+  :root{
+    --nfl:#1268d6; --nfl-lite:#5aa0f5; --nfl-deep:#013369;
+    --bg:#0a0f1a; --bg2:#0e1525; --panel:#131c2e; --panel2:#1a2538; --line:rgba(255,255,255,.07);
+    --ink:#eef3fb; --dim:#94a4bd; --faint:#62748e; --good:#39d98a; --bad:#fb6f86;
+    --mono:"JetBrains Mono",ui-monospace,monospace; --head:"Oswald",sans-serif; --body:"Source Sans 3",system-ui,sans-serif;
+    --soft:0 14px 34px rgba(0,0,0,.38);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+  header{display:flex;align-items:center;justify-content:space-between;padding:15px 26px;
+    background:linear-gradient(90deg,var(--nfl-deep),#0a1730);border-bottom:1px solid rgba(90,160,245,.25)}
+  .brand{font-family:var(--head);font-weight:700;font-size:25px;letter-spacing:6px;display:flex;align-items:center;gap:12px;cursor:pointer}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--nfl-lite);box-shadow:0 0 10px rgba(90,160,245,.7)}
+  .brand b{color:var(--nfl-lite)}
+  .sub{font-family:var(--head);font-size:12px;letter-spacing:4px;color:#9fc1ee;text-transform:uppercase}
+  .wrap{max-width:1200px;margin:0 auto;padding:28px 24px}
+  .muted{color:var(--dim);font-size:13.5px}
+  button{font:600 14px var(--head);letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+    border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:11px 20px;border-radius:11px;transition:.14s}
+  button:hover:not(:disabled){border-color:var(--nfl-lite);transform:translateY(-1px)}
+  button.go{background:var(--nfl);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(18,104,214,.4)}
+  button.go:hover{background:#1f78ec;box-shadow:0 9px 24px rgba(18,104,214,.5)}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  button.sm{padding:7px 14px;font-size:12px;border-radius:9px}
+  input,select{font:500 15px var(--body);background:rgba(0,0,0,.26);border:1px solid var(--line);
+    color:var(--ink);padding:11px 13px;width:100%;border-radius:10px}
+  input:focus,select:focus{outline:none;border-color:var(--nfl-lite);background:rgba(0,0,0,.34)}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--soft)}
+  h2{font-family:var(--head);font-weight:600;letter-spacing:.5px;font-size:27px;margin-bottom:5px}
+  .err{color:var(--bad);font-size:13px;min-height:18px;margin-top:10px}
+  .back{font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);text-transform:uppercase;cursor:pointer;display:inline-block;margin-bottom:14px}
+  .back:hover{color:var(--nfl-lite)}
+  .nav{display:flex;gap:10px;align-items:center}
+  .navbtn{font:600 13px var(--head);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;cursor:pointer;
+    padding:9px 16px;border-radius:10px;border:1px solid rgba(90,160,245,.55);background:rgba(18,104,214,.14);color:#dbeafe;transition:.14s}
+  .navbtn:hover{background:rgba(18,104,214,.28);border-color:var(--nfl-lite);transform:translateY(-1px)}
+  .navbtn.primary{background:var(--nfl);border-color:transparent;color:#fff;box-shadow:0 5px 14px rgba(18,104,214,.4)}
+  .navbtn.primary:hover{background:#1f78ec;box-shadow:0 8px 20px rgba(18,104,214,.5)}
+  /* how to play */
+  .howto .sheet{width:580px;max-width:100%;max-height:86vh;overflow:auto;background:var(--panel);border:1px solid var(--line);
+    border-radius:18px;padding:30px;box-shadow:var(--soft);text-align:left;position:relative;animation:rise .25s ease both}
+  .howto .close{position:absolute;top:18px;right:20px;font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);cursor:pointer;text-transform:uppercase}
+  .howto .close:hover{color:var(--ink)}
+  .howto .lead{color:var(--dim);font-size:14px;margin:6px 0 18px}
+  .howto .secs{display:flex;flex-direction:column;gap:14px}
+  .howto .sec .lbl{font-family:var(--head);font-weight:700;letter-spacing:.5px;font-size:14px;text-transform:uppercase;color:var(--nfl-lite)}
+  .howto .sec p{color:var(--dim);font-size:13.5px;margin-top:3px;line-height:1.55}
+  .howto .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  /* auth / account */
+  .authtabs{display:flex;gap:8px;margin:6px 0 16px}
+  .authtab{flex:1;font-family:var(--head);letter-spacing:1px;text-transform:uppercase;font-size:13px;padding:9px;
+    border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--dim);cursor:pointer}
+  .authtab.on{background:var(--nfl);color:#fff;border-color:transparent}
+  .authfield{margin-bottom:12px}
+  .authfield label{display:block;font:600 11px var(--head);letter-spacing:1px;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+  .acctrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0}
+  .danger{border-color:var(--bad);color:var(--bad)}
+  .danger:hover{background:var(--bad);color:#1a0a0d;border-color:transparent}
+  .footer{max-width:1200px;margin:36px auto 24px;padding:0 24px;text-align:center;color:var(--faint);font-size:12px}
+  .footer a{color:var(--faint);text-decoration:none}
+  .footer a:hover{color:var(--nfl-lite)}
+  .streak{font-family:var(--head);letter-spacing:1px;color:var(--good);font-size:13px;margin-top:2px}
+  /* home / mode select */
+  .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  .mode{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;
+    padding:24px;cursor:pointer;transition:.15s;text-align:left}
+  .mode:hover{transform:translateY(-3px);border-color:var(--nfl-lite);box-shadow:var(--soft)}
+  .mode h3{font-family:var(--head);letter-spacing:1px;font-size:21px;margin-bottom:6px}
+  .mode .tagline{color:var(--dim);font-size:13.5px}
+  .eyebrow{font-family:var(--head);letter-spacing:2.5px;font-size:11px;text-transform:uppercase;color:var(--nfl-lite);margin-bottom:10px}
+  .mode .eyebrow{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .namerow{display:flex;gap:10px;align-items:center;margin:16px 0}
+  .namerow label{font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);text-transform:uppercase;white-space:nowrap}
+  /* pills / chips */
+  .pills{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+  .pill{background:var(--panel2);border:1px solid var(--line);padding:6px 15px;border-radius:999px;font:600 12px var(--mono)}
+  .pill b{color:var(--nfl-lite)}
+  .roster-line{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 2px}
+  .chip{font-family:var(--head);letter-spacing:1px;font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:5px 14px;border-radius:999px}
+  .names{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:16px 0}
+  .seat-in{display:flex;align-items:center;gap:9px;background:rgba(0,0,0,.2);border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+  .seat-in .swatch{width:14px;height:14px;border-radius:50%;background:var(--pc);flex:0 0 auto;box-shadow:0 0 0 3px rgba(255,255,255,.05)}
+  .seat-in input{border:none;background:transparent;padding:3px 2px;border-radius:0}
+  .seat-in input:focus{background:transparent}
+  /* room code */
+  .codebox{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:16px 0}
+  .code{font-family:var(--mono);font-weight:700;font-size:34px;letter-spacing:8px;color:var(--nfl-lite);
+    background:rgba(18,104,214,.12);border:1px solid rgba(90,160,245,.35);border-radius:12px;padding:10px 20px}
+  .lobby-seats{display:flex;flex-direction:column;gap:9px;margin:14px 0}
+  .lobby-seat{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-left:3px solid var(--pc);
+    border-radius:11px;padding:11px 14px;background:var(--panel);font-family:var(--head);letter-spacing:.5px;font-size:16px}
+  .lobby-seat .sw{width:11px;height:11px;border-radius:50%;background:var(--pc)}
+  .lobby-seat .you{margin-left:auto;font-size:11px;letter-spacing:1px;color:var(--faint)}
+  /* draft */
+  .order{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .order .seat{font-family:var(--head);letter-spacing:1px;font-size:13px;padding:7px 14px;border-radius:999px;
+    border:1px solid var(--line);background:var(--panel);color:var(--dim);display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .order .seat .sw{width:9px;height:9px;border-radius:50%;background:var(--pc)}
+  .order .seat.on{color:var(--ink);border-color:var(--pc);background:var(--panel2);background:color-mix(in srgb,var(--pc) 16%,var(--panel))}
+  .order .dir{font-family:var(--mono);color:var(--faint);font-size:17px}
+  .clockbar{display:flex;align-items:center;justify-content:space-between;gap:18px;
+    background:var(--panel);background:linear-gradient(120deg,color-mix(in srgb,var(--pc) 12%,var(--panel)),var(--panel));
+    border:1px solid var(--line);border-radius:18px;padding:18px 24px;margin-bottom:24px;box-shadow:var(--soft);position:relative;overflow:hidden}
+  .clockbar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--pc)}
+  .clockbar .who{font-family:var(--head);font-size:12px;letter-spacing:3px;color:var(--faint);text-transform:uppercase}
+  .clockbar .who b{display:block;font-size:27px;color:var(--pc);letter-spacing:.5px;line-height:1.15}
+  .clockbar .slot{font-family:var(--head);font-size:36px;letter-spacing:2px;text-align:center}
+  .clockbar .slot small{display:block;font-size:12px;letter-spacing:3px;color:var(--faint)}
+  .clockbar .pickno{font-family:var(--mono);font-size:13px;color:var(--dim);text-align:right;line-height:1.7}
+  .waitbar{margin-bottom:18px;padding:12px 18px;border-radius:12px;background:var(--panel2);background:color-mix(in srgb,var(--pc) 14%,var(--panel));
+    border:1px solid var(--line);font-family:var(--head);letter-spacing:1px;color:var(--pc);text-transform:uppercase;font-size:14px}
+  .columns{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
+  @media(max-width:900px){.columns{grid-template-columns:1fr}}
+  .scout-intro{font-family:var(--head);letter-spacing:1px;font-size:13px;color:var(--dim);text-transform:uppercase;margin-bottom:16px}
+  .scout-intro b{color:var(--nfl-lite)}
+  .board{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+  .scout{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;
+    display:flex;flex-direction:column;box-shadow:var(--soft);overflow:hidden;transition:.15s}
+  .scout:hover{transform:translateY(-3px);border-color:rgba(90,160,245,.35);box-shadow:0 20px 40px rgba(0,0,0,.45)}
+  .scout.locked:hover{transform:none;border-color:var(--line);box-shadow:var(--soft)}
+  .scout .plate{padding:14px 17px}
+  .scout .tag{display:flex;align-items:center;justify-content:space-between}
+  .scout .alias{font-family:var(--head);font-size:26px;letter-spacing:2px}
+  .scout .pos{font-family:var(--head);font-size:12px;letter-spacing:1px;color:var(--nfl-lite);background:rgba(18,104,214,.16);padding:3px 11px;border-radius:999px}
+  .scout .meas{display:flex;justify-content:space-around;padding:12px 6px;margin:0 6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--mono)}
+  .scout .meas .lab{font:600 9px var(--body);letter-spacing:1px;color:var(--faint);text-align:center}
+  .scout .meas .val{font-size:15px;font-weight:700;text-align:center}
+  .scout .conf{display:flex;justify-content:space-between;padding:9px 17px;font:600 11px var(--head);letter-spacing:1px;color:var(--nfl-lite)}
+  .scout .conf span{color:var(--faint)}
+  .scout .stats{padding:4px 17px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .scout .stat{display:flex;justify-content:space-between;font-size:13px}
+  .scout .stat .k{color:var(--dim)}
+  .scout .stat .v{font-family:var(--mono);font-weight:700}
+  .scout .draftbtn{margin:13px;border-radius:11px;background:var(--panel2);color:var(--nfl-lite);border:1px solid var(--line)}
+  .scout .draftbtn:hover:not(:disabled){background:var(--nfl);color:#fff;border-color:transparent;transform:none}
+  /* war rooms */
+  .rooms h3{font-family:var(--head);letter-spacing:2px;font-size:15px;margin-bottom:16px;text-transform:uppercase}
+  .room{margin-bottom:18px}
+  .room .rn{font-family:var(--head);letter-spacing:.5px;font-size:15px;color:var(--pc);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+  .room .rn .cnt{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .rrow{display:flex;align-items:center;gap:10px;font-size:13px;border:1px solid var(--line);border-left:3px solid var(--pc);padding:7px 11px;margin-bottom:6px;background:var(--panel);border-radius:10px}
+  .rrow .s{font-family:var(--head);font-size:11px;letter-spacing:1px;color:var(--nfl-lite);width:30px}
+  .rrow.empty{color:var(--faint);font-style:italic;border-left-color:var(--line)}
+  .rrow .cd{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint)}
+  /* reveal */
+  .standing{display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(18,104,214,.18),var(--panel));
+    border:1px solid rgba(90,160,245,.3);border-radius:18px;padding:20px 24px;margin-bottom:20px;box-shadow:var(--soft)}
+  .standing .big{font-family:var(--head);font-weight:700;font-size:46px;color:var(--nfl-lite);line-height:1}
+  .standing .lab{font-family:var(--head);letter-spacing:2px;font-size:12px;color:var(--faint);text-transform:uppercase}
+  .standing .val{font-family:var(--mono);font-size:20px;font-weight:700}
+  .ranks{display:flex;flex-direction:column;gap:18px}
+  .rank{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--soft);overflow:hidden}
+  .rank.win{box-shadow:0 0 0 2px var(--nfl) inset,var(--soft)}
+  .rank .rh{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:var(--panel2);background:linear-gradient(120deg,color-mix(in srgb,var(--pc) 14%,var(--panel)),var(--panel))}
+  .rank .rh .name{font-family:var(--head);font-size:24px;letter-spacing:.5px;color:var(--pc)}
+  .rank .rh .rk{font-family:var(--head);font-size:13px;letter-spacing:2px;color:var(--faint)}
+  .rank .rh .tot{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--nfl-lite)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:9px 18px;border-bottom:1px solid var(--line)}
+  tr:last-child td{border-bottom:none}
+  th{font:600 11px var(--head);letter-spacing:1px;color:var(--faint);text-transform:uppercase}
+  td.n{text-align:right;font-family:var(--mono)}
+  td .s{font-family:var(--head);color:var(--nfl-lite);letter-spacing:1px}
+  .badge{font:600 10px var(--head);letter-spacing:1px;color:var(--good);border:1px solid var(--good);padding:1px 7px;border-radius:999px;margin-left:8px}
+  .note{font-size:12px;color:var(--dim);margin-top:16px;font-style:italic}
+  .row-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  /* the pick is in */
+  .ov{position:fixed;inset:0;display:none;z-index:60;align-items:center;justify-content:center;background:rgba(5,9,16,.9);padding:16px}
+  .ov.show{display:flex}
+  .card-in{width:360px;max-width:100%;background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--pc);
+    border-radius:20px;padding:30px 28px;text-align:center;box-shadow:0 0 60px color-mix(in srgb,var(--pc) 40%,transparent),0 24px 70px rgba(0,0,0,.7);animation:rise .3s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(14px) scale(.96)}}
+  .card-in .stamp{font-family:var(--head);font-size:13px;letter-spacing:5px;color:var(--pc);text-transform:uppercase}
+  .card-in .nm{font-family:var(--head);font-size:36px;font-weight:700;letter-spacing:1px;margin:14px 0 6px;min-height:44px}
+  .card-in .meta{font-size:13px;color:var(--dim);letter-spacing:.5px}
+  .card-in .by{font-family:var(--head);font-size:12px;letter-spacing:3px;color:var(--faint);text-transform:uppercase;margin-top:16px}
+  @media(prefers-reduced-motion:reduce){.card-in{animation:none}.scout,.mode,button{transition:none}}
+  /* mobile */
+  @media(max-width:640px){
+    header{padding:11px 14px;flex-wrap:wrap;gap:8px}.brand{font-size:20px;letter-spacing:4px}
+    .nav{gap:7px}.navbtn{font-size:11px;letter-spacing:.5px;padding:8px 11px;border-radius:9px}
+    .wrap{padding:18px 14px}.panel{padding:18px;border-radius:14px}
+    .modes{grid-template-columns:1fr;gap:12px}
+    .clockbar{flex-direction:column;align-items:stretch;text-align:center;gap:10px;padding:16px}
+    .clockbar .pickno{text-align:center}.clockbar .slot{font-size:30px}
+    .board{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+    .scout .alias{font-size:21px}.scout .draftbtn{margin:10px}
+    .standing{gap:14px;padding:16px}.standing .big{font-size:38px}
+    table{font-size:12px}th,td{padding:7px 9px}
+    .code{font-size:26px;letter-spacing:5px;padding:8px 14px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand" id="brand"><span class="dot"></span>WAR<b>ROOM</b></div>
+  <nav class="nav">
+    <button class="navbtn" id="nav-how">How to Play</button>
+    <button class="navbtn primary" id="nav-friends">Play with Friends</button>
+    <button class="navbtn" id="nav-account">Sign In</button>
+  </nav>
+</header>
+<div class="wrap" id="app">Loading…</div>
+
+<div class="ov" id="ov">
+  <div class="card-in">
+    <div class="stamp">The pick is in</div>
+    <div class="nm" id="ovName"></div>
+    <div class="meta" id="ovMeta"></div>
+    <div class="by" id="ovBy"></div>
+  </div>
+</div>
+
+<div class="ov howto" id="howto">
+  <div class="sheet">
+    <span class="close" id="howto-close">Close</span>
+    <h2>How to Play</h2>
+    <div class="lead">WarRoom is a blind scouting draft. You evaluate real prospects with their names hidden, draft a five-man roster, and find out who you took — and how their NFL careers actually turned out.</div>
+    <div class="secs">
+      <div class="sec"><div class="lbl">The Goal</div><p>Build the best five-man roster — QB, RB, two WR, and a defender — drafted from prospects whose names are hidden.</p></div>
+      <div class="sec"><div class="lbl">The Cards</div><p>Each card shows a prospect's position, college conference, measurables, and per-season college stats — but not the name. Recognizing whose stat line you're looking at is the edge that beats luck.</p></div>
+      <div class="sec"><div class="lbl">Making a Pick</div><p>Draft in snake order. A prospect's identity is revealed the moment you pick — no take-backs.</p></div>
+      <div class="sec"><div class="lbl">Scoring</div><p>Every pick is graded on how good their real NFL career turned out, ranked against others at the same position. The highest roster total wins.</p></div>
+      <div class="sec"><div class="lbl">Modes</div><p><strong style="color:var(--ink)">Daily</strong> — the same board for everyone, ranked against the field. <strong style="color:var(--ink)">Play with Friends</strong> — draft live online, or pass one screen around.</p></div>
+    </div>
+    <div class="actions"><button class="go" id="howto-go">Got It — Start Drafting</button></div>
+  </div>
+</div>
+
+<div class="ov howto" id="auth">
+  <div class="sheet" style="width:420px">
+    <span class="close" id="auth-close">Close</span>
+    <h2>Account</h2>
+    <div class="lead">Sign in to save your daily results and track your streak. We store only a username and a hashed password — see the <a href="/privacy" style="color:var(--nfl-lite)">Privacy Policy</a>.</div>
+    <div class="authtabs">
+      <button class="authtab on" id="tab-login">Sign In</button>
+      <button class="authtab" id="tab-register">Create Account</button>
+    </div>
+    <div class="authfield"><label>Username</label><input id="auth-user" maxlength="20" autocomplete="username"></div>
+    <div class="authfield"><label>Password</label><input id="auth-pass" type="password" autocomplete="current-password"></div>
+    <div class="actions"><button class="go" id="auth-submit">Sign In</button></div>
+    <div class="err" id="auth-err"></div>
+  </div>
+</div>
+
+<div class="ov howto" id="account">
+  <div class="sheet" style="width:380px">
+    <span class="close" id="account-close">Close</span>
+    <h2>Account</h2>
+    <div class="acctrow">Signed in as&nbsp;<b id="acct-name" style="color:var(--nfl-lite)"></b></div>
+    <div class="actions" style="margin-top:14px">
+      <button id="acct-logout">Log Out</button>
+      <button class="danger" id="acct-delete">Delete Account</button>
+    </div>
+    <div class="muted" style="margin-top:10px;font-size:12px">Deleting removes your login and detaches your results — it can't be undone.</div>
+    <div class="err" id="acct-err"></div>
+  </div>
+</div>
+
+<div class="footer">
+  WarRoom · a blind NFL scouting draft &nbsp;·&nbsp;
+  <a href="/privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms">Terms</a>
+</div>
+
+<script>
+const app = document.getElementById("app");
+let MODE = null;                 // 'daily' | 'online' | 'local'
+let S = null;                    // current view state
+let socket = null;
+let MY = {team:null, host:false, code:null};
+let lastPickKey = null;
+const ROSTER_DEFAULT = ["QB","RB","WR","WR","DEF"];
+let NAME = localStorage.getItem("wr_name") || "";
+
+const NFL_COLORS = ["#97233F","#A71930","#241773","#00338D","#0085CA","#C83803","#FB4F14","#FF3C00","#003594",
+  "#0076B6","#FFB612","#9F8958","#9E7C0C","#E31837","#A5ACAF","#0080C6","#FFA300","#008E97","#4F2683","#C60C30",
+  "#D3BC8D","#0B2265","#125740","#006778","#AA0000","#69BE28","#D50A0A","#4B92DB","#773141","#A6192E","#2C5234","#FF7900"];
+const hx=h=>{h=h.replace("#","");return[0,2,4].map(i=>parseInt(h.substr(i,2),16))};
+const lum=h=>{const c=hx(h).map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+const mix=(h,t,p)=>"#"+hx(h).map((v,i)=>Math.round(v+(hx(t)[i]-v)*p).toString(16).padStart(2,"0")).join("");
+const accent=h=>lum(h)<0.20?mix(h,"#ffffff",0.45):h;
+let _tcKey=null,_tc=null;
+function teamColors(players){const key=(players||[]).join("|")||"_";if(key===_tcKey)return _tc;_tcKey=key;
+  const u=[...new Set(NFL_COLORS)];let s=2166136261;for(const ch of key){s^=ch.charCodeAt(0);s=Math.imul(s,16777619)>>>0;}
+  const rng=()=>{s^=s<<13;s^=s>>>17;s^=s<<5;s>>>=0;return s/4294967296;};
+  for(let i=u.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[u[i],u[j]]=[u[j],u[i]];}_tc=u;return _tc;}
+const col=i=>accent(teamColors(S&&S.players)[i%NFL_COLORS.length]);
+
+async function api(path, body){const o={headers:{"Content-Type":"application/json"}};
+  if(body){o.method="POST";o.body=JSON.stringify(body);}return (await fetch(path,o)).json();}
+const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function leaveIfOnline(){ if(MODE==="online"&&socket){ socket.emit("leave_room",{}); } MY={team:null,host:false,code:null}; }
+function goHome(){ leaveIfOnline(); lastPickKey=null; enterDaily(); }          // home == Daily
+function goFriends(){ leaveIfOnline(); lastPickKey=null; MODE="friends"; S=null; render(); }
+function openHowTo(){ document.getElementById("howto").classList.add("show"); }
+function closeHowTo(){ localStorage.setItem("wr_howto_seen","1"); document.getElementById("howto").classList.remove("show"); }
+
+async function applyState(ns, animate){
+  const lp=ns.last_pick, key=lp?(lp.codename+"|"+lp.name):null, isNew=key&&key!==lastPickKey;
+  S=ns;
+  if(animate&&isNew&&lp){ lastPickKey=key; await revealPick(lp, lp.team??0); }
+  else lastPickKey=key;
+  render();
+}
+
+function render(){
+  if(MODE==="friends") return renderFriends();
+  if(MODE==="online"&&S&&S.phase==="online_home") return renderOnlineHome();
+  if(!S) return;
+  if(S.phase==="lobby")        return renderLocalLobby();
+  if(S.phase==="daily_lobby")  return renderDailyLobby();
+  if(S.phase==="room_lobby")   return renderRoomLobby();
+  if(S.phase==="draft")        return renderDraft();
+  if(S.phase==="reveal")       return renderReveal();
+}
+
+// ── PLAY WITH FRIENDS (mode select) ──────────────────────────────────────────
+function renderFriends(){
+  app.innerHTML = `
+    <div class="back" onclick="goHome()">← Daily Board</div>
+    <div class="panel">
+      <h2>Play with Friends</h2>
+      <div class="muted">Draft head-to-head — live in an online room, or pass one screen around the table.</div>
+      <div class="namerow"><label>Your name</label><input id="who" maxlength="24" placeholder="Scout" value="${esc(NAME)}" style="max-width:240px"></div>
+      <div class="modes" style="grid-template-columns:repeat(2,1fr)">
+        <div class="mode" id="m-online"><div class="eyebrow">Multiplayer</div><h3>Play Online</h3><div class="tagline">Open a room, share the code, and snake-draft live against others on their own screens.</div></div>
+        <div class="mode" id="m-local"><div class="eyebrow">Local</div><h3>Pass &amp; Play</h3><div class="tagline">Draft on a single screen, passing the device between war rooms.</div></div>
+      </div>
+    </div>`;
+  const who=document.getElementById("who");
+  const saveName=()=>{ NAME=who.value.trim(); localStorage.setItem("wr_name",NAME); };
+  document.getElementById("m-online").onclick=()=>{ saveName(); enterOnline(); };
+  document.getElementById("m-local").onclick=()=>{ saveName(); enterLocal(); };
+}
+
+// ── DAILY ────────────────────────────────────────────────────────────────────
+async function enterDaily(){
+  MODE="daily";
+  let s = await api("/api/daily/state");
+  if(s.phase==="daily_lobby") s = await api("/api/daily/new", {name:NAME});  // dive straight in, no Play button
+  S = s; render();
+  if(S.phase==="draft" && !localStorage.getItem("wr_howto_seen")) openHowTo();  // first-timers read the rules over the board
+}
+function renderDailyLobby(){
+  const roster=S.roster||ROSTER_DEFAULT;
+  app.innerHTML=`
+    <div class="panel">
+      <div class="eyebrow">Solo · Daily</div>
+      <h2>Daily Board · ${esc(S.day)}</h2>
+      <div class="muted">One board for every scout today. ${S.field||0} ${S.field===1?"war room has":"war rooms have"} played so far — draft yours and see where it lands.</div>
+      <div class="roster-line">${roster.map(s=>`<span class="chip">${s}</span>`).join("")}</div>
+      <div class="row-actions">
+        <button class="go" id="play">Play Today's Board →</button>
+        <button id="friends">Play with Friends</button>
+        <button id="how">How to Play</button>
+      </div>
+    </div>`;
+  document.getElementById("play").onclick=async()=>{ S=await api("/api/daily/new",{name:NAME}); render(); };
+  document.getElementById("friends").onclick=goFriends;
+  document.getElementById("how").onclick=openHowTo;
+}
+
+// ── ONLINE ───────────────────────────────────────────────────────────────────
+function connectSocket(){
+  if(socket) return socket;
+  socket=io();
+  socket.on("joined", d=>{ MY={team:d.team,host:d.host,code:d.code}; });
+  socket.on("lobby_update", s=>{ S=s; render(); });
+  socket.on("game_update", s=>{ applyState(s, true); });
+  socket.on("room_error", e=>{ const el=document.getElementById("err"); if(el) el.textContent=e.message; else alert(e.message); });
+  socket.on("opponent_left", ()=>{});
+  return socket;
+}
+function enterOnline(){ MODE="online"; connectSocket(); S={phase:"online_home"}; render(); }
+function renderOnlineHome(){
+  app.innerHTML=`
+    <div class="back" onclick="goFriends()">← Back</div>
+    <div class="panel">
+      <h2>Play Online</h2>
+      <div class="muted">Start a war room and share the 4-letter code, or join one.</div>
+      <div class="namerow"><label>Your name</label><input id="onm" maxlength="24" value="${esc(NAME||"War Room")}" style="max-width:240px"></div>
+      <div class="row-actions"><button class="go" id="create">Create a Room</button></div>
+      <div style="margin:20px 0 8px" class="muted">— or join with a code —</div>
+      <div class="namerow"><input id="code" maxlength="4" placeholder="CODE" style="max-width:140px;text-transform:uppercase;font-family:var(--mono);letter-spacing:4px"><button id="join">Join</button></div>
+      <div class="err" id="err"></div>
+    </div>`;
+  const nm=()=>{ NAME=document.getElementById("onm").value.trim(); localStorage.setItem("wr_name",NAME); return NAME; };
+  document.getElementById("create").onclick=()=>{ socket.emit("create_room",{name:nm()}); };
+  document.getElementById("join").onclick=()=>{ const c=document.getElementById("code").value.trim().toUpperCase();
+    if(c.length!==4){ document.getElementById("err").textContent="Enter a 4-letter code."; return; } socket.emit("join_room",{code:c,name:nm()}); };
+}
+function renderRoomLobby(){
+  const seats=S.players.map((nm,i)=>`<div class="lobby-seat" style="--pc:${col(i)}"><span class="sw"></span>${esc(nm)}${i===MY.team?'<span class="you">you</span>':''}</div>`).join("");
+  app.innerHTML=`
+    <div class="back" onclick="goHome()">← Leave room</div>
+    <div class="panel">
+      <h2>War Room Lobby</h2>
+      <div class="muted">Share this code so others can join from their own device:</div>
+      <div class="codebox"><span class="code">${esc(S.code)}</span><button class="sm" id="copy">Copy code</button></div>
+      <div class="lobby-seats">${seats}</div>
+      ${MY.host
+        ? `<div class="row-actions"><button class="go" id="start">Start the Draft →</button></div><div class="muted" style="margin-top:8px">${S.players.length} war room${S.players.length>1?"s":""} in. You can start whenever you're ready.</div>`
+        : `<div class="muted">Waiting for the host to start the draft…</div>`}
+      <div class="err" id="err"></div>
+    </div>`;
+  document.getElementById("copy").onclick=()=>{ navigator.clipboard?.writeText(S.code); const b=document.getElementById("copy"); b.textContent="Copied!"; setTimeout(()=>b.textContent="Copy code",1400); };
+  if(MY.host) document.getElementById("start").onclick=()=>{ socket.emit("start_draft",{code:MY.code}); };
+}
+
+// ── DRAFT (shared) ───────────────────────────────────────────────────────────
+function renderDraft(){
+  const c=S.current, pc=col(c.team);
+  const canPick = (MODE!=="online") || (MY.team===c.team);
+  const fwd=(c.round%2)===1;
+  const seats=S.players.map((nm,i)=>`<span class="seat ${i===c.team?'on':''}" style="--pc:${col(i)}"><span class="sw"></span>${esc(nm)}${i===MY.team&&MODE==="online"?" (you)":""}</span>`);
+  if(!fwd) seats.reverse();
+  const resetBtn = MODE==="online"
+      ? `<button class="sm" onclick="goHome()">Leave</button>`
+      : `<button class="sm" id="reset">${MODE==="daily"?"Quit":"Reset"}</button>`;
+  app.innerHTML=`
+    ${S.players.length>1?`<div class="order">${seats.join(`<span class="dir">${fwd?'→':'←'}</span>`)}</div>`:""}
+    <div class="clockbar" style="--pc:${pc}">
+      <div class="who">On the clock<b>${esc(c.name)}</b></div>
+      <div class="slot" style="color:var(--ink)">${esc(c.slot)}<small>${esc(c.slotLabel||"")}</small></div>
+      <div class="pickno">PICK ${S.pickNumber} / ${S.totalPicks}<br>ROUND ${c.round}<br>${resetBtn}</div>
+    </div>
+    ${(!canPick)?`<div class="waitbar" style="--pc:${pc}">${esc(c.name)} is on the clock — scout while you wait</div>`:""}
+    <div class="columns">
+      <div>
+        <div class="scout-intro">Scout the tape · draft a <b>${esc(c.slot)}</b> · the name drops when the pick is in</div>
+        <div class="board" id="board"></div>
+      </div>
+      <div class="rooms panel"><h3>War Rooms</h3><div id="rooms"></div></div>
+    </div>`;
+  if(MODE!=="online") document.getElementById("reset").onclick=async()=>{
+    if(MODE==="daily"){ goHome(); } else { S=await api("/api/reset",{}); lastPickKey=null; render(); } };
+
+  document.getElementById("board").innerHTML=S.available.map(p=>`
+    <div class="scout ${canPick?"":"locked"}">
+      <div class="plate"><div class="tag"><span class="alias">${esc(p.codename)}</span><span class="pos">${esc(p.position||p.slot)}</span></div></div>
+      <div class="meas">
+        <div><div class="lab">HT</div><div class="val">${esc(p.height||"—")}</div></div>
+        <div><div class="lab">WT</div><div class="val">${esc(p.weight||"—")}</div></div>
+        <div><div class="lab">40</div><div class="val">${esc(p.forty||"—")}</div></div>
+      </div>
+      <div class="conf"><span>Conference</span>${esc(p.conference||"—")}</div>
+      <div class="stats">${(p.stats||[]).map(s=>`<div class="stat"><span class="k">${esc(s.k)}</span><span class="v">${esc(s.v)}</span></div>`).join("")}</div>
+      <button class="draftbtn" data-pick="${p.id}" ${canPick?"":"disabled"}>${canPick?"Make the Pick":"Locked"}</button>
+    </div>`).join("");
+  if(canPick) document.querySelectorAll("[data-pick]").forEach(b=> b.onclick=()=>{ b.disabled=true; doPick(+b.dataset.pick); });
+  renderRooms(document.getElementById("rooms"));
+}
+async function doPick(id){
+  if(MODE==="online"){ socket.emit("make_pick",{code:MY.code, prospect_id:id}); return; }
+  const path = MODE==="daily" ? "/api/daily/pick" : "/api/pick";
+  const res = await api(path,{prospect_id:id});
+  if(res.error){ render(); return; }
+  await applyState(res, true);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderRooms(el){
+  const roster=S.roster||ROSTER_DEFAULT;
+  el.innerHTML=S.rosters.map(t=>{
+    const used=[...t.picks];
+    const rows=roster.map(slot=>{ const i=used.findIndex(p=>p.slot===slot);
+      if(i>=0){const p=used.splice(i,1)[0];return `<div class="rrow"><span class="s">${slot}</span><span>${esc(p.name)}</span><span class="cd">${esc(p.codename||"")}</span></div>`;}
+      return `<div class="rrow empty"><span class="s">${slot}</span><span>—</span></div>`;}).join("");
+    return `<div class="room" style="--pc:${col(t.team)}"><div class="rn">${esc(t.name)}<span class="cnt">${t.picks.length}/${roster.length}</span></div>${rows}</div>`;
+  }).join("");
+}
+function revealPick(lp, teamIdx){
+  return new Promise(resolve=>{
+    const ov=document.getElementById("ov"),nm=document.getElementById("ovName"),meta=document.getElementById("ovMeta"),by=document.getElementById("ovBy"),card=ov.firstElementChild;
+    const pc=col(teamIdx); card.style.setProperty("--pc",pc); nm.style.color=pc;
+    by.textContent="to "+((S.players&&S.players[teamIdx])||"the war room");
+    meta.textContent=lp.codename?"On the board as "+lp.codename:"";
+    const target=(lp.name||lp.codename||"").toUpperCase(),G="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    nm.textContent=""; ov.classList.add("show");
+    const settle=[];for(let i=0;i<target.length;i++)settle.push(5+i*2+Math.floor(Math.random()*4));
+    const done=Math.max(8,...settle)+3;let f=0;
+    const id=setInterval(()=>{f++;let out="";for(let i=0;i<target.length;i++){const ch=target[i];out+=ch===" "?" ":(f>=settle[i]?ch:G[Math.floor(Math.random()*26)]);}nm.textContent=out;
+      if(f>=done){clearInterval(id);nm.textContent=target;setTimeout(()=>{ov.classList.remove("show");resolve();},720);}},45);
+  });
+}
+
+// ── REVEAL ───────────────────────────────────────────────────────────────────
+function renderReveal(){
+  const rev=S.reveal, solo=rev.teams.length===1, st=rev.standing;
+  const newBtn = MODE==="online"
+      ? (MY.host?`<button class="go" id="reset">New Draft</button>`:`<button class="sm" onclick="goHome()">Leave</button>`)
+      : (MODE==="daily"?`<button class="sm" onclick="goHome()">← Daily Board</button>`:`<button class="go" id="reset">New Draft</button>`);
+  let standingHtml="";
+  if(MODE==="daily"&&st){
+    const headline = st.field<=1
+      ? `<div><div class="big">1st in</div><div class="lab">you set today's pace</div></div>`
+      : `<div><div class="big">Top ${st.percentile}%</div><div class="lab">of today's field</div></div>`;
+    standingHtml=`<div class="standing">
+      ${headline}
+      <div><div class="lab">Your score</div><div class="val">${rev.yourTotal}</div></div>
+      <div><div class="lab">Rank</div><div class="val">#${st.rank} / ${st.field}</div></div>
+      ${rev.streak ? `<div><div class="lab">Streak</div><div class="val">${rev.streak} day${rev.streak===1?"":"s"}</div></div>` : ""}
+      <div style="margin-left:auto"><button class="go" id="share">Share result</button></div>
+    </div>
+    ${ME ? "" : `<div class="streak" style="color:var(--dim);text-transform:none;letter-spacing:0">Sign in to save your results and build a streak.</div>`}`;
+  }
+  app.innerHTML=`
+    <div class="back" onclick="goHome()">← Daily Board</div>
+    <div class="clockbar" style="--pc:var(--nfl-lite)">
+      <div class="who">Final tape<b style="color:var(--nfl-lite)">${MODE==="daily"?"Daily Result":"Draft Grades"}</b></div>
+      <div class="slot" style="color:var(--nfl-lite);font-size:26px">${solo?(MODE==="daily"?esc(S.day||""):"YOUR BOARD"):"RESULTS"}</div>
+      <div class="pickno">${newBtn}</div>
+    </div>
+    ${standingHtml}
+    <div class="ranks" id="ranks"></div>
+    <div class="note">${esc(rev.scoring_note)}</div>`;
+  const reset=document.getElementById("reset");
+  if(reset) reset.onclick=async()=>{
+    if(MODE==="online"){ socket.emit("restart_room",{code:MY.code}); }
+    else { S=await api("/api/reset",{}); lastPickKey=null; render(); } };
+  const share=document.getElementById("share");
+  if(share) share.onclick=()=>{
+    const txt=`WarRoom Daily ${S.day||""}\nMy war room scored ${rev.yourTotal} — Top ${st.percentile}% (#${st.rank}/${st.field})\n${location.origin}`;
+    navigator.clipboard?.writeText(txt); share.textContent="Copied!"; setTimeout(()=>share.textContent="Share result",1500); };
+
+  document.getElementById("ranks").innerHTML=rev.teams.map(t=>`
+    <div class="rank ${t.rank===1&&!solo?"win":""}" style="--pc:${col(t.team)}">
+      <div class="rh"><div><span class="rk">${solo?"":"#"+t.rank}${t.rank===1&&!solo?" — winner":""}</span> <span class="name">${esc(t.name)}</span></div><div class="tot">${t.total}</div></div>
+      <table>
+        <tr><th>Slot</th><th>Player</th><th>School</th><th>Drafted</th><th class="n">Grade</th><th class="n">Pts</th></tr>
+        ${t.picks.map(p=>`<tr>
+          <td><span class="s">${esc(p.slot)}</span></td>
+          <td>${esc(p.name)}${p.is_starter?'<span class="badge">Starter</span>':""}</td>
+          <td>${esc(p.school||"")}</td>
+          <td>${p.draft_round?("R"+p.draft_round+" · "+esc(p.draft_year)):esc(p.draft_year||"UDFA")}</td>
+          <td class="n">${p.score}</td><td class="n">${p.weighted}</td>
+        </tr>`).join("")}
+      </table>
+    </div>`).join("");
+}
+
+// ── LOCAL (pass & play) ──────────────────────────────────────────────────────
+async function enterLocal(){ MODE="local"; S=await api("/api/state"); render(); }
+function renderLocalLobby(){
+  const pool=S.pool||{by_slot:{},total:0}, roster=S.roster||ROSTER_DEFAULT;
+  app.innerHTML=`
+    <div class="back" onclick="goFriends()">← Back</div>
+    <div class="panel">
+      <h2>Pass &amp; Play</h2>
+      <div class="muted">${pool.total||0} real prospects on the board, scouted blind. Take turns on one screen.</div>
+      <div class="pills">${[...new Set(roster)].map(s=>`<span class="pill">${s} <b>${pool.by_slot?.[s]||0}</b></span>`).join("")}</div>
+      <div class="roster-line">${roster.map(s=>`<span class="chip">${s}</span>`).join("")}</div>
+      <div style="margin:20px 0 8px"><label class="muted" style="font-family:var(--head);letter-spacing:1px;text-transform:uppercase">War Rooms (${S.minPlayers}–${S.maxPlayers})</label></div>
+      <div style="max-width:120px"><select id="np">${Array.from({length:S.maxPlayers-S.minPlayers+1},(_,i)=>{const n=S.minPlayers+i;return `<option value="${n}" ${n===2?"selected":""}>${n}</option>`}).join("")}</select></div>
+      <div class="names" id="names"></div>
+      <button class="go" id="start">On the Clock →</button>
+      <div class="err" id="err"></div>
+    </div>`;
+  const np=document.getElementById("np"),names=document.getElementById("names");
+  const draw=()=>{const cols=teamColors(null);names.innerHTML=Array.from({length:+np.value},(_,i)=>
+    `<div class="seat-in" style="--pc:${accent(cols[i%cols.length])}"><span class="swatch"></span><input data-i="${i}" maxlength="24" placeholder="War room ${i+1}" value="War Room ${i+1}"></div>`).join("");};
+  np.onchange=draw; draw();
+  document.getElementById("start").onclick=async()=>{
+    const players=[...names.querySelectorAll("input")].map(x=>x.value.trim()).filter(Boolean);
+    const res=await api("/api/new",{players});
+    if(res.error){ document.getElementById("err").textContent=res.error; return; }
+    lastPickKey=null; await applyState(res,false);
+  };
+}
+
+// ── ACCOUNTS ──────────────────────────────────────────────────────────────────
+let ME = null;            // {user_id, username} or null
+let AUTHMODE = "login";
+const $ = id => document.getElementById(id);
+
+async function loadMe(){ try{ const m = await api("/api/me"); ME = m && m.user_id ? m : null; }catch{ ME=null; } updateAccountBtn(); }
+function updateAccountBtn(){ const b=$("nav-account"); if(b) b.textContent = ME ? ME.username : "Sign In"; }
+
+function openAuth(){ $("auth-err").textContent=""; $("auth").classList.add("show"); $("auth-user").focus(); }
+function closeAuth(){ $("auth").classList.remove("show"); }
+function setAuthMode(m){ AUTHMODE=m;
+  $("tab-login").classList.toggle("on", m==="login");
+  $("tab-register").classList.toggle("on", m==="register");
+  $("auth-submit").textContent = m==="login" ? "Sign In" : "Create Account";
+  $("auth-pass").autocomplete = m==="login" ? "current-password" : "new-password";
+  $("auth-err").textContent="";
+}
+async function submitAuth(){
+  const username=$("auth-user").value.trim(), password=$("auth-pass").value;
+  const res = await api(AUTHMODE==="login" ? "/api/login" : "/api/register", {username, password});
+  if(res.error){ $("auth-err").textContent=res.error; return; }
+  ME = {user_id:res.user_id, username:res.username}; updateAccountBtn(); closeAuth();
+  if(MODE==="daily") enterDaily();   // refresh so streak/standing reflect the account
+}
+function openAccount(){ $("acct-name").textContent = ME ? ME.username : ""; $("acct-err").textContent=""; $("account").classList.add("show"); }
+function closeAccount(){ $("account").classList.remove("show"); }
+async function logout(){ await api("/api/logout", {}); ME=null; updateAccountBtn(); closeAccount(); if(MODE==="daily") enterDaily(); }
+async function deleteAccount(){
+  if(!confirm("Delete your account? This can't be undone.")) return;
+  const res = await api("/api/account/delete", {});
+  if(res.error){ $("acct-err").textContent=res.error; return; }
+  ME=null; updateAccountBtn(); closeAccount();
+}
+
+// header nav + how-to wiring (header persists across renders)
+$("brand").onclick = goHome;
+$("nav-how").onclick = openHowTo;
+$("nav-friends").onclick = goFriends;
+$("nav-account").onclick = () => ME ? openAccount() : openAuth();
+$("howto-close").onclick = closeHowTo;
+$("howto-go").onclick = closeHowTo;
+$("howto").onclick = e => { if(e.target.id==="howto") closeHowTo(); };
+// auth modal
+$("auth-close").onclick = closeAuth;
+$("auth").onclick = e => { if(e.target.id==="auth") closeAuth(); };
+$("tab-login").onclick = () => setAuthMode("login");
+$("tab-register").onclick = () => setAuthMode("register");
+$("auth-submit").onclick = submitAuth;
+$("auth-pass").addEventListener("keydown", e => { if(e.key==="Enter") submitAuth(); });
+// account modal
+$("account-close").onclick = closeAccount;
+$("account").onclick = e => { if(e.target.id==="account") closeAccount(); };
+$("acct-logout").onclick = logout;
+$("acct-delete").onclick = deleteAccount;
+
+loadMe();
+enterDaily();   // open straight to the Daily board
+</script>
+</body>
+</html>
