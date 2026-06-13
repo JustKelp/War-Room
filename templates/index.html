@@ -28,12 +28,12 @@
   body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
   header{display:flex;align-items:center;justify-content:space-between;padding:15px 26px;
     background:linear-gradient(90deg,var(--nfl-deep),#0a1730);border-bottom:1px solid rgba(90,160,245,.25)}
-  .brand{font-family:var(--head);font-weight:700;font-size:25px;letter-spacing:6px;display:flex;align-items:center;gap:12px;cursor:pointer}
+  .brand{font-family:var(--head);font-weight:700;font-size:26px;letter-spacing:.5px;display:flex;align-items:center;gap:12px;cursor:pointer}
   .brand b{color:var(--nfl-lite)}
-  .sub{font-family:var(--head);font-size:12px;letter-spacing:4px;color:#9fc1ee;text-transform:uppercase}
+  .sub{font-family:var(--head);font-size:12px;letter-spacing:1px;color:#9fc1ee}
   .wrap{max-width:1200px;margin:0 auto;padding:28px 24px}
   .muted{color:var(--dim);font-size:13.5px}
-  button{font:600 14px var(--head);letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  button{font:600 14px var(--head);letter-spacing:.3px;cursor:pointer;
     border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:11px 20px;border-radius:11px;transition:.14s}
   button:hover:not(:disabled){border-color:var(--nfl-lite);transform:translateY(-1px)}
   button.go{background:var(--nfl);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(18,104,214,.4)}
@@ -46,10 +46,10 @@
   .panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--soft)}
   h2{font-family:var(--head);font-weight:600;letter-spacing:.5px;font-size:27px;margin-bottom:5px}
   .err{color:var(--bad);font-size:13px;min-height:18px;margin-top:10px}
-  .back{font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);text-transform:uppercase;cursor:pointer;display:inline-block;margin-bottom:14px}
+  .back{font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);cursor:pointer;display:inline-block;margin-bottom:14px}
   .back:hover{color:var(--nfl-lite)}
   .nav{display:flex;gap:10px;align-items:center}
-  .navbtn{font:600 13px var(--head);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;cursor:pointer;
+  .navbtn{font:600 13px var(--head);letter-spacing:1px;white-space:nowrap;cursor:pointer;
     padding:9px 16px;border-radius:10px;border:1px solid rgba(90,160,245,.55);background:rgba(18,104,214,.14);color:#dbeafe;transition:.14s}
   .navbtn:hover{background:rgba(18,104,214,.28);border-color:var(--nfl-lite);transform:translateY(-1px)}
   .navbtn.primary{background:var(--nfl);border-color:transparent;color:#fff;box-shadow:0 5px 14px rgba(18,104,214,.4)}
@@ -57,20 +57,20 @@
   /* how to play */
   .howto .sheet{width:580px;max-width:100%;max-height:86vh;overflow:auto;background:var(--panel);border:1px solid var(--line);
     border-radius:18px;padding:30px;box-shadow:var(--soft);text-align:left;position:relative;animation:rise .25s ease both}
-  .howto .close{position:absolute;top:18px;right:20px;font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);cursor:pointer;text-transform:uppercase}
+  .howto .close{position:absolute;top:18px;right:20px;font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);cursor:pointer}
   .howto .close:hover{color:var(--ink)}
   .howto .lead{color:var(--dim);font-size:14px;margin:6px 0 18px}
   .howto .secs{display:flex;flex-direction:column;gap:14px}
-  .howto .sec .lbl{font-family:var(--head);font-weight:700;letter-spacing:.5px;font-size:14px;text-transform:uppercase;color:var(--nfl-lite)}
+  .howto .sec .lbl{font-family:var(--head);font-weight:700;letter-spacing:.5px;font-size:14px;color:var(--nfl-lite)}
   .howto .sec p{color:var(--dim);font-size:13.5px;margin-top:3px;line-height:1.55}
   .howto .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
   /* auth / account */
   .authtabs{display:flex;gap:8px;margin:6px 0 16px}
-  .authtab{flex:1;font-family:var(--head);letter-spacing:1px;text-transform:uppercase;font-size:13px;padding:9px;
+  .authtab{flex:1;font-family:var(--head);letter-spacing:1px;font-size:13px;padding:9px;
     border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--dim);cursor:pointer}
   .authtab.on{background:var(--nfl);color:#fff;border-color:transparent}
   .authfield{margin-bottom:12px}
-  .authfield label{display:block;font:600 11px var(--head);letter-spacing:1px;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+  .authfield label{display:block;font:600 11px var(--head);letter-spacing:1px;color:var(--faint);margin-bottom:5px}
   .acctrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0}
   .danger{border-color:var(--bad);color:var(--bad)}
   .danger:hover{background:var(--bad);color:#1a0a0d;border-color:transparent}
@@ -85,10 +85,10 @@
   .mode:hover{transform:translateY(-3px);border-color:var(--nfl-lite);box-shadow:var(--soft)}
   .mode h3{font-family:var(--head);letter-spacing:1px;font-size:21px;margin-bottom:6px}
   .mode .tagline{color:var(--dim);font-size:13.5px}
-  .eyebrow{font-family:var(--head);letter-spacing:2.5px;font-size:11px;text-transform:uppercase;color:var(--nfl-lite);margin-bottom:10px}
+  .eyebrow{font-family:var(--head);letter-spacing:1px;font-size:11px;color:var(--nfl-lite);margin-bottom:10px}
   .mode .eyebrow{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
   .namerow{display:flex;gap:10px;align-items:center;margin:16px 0}
-  .namerow label{font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);text-transform:uppercase;white-space:nowrap}
+  .namerow label{font-family:var(--head);letter-spacing:1px;font-size:12px;color:var(--dim);white-space:nowrap}
   /* pills / chips */
   .pills{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
   .pill{background:var(--panel2);border:1px solid var(--line);padding:6px 15px;border-radius:999px;font:600 12px var(--mono)}
@@ -102,7 +102,7 @@
   .seat-in input:focus{background:transparent}
   /* room code */
   .codebox{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:16px 0}
-  .code{font-family:var(--mono);font-weight:700;font-size:34px;letter-spacing:8px;color:var(--nfl-lite);
+  .code{font-family:var(--mono);font-weight:700;font-size:34px;letter-spacing:5px;color:var(--nfl-lite);
     background:rgba(18,104,214,.12);border:1px solid rgba(90,160,245,.35);border-radius:12px;padding:10px 20px}
   .lobby-seats{display:flex;flex-direction:column;gap:9px;margin:14px 0}
   .lobby-seat{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-left:3px solid var(--pc);
@@ -120,16 +120,16 @@
     background:var(--panel);background:linear-gradient(120deg,color-mix(in srgb,var(--pc) 12%,var(--panel)),var(--panel));
     border:1px solid var(--line);border-radius:18px;padding:18px 24px;margin-bottom:24px;box-shadow:var(--soft);position:relative;overflow:hidden}
   .clockbar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--pc)}
-  .clockbar .who{font-family:var(--head);font-size:12px;letter-spacing:3px;color:var(--faint);text-transform:uppercase}
+  .clockbar .who{font-family:var(--head);font-size:12px;letter-spacing:1px;color:var(--faint)}
   .clockbar .who b{display:block;font-size:27px;color:var(--pc);letter-spacing:.5px;line-height:1.15}
   .clockbar .slot{font-family:var(--head);font-size:36px;letter-spacing:2px;text-align:center}
-  .clockbar .slot small{display:block;font-size:12px;letter-spacing:3px;color:var(--faint)}
+  .clockbar .slot small{display:block;font-size:12px;letter-spacing:1px;color:var(--faint)}
   .clockbar .pickno{font-family:var(--mono);font-size:13px;color:var(--dim);text-align:right;line-height:1.7}
   .waitbar{margin-bottom:18px;padding:12px 18px;border-radius:12px;background:var(--panel2);background:color-mix(in srgb,var(--pc) 14%,var(--panel));
-    border:1px solid var(--line);font-family:var(--head);letter-spacing:1px;color:var(--pc);text-transform:uppercase;font-size:14px}
+    border:1px solid var(--line);font-family:var(--head);letter-spacing:1px;color:var(--pc);font-size:14px}
   .columns{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
   @media(max-width:900px){.columns{grid-template-columns:1fr}}
-  .scout-intro{font-family:var(--head);letter-spacing:1px;font-size:13px;color:var(--dim);text-transform:uppercase;margin-bottom:16px}
+  .scout-intro{font-family:var(--head);letter-spacing:1px;font-size:13px;color:var(--dim);margin-bottom:16px}
   .scout-intro b{color:var(--nfl-lite)}
   .board{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
   .scout{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;
@@ -152,7 +152,7 @@
   .scout .draftbtn{margin:13px;border-radius:11px;background:var(--panel2);color:var(--nfl-lite);border:1px solid var(--line)}
   .scout .draftbtn:hover:not(:disabled){background:var(--nfl);color:#fff;border-color:transparent;transform:none}
   /* war rooms */
-  .rooms h3{font-family:var(--head);letter-spacing:2px;font-size:15px;margin-bottom:16px;text-transform:uppercase}
+  .rooms h3{font-family:var(--head);letter-spacing:2px;font-size:15px;margin-bottom:16px}
   .room{margin-bottom:18px}
   .room .rn{font-family:var(--head);letter-spacing:.5px;font-size:15px;color:var(--pc);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
   .room .rn .cnt{font-family:var(--mono);font-size:12px;color:var(--faint)}
@@ -164,7 +164,7 @@
   .standing{display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(18,104,214,.18),var(--panel));
     border:1px solid rgba(90,160,245,.3);border-radius:18px;padding:20px 24px;margin-bottom:20px;box-shadow:var(--soft)}
   .standing .big{font-family:var(--head);font-weight:700;font-size:46px;color:var(--nfl-lite);line-height:1}
-  .standing .lab{font-family:var(--head);letter-spacing:2px;font-size:12px;color:var(--faint);text-transform:uppercase}
+  .standing .lab{font-family:var(--head);letter-spacing:2px;font-size:12px;color:var(--faint)}
   .standing .val{font-family:var(--mono);font-size:20px;font-weight:700}
   .ranks{display:flex;flex-direction:column;gap:18px}
   .rank{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--soft);overflow:hidden}
@@ -173,11 +173,11 @@
   .rank .rh .name{font-family:var(--head);font-size:24px;letter-spacing:.5px;color:var(--pc)}
   .rank .rh .rk{font-family:var(--head);font-size:13px;letter-spacing:2px;color:var(--faint)}
   .rank .rh .tot{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--nfl-lite);text-align:right}
-  .rank .rh .tot .totlab{display:block;font-family:var(--head);font-size:10px;letter-spacing:2px;color:var(--faint);text-transform:uppercase;font-weight:600}
+  .rank .rh .tot .totlab{display:block;font-family:var(--head);font-size:10px;letter-spacing:2px;color:var(--faint);font-weight:600}
   table{width:100%;border-collapse:collapse;font-size:13px}
   th,td{text-align:left;padding:9px 18px;border-bottom:1px solid var(--line)}
   tr:last-child td{border-bottom:none}
-  th{font:600 11px var(--head);letter-spacing:1px;color:var(--faint);text-transform:uppercase}
+  th{font:600 11px var(--head);letter-spacing:1px;color:var(--faint)}
   td.n{text-align:right;font-family:var(--mono)}
   td .s{font-family:var(--head);color:var(--nfl-lite);letter-spacing:1px}
   .badge{font:600 10px var(--head);letter-spacing:1px;color:var(--good);border:1px solid var(--good);padding:1px 7px;border-radius:999px;margin-left:8px}
@@ -190,14 +190,14 @@
   .card-in{width:360px;max-width:100%;background:var(--panel);border:1px solid var(--pc);border-top:4px solid var(--pc);
     border-radius:16px;padding:30px 28px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.6);animation:rise .3s ease both}
   @keyframes rise{from{opacity:0;transform:translateY(14px) scale(.96)}}
-  .card-in .stamp{font-family:var(--head);font-size:13px;letter-spacing:5px;color:var(--pc);text-transform:uppercase}
+  .card-in .stamp{font-family:var(--head);font-size:13px;letter-spacing:2px;color:var(--pc)}
   .card-in .nm{font-family:var(--head);font-size:36px;font-weight:700;letter-spacing:1px;margin:14px 0 6px;min-height:44px}
   .card-in .meta{font-size:13px;color:var(--dim);letter-spacing:.5px}
-  .card-in .by{font-family:var(--head);font-size:12px;letter-spacing:3px;color:var(--faint);text-transform:uppercase;margin-top:16px}
+  .card-in .by{font-family:var(--head);font-size:12px;letter-spacing:1px;color:var(--faint);margin-top:16px}
   @media(prefers-reduced-motion:reduce){.card-in{animation:none}.scout,.mode,button{transition:none}}
   /* mobile */
   @media(max-width:640px){
-    header{padding:11px 14px;flex-wrap:wrap;gap:8px}.brand{font-size:20px;letter-spacing:4px}
+    header{padding:11px 14px;flex-wrap:wrap;gap:8px}.brand{font-size:21px;letter-spacing:.5px}
     .nav{gap:7px}.navbtn{font-size:11px;letter-spacing:.5px;padding:8px 11px;border-radius:9px}
     .wrap{padding:18px 14px}.panel{padding:18px;border-radius:14px}
     .modes{grid-template-columns:1fr;gap:12px}
@@ -213,7 +213,7 @@
 </head>
 <body>
 <header>
-  <div class="brand" id="brand">WAR<b>ROOM</b></div>
+  <div class="brand" id="brand">War<b>Room</b></div>
   <nav class="nav">
     <button class="navbtn" id="nav-how">How to Play</button>
     <button class="navbtn primary" id="nav-friends">Play with Friends</button>
@@ -339,7 +339,7 @@ function render(){
 // ── PLAY WITH FRIENDS (mode select) ──────────────────────────────────────────
 function renderFriends(){
   app.innerHTML = `
-    <div class="back" onclick="goHome()">← Daily Board</div>
+    <div class="back" onclick="goHome()">‹ Daily Board</div>
     <div class="panel">
       <h2>Play with Friends</h2>
       <div class="muted">Draft head-to-head — live in an online room, or pass one screen around the table.</div>
@@ -372,7 +372,7 @@ function renderDailyLobby(){
       <div class="muted">One board for every scout today. ${S.field||0} ${S.field===1?"war room has":"war rooms have"} played so far — draft yours and see where it lands.</div>
       <div class="roster-line">${roster.map(s=>`<span class="chip">${s}</span>`).join("")}</div>
       <div class="row-actions">
-        <button class="go" id="play">Play Today's Board →</button>
+        <button class="go" id="play">Play Today's Board</button>
         <button id="friends">Play with Friends</button>
         <button id="how">How to Play</button>
       </div>
@@ -402,7 +402,7 @@ function connectSocket(){
 function enterOnline(){ MODE="online"; connectSocket(); S={phase:"online_home"}; render(); }
 function renderOnlineHome(){
   app.innerHTML=`
-    <div class="back" onclick="goFriends()">← Back</div>
+    <div class="back" onclick="goFriends()">‹ Back</div>
     <div class="panel">
       <h2>Play Online</h2>
       <div class="muted">Start a war room and share the 4-letter code, or join one.</div>
@@ -420,14 +420,14 @@ function renderOnlineHome(){
 function renderRoomLobby(){
   const seats=S.players.map((nm,i)=>`<div class="lobby-seat" style="--pc:${col(i)}"><span class="sw"></span>${esc(nm)}${i===MY.team?'<span class="you">you</span>':''}</div>`).join("");
   app.innerHTML=`
-    <div class="back" onclick="goHome()">← Leave room</div>
+    <div class="back" onclick="goHome()">‹ Leave room</div>
     <div class="panel">
       <h2>War Room Lobby</h2>
       <div class="muted">Share this code so others can join from their own device:</div>
       <div class="codebox"><span class="code">${esc(S.code)}</span><button class="sm" id="copy">Copy code</button></div>
       <div class="lobby-seats">${seats}</div>
       ${MY.host
-        ? `<div class="row-actions"><button class="go" id="start">Start the Draft →</button></div><div class="muted" style="margin-top:8px">${S.players.length} war room${S.players.length>1?"s":""} in. You can start whenever you're ready.</div>`
+        ? `<div class="row-actions"><button class="go" id="start">Start the Draft</button></div><div class="muted" style="margin-top:8px">${S.players.length} war room${S.players.length>1?"s":""} in. You can start whenever you're ready.</div>`
         : `<div class="muted">Waiting for the host to start the draft…</div>`}
       <div class="err" id="err"></div>
     </div>`;
@@ -446,7 +446,7 @@ function renderDraft(){
       ? `<button class="sm" onclick="goHome()">Leave</button>`
       : `<button class="sm" id="reset">${MODE==="daily"?"Quit":"Reset"}</button>`;
   app.innerHTML=`
-    ${S.players.length>1?`<div class="order">${seats.join(`<span class="dir">${fwd?'→':'←'}</span>`)}</div>`:""}
+    ${S.players.length>1?`<div class="order">${seats.join(`<span class="dir">${fwd?'›':'‹'}</span>`)}</div>`:""}
     <div class="clockbar" style="--pc:${pc}">
       <div class="who">On the clock<b>${esc(c.name)}</b></div>
       <div class="slot" style="color:var(--ink)">${esc(c.slot)}<small>${esc(c.slotLabel||"")}</small></div>
@@ -516,7 +516,7 @@ function renderReveal(){
   const rev=S.reveal, solo=rev.teams.length===1, st=rev.standing;
   const newBtn = MODE==="online"
       ? (MY.host?`<button class="go" id="reset">New Draft</button>`:`<button class="sm" onclick="goHome()">Leave</button>`)
-      : (MODE==="daily"?`<button class="sm" onclick="goHome()">← Daily Board</button>`:`<button class="go" id="reset">New Draft</button>`);
+      : (MODE==="daily"?`<button class="sm" onclick="goHome()">‹ Daily Board</button>`:`<button class="go" id="reset">New Draft</button>`);
   let standingHtml="";
   if(MODE==="daily"&&st){
     const headline = st.field<=1
@@ -532,7 +532,7 @@ function renderReveal(){
     ${ME ? "" : `<div class="streak" style="color:var(--dim);text-transform:none;letter-spacing:0">Sign in to save your results and build a streak.</div>`}`;
   }
   app.innerHTML=`
-    <div class="back" onclick="goHome()">← Daily Board</div>
+    <div class="back" onclick="goHome()">‹ Daily Board</div>
     <div class="clockbar" style="--pc:var(--nfl-lite)">
       <div class="who">Results<b style="color:var(--nfl-lite)">${MODE==="daily"?"Daily Result":"Draft Grades"}</b></div>
       <div class="slot" style="color:var(--nfl-lite);font-size:26px">${solo?(MODE==="daily"?esc(S.day||""):"YOUR BOARD"):"RESULTS"}</div>
@@ -571,16 +571,16 @@ async function enterLocal(){ MODE="local"; S=await api("/api/state"); render(); 
 function renderLocalLobby(){
   const pool=S.pool||{by_slot:{},total:0}, roster=S.roster||ROSTER_DEFAULT;
   app.innerHTML=`
-    <div class="back" onclick="goFriends()">← Back</div>
+    <div class="back" onclick="goFriends()">‹ Back</div>
     <div class="panel">
       <h2>Pass &amp; Play</h2>
       <div class="muted">${pool.total||0} real prospects on the board, scouted blind. Take turns on one screen.</div>
       <div class="pills">${[...new Set(roster)].map(s=>`<span class="pill">${s} <b>${pool.by_slot?.[s]||0}</b></span>`).join("")}</div>
       <div class="roster-line">${roster.map(s=>`<span class="chip">${s}</span>`).join("")}</div>
-      <div style="margin:20px 0 8px"><label class="muted" style="font-family:var(--head);letter-spacing:1px;text-transform:uppercase">War Rooms (${S.minPlayers}–${S.maxPlayers})</label></div>
+      <div style="margin:20px 0 8px"><label class="muted" style="font-family:var(--head);letter-spacing:1px">War Rooms (${S.minPlayers}–${S.maxPlayers})</label></div>
       <div style="max-width:120px"><select id="np">${Array.from({length:S.maxPlayers-S.minPlayers+1},(_,i)=>{const n=S.minPlayers+i;return `<option value="${n}" ${n===2?"selected":""}>${n}</option>`}).join("")}</select></div>
       <div class="names" id="names"></div>
-      <button class="go" id="start">On the Clock →</button>
+      <button class="go" id="start">On the Clock</button>
       <div class="err" id="err"></div>
     </div>`;
   const np=document.getElementById("np"),names=document.getElementById("names");
