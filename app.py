@@ -95,10 +95,8 @@ SCORES: dict[int, dict] = {}
 
 
 def _num(v, nd=0):
-    """Format a stat value; a real 0 shows as 0, a missing one as a dash. Negative
-    counting stats (e.g. pre-2000 QB rushing, where NCAA charged sack yardage to
-    rushing) are noise, so they show as a dash too."""
-    return "—" if (v is None or v < 0) else f"{v:,.{nd}f}"
+    """Format a stat value; a real 0 shows as 0, a missing one as a dash."""
+    return "—" if v is None else f"{v:,.{nd}f}"
 
 
 def _statline(slot: str, cs: dict) -> list[dict]:
@@ -528,7 +526,10 @@ def api_daily_pick():
 
 
 # ── ONLINE (real-time rooms, Socket.IO) ──────────────────────────────────────
-ROOMS: dict[str, dict] = {}            # code -> {seats:[{name,sid}], game, phase, host_sid}
+# Each seat carries a stable `token` (a secret the client stores) so a player who
+# drops can reclaim their exact seat on reconnect — sids change, tokens don't.
+# Host is tracked by token (`host_token`) for the same reason.
+ROOMS: dict[str, dict] = {}            # code -> {seats:[{name,sid,token}], game, phase, host_token}
 SID_ROOM: dict[str, str] = {}          # sid -> room code
 _CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
 
@@ -538,6 +539,15 @@ def _gen_code() -> str:
         code = "".join(random.choice(_CODE_ALPHABET) for _ in range(4))
         if code not in ROOMS:
             return code
+
+
+def _seat_by_sid(room: dict, sid: str) -> dict | None:
+    return next((s for s in room["seats"] if s.get("sid") == sid), None)
+
+
+def _is_host(room: dict, sid: str) -> bool:
+    seat = _seat_by_sid(room, sid)
+    return bool(seat) and seat.get("token") == room.get("host_token")
 
 
 def _room_lobby(room: dict, code: str) -> dict:
@@ -564,11 +574,12 @@ def on_create_room(data):
         build_indexes()
     name = (str((data or {}).get("name", "")).strip()[:24]) or "War Room 1"
     code = _gen_code()
-    ROOMS[code] = {"seats": [{"name": name, "sid": request.sid}], "game": None,
-                   "phase": "lobby", "host_sid": request.sid}
+    token = secrets.token_hex(8)
+    ROOMS[code] = {"seats": [{"name": name, "sid": request.sid, "token": token}], "game": None,
+                   "phase": "lobby", "host_token": token}
     SID_ROOM[request.sid] = code
     join_room(code)
-    emit("joined", {"code": code, "team": 0, "host": True})
+    emit("joined", {"code": code, "team": 0, "host": True, "token": token})
     _emit_room(code)
 
 
@@ -583,10 +594,11 @@ def on_join_room(data):
         emit("room_error", {"message": "That draft has already started."}); return
     if len(room["seats"]) >= MAX_PLAYERS:
         emit("room_error", {"message": "That room is full."}); return
-    room["seats"].append({"name": name, "sid": request.sid})
+    token = secrets.token_hex(8)
+    room["seats"].append({"name": name, "sid": request.sid, "token": token})
     SID_ROOM[request.sid] = code
     join_room(code)
-    emit("joined", {"code": code, "team": len(room["seats"]) - 1, "host": False})
+    emit("joined", {"code": code, "team": len(room["seats"]) - 1, "host": False, "token": token})
     _emit_room(code)
 
 
@@ -594,7 +606,7 @@ def on_join_room(data):
 def on_start_draft(data):
     code = str((data or {}).get("code", "")).strip().upper()
     room = ROOMS.get(code)
-    if not room or request.sid != room["host_sid"] or room["phase"] != "lobby":
+    if not room or not _is_host(room, request.sid) or room["phase"] != "lobby":
         return
     names = [s["name"] for s in room["seats"]]
     if not (MIN_PLAYERS <= len(names) <= MAX_PLAYERS):
@@ -633,34 +645,61 @@ def on_make_pick(data):
 def on_restart_room(data):
     code = str((data or {}).get("code", "")).strip().upper()
     room = ROOMS.get(code)
-    if not room or request.sid != room["host_sid"]:
+    if not room or not _is_host(room, request.sid):
         return
     room["game"], room["phase"] = None, "lobby"
     _emit_room(code)
 
 
-def _drop_sid(sid):
+def _drop_sid(sid, permanent=False):
+    """Handle a socket going away. In the lobby (or on an explicit leave) the seat
+    is removed. Mid-draft a disconnect only clears the seat's sid — the seat is
+    held open so the player can reclaim it via rejoin_room (see below) and the turn
+    order survives a network blip."""
     code = SID_ROOM.pop(sid, None)
     room = ROOMS.get(code) if code else None
     if not room:
         return
-    if room["phase"] == "lobby":
+    if room["phase"] == "lobby" or permanent:
+        was_host = any(s["sid"] == sid and s.get("token") == room.get("host_token")
+                       for s in room["seats"])
         room["seats"] = [s for s in room["seats"] if s["sid"] != sid]
         if not room["seats"]:
             ROOMS.pop(code, None); return
-        if sid == room["host_sid"]:
-            room["host_sid"] = room["seats"][0]["sid"]
+        if was_host:
+            room["host_token"] = room["seats"][0]["token"]
+        if room["phase"] != "lobby":
+            socketio.emit("opponent_left", {}, room=code)
         _emit_room(code)
     else:
         for s in room["seats"]:
             if s["sid"] == sid:
-                s["sid"] = None                 # seat stays so turn order holds
+                s["sid"] = None                 # seat held for reconnect
         socketio.emit("opponent_left", {}, room=code)
+
+
+@socketio.on("rejoin_room")
+def on_rejoin_room(data):
+    """Reclaim a seat after a disconnect/reload using the seat's stored token."""
+    code = str((data or {}).get("code", "")).strip().upper()
+    token = str((data or {}).get("token", "") or "")
+    room = ROOMS.get(code)
+    idx = (next((i for i, s in enumerate(room["seats"]) if s.get("token") == token), None)
+           if room and token else None)
+    if idx is None:
+        emit("rejoin_failed", {}); return
+    seat = room["seats"][idx]
+    seat["sid"] = request.sid
+    SID_ROOM[request.sid] = code
+    join_room(code)
+    emit("joined", {"code": code, "team": idx,
+                    "host": seat["token"] == room.get("host_token"), "token": token})
+    _emit_room(code)                            # resync this client (and confirm to the room)
 
 
 @socketio.on("leave_room")
 def on_leave_room(data):
-    _drop_sid(request.sid)
+    _drop_sid(request.sid, permanent=True)      # explicit leave drops the seat for good
 
 
 @socketio.on("disconnect")

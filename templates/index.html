@@ -287,7 +287,7 @@ const app = document.getElementById("app");
 let MODE = null;                 // 'daily' | 'online' | 'local'
 let S = null;                    // current view state
 let socket = null;
-let MY = {team:null, host:false, code:null};
+let MY = {team:null, host:false, code:null, token:null};
 let lastPickKey = null;
 const ROSTER_DEFAULT = ["QB","RB","WR","WR","DEF"];
 let NAME = localStorage.getItem("wr_name") || "";
@@ -311,7 +311,7 @@ async function api(path, body){const o={headers:{"Content-Type":"application/jso
   if(body){o.method="POST";o.body=JSON.stringify(body);}return (await fetch(path,o)).json();}
 const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 
-function leaveIfOnline(){ if(MODE==="online"&&socket){ socket.emit("leave_room",{}); } MY={team:null,host:false,code:null}; }
+function leaveIfOnline(){ if(MODE==="online"&&socket){ socket.emit("leave_room",{}); } MY={team:null,host:false,code:null,token:null}; try{sessionStorage.removeItem("wr_room");}catch(e){} }
 function goHome(){ leaveIfOnline(); lastPickKey=null; enterDaily(); }          // home == Daily
 function goFriends(){ leaveIfOnline(); lastPickKey=null; MODE="friends"; S=null; render(); }
 function openHowTo(){ document.getElementById("howto").classList.add("show"); }
@@ -386,11 +386,17 @@ function renderDailyLobby(){
 function connectSocket(){
   if(socket) return socket;
   socket=io();
-  socket.on("joined", d=>{ MY={team:d.team,host:d.host,code:d.code}; });
-  socket.on("lobby_update", s=>{ S=s; render(); });
-  socket.on("game_update", s=>{ applyState(s, true); });
+  // On any (re)connect, if we already hold a seat, reclaim it — covers a dropped
+  // connection or a page reload mid-draft.
+  socket.on("connect", ()=>{ if(MY.code&&MY.token) socket.emit("rejoin_room",{code:MY.code,token:MY.token}); });
+  socket.on("joined", d=>{ MY={team:d.team,host:d.host,code:d.code,token:d.token};
+    try{ sessionStorage.setItem("wr_room", JSON.stringify({code:d.code,token:d.token})); }catch(e){} });
+  socket.on("lobby_update", s=>{ MODE="online"; S=s; render(); });
+  socket.on("game_update", s=>{ MODE="online"; applyState(s, true); });
   socket.on("room_error", e=>{ const el=document.getElementById("err"); if(el) el.textContent=e.message; else alert(e.message); });
   socket.on("opponent_left", ()=>{});
+  socket.on("rejoin_failed", ()=>{ MY={team:null,host:false,code:null,token:null};
+    try{sessionStorage.removeItem("wr_room");}catch(e){} if(MODE==="online") goHome(); });
   return socket;
 }
 function enterOnline(){ MODE="online"; connectSocket(); S={phase:"online_home"}; render(); }
@@ -646,8 +652,18 @@ $("account").onclick = e => { if(e.target.id==="account") closeAccount(); };
 $("acct-logout").onclick = logout;
 $("acct-delete").onclick = deleteAccount;
 
+// If a draft was in progress when the tab reloaded, resume it; otherwise open Daily.
+function tryResumeOnline(){
+  let saved=null; try{ saved=JSON.parse(sessionStorage.getItem("wr_room")||"null"); }catch(e){}
+  if(!(saved&&saved.code&&saved.token)) return false;
+  MODE="online"; MY={team:null,host:false,code:saved.code,token:saved.token};
+  app.innerHTML='<div class="panel">Reconnecting to your draft room…</div>';
+  connectSocket();          // "connect" handler emits rejoin_room; rejoin_failed -> goHome
+  return true;
+}
+
 loadMe();
-enterDaily();   // open straight to the Daily board
+if(!tryResumeOnline()) enterDaily();   // open straight to the Daily board
 </script>
 </body>
 </html>
