@@ -182,6 +182,19 @@
   td .s{font-family:var(--head);color:var(--nfl-lite);letter-spacing:1px}
   .badge{font:600 10px var(--head);letter-spacing:1px;color:var(--good);border:1px solid var(--good);padding:1px 7px;border-radius:999px;margin-left:8px}
   .grade{font-family:var(--head);font-weight:700;font-size:18px;letter-spacing:.5px}
+  th.gc,td.gc{text-align:center}
+  .standing>div{flex:0 0 auto}
+  .rrow .rg{margin-left:auto;font-family:var(--head);font-weight:700;font-size:14px}
+  .codechip{display:inline-flex;align-items:center;gap:9px;background:rgba(18,104,214,.12);border:1px solid rgba(90,160,245,.35);border-radius:999px;padding:5px 13px;margin-bottom:14px;font-family:var(--mono);font-size:13px;color:var(--nfl-lite)}
+  .codechip .cl{color:var(--faint);font-family:var(--head);font-size:11px}
+  .codechip b{letter-spacing:2px}
+  .codechip .ctoggle{cursor:pointer;color:var(--faint);font-family:var(--head);font-size:11px}
+  .codechip .ctoggle:hover{color:var(--nfl-lite)}
+  .archive{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+  .archrow{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left}
+  .archrow .ad{font-family:var(--head);font-size:15px;letter-spacing:.3px}
+  .archrow .af{color:var(--faint);font-family:var(--mono);font-size:12px}
+  .archrow.done{border-color:rgba(57,217,138,.4)}
   .note{font-size:12px;color:var(--dim);margin-top:16px;font-style:italic}
   .row-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
   /* the pick is in */
@@ -215,6 +228,7 @@
 <header>
   <div class="brand" id="brand">War<b>Room</b></div>
   <nav class="nav">
+    <button class="navbtn" id="nav-past">Past Boards</button>
     <button class="navbtn" id="nav-how">How to Play</button>
     <button class="navbtn primary" id="nav-friends">Play with Friends</button>
     <button class="navbtn" id="nav-account">Sign In</button>
@@ -244,6 +258,14 @@
       <div class="sec"><div class="lbl">Modes</div><p><strong style="color:var(--ink)">Daily</strong> — one board for everyone, ranked against the field. <strong style="color:var(--ink)">Play with Friends</strong> — draft live online, or pass one screen around.</p></div>
     </div>
     <div class="actions"><button class="go" id="howto-go">Start Drafting</button></div>
+  </div>
+</div>
+
+<div class="ov howto" id="disc">
+  <div class="sheet" style="width:380px;text-align:center">
+    <h2>Draft ended</h2>
+    <div class="lead">Sorry — the other players disconnected, so this draft has ended.</div>
+    <div class="actions" style="justify-content:center"><button class="go" id="disc-go">Back to Daily</button></div>
   </div>
 </div>
 
@@ -289,6 +311,7 @@ let S = null;                    // current view state
 let socket = null;
 let MY = {team:null, host:false, code:null, token:null};
 let lastPickKey = null;
+let codeHidden = false;          // online room-code chip visibility
 const ROSTER_DEFAULT = ["QB","RB","WR","WR","DEF"];
 let NAME = localStorage.getItem("wr_name") || "";
 
@@ -310,6 +333,7 @@ const gradeColor=g=>({A:"var(--good)",B:"var(--nfl-lite)",C:"var(--ink)",D:"var(
 async function api(path, body){const o={headers:{"Content-Type":"application/json"}};
   if(body){o.method="POST";o.body=JSON.stringify(body);}return (await fetch(path,o)).json();}
 const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const fmtDate=iso=>{ if(!iso) return ""; const p=String(iso).split("-"); return p.length===3?`${p[1]}/${p[2]}/${p[0].slice(2)}`:iso; };
 
 function leaveIfOnline(){ if(MODE==="online"&&socket){ socket.emit("leave_room",{}); } MY={team:null,host:false,code:null,token:null}; try{sessionStorage.removeItem("wr_room");}catch(e){} }
 function goHome(){ leaveIfOnline(); lastPickKey=null; enterDaily(); }          // home == Daily
@@ -343,16 +367,13 @@ function renderFriends(){
     <div class="panel">
       <h2>Play with Friends</h2>
       <div class="muted">Draft head-to-head — live in an online room, or pass one screen around the table.</div>
-      <div class="namerow"><label>Your name</label><input id="who" maxlength="24" placeholder="Scout" value="${esc(NAME)}" style="max-width:240px"></div>
-      <div class="modes" style="grid-template-columns:repeat(2,1fr)">
+      <div class="modes" style="grid-template-columns:repeat(2,1fr);margin-top:18px">
         <div class="mode" id="m-online"><div class="eyebrow">Multiplayer</div><h3>Play Online</h3><div class="tagline">Open a room, share the code, and snake-draft live against others on their own screens.</div></div>
         <div class="mode" id="m-local"><div class="eyebrow">Local</div><h3>Pass &amp; Play</h3><div class="tagline">Draft on a single screen, passing the device between war rooms.</div></div>
       </div>
     </div>`;
-  const who=document.getElementById("who");
-  const saveName=()=>{ NAME=who.value.trim(); localStorage.setItem("wr_name",NAME); };
-  document.getElementById("m-online").onclick=()=>{ saveName(); enterOnline(); };
-  document.getElementById("m-local").onclick=()=>{ saveName(); enterLocal(); };
+  document.getElementById("m-online").onclick=()=>{ enterOnline(); };
+  document.getElementById("m-local").onclick=()=>{ enterLocal(); };
 }
 
 // ── DAILY ────────────────────────────────────────────────────────────────────
@@ -395,6 +416,8 @@ function connectSocket(){
   socket.on("game_update", s=>{ MODE="online"; applyState(s, true); });
   socket.on("room_error", e=>{ const el=document.getElementById("err"); if(el) el.textContent=e.message; else alert(e.message); });
   socket.on("opponent_left", ()=>{});
+  socket.on("game_over_disconnect", ()=>{ MY={team:null,host:false,code:null,token:null};
+    try{sessionStorage.removeItem("wr_room");}catch(e){} document.getElementById("disc").classList.add("show"); });
   socket.on("rejoin_failed", ()=>{ MY={team:null,host:false,code:null,token:null};
     try{sessionStorage.removeItem("wr_room");}catch(e){} if(MODE==="online") goHome(); });
   return socket;
@@ -405,17 +428,19 @@ function renderOnlineHome(){
     <div class="back" onclick="goFriends()">‹ Back</div>
     <div class="panel">
       <h2>Play Online</h2>
-      <div class="muted">Start a war room and share the 4-letter code, or join one.</div>
-      <div class="namerow"><label>Your name</label><input id="onm" maxlength="24" value="${esc(NAME||"War Room")}" style="max-width:240px"></div>
-      <div class="row-actions"><button class="go" id="create">Create a Room</button></div>
+      <div class="muted">You'll play as <b style="color:var(--nfl-lite)">${esc((NAME&&NAME.trim())||"War Room")}</b>. Start a room and share the code, or join one.</div>
+      <div class="row-actions" style="margin-top:14px"><button class="go" id="create">Create a Room</button></div>
       <div style="margin:20px 0 8px" class="muted">— or join with a code —</div>
       <div class="namerow"><input id="code" maxlength="4" placeholder="CODE" style="max-width:140px;text-transform:uppercase;font-family:var(--mono);letter-spacing:4px"><button id="join">Join</button></div>
       <div class="err" id="err"></div>
     </div>`;
-  const nm=()=>{ NAME=document.getElementById("onm").value.trim(); localStorage.setItem("wr_name",NAME); return NAME; };
-  document.getElementById("create").onclick=()=>{ socket.emit("create_room",{name:nm()}); };
+  const myname=()=> (NAME&&NAME.trim()) || "War Room";
+  document.getElementById("create").onclick=()=>{ socket.emit("create_room",{name:myname()}); };
   document.getElementById("join").onclick=()=>{ const c=document.getElementById("code").value.trim().toUpperCase();
-    if(c.length!==4){ document.getElementById("err").textContent="Enter a 4-letter code."; return; } socket.emit("join_room",{code:c,name:nm()}); };
+    if(c.length!==4){ document.getElementById("err").textContent="Enter a 4-letter code."; return; }
+    let saved=null; try{saved=JSON.parse(sessionStorage.getItem("wr_room")||"null");}catch(e){}
+    if(saved&&saved.code===c&&saved.token){ MY={...MY,code:c,token:saved.token}; socket.emit("rejoin_room",{code:c,token:saved.token}); }  // reconnect to a room we already hold a seat in
+    else socket.emit("join_room",{code:c,name:myname()}); };
 }
 function renderRoomLobby(){
   const seats=S.players.map((nm,i)=>`<div class="lobby-seat" style="--pc:${col(i)}"><span class="sw"></span>${esc(nm)}${i===MY.team?'<span class="you">you</span>':''}</div>`).join("");
@@ -445,7 +470,10 @@ function renderDraft(){
   const resetBtn = MODE==="online"
       ? `<button class="sm" onclick="goHome()">Leave</button>`
       : `<button class="sm" id="reset">${MODE==="daily"?"Quit":"Reset"}</button>`;
+  const chip = (MODE==="online"&&MY.code)
+    ? `<div class="codechip"><span class="cl">Room</span> <b id="ccode">${codeHidden?"••••":esc(MY.code)}</b> <span class="ctoggle" id="cctoggle">${codeHidden?"show":"hide"}</span></div>` : "";
   app.innerHTML=`
+    ${chip}
     ${S.players.length>1?`<div class="order">${seats.join(`<span class="dir">${fwd?'›':'‹'}</span>`)}</div>`:""}
     <div class="clockbar" style="--pc:${pc}">
       <div class="who">On the clock<b>${esc(c.name)}</b></div>
@@ -462,6 +490,9 @@ function renderDraft(){
     </div>`;
   if(MODE!=="online") document.getElementById("reset").onclick=async()=>{
     if(MODE==="daily"){ goHome(); } else { S=await api("/api/reset",{}); lastPickKey=null; render(); } };
+  const cct=document.getElementById("cctoggle");
+  if(cct) cct.onclick=()=>{ codeHidden=!codeHidden; const cc=document.getElementById("ccode");
+    cc.textContent=codeHidden?"••••":MY.code; cct.textContent=codeHidden?"show":"hide"; };
 
   document.getElementById("board").innerHTML=S.available.map(p=>`
     <div class="scout ${canPick?"":"locked"}">
@@ -491,7 +522,7 @@ function renderRooms(el){
   el.innerHTML=S.rosters.map(t=>{
     const used=[...t.picks];
     const rows=roster.map(slot=>{ const i=used.findIndex(p=>p.slot===slot);
-      if(i>=0){const p=used.splice(i,1)[0];return `<div class="rrow"><span class="s">${slot}</span><span>${esc(p.name)}</span><span class="cd">${esc(p.codename||"")}</span></div>`;}
+      if(i>=0){const p=used.splice(i,1)[0];return `<div class="rrow"><span class="s">${slot}</span><span>${esc(p.name)}</span><span class="rg" style="color:${gradeColor(p.grade)}">${esc(p.grade||"")}</span></div>`;}
       return `<div class="rrow empty"><span class="s">${slot}</span><span>—</span></div>`;}).join("");
     return `<div class="room" style="--pc:${col(t.team)}"><div class="rn">${esc(t.name)}<span class="cnt">${t.picks.length}/${roster.length}</span></div>${rows}</div>`;
   }).join("");
@@ -516,26 +547,24 @@ function renderReveal(){
   const rev=S.reveal, solo=rev.teams.length===1, st=rev.standing;
   const newBtn = MODE==="online"
       ? (MY.host?`<button class="go" id="reset">New Draft</button>`:`<button class="sm" onclick="goHome()">Leave</button>`)
-      : (MODE==="daily"?`<button class="sm" onclick="goHome()">‹ Daily Board</button>`:`<button class="go" id="reset">New Draft</button>`);
+      : (MODE==="daily"?`<button class="sm" id="past">Past Boards</button>`:`<button class="go" id="reset">New Draft</button>`);
   let standingHtml="";
   if(MODE==="daily"&&st){
     const headline = st.field<=1
-      ? `<div><div class="big">1st</div><div class="lab">first to finish today</div></div>`
-      : `<div><div class="big">Top ${st.percentile}%</div><div class="lab">of today's field</div></div>`;
+      ? `<div><div class="big">1st</div><div class="lab">first to finish</div></div>`
+      : `<div><div class="big">Top ${st.percentile}%</div><div class="lab">of the field</div></div>`;
     standingHtml=`<div class="standing">
       ${headline}
       <div><div class="lab">Your score</div><div class="val">${rev.yourTotal}</div></div>
-      <div><div class="lab">Rank</div><div class="val">#${st.rank} / ${st.field}</div></div>
       ${rev.streak ? `<div><div class="lab">Streak</div><div class="val">${rev.streak} day${rev.streak===1?"":"s"}</div></div>` : ""}
       <div style="margin-left:auto"><button class="go" id="share">Share result</button></div>
     </div>
-    ${ME ? "" : `<div class="streak" style="color:var(--dim);text-transform:none;letter-spacing:0">Sign in to save your results and build a streak.</div>`}`;
+    ${ME ? "" : `<div class="streak" style="color:var(--dim);letter-spacing:0">Sign in to save your results and build a streak.</div>`}`;
   }
   app.innerHTML=`
-    <div class="back" onclick="goHome()">‹ Daily Board</div>
     <div class="clockbar" style="--pc:var(--nfl-lite)">
       <div class="who">Results<b style="color:var(--nfl-lite)">${MODE==="daily"?"Daily Result":"Draft Grades"}</b></div>
-      <div class="slot" style="color:var(--nfl-lite);font-size:26px">${solo?(MODE==="daily"?esc(S.day||""):"YOUR BOARD"):"RESULTS"}</div>
+      <div class="slot" style="color:var(--nfl-lite);font-size:26px">${solo?(MODE==="daily"?fmtDate(S.day):"Your Board"):"Results"}</div>
       <div class="pickno">${newBtn}</div>
     </div>
     ${standingHtml}
@@ -545,25 +574,46 @@ function renderReveal(){
   if(reset) reset.onclick=async()=>{
     if(MODE==="online"){ socket.emit("restart_room",{code:MY.code}); }
     else { S=await api("/api/reset",{}); lastPickKey=null; render(); } };
+  const past=document.getElementById("past"); if(past) past.onclick=openArchive;
   const share=document.getElementById("share");
   if(share) share.onclick=()=>{
-    const txt=`WarRoom Daily ${S.day||""}\nMy war room scored ${rev.yourTotal} — Top ${st.percentile}% (#${st.rank}/${st.field})\n${location.origin}`;
+    const txt=`WarRoom Daily ${fmtDate(S.day)}\nMy war room scored ${rev.yourTotal}${st&&st.field>1?` — Top ${st.percentile}%`:""}\n${location.origin}`;
     navigator.clipboard?.writeText(txt); share.textContent="Copied!"; setTimeout(()=>share.textContent="Share result",1500); };
 
   document.getElementById("ranks").innerHTML=rev.teams.map(t=>`
     <div class="rank ${t.rank===1&&!solo?"win":""}" style="--pc:${col(t.team)}">
       <div class="rh"><div><span class="rk">${solo?"":"#"+t.rank}${t.rank===1&&!solo?" — winner":""}</span> <span class="name">${esc(t.name)}</span></div><div class="tot"><span class="totlab">Team Score</span>${t.total}</div></div>
       <table>
-        <tr><th>Slot</th><th>Player</th><th>School</th><th>Drafted</th><th class="n">Grade</th></tr>
+        <tr><th>Slot</th><th>Player</th><th>School</th><th>Drafted</th><th class="gc">Grade</th></tr>
         ${t.picks.map(p=>`<tr>
           <td><span class="s">${esc(p.slot)}</span></td>
           <td>${esc(p.name)}</td>
           <td>${esc(p.school||"")}</td>
           <td>${p.draft_round?("R"+p.draft_round+" · "+esc(p.draft_year)):esc(p.draft_year||"UDFA")}</td>
-          <td class="n"><span class="grade" style="color:${gradeColor(p.grade)}">${esc(p.grade)}</span></td>
+          <td class="gc"><span class="grade" style="color:${gradeColor(p.grade)}">${esc(p.grade)}</span></td>
         </tr>`).join("")}
       </table>
     </div>`).join("");
+}
+
+// ── PAST BOARDS (archive) ─────────────────────────────────────────────────────
+async function openArchive(){
+  leaveIfOnline(); MODE="daily"; lastPickKey=null;
+  const r=await api("/api/daily/days"), days=(r&&r.days)||[];
+  app.innerHTML=`
+    <div class="back" onclick="goHome()">‹ Today's Board</div>
+    <div class="panel">
+      <h2>Past Boards</h2>
+      <div class="muted">${ME&&ME.admin?"Admin — replays aren't recorded.":"Replay a previous day; your result is ranked against everyone who played that day."}</div>
+      <div class="archive">${days.map((d,i)=>`
+        <button class="archrow ${d.played?"done":""}" data-day="${d.day}">
+          <span class="ad">${fmtDate(d.day)}${i===0?" · Today":""}</span>
+          <span class="af">${d.field} ${d.field===1?"player":"players"}${d.played?" · you played":""}</span>
+        </button>`).join("")}</div>
+    </div>`;
+  document.querySelectorAll("[data-day]").forEach(b=>b.onclick=async()=>{
+    S=await api("/api/daily/new",{day:b.dataset.day}); render();
+    window.scrollTo({top:0}); });
 }
 
 // ── LOCAL (pass & play) ──────────────────────────────────────────────────────
@@ -574,8 +624,7 @@ function renderLocalLobby(){
     <div class="back" onclick="goFriends()">‹ Back</div>
     <div class="panel">
       <h2>Pass &amp; Play</h2>
-      <div class="muted">${pool.total||0} real prospects on the board, scouted blind. Take turns on one screen.</div>
-      <div class="pills">${[...new Set(roster)].map(s=>`<span class="pill">${s} <b>${pool.by_slot?.[s]||0}</b></span>`).join("")}</div>
+      <div class="muted">Draft a five-man roster, blind. Take turns on one screen.</div>
       <div class="roster-line">${roster.map(s=>`<span class="chip">${s}</span>`).join("")}</div>
       <div style="margin:20px 0 8px"><label class="muted" style="font-family:var(--head);letter-spacing:1px">War Rooms (${S.minPlayers}–${S.maxPlayers})</label></div>
       <div style="max-width:120px"><select id="np">${Array.from({length:S.maxPlayers-S.minPlayers+1},(_,i)=>{const n=S.minPlayers+i;return `<option value="${n}" ${n===2?"selected":""}>${n}</option>`}).join("")}</select></div>
@@ -618,7 +667,7 @@ async function submitAuth(){
   const username=$("auth-user").value.trim(), password=$("auth-pass").value;
   const res = await api(AUTHMODE==="login" ? "/api/login" : "/api/register", {username, password});
   if(res.error){ $("auth-err").textContent=res.error; return; }
-  ME = {user_id:res.user_id, username:res.username}; NAME = res.username; updateAccountBtn(); closeAuth();
+  ME = {user_id:res.user_id, username:res.username, admin:res.admin}; NAME = res.username; updateAccountBtn(); closeAuth();
   if(MODE==="daily") enterDaily();   // refresh so streak/standing reflect the account
 }
 function openAccount(){ $("acct-name").textContent = ME ? ME.username : ""; $("acct-err").textContent=""; $("account").classList.add("show"); }
@@ -633,9 +682,11 @@ async function deleteAccount(){
 
 // header nav + how-to wiring (header persists across renders)
 $("brand").onclick = goHome;
+$("nav-past").onclick = openArchive;
 $("nav-how").onclick = openHowTo;
 $("nav-friends").onclick = goFriends;
 $("nav-account").onclick = () => ME ? openAccount() : openAuth();
+$("disc-go").onclick = () => { $("disc").classList.remove("show"); goHome(); };
 $("howto-close").onclick = closeHowTo;
 $("howto-go").onclick = closeHowTo;
 $("howto").onclick = e => { if(e.target.id==="howto") closeHowTo(); };

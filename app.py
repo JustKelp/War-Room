@@ -31,7 +31,7 @@ import re
 import secrets
 import string
 import time
-from datetime import date
+from datetime import date, timedelta
 
 from flask import Flask, jsonify, redirect, render_template, request, session
 from flask_socketio import SocketIO, join_room, emit
@@ -246,7 +246,8 @@ def _serialize(game: dict) -> dict:
     rosters = []
     for t, name in enumerate(players):
         picks = [{"id": pid, "slot": CARDS[pid]["slot"], "codename": cn.get(str(pid), CARDS[pid]["slot"]),
-                  "name": CARDS[pid]["name"]} for pid in game["picks"][str(t)] if pid in CARDS]
+                  "name": CARDS[pid]["name"], "grade": SCORES.get(pid, {}).get("grade", "—")}
+                 for pid in game["picks"][str(t)] if pid in CARDS]
         rosters.append({"team": t, "name": name, "picks": picks})
     lp = game.get("last_pick")
     last_pick = None
@@ -310,8 +311,14 @@ def terms():
 
 
 # ── ACCOUNTS ─────────────────────────────────────────────────────────────────
+# Admins (e.g. Kelp) get the past-boards archive without the once-per-day lock.
+ADMIN_USERS = {u.strip().lower() for u in os.environ.get("WARROOM_ADMINS", "kelp").split(",") if u.strip()}
 _login_fails: dict[str, list] = {}          # key -> [timestamps] (brute-force throttle)
 _FAIL_WINDOW, _FAIL_MAX = 600, 8             # >8 fails / 10 min -> temporary lockout
+
+
+def _is_admin(username: str | None) -> bool:
+    return bool(username) and username.lower() in ADMIN_USERS
 
 
 def _rate_limited(key: str) -> bool:
@@ -327,7 +334,8 @@ def _note_fail(key: str):
 
 def _current_user():
     if session.get("user_id"):
-        return {"user_id": session["user_id"], "username": session.get("username")}
+        name = session.get("username")
+        return {"user_id": session["user_id"], "username": name, "admin": _is_admin(name)}
     return None
 
 
@@ -348,7 +356,7 @@ def api_register():
     if not user:
         return jsonify({"error": "Username already taken"}), 409
     session["user_id"], session["username"] = user["id"], user["username"]
-    return jsonify({"user_id": user["id"], "username": user["username"]})
+    return jsonify({"user_id": user["id"], "username": user["username"], "admin": _is_admin(user["username"])})
 
 
 @app.route("/api/login", methods=["POST"])
@@ -363,7 +371,7 @@ def api_login():
         _note_fail(key)
         return jsonify({"error": "Invalid username or password"}), 401   # generic on purpose
     session["user_id"], session["username"] = user["id"], user["username"]
-    return jsonify({"user_id": user["id"], "username": user["username"]})
+    return jsonify({"user_id": user["id"], "username": user["username"], "admin": _is_admin(user["username"])})
 
 
 @app.route("/api/logout", methods=["POST"])
@@ -447,6 +455,8 @@ def api_reset():
 
 
 # ── DAILY ────────────────────────────────────────────────────────────────────
+DAILY_WINDOW = 30                      # how many past days are in the playable archive
+
 
 def _today():
     return date.today().isoformat()
@@ -454,6 +464,19 @@ def _today():
 
 def _daily_seed(day: str) -> int:
     return int.from_bytes(day.encode(), "big") % (2**32)
+
+
+def _valid_day(day: str, admin: bool = False) -> str | None:
+    """A playable board date: a real date, not in the future, and (for non-admins)
+    within the archive window. Returns the normalized ISO day or None."""
+    try:
+        d = date.fromisoformat((day or "").strip())
+    except ValueError:
+        return None
+    today = date.today()
+    if d > today or (not admin and (today - d).days > DAILY_WINDOW):
+        return None
+    return d.isoformat()
 
 
 def _serialize_daily(game: dict, record: bool = False) -> dict:
@@ -466,10 +489,10 @@ def _serialize_daily(game: dict, record: bool = False) -> dict:
     state["day"] = game["day"]
     if state["phase"] == "reveal":
         total = state["reveal"]["teams"][0]["total"]
-        if record and not game.get("recorded"):
-            # per-account lock: record at most once per account per day
+        # Admins play the archive as practice — their runs are never recorded.
+        if record and not game.get("recorded") and not (u and u["admin"]):
             already = models.user_daily_score(game["day"], u["user_id"]) if u else None
-            if already is None:
+            if already is None:                 # per-account lock: once per account per day
                 models.record_daily_score(game["day"], total, game["players"][0],
                                           user_id=u["user_id"] if u else None)
             game["recorded"] = True
@@ -492,12 +515,26 @@ def api_daily_state():
                     "field": models.daily_standing(day, -1)["field"]})
 
 
+@app.route("/api/daily/days")
+def api_daily_days():
+    """The playable archive: recent days with field size + whether you've played."""
+    u = _current_user()
+    today = date.today()
+    out = []
+    for i in range(DAILY_WINDOW + 1):
+        d = (today - timedelta(days=i)).isoformat()
+        out.append({"day": d, "field": models.daily_standing(d, -1)["field"],
+                    "played": bool(u and models.user_daily_score(d, u["user_id"]) is not None)})
+    return jsonify({"days": out})
+
+
 @app.route("/api/daily/new", methods=["POST"])
 def api_daily_new():
     build_indexes()
-    day = _today()
     u = _current_user()
-    client_name = str((request.get_json(silent=True) or {}).get("name", "")).strip()[:24]
+    req = request.get_json(silent=True) or {}
+    day = _valid_day(str(req.get("day") or ""), admin=bool(u and u["admin"])) or _today()
+    client_name = str(req.get("name", "")).strip()[:24]
     name = (u["username"] if u else client_name) or "You"   # logged-in players use their account name
     game = session.get("daily")
     if not (game and game.get("day") == day):          # one board per day per session
@@ -652,15 +689,15 @@ def on_restart_room(data):
 
 
 def _drop_sid(sid, permanent=False):
-    """Handle a socket going away. In the lobby (or on an explicit leave) the seat
-    is removed. Mid-draft a disconnect only clears the seat's sid — the seat is
-    held open so the player can reclaim it via rejoin_room (see below) and the turn
-    order survives a network blip."""
+    """Handle a socket going away. In the LOBBY the seat is removed (a returning
+    player re-joins by typing the code). DURING A GAME the seat is held open (sid
+    cleared) so team indices and reconnect survive a blip — and if that leaves only
+    one player in an active draft, the draft ends with a disconnection notice."""
     code = SID_ROOM.pop(sid, None)
     room = ROOMS.get(code) if code else None
     if not room:
         return
-    if room["phase"] == "lobby" or permanent:
+    if room["phase"] == "lobby":
         was_host = any(s["sid"] == sid and s.get("token") == room.get("host_token")
                        for s in room["seats"])
         room["seats"] = [s for s in room["seats"] if s["sid"] != sid]
@@ -668,14 +705,20 @@ def _drop_sid(sid, permanent=False):
             ROOMS.pop(code, None); return
         if was_host:
             room["host_token"] = room["seats"][0]["token"]
-        if room["phase"] != "lobby":
-            socketio.emit("opponent_left", {}, room=code)
         _emit_room(code)
-    else:
+        return
+    # In a game: hold the seat (preserve indices + allow reconnect).
+    for s in room["seats"]:
+        if s["sid"] == sid:
+            s["sid"] = None
+    if room["phase"] == "draft" and len([s for s in room["seats"] if s["sid"]]) <= 1:
+        socketio.emit("game_over_disconnect", {}, room=code)   # everyone else is gone
         for s in room["seats"]:
-            if s["sid"] == sid:
-                s["sid"] = None                 # seat held for reconnect
-        socketio.emit("opponent_left", {}, room=code)
+            SID_ROOM.pop(s["sid"], None)
+        ROOMS.pop(code, None)
+        return
+    socketio.emit("opponent_left", {}, room=code)
+    _emit_room(code)
 
 
 @socketio.on("rejoin_room")
