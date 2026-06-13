@@ -29,7 +29,6 @@
   header{display:flex;align-items:center;justify-content:space-between;padding:15px 26px;
     background:linear-gradient(90deg,var(--nfl-deep),#0a1730);border-bottom:1px solid rgba(90,160,245,.25)}
   .brand{font-family:var(--head);font-weight:700;font-size:25px;letter-spacing:6px;display:flex;align-items:center;gap:12px;cursor:pointer}
-  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--nfl-lite);box-shadow:0 0 10px rgba(90,160,245,.7)}
   .brand b{color:var(--nfl-lite)}
   .sub{font-family:var(--head);font-size:12px;letter-spacing:4px;color:#9fc1ee;text-transform:uppercase}
   .wrap{max-width:1200px;margin:0 auto;padding:28px 24px}
@@ -186,8 +185,8 @@
   /* the pick is in */
   .ov{position:fixed;inset:0;display:none;z-index:60;align-items:center;justify-content:center;background:rgba(5,9,16,.9);padding:16px}
   .ov.show{display:flex}
-  .card-in{width:360px;max-width:100%;background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--pc);
-    border-radius:20px;padding:30px 28px;text-align:center;box-shadow:0 0 60px color-mix(in srgb,var(--pc) 40%,transparent),0 24px 70px rgba(0,0,0,.7);animation:rise .3s ease both}
+  .card-in{width:360px;max-width:100%;background:var(--panel);border:1px solid var(--pc);border-top:4px solid var(--pc);
+    border-radius:16px;padding:30px 28px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.6);animation:rise .3s ease both}
   @keyframes rise{from{opacity:0;transform:translateY(14px) scale(.96)}}
   .card-in .stamp{font-family:var(--head);font-size:13px;letter-spacing:5px;color:var(--pc);text-transform:uppercase}
   .card-in .nm{font-family:var(--head);font-size:36px;font-weight:700;letter-spacing:1px;margin:14px 0 6px;min-height:44px}
@@ -212,7 +211,7 @@
 </head>
 <body>
 <header>
-  <div class="brand" id="brand"><span class="dot"></span>WAR<b>ROOM</b></div>
+  <div class="brand" id="brand">WAR<b>ROOM</b></div>
   <nav class="nav">
     <button class="navbtn" id="nav-how">How to Play</button>
     <button class="navbtn primary" id="nav-friends">Play with Friends</button>
@@ -234,15 +233,15 @@
   <div class="sheet">
     <span class="close" id="howto-close">Close</span>
     <h2>How to Play</h2>
-    <div class="lead">WarRoom is a blind scouting draft. You evaluate real prospects with their names hidden, draft a five-man roster, and find out who you took — and how their NFL careers actually turned out.</div>
+    <div class="lead">Draft a five-man roster from prospects whose names are hidden. You only see their college numbers — figure out who's who.</div>
     <div class="secs">
-      <div class="sec"><div class="lbl">The Goal</div><p>Build the best five-man roster — QB, RB, two WR, and a defender — drafted from prospects whose names are hidden.</p></div>
-      <div class="sec"><div class="lbl">The Cards</div><p>Each card shows a prospect's position, college conference, measurables, and per-season college stats — but not the name. Recognizing whose stat line you're looking at is the edge that beats luck.</p></div>
-      <div class="sec"><div class="lbl">Making a Pick</div><p>Draft in snake order. A prospect's identity is revealed the moment you pick — no take-backs.</p></div>
-      <div class="sec"><div class="lbl">Scoring</div><p>Every pick is graded on how good their real NFL career turned out, ranked against others at the same position. The highest roster total wins.</p></div>
-      <div class="sec"><div class="lbl">Modes</div><p><strong style="color:var(--ink)">Daily</strong> — the same board for everyone, ranked against the field. <strong style="color:var(--ink)">Play with Friends</strong> — draft live online, or pass one screen around.</p></div>
+      <div class="sec"><div class="lbl">The Goal</div><p>Fill all five slots: QB, RB, two WR, and a defender. The best roster wins.</p></div>
+      <div class="sec"><div class="lbl">The Cards</div><p>Each card shows a prospect's position, college conference, measurables, and his final college season — but not his name. The skill is recognizing who the stat line belongs to.</p></div>
+      <div class="sec"><div class="lbl">Making a Pick</div><p>It's a snake draft. A prospect's name is revealed the moment you pick him. No take-backs.</p></div>
+      <div class="sec"><div class="lbl">Scoring</div><p>Each pick is graded on how his NFL career turned out, scored against others at his position. Your roster total is the sum of the five.</p></div>
+      <div class="sec"><div class="lbl">Modes</div><p><strong style="color:var(--ink)">Daily</strong> — one board for everyone, ranked against the field. <strong style="color:var(--ink)">Play with Friends</strong> — draft live online, or pass one screen around.</p></div>
     </div>
-    <div class="actions"><button class="go" id="howto-go">Got It — Start Drafting</button></div>
+    <div class="actions"><button class="go" id="howto-go">Start Drafting</button></div>
   </div>
 </div>
 
@@ -444,10 +443,10 @@ function renderDraft(){
       <div class="slot" style="color:var(--ink)">${esc(c.slot)}<small>${esc(c.slotLabel||"")}</small></div>
       <div class="pickno">PICK ${S.pickNumber} / ${S.totalPicks}<br>ROUND ${c.round}<br>${resetBtn}</div>
     </div>
-    ${(!canPick)?`<div class="waitbar" style="--pc:${pc}">${esc(c.name)} is on the clock — scout while you wait</div>`:""}
+    ${(!canPick)?`<div class="waitbar" style="--pc:${pc}">Waiting for ${esc(c.name)} to pick…</div>`:""}
     <div class="columns">
       <div>
-        <div class="scout-intro">Scout the tape · draft a <b>${esc(c.slot)}</b> · the name drops when the pick is in</div>
+        <div class="scout-intro">Draft a <b>${esc(c.slot)}</b> — the name shows once the pick is in</div>
         <div class="board" id="board"></div>
       </div>
       <div class="rooms panel"><h3>War Rooms</h3><div id="rooms"></div></div>
@@ -493,7 +492,7 @@ function revealPick(lp, teamIdx){
     const ov=document.getElementById("ov"),nm=document.getElementById("ovName"),meta=document.getElementById("ovMeta"),by=document.getElementById("ovBy"),card=ov.firstElementChild;
     const pc=col(teamIdx); card.style.setProperty("--pc",pc); nm.style.color=pc;
     by.textContent="to "+((S.players&&S.players[teamIdx])||"the war room");
-    meta.textContent=lp.codename?"On the board as "+lp.codename:"";
+    meta.textContent=lp.codename?"Drafted as "+lp.codename:"";
     const target=(lp.name||lp.codename||"").toUpperCase(),G="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     nm.textContent=""; ov.classList.add("show");
     const settle=[];for(let i=0;i<target.length;i++)settle.push(5+i*2+Math.floor(Math.random()*4));
@@ -512,7 +511,7 @@ function renderReveal(){
   let standingHtml="";
   if(MODE==="daily"&&st){
     const headline = st.field<=1
-      ? `<div><div class="big">1st in</div><div class="lab">you set today's pace</div></div>`
+      ? `<div><div class="big">1st</div><div class="lab">first to finish today</div></div>`
       : `<div><div class="big">Top ${st.percentile}%</div><div class="lab">of today's field</div></div>`;
     standingHtml=`<div class="standing">
       ${headline}
@@ -526,7 +525,7 @@ function renderReveal(){
   app.innerHTML=`
     <div class="back" onclick="goHome()">← Daily Board</div>
     <div class="clockbar" style="--pc:var(--nfl-lite)">
-      <div class="who">Final tape<b style="color:var(--nfl-lite)">${MODE==="daily"?"Daily Result":"Draft Grades"}</b></div>
+      <div class="who">Results<b style="color:var(--nfl-lite)">${MODE==="daily"?"Daily Result":"Draft Grades"}</b></div>
       <div class="slot" style="color:var(--nfl-lite);font-size:26px">${solo?(MODE==="daily"?esc(S.day||""):"YOUR BOARD"):"RESULTS"}</div>
       <div class="pickno">${newBtn}</div>
     </div>

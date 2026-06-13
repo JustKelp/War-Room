@@ -1,7 +1,7 @@
 flask
 flask-socketio
 eventlet
-gunicorn
+gunicorn==23.0.0   # 24+ removed the bundled eventlet worker; pin to match Flask-SocketIO + eventlet
 python-dotenv
 werkzeug
 # build-time only (es_scoring.py --build, scrapers); harmless on the server:

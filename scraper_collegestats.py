@@ -142,19 +142,6 @@ def _num(cells: dict, *keys) -> float | None:
     return None
 
 
-def _last_conference(table) -> str | None:
-    """Conference abbr from the most recent per-season row (card field)."""
-    body = table.find("tbody")
-    if not body:
-        return None
-    conf = None
-    for tr in body.find_all("tr"):
-        cell = tr.find(attrs={"data-stat": "conf_abbr"})
-        if cell and cell.get_text(strip=True):
-            conf = cell.get_text(strip=True)
-    return conf
-
-
 def _measurements(soup) -> tuple[str | None, int | None]:
     """Height ('6-2') and weight (lb) from the player page meta header, e.g.
     '6-2, 219lb (188cm, 99kg)'. Card measurements (memo §2)."""
@@ -166,9 +153,9 @@ def _measurements(soup) -> tuple[str | None, int | None]:
     return None, None
 
 
-MIN_QUALIFYING_GAMES = 8    # a college season counts toward the averages only if
-                            # the player appeared in >= this many games (drops
-                            # injury/partial seasons that dilute the per-season line)
+MIN_QUALIFYING_GAMES = 8    # the card's "final season" is the latest one in which
+                            # the player appeared in >= this many games (skips a
+                            # partial/injury senior year that would misrepresent him)
 
 
 def _to_f(v):
@@ -178,45 +165,46 @@ def _to_f(v):
         return None
 
 
-def _g(d: dict, *keys):
-    for k in keys:
-        if d.get(k) is not None:
-            return d[k]
-    return None
-
-
-def _sum_qualifying(table, min_games: int) -> tuple[dict, set, float]:
-    """Sum each stat across the per-season rows that meet the games bar. Returns
-    (summed stats by data-stat, set of qualifying years, total qualifying games)."""
-    sums, years, g_total = {}, set(), 0.0
+def _season_rows(table) -> dict:
+    """{year:int -> {data-stat: text}} for the table's per-season rows. The SR
+    year cell can carry an asterisk (e.g. '2013*' = All-American) which is
+    stripped. Duplicate years (mid-career transfers) keep the last row."""
+    rows = {}
     body = table.find("tbody")
     if not body:
-        return sums, years, g_total
+        return rows
     for tr in body.find_all("tr"):
         if "thead" in (tr.get("class") or []):
             continue
         cells = {c.get("data-stat"): c.get_text(strip=True)
                  for c in tr.find_all(["th", "td"]) if c.get("data-stat")}
-        yr = cells.get("year_id")
-        g = _to_f(cells.get("games") or cells.get("g"))
-        if not yr or g is None or g < min_games:
-            continue
-        years.add(yr)
-        g_total += g
-        for k, v in cells.items():
+        yr = re.sub(r"[^0-9]", "", cells.get("year_id") or "")
+        if yr:
+            rows[int(yr)] = cells
+    return rows
+
+
+def _cn(cells: dict | None, *keys):
+    if not cells:
+        return None
+    for k in keys:
+        v = cells.get(k)
+        if v not in (None, ""):
             fv = _to_f(v)
             if fv is not None:
-                sums[k] = sums.get(k, 0.0) + fv
-    return sums, years, g_total
+                return fv
+    return None
 
 
 def parse_player(html: str, url: str) -> dict | None:
-    """Career college stats as the SUM of QUALIFYING seasons only — a season
-    counts toward the per-season averages (totals ÷ seasons, derived at card
-    build) only if the player appeared in >= MIN_QUALIFYING_GAMES games. Falls
-    back to all seasons if none qualify. None if no usable stat table is found.
-    (College Football reference does not record games STARTED, so the bar is
-    games played only.)"""
+    """The player's FINAL college season — the stat line the draft card shows.
+    'Final' = the most recent season in which he appeared in >=
+    MIN_QUALIFYING_GAMES games (drops a partial/injury senior year that would
+    misrepresent him); falls back to his most recent season if none qualify.
+    One coherent season is taken across all stat tables (same year_id), so a QB's
+    passing + rushing come from the same year. None if no usable table is found.
+    (College Football reference does not record games STARTED, so the games-
+    played bar is the only availability filter.)"""
     soup = _souped(html)
     height, weight = _measurements(soup)
     all_tables = [t for t in soup.find_all("table") if t.get("id")]
@@ -229,51 +217,55 @@ def parse_player(html: str, url: str) -> dict | None:
                 return t
         return None
 
-    def _collect(min_games):
-        stats, qyears, games, conference = {}, set(), 0, None
-        for base in ("passing", "rushing", "receiving", "defense", "scoring"):
-            t = _find(base)
-            if t is None:
-                continue
-            sums, years, gt = _sum_qualifying(t, min_games)
-            if not years:
-                continue
-            stats[base] = sums
-            qyears |= years
-            games = max(games, int(gt))
-            conference = conference or _last_conference(t)
-        return stats, qyears, games, conference
-
-    stats, qyears, games, conference = _collect(MIN_QUALIFYING_GAMES)
-    if not qyears:                      # no season cleared the bar -> use every season
-        stats, qyears, games, conference = _collect(0)
-    if not stats:
+    bases = {b: _find(b) for b in ("passing", "rushing", "receiving", "defense", "scoring")}
+    rows_by_base = {b: _season_rows(t) for b, t in bases.items() if t is not None}
+    if not rows_by_base:
         return None
 
-    p = stats.get("passing", {})
-    ru = stats.get("rushing", {})
-    re_ = stats.get("receiving", ru)   # SR often merges rec_* into the rushing table
-    d = stats.get("defense", {})
+    # Games per year = max across the player's tables; pick the latest year that
+    # clears the games bar (else the latest year on record).
+    years = set().union(*(set(r) for r in rows_by_base.values()))
+    games_by_year = {}
+    for rows in rows_by_base.values():
+        for yr, c in rows.items():
+            g = _to_f(c.get("games") or c.get("g"))
+            if g is not None:
+                games_by_year[yr] = max(games_by_year.get(yr, 0.0), g)
+    qual = [y for y in years if games_by_year.get(y, 0.0) >= MIN_QUALIFYING_GAMES]
+    last_year = max(qual) if qual else (max(years) if years else None)
+    if last_year is None:
+        return None
 
-    tackles = _g(d, "tackles_total", "tackles_combined", "tackles")
-    if tackles is None:
-        solo, ast = _g(d, "tackles_solo"), _g(d, "tackles_assists")
+    def cells(base):
+        return rows_by_base.get(base, {}).get(last_year)
+
+    p, ru = cells("passing"), cells("rushing")
+    re_ = cells("receiving") or ru     # SR often merges rec_* into the rushing table
+    d = cells("defense")
+    conference = next((c.get("conf_abbr") for c in (cells(b) for b in
+                       ("defense", "receiving", "rushing", "passing"))
+                       if c and c.get("conf_abbr")), None)
+
+    tackles = _cn(d, "tackles_total", "tackles_combined", "tackles")
+    if tackles is None and d:
+        solo, ast = _cn(d, "tackles_solo"), _cn(d, "tackles_assists")
         if solo is not None or ast is not None:
             tackles = (solo or 0) + (ast or 0)
 
     return {
         "source": SOURCE, "source_url": url,
         "height": height, "weight": weight,
-        "games": games or None, "seasons": len(qyears) or None, "conference": conference,
-        "pass_cmp": _g(p, "pass_cmp"), "pass_att": _g(p, "pass_att"),
-        "pass_yds": _g(p, "pass_yds"), "pass_td": _g(p, "pass_td"),
-        "pass_int": _g(p, "pass_int"),
-        "rush_att": _g(ru, "rush_att"), "rush_yds": _g(ru, "rush_yds"),
-        "rush_td": _g(ru, "rush_td"),
-        "rec": _g(re_, "rec"), "rec_yds": _g(re_, "rec_yds"),
-        "rec_td": _g(re_, "rec_td"), "targets": _g(re_, "targets", "rec_targets"),
-        "tackles": tackles, "sacks": _g(d, "sacks"), "def_int": _g(d, "def_int"),
-        "tfl": _g(d, "tackles_loss", "tfl"),
+        "games": int(games_by_year.get(last_year, 0)) or None,
+        "seasons": len(qual) or None, "last_year": last_year, "conference": conference,
+        "pass_cmp": _cn(p, "pass_cmp"), "pass_att": _cn(p, "pass_att"),
+        "pass_yds": _cn(p, "pass_yds"), "pass_td": _cn(p, "pass_td"),
+        "pass_int": _cn(p, "pass_int"),
+        "rush_att": _cn(ru, "rush_att"), "rush_yds": _cn(ru, "rush_yds"),
+        "rush_td": _cn(ru, "rush_td"),
+        "rec": _cn(re_, "rec"), "rec_yds": _cn(re_, "rec_yds"),
+        "rec_td": _cn(re_, "rec_td"), "targets": _cn(re_, "targets", "rec_targets"),
+        "tackles": tackles, "sacks": _cn(d, "sacks"), "def_int": _cn(d, "def_int"),
+        "tfl": _cn(d, "tackles_loss", "tfl"),
     }
 
 

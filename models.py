@@ -111,8 +111,9 @@ def init_db() -> None:
     # College production stats (the new draft-card data, post-pivot). These
     # belong to the real player, not to a scouting source, so they live in their
     # own table keyed by a normalized name and are joined onto a prospect at
-    # card-build time. Values are CAREER TOTALS; the card layer derives averages
-    # (per-game counting stats, comp% = cmp/att, YPC = rush_yds/rush_att).
+    # card-build time. The counting values hold the player's FINAL college season
+    # (last_year); the card shows them raw plus a couple of derived rates
+    # (comp% = cmp/att, YPC = rush_yds/rush_att, yds/catch = rec_yds/rec).
     con.execute("""
         CREATE TABLE IF NOT EXISTS college_stats (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -141,7 +142,8 @@ def init_db() -> None:
         )
     """)
     ccols = {r["name"] for r in con.execute("PRAGMA table_info(college_stats)")}
-    for col, decl in (("height", "TEXT"), ("weight", "INTEGER")):
+    for col, decl in (("height", "TEXT"), ("weight", "INTEGER"),
+                      ("last_year", "INTEGER")):    # the player's final college season (card line)
         if col not in ccols:
             con.execute(f"ALTER TABLE college_stats ADD COLUMN {col} {decl}")
 
@@ -274,7 +276,7 @@ def delete_user(user_id: int) -> None:
 
 _CSTAT_FIELDS = (
     "name_key", "name", "school", "conference", "slot", "draft_year",
-    "source", "source_url", "height", "weight", "games", "seasons",
+    "source", "source_url", "height", "weight", "games", "seasons", "last_year",
     "pass_cmp", "pass_att", "pass_yds", "pass_td", "pass_int",
     "rush_att", "rush_yds", "rush_td",
     "rec", "rec_yds", "rec_td", "targets",

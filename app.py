@@ -2,10 +2,10 @@
 WarRoom — NFL blind scouting draft game.
 
 Players draft a 5-man roster (QB/RB/WR/WR/DEF) from compact scouting cards —
-position, college conference, measurements, college statistical averages — with
-each prospect's identity hidden behind a codename until it is drafted. Readingwhat
-the tape (and recognizing who a stat line belongs to) is the skill. The reveal
-shows who each card was and how the roster scored.
+position, college conference, measurements, and the prospect's final college stat
+line — with each prospect's identity hidden behind a codename until it is drafted.
+The skill is recognizing who a stat line belongs to. The reveal shows who each card
+was and how the roster scored.
 
 Three ways to play, all sharing one draft engine:
   • Daily    — a global date-seeded board everyone gets that day; you draft solo
@@ -74,6 +74,16 @@ SLOT_LABELS = {"QB": "Quarterback", "RB": "Running Back", "WR": "Wide Receiver",
 MIN_PLAYERS, MAX_PLAYERS = 1, 6
 POOL_CHOICE_BUFFER = 4
 DAILY_BUFFER = 5                       # a slightly richer board for the daily solo run
+# A prospect needs at least this many real college stats on his card to make the
+# board (no blank cards). Defense gets a lower bar: pre-2005 college box scores
+# only tracked interceptions, so recognizable era-limited defenders (Woodson,
+# Wake…) carry just one stat — strict offense filtering would wrongly cut them.
+MIN_CARD_STATS = 4
+MIN_CARD_STATS_DEF = 1
+
+
+def _min_card_stats(slot: str) -> int:
+    return MIN_CARD_STATS_DEF if slot == "DEF" else MIN_CARD_STATS
 # Player grade = Career Excel Score (es_scoring.py), already cross-position
 # comparable, so a team's rating is just the sum of its picks' CES — no
 # position weighting needed (the old POSITION_WEIGHTS are retired).
@@ -84,54 +94,62 @@ CARDS: dict[int, dict] = {}
 SCORES: dict[int, dict] = {}
 
 
-def _avg(total, games):
-    return (total / games) if (total and games) else None
-
-
-def _fmt(v, nd=0):
-    return "—" if v is None else (f"{v:.{nd}f}" if nd else f"{v:.0f}")
+def _num(v, nd=0):
+    """Format a stat value; a real 0 shows as 0, a missing one as a dash."""
+    return "—" if v is None else f"{v:,.{nd}f}"
 
 
 def _statline(slot: str, cs: dict) -> list[dict]:
-    """College production as PER-SEASON averages (career totals ÷ seasons played)
-    so each line reads like a typical season; rate stats stay as rates."""
-    s = cs.get("seasons") or 1
+    """The prospect's FINAL college season, shown as raw numbers (plus a couple of
+    derived rates). college_stats holds that last season's totals (see
+    scraper_collegestats); a missing stat renders as a dash, a real zero as 0."""
     def n(k): return cs.get(k)
     if slot == "QB":
-        comp = (100 * n("pass_cmp") / n("pass_att")) if n("pass_att") else None
-        return [{"k": "Comp %", "v": _fmt(comp, 1)}, {"k": "Pass Yds/Yr", "v": _fmt(_avg(n("pass_yds"), s))},
-                {"k": "Pass TD/Yr", "v": _fmt(_avg(n("pass_td"), s), 1)}, {"k": "INT/Yr", "v": _fmt(_avg(n("pass_int"), s), 1)},
-                {"k": "Rush Yds/Yr", "v": _fmt(_avg(n("rush_yds"), s))}]
+        comp = (100 * n("pass_cmp") / n("pass_att")) if (n("pass_cmp") is not None and n("pass_att")) else None
+        return [{"k": "Comp %", "v": _num(comp, 1)}, {"k": "Pass Yds", "v": _num(n("pass_yds"))},
+                {"k": "Pass TD", "v": _num(n("pass_td"))}, {"k": "INT", "v": _num(n("pass_int"))},
+                {"k": "Rush Yds", "v": _num(n("rush_yds"))}]
     if slot == "RB":
-        ypc = (n("rush_yds") / n("rush_att")) if n("rush_att") else None
-        return [{"k": "Rush Yds/Yr", "v": _fmt(_avg(n("rush_yds"), s))}, {"k": "Yds/Carry", "v": _fmt(ypc, 1)},
-                {"k": "Rush TD/Yr", "v": _fmt(_avg(n("rush_td"), s), 1)}, {"k": "Rec Yds/Yr", "v": _fmt(_avg(n("rec_yds"), s))}]
+        ypc = (n("rush_yds") / n("rush_att")) if (n("rush_yds") is not None and n("rush_att")) else None
+        return [{"k": "Rush Yds", "v": _num(n("rush_yds"))}, {"k": "Yds/Carry", "v": _num(ypc, 1)},
+                {"k": "Rush TD", "v": _num(n("rush_td"))}, {"k": "Rec Yds", "v": _num(n("rec_yds"))}]
     if slot in ("WR", "TE"):
-        ypr = (n("rec_yds") / n("rec")) if n("rec") else None
-        return [{"k": "Rec/Yr", "v": _fmt(_avg(n("rec"), s), 1)}, {"k": "Rec Yds/Yr", "v": _fmt(_avg(n("rec_yds"), s))},
-                {"k": "Yds/Catch", "v": _fmt(ypr, 1)}, {"k": "Rec TD/Yr", "v": _fmt(_avg(n("rec_td"), s), 1)}]
-    return [{"k": "Tackles/Yr", "v": _fmt(_avg(n("tackles"), s), 1)}, {"k": "Sacks/Yr", "v": _fmt(_avg(n("sacks"), s), 1)},
-            {"k": "INT/Yr", "v": _fmt(_avg(n("def_int"), s), 1)}, {"k": "TFL/Yr", "v": _fmt(_avg(n("tfl"), s), 1)}]
+        ypr = (n("rec_yds") / n("rec")) if (n("rec_yds") is not None and n("rec")) else None
+        return [{"k": "Rec", "v": _num(n("rec"))}, {"k": "Rec Yds", "v": _num(n("rec_yds"))},
+                {"k": "Yds/Catch", "v": _num(ypr, 1)}, {"k": "Rec TD", "v": _num(n("rec_td"))}]
+    return [{"k": "Tackles", "v": _num(n("tackles"))}, {"k": "Sacks", "v": _num(n("sacks"), 1)},
+            {"k": "INT", "v": _num(n("def_int"))}, {"k": "TFL", "v": _num(n("tfl"), 1)}]
 
 
 def _make_card(p: dict, cs: dict) -> dict:
     return {"id": p["id"], "slot": p["slot"], "position": p["position"],
             "height": p["height"], "weight": p["weight"], "forty": p["forty"],
             "conference": cs.get("conference") or "—", "stats": _statline(p["slot"], cs),
+            "last_year": cs.get("last_year"),
             "name": p["name"], "school": p["school"] or cs.get("school"),
             "draft_year": p["draft_year"], "draft_round": p["draft_round"], "is_starter": p["is_starter"]}
+
+
+def _card_stat_count(card: dict) -> int:
+    """How many of a card's college stats are actually known (not a dash)."""
+    return sum(1 for s in card["stats"] if s["v"] != "—")
 
 
 def build_indexes() -> None:
     """Precompute the card + score lookups for the pool. A player's score is the
     Career Excel Score (computed offline by es_scoring.py and stored on the row),
-    so this is a cheap read with no dependency on the season-page cache."""
+    so this is a cheap read with no dependency on the season-page cache. Prospects
+    whose card has too few real college stats (see _min_card_stats) are left out —
+    a near-blank card is no fun to scout and unfair to score."""
     global CARDS, SCORES
     cstats = models.college_stats_map()
     pool = models.get_prospects()
     CARDS, SCORES = {}, {}
     for p in pool:
-        CARDS[p["id"]] = _make_card(p, cstats.get((models.norm_name(p["name"]), p["draft_year"]), {}))
+        card = _make_card(p, cstats.get((models.norm_name(p["name"]), p["draft_year"]), {}))
+        if _card_stat_count(card) < _min_card_stats(p["slot"]):
+            continue
+        CARDS[p["id"]] = card
         ces = p["ces"] if p.get("ces") is not None else 0.0
         SCORES[p["id"]] = {"score": round(ces, 1)}                   # Career Excel Score
 
@@ -150,9 +168,11 @@ def _build_pool(n_players: int, rng: random.Random, buffer: int = POOL_CHOICE_BU
     """Sample a per-game board (one bucket per slot) + per-slot codenames. `rng`
     makes it reproducible — the Daily board passes a date-seeded RNG so everyone
     gets the identical board."""
+    if not CARDS:
+        build_indexes()
     chosen, codenames = [], {}
     for slot in dict.fromkeys(SLOT_SEQUENCE):          # stable, de-duped slot set
-        ids = [p["id"] for p in models.get_prospects(slot)]
+        ids = [p["id"] for p in models.get_prospects(slot) if p["id"] in CARDS]   # card-eligible only
         need = SLOT_SEQUENCE.count(slot) * n_players
         if len(ids) < need:
             raise ValueError(f"need {need} {slot}, have {len(ids)}")
@@ -178,7 +198,7 @@ def _blind_card(pid, codename):
     c = CARDS[pid]
     return {"id": pid, "codename": codename, "slot": c["slot"], "position": c["position"],
             "height": c["height"], "weight": c["weight"], "forty": c["forty"],
-            "conference": c["conference"], "stats": c["stats"]}
+            "conference": c["conference"], "last_year": c["last_year"], "stats": c["stats"]}
 
 
 def _apply_pick(game, pid: int) -> str | None:
@@ -340,9 +360,19 @@ def api_account_delete():
     return jsonify({"ok": True})
 
 
+def _eligible_summary() -> dict:
+    """Board counts by slot over the card-eligible pool (what's actually draftable)."""
+    if not CARDS:
+        build_indexes()
+    by_slot: dict[str, int] = {}
+    for c in CARDS.values():
+        by_slot[c["slot"]] = by_slot.get(c["slot"], 0) + 1
+    return {"total": len(CARDS), "by_slot": by_slot}
+
+
 def _lobby_state():
     return {"phase": "lobby", "minPlayers": MIN_PLAYERS, "maxPlayers": MAX_PLAYERS,
-            "roster": SLOT_SEQUENCE, "pool": models.pool_summary()}
+            "roster": SLOT_SEQUENCE, "pool": _eligible_summary()}
 
 
 @app.route("/api/state")
