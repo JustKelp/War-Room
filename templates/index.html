@@ -172,7 +172,8 @@
   .rank .rh{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:var(--panel2);background:linear-gradient(120deg,color-mix(in srgb,var(--pc) 14%,var(--panel)),var(--panel))}
   .rank .rh .name{font-family:var(--head);font-size:24px;letter-spacing:.5px;color:var(--pc)}
   .rank .rh .rk{font-family:var(--head);font-size:13px;letter-spacing:2px;color:var(--faint)}
-  .rank .rh .tot{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--nfl-lite)}
+  .rank .rh .tot{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--nfl-lite);text-align:right}
+  .rank .rh .tot .totlab{display:block;font-family:var(--head);font-size:10px;letter-spacing:2px;color:var(--faint);text-transform:uppercase;font-weight:600}
   table{width:100%;border-collapse:collapse;font-size:13px}
   th,td{text-align:left;padding:9px 18px;border-bottom:1px solid var(--line)}
   tr:last-child td{border-bottom:none}
@@ -180,6 +181,7 @@
   td.n{text-align:right;font-family:var(--mono)}
   td .s{font-family:var(--head);color:var(--nfl-lite);letter-spacing:1px}
   .badge{font:600 10px var(--head);letter-spacing:1px;color:var(--good);border:1px solid var(--good);padding:1px 7px;border-radius:999px;margin-left:8px}
+  .grade{font-family:var(--head);font-weight:700;font-size:18px;letter-spacing:.5px}
   .note{font-size:12px;color:var(--dim);margin-top:16px;font-style:italic}
   .row-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
   /* the pick is in */
@@ -238,7 +240,7 @@
       <div class="sec"><div class="lbl">The Goal</div><p>Fill all five slots: QB, RB, two WR, and a defender. The best roster wins.</p></div>
       <div class="sec"><div class="lbl">The Cards</div><p>Each card shows a prospect's position, college conference, measurables, and his final college season — but not his name. The skill is recognizing who the stat line belongs to.</p></div>
       <div class="sec"><div class="lbl">Making a Pick</div><p>It's a snake draft. A prospect's name is revealed the moment you pick him. No take-backs.</p></div>
-      <div class="sec"><div class="lbl">Scoring</div><p>Each pick is graded on how his NFL career turned out, scored against others at his position. Your roster total is the sum of the five.</p></div>
+      <div class="sec"><div class="lbl">Scoring</div><p>Each pick gets a letter grade against everyone at his position — A is elite, C is average. Your team score adds up how all five careers turned out; the highest total wins.</p></div>
       <div class="sec"><div class="lbl">Modes</div><p><strong style="color:var(--ink)">Daily</strong> — one board for everyone, ranked against the field. <strong style="color:var(--ink)">Play with Friends</strong> — draft live online, or pass one screen around.</p></div>
     </div>
     <div class="actions"><button class="go" id="howto-go">Start Drafting</button></div>
@@ -303,6 +305,7 @@ function teamColors(players){const key=(players||[]).join("|")||"_";if(key===_tc
   const rng=()=>{s^=s<<13;s^=s>>>17;s^=s<<5;s>>>=0;return s/4294967296;};
   for(let i=u.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[u[i],u[j]]=[u[j],u[i]];}_tc=u;return _tc;}
 const col=i=>accent(teamColors(S&&S.players)[i%NFL_COLORS.length]);
+const gradeColor=g=>({A:"var(--good)",B:"var(--nfl-lite)",C:"var(--ink)",D:"var(--bad)",F:"var(--bad)"}[(g||" ")[0]]||"var(--dim)");
 
 async function api(path, body){const o={headers:{"Content-Type":"application/json"}};
   if(body){o.method="POST";o.body=JSON.stringify(body);}return (await fetch(path,o)).json();}
@@ -543,15 +546,15 @@ function renderReveal(){
 
   document.getElementById("ranks").innerHTML=rev.teams.map(t=>`
     <div class="rank ${t.rank===1&&!solo?"win":""}" style="--pc:${col(t.team)}">
-      <div class="rh"><div><span class="rk">${solo?"":"#"+t.rank}${t.rank===1&&!solo?" — winner":""}</span> <span class="name">${esc(t.name)}</span></div><div class="tot">${t.total}</div></div>
+      <div class="rh"><div><span class="rk">${solo?"":"#"+t.rank}${t.rank===1&&!solo?" — winner":""}</span> <span class="name">${esc(t.name)}</span></div><div class="tot"><span class="totlab">Team Score</span>${t.total}</div></div>
       <table>
-        <tr><th>Slot</th><th>Player</th><th>School</th><th>Drafted</th><th class="n">Grade</th><th class="n">Pts</th></tr>
+        <tr><th>Slot</th><th>Player</th><th>School</th><th>Drafted</th><th class="n">Grade</th></tr>
         ${t.picks.map(p=>`<tr>
           <td><span class="s">${esc(p.slot)}</span></td>
-          <td>${esc(p.name)}${p.is_starter?'<span class="badge">Starter</span>':""}</td>
+          <td>${esc(p.name)}</td>
           <td>${esc(p.school||"")}</td>
           <td>${p.draft_round?("R"+p.draft_round+" · "+esc(p.draft_year)):esc(p.draft_year||"UDFA")}</td>
-          <td class="n">${p.score}</td><td class="n">${p.weighted}</td>
+          <td class="n"><span class="grade" style="color:${gradeColor(p.grade)}">${esc(p.grade)}</span></td>
         </tr>`).join("")}
       </table>
     </div>`).join("");
@@ -591,7 +594,9 @@ let ME = null;            // {user_id, username} or null
 let AUTHMODE = "login";
 const $ = id => document.getElementById(id);
 
-async function loadMe(){ try{ const m = await api("/api/me"); ME = m && m.user_id ? m : null; }catch{ ME=null; } updateAccountBtn(); }
+async function loadMe(){ try{ const m = await api("/api/me"); ME = m && m.user_id ? m : null; }catch{ ME=null; }
+  if(ME && ME.username) NAME = ME.username;   // signed-in players use their account name, no prompt
+  updateAccountBtn(); }
 function updateAccountBtn(){ const b=$("nav-account"); if(b) b.textContent = ME ? ME.username : "Sign In"; }
 
 function openAuth(){ $("auth-err").textContent=""; $("auth").classList.add("show"); $("auth-user").focus(); }
@@ -607,7 +612,7 @@ async function submitAuth(){
   const username=$("auth-user").value.trim(), password=$("auth-pass").value;
   const res = await api(AUTHMODE==="login" ? "/api/login" : "/api/register", {username, password});
   if(res.error){ $("auth-err").textContent=res.error; return; }
-  ME = {user_id:res.user_id, username:res.username}; updateAccountBtn(); closeAuth();
+  ME = {user_id:res.user_id, username:res.username}; NAME = res.username; updateAccountBtn(); closeAuth();
   if(MODE==="daily") enterDaily();   // refresh so streak/standing reflect the account
 }
 function openAccount(){ $("acct-name").textContent = ME ? ME.username : ""; $("acct-err").textContent=""; $("account").classList.add("show"); }

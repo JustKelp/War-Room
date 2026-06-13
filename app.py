@@ -95,8 +95,10 @@ SCORES: dict[int, dict] = {}
 
 
 def _num(v, nd=0):
-    """Format a stat value; a real 0 shows as 0, a missing one as a dash."""
-    return "—" if v is None else f"{v:,.{nd}f}"
+    """Format a stat value; a real 0 shows as 0, a missing one as a dash. Negative
+    counting stats (e.g. pre-2000 QB rushing, where NCAA charged sack yardage to
+    rushing) are noise, so they show as a dash too."""
+    return "—" if (v is None or v < 0) else f"{v:,.{nd}f}"
 
 
 def _statline(slot: str, cs: dict) -> list[dict]:
@@ -135,6 +137,21 @@ def _card_stat_count(card: dict) -> int:
     return sum(1 for s in card["stats"] if s["v"] != "—")
 
 
+# Letter grade for a pick = where the player ranks among everyone at his position
+# (a draft report card: A = elite for the slot, C ≈ a middling pick, F = a bust).
+# Percentile-based because raw CES skews low across the pool (median ~16), so a
+# fixed 50=C scale would brand most real players an F.
+_GRADE_TABLE = [(.96, "A+"), (.88, "A"), (.78, "A-"), (.66, "B+"), (.54, "B"),
+                (.42, "B-"), (.30, "C+"), (.20, "C"), (.12, "C-"), (.06, "D")]
+
+
+def _grade_from_pct(pct: float) -> str:
+    for thr, g in _GRADE_TABLE:
+        if pct >= thr:
+            return g
+    return "F"
+
+
 def build_indexes() -> None:
     """Precompute the card + score lookups for the pool. A player's score is the
     Career Excel Score (computed offline by es_scoring.py and stored on the row),
@@ -152,6 +169,16 @@ def build_indexes() -> None:
         CARDS[p["id"]] = card
         ces = p["ces"] if p.get("ces") is not None else 0.0
         SCORES[p["id"]] = {"score": round(ces, 1)}                   # Career Excel Score
+
+    # Assign each player a letter grade by his percentile within his position.
+    by_slot: dict[str, list[int]] = {}
+    for pid, c in CARDS.items():
+        by_slot.setdefault(c["slot"], []).append(pid)
+    for pids in by_slot.values():
+        pids.sort(key=lambda pid: SCORES[pid]["score"])             # worst -> best
+        m = len(pids)
+        for rank, pid in enumerate(pids):
+            SCORES[pid]["grade"] = _grade_from_pct((rank + 0.5) / m)
 
 
 # ── DRAFT ENGINE (mode-agnostic; operates on a plain game dict) ───────────────
@@ -253,19 +280,18 @@ def _reveal(game: dict) -> dict:
             c, sc = CARDS.get(pid), SCORES.get(pid, {"score": 0})
             if not c:
                 continue
-            score = sc["score"]                         # Career Excel Score (comparable across positions)
-            total += score
+            total += sc["score"]                        # Career Excel Score drives the team total
             picks.append({"slot": c["slot"], "name": c["name"], "position": c["position"], "school": c["school"],
-                          "draft_year": c["draft_year"], "draft_round": c["draft_round"], "is_starter": c["is_starter"],
-                          "score": score, "weight": 1.0, "weighted": score})
+                          "draft_year": c["draft_year"], "draft_round": c["draft_round"],
+                          "grade": sc.get("grade", "—")})
         teams.append({"team": t, "name": name, "picks": picks, "total": round(total, 1)})
     teams.sort(key=lambda x: x["total"], reverse=True)
     for rank, team in enumerate(teams, 1):
         team["rank"] = rank
     return {"teams": teams,
-            "scoring_note": "Each pick's grade is its Career Excel Score — how that NFL career "
-                            "actually turned out (50 = an average starter's career, 90+ = all-time great). "
-                            "Your team score is the sum of your five picks."}
+            "scoring_note": "Each pick is graded against every prospect at its position — A is elite "
+                            "for the slot, C is a middling pick. Your team score adds up how good all "
+                            "five NFL careers turned out; the highest total wins."}
 
 
 # ── LOCAL (pass & play) ──────────────────────────────────────────────────────
@@ -433,9 +459,13 @@ def _daily_seed(day: str) -> int:
 
 
 def _serialize_daily(game: dict, record: bool = False) -> dict:
+    u = _current_user()
+    # Keep a signed-in player's roster/result under their account name even if the
+    # board was started anonymously earlier in the session.
+    if u and game.get("players") and game["players"][0] != u["username"]:
+        game["players"][0] = u["username"]
     state = _serialize(game)
     state["day"] = game["day"]
-    u = _current_user()
     if state["phase"] == "reveal":
         total = state["reveal"]["teams"][0]["total"]
         if record and not game.get("recorded"):
@@ -468,7 +498,9 @@ def api_daily_state():
 def api_daily_new():
     build_indexes()
     day = _today()
-    name = (str((request.get_json(silent=True) or {}).get("name", "")).strip()[:24]) or "You"
+    u = _current_user()
+    client_name = str((request.get_json(silent=True) or {}).get("name", "")).strip()[:24]
+    name = (u["username"] if u else client_name) or "You"   # logged-in players use their account name
     game = session.get("daily")
     if not (game and game.get("day") == day):          # one board per day per session
         game = _new_game([name], rng=random.Random(_daily_seed(day)), buffer=DAILY_BUFFER,
