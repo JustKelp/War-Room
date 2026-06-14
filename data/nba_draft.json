@@ -1,0 +1,6673 @@
+[
+{
+"player_id": "walljo01",
+"name": "John Wall",
+"draft_year": 2010,
+"pick": 1,
+"college": "Kentucky"
+},
+{
+"player_id": "turneev01",
+"name": "Evan Turner",
+"draft_year": 2010,
+"pick": 2,
+"college": "Ohio State"
+},
+{
+"player_id": "favorde01",
+"name": "Derrick Favors",
+"draft_year": 2010,
+"pick": 3,
+"college": "Georgia Tech"
+},
+{
+"player_id": "johnswe01",
+"name": "Wesley Johnson",
+"draft_year": 2010,
+"pick": 4,
+"college": "Syracuse"
+},
+{
+"player_id": "couside01",
+"name": "DeMarcus Cousins",
+"draft_year": 2010,
+"pick": 5,
+"college": "Kentucky"
+},
+{
+"player_id": "udohek01",
+"name": "Ekpe Udoh",
+"draft_year": 2010,
+"pick": 6,
+"college": "Baylor"
+},
+{
+"player_id": "monrogr01",
+"name": "Greg Monroe",
+"draft_year": 2010,
+"pick": 7,
+"college": "Georgetown"
+},
+{
+"player_id": "aminual01",
+"name": "Al-Farouq Aminu",
+"draft_year": 2010,
+"pick": 8,
+"college": "Wake Forest"
+},
+{
+"player_id": "haywago01",
+"name": "Gordon Hayward",
+"draft_year": 2010,
+"pick": 9,
+"college": "Butler"
+},
+{
+"player_id": "georgpa01",
+"name": "Paul George",
+"draft_year": 2010,
+"pick": 10,
+"college": "Fresno State"
+},
+{
+"player_id": "aldrico01",
+"name": "Cole Aldrich",
+"draft_year": 2010,
+"pick": 11,
+"college": "Kansas"
+},
+{
+"player_id": "henryxa01",
+"name": "Xavier Henry",
+"draft_year": 2010,
+"pick": 12,
+"college": "Kansas"
+},
+{
+"player_id": "davised01",
+"name": "Ed Davis",
+"draft_year": 2010,
+"pick": 13,
+"college": "UNC"
+},
+{
+"player_id": "pattepa01",
+"name": "Patrick Patterson",
+"draft_year": 2010,
+"pick": 14,
+"college": "Kentucky"
+},
+{
+"player_id": "sandela01",
+"name": "Larry Sanders",
+"draft_year": 2010,
+"pick": 15,
+"college": "VCU"
+},
+{
+"player_id": "babbilu01",
+"name": "Luke Babbitt",
+"draft_year": 2010,
+"pick": 16,
+"college": "Nevada"
+},
+{
+"player_id": "serapke01",
+"name": "Kevin Séraphin",
+"draft_year": 2010,
+"pick": 17,
+"college": "International"
+},
+{
+"player_id": "bledser01",
+"name": "Eric Bledsoe",
+"draft_year": 2010,
+"pick": 18,
+"college": "Kentucky"
+},
+{
+"player_id": "bradlav01",
+"name": "Avery Bradley",
+"draft_year": 2010,
+"pick": 19,
+"college": "Texas"
+},
+{
+"player_id": "anderja01",
+"name": "James Anderson",
+"draft_year": 2010,
+"pick": 20,
+"college": "Oklahoma State"
+},
+{
+"player_id": "brackcr01",
+"name": "Craig Brackins",
+"draft_year": 2010,
+"pick": 21,
+"college": "Iowa State"
+},
+{
+"player_id": "williel01",
+"name": "Elliot Williams",
+"draft_year": 2010,
+"pick": 22,
+"college": "Memphis"
+},
+{
+"player_id": "booketr01",
+"name": "Trevor Booker",
+"draft_year": 2010,
+"pick": 23,
+"college": "Clemson"
+},
+{
+"player_id": "jamesda01",
+"name": "Damion James",
+"draft_year": 2010,
+"pick": 24,
+"college": "Texas"
+},
+{
+"player_id": "jonesdo02",
+"name": "Dominique Jones",
+"draft_year": 2010,
+"pick": 25,
+"college": "South Florida"
+},
+{
+"player_id": "pondequ01",
+"name": "Quincy Pondexter",
+"draft_year": 2010,
+"pick": 26,
+"college": "Washington"
+},
+{
+"player_id": "crawfjo02",
+"name": "Jordan Crawford",
+"draft_year": 2010,
+"pick": 27,
+"college": "Xavier"
+},
+{
+"player_id": "vasqugr01",
+"name": "Greivis Vásquez",
+"draft_year": 2010,
+"pick": 28,
+"college": "Maryland"
+},
+{
+"player_id": "ortonda01",
+"name": "Daniel Orton",
+"draft_year": 2010,
+"pick": 29,
+"college": "Kentucky"
+},
+{
+"player_id": "haywala01",
+"name": "Lazar Hayward",
+"draft_year": 2010,
+"pick": 30,
+"college": "Marquette"
+},
+{
+"player_id": "pleisti01",
+"name": "Tibor Pleiß",
+"draft_year": 2010,
+"pick": 31,
+"college": "International"
+},
+{
+"player_id": "pittmde01",
+"name": "Dexter Pittman",
+"draft_year": 2010,
+"pick": 32,
+"college": "Texas"
+},
+{
+"player_id": "whiteha01",
+"name": "Hassan Whiteside",
+"draft_year": 2010,
+"pick": 33,
+"college": "Marshall"
+},
+{
+"player_id": "johnsar02",
+"name": "Armon Johnson",
+"draft_year": 2010,
+"pick": 34,
+"college": "Nevada"
+},
+{
+"player_id": "bjeline01",
+"name": "Nemanja Bjelica",
+"draft_year": 2010,
+"pick": 35,
+"college": "International"
+},
+{
+"player_id": "whitete01",
+"name": "Terrico White",
+"draft_year": 2010,
+"pick": 36,
+"college": "Ole Miss"
+},
+{
+"player_id": "hobsoda01",
+"name": "Darington Hobson",
+"draft_year": 2010,
+"pick": 37,
+"college": "New Mexico"
+},
+{
+"player_id": "rautian01",
+"name": "Andy Rautins",
+"draft_year": 2010,
+"pick": 38,
+"college": "Syracuse"
+},
+{
+"player_id": "fieldla01",
+"name": "Landry Fields",
+"draft_year": 2010,
+"pick": 39,
+"college": "Stanford"
+},
+{
+"player_id": "stephla01",
+"name": "Lance Stephenson",
+"draft_year": 2010,
+"pick": 40,
+"college": "Cincinnati"
+},
+{
+"player_id": "varnaja01",
+"name": "Jarvis Varnado",
+"draft_year": 2010,
+"pick": 41,
+"college": "Mississippi State"
+},
+{
+"player_id": "butleda03",
+"name": "Da'Sean Butler",
+"draft_year": 2010,
+"pick": 42,
+"college": "West Virginia"
+},
+{
+"player_id": "ebankde01",
+"name": "Devin Ebanks",
+"draft_year": 2010,
+"pick": 43,
+"college": "West Virginia"
+},
+{
+"player_id": "jordaje01",
+"name": "Jerome Jordan",
+"draft_year": 2010,
+"pick": 44,
+"college": "Tulsa"
+},
+{
+"player_id": "prestpa01",
+"name": "Paulão Prestes",
+"draft_year": 2010,
+"pick": 45,
+"college": "International"
+},
+{
+"player_id": "lawalga01",
+"name": "Gani Lawal",
+"draft_year": 2010,
+"pick": 46,
+"college": "Georgia Tech"
+},
+{
+"player_id": "galloti01",
+"name": "Tiny Gallon",
+"draft_year": 2010,
+"pick": 47,
+"college": "Oklahoma"
+},
+{
+"player_id": "willila01",
+"name": "Latavious Williams",
+"draft_year": 2010,
+"pick": 48,
+"college": "International"
+},
+{
+"player_id": "richary01",
+"name": "Ryan Richards",
+"draft_year": 2010,
+"pick": 49,
+"college": "International"
+},
+{
+"player_id": "alabiso01",
+"name": "Solomon Alabi",
+"draft_year": 2010,
+"pick": 50,
+"college": "Florida State"
+},
+{
+"player_id": "rollema01",
+"name": "Magnum Rolle",
+"draft_year": 2010,
+"pick": 51,
+"college": "Louisiana Tech"
+},
+{
+"player_id": "haranlu01",
+"name": "Luke Harangody",
+"draft_year": 2010,
+"pick": 52,
+"college": "Notre Dame"
+},
+{
+"player_id": "sypa01",
+"name": "Pape Sy",
+"draft_year": 2010,
+"pick": 53,
+"college": "International"
+},
+{
+"player_id": "warrewi01",
+"name": "Willie Warren",
+"draft_year": 2010,
+"pick": 54,
+"college": "Oklahoma"
+},
+{
+"player_id": "evansje01",
+"name": "Jeremy Evans",
+"draft_year": 2010,
+"pick": 55,
+"college": "Western Kentucky"
+},
+{
+"player_id": "ndiayha01",
+"name": "Hamady N'Diaye",
+"draft_year": 2010,
+"pick": 56,
+"college": "Rutgers University"
+},
+{
+"player_id": "reidry01",
+"name": "Ryan Reid",
+"draft_year": 2010,
+"pick": 57,
+"college": "Florida State"
+},
+{
+"player_id": "caracde01",
+"name": "Derrick Caracter",
+"draft_year": 2010,
+"pick": 58,
+"college": "Texas-El Paso"
+},
+{
+"player_id": "robinst01",
+"name": "Stanley Robinson",
+"draft_year": 2010,
+"pick": 59,
+"college": "UConn"
+},
+{
+"player_id": "collidw01",
+"name": "Dwayne Collins",
+"draft_year": 2010,
+"pick": 60,
+"college": "Miami (FL)"
+},
+{
+"player_id": "irvinky01",
+"name": "Kyrie Irving",
+"draft_year": 2011,
+"pick": 1,
+"college": "Duke"
+},
+{
+"player_id": "willide02",
+"name": "Derrick Williams",
+"draft_year": 2011,
+"pick": 2,
+"college": "Arizona"
+},
+{
+"player_id": "kanteen01",
+"name": "Enes Freedom",
+"draft_year": 2011,
+"pick": 3,
+"college": "International"
+},
+{
+"player_id": "thomptr01",
+"name": "Tristan Thompson",
+"draft_year": 2011,
+"pick": 4,
+"college": "Texas"
+},
+{
+"player_id": "valanjo01",
+"name": "Jonas Valančiūnas",
+"draft_year": 2011,
+"pick": 5,
+"college": "International"
+},
+{
+"player_id": "veselja01",
+"name": "Jan Veselý",
+"draft_year": 2011,
+"pick": 6,
+"college": "International"
+},
+{
+"player_id": "biyombi01",
+"name": "Bismack Biyombo",
+"draft_year": 2011,
+"pick": 7,
+"college": "International"
+},
+{
+"player_id": "knighbr03",
+"name": "Brandon Knight",
+"draft_year": 2011,
+"pick": 8,
+"college": "Kentucky"
+},
+{
+"player_id": "walkeke02",
+"name": "Kemba Walker",
+"draft_year": 2011,
+"pick": 9,
+"college": "UConn"
+},
+{
+"player_id": "fredeji01",
+"name": "Jimmer Fredette",
+"draft_year": 2011,
+"pick": 10,
+"college": "BYU"
+},
+{
+"player_id": "thompkl01",
+"name": "Klay Thompson",
+"draft_year": 2011,
+"pick": 11,
+"college": "Washington State"
+},
+{
+"player_id": "burksal01",
+"name": "Alec Burks",
+"draft_year": 2011,
+"pick": 12,
+"college": "Colorado"
+},
+{
+"player_id": "morrima02",
+"name": "Markieff Morris",
+"draft_year": 2011,
+"pick": 13,
+"college": "Kansas"
+},
+{
+"player_id": "morrima03",
+"name": "Marcus Morris",
+"draft_year": 2011,
+"pick": 14,
+"college": "Kansas"
+},
+{
+"player_id": "leonaka01",
+"name": "Kawhi Leonard",
+"draft_year": 2011,
+"pick": 15,
+"college": "San Diego State"
+},
+{
+"player_id": "vucevni01",
+"name": "Nikola Vučević",
+"draft_year": 2011,
+"pick": 16,
+"college": "USC"
+},
+{
+"player_id": "shumpim01",
+"name": "Iman Shumpert",
+"draft_year": 2011,
+"pick": 17,
+"college": "Georgia Tech"
+},
+{
+"player_id": "singlch01",
+"name": "Chris Singleton",
+"draft_year": 2011,
+"pick": 18,
+"college": "Florida State"
+},
+{
+"player_id": "harrito02",
+"name": "Tobias Harris",
+"draft_year": 2011,
+"pick": 19,
+"college": "Tennessee"
+},
+{
+"player_id": "motiedo01",
+"name": "Donatas Motiejūnas",
+"draft_year": 2011,
+"pick": 20,
+"college": "International"
+},
+{
+"player_id": "smithno01",
+"name": "Nolan Smith",
+"draft_year": 2011,
+"pick": 21,
+"college": "Duke"
+},
+{
+"player_id": "farieke01",
+"name": "Kenneth Faried",
+"draft_year": 2011,
+"pick": 22,
+"college": "Morehead State University"
+},
+{
+"player_id": "mirotni01",
+"name": "Nikola Mirotić",
+"draft_year": 2011,
+"pick": 23,
+"college": "International"
+},
+{
+"player_id": "jacksre01",
+"name": "Reggie Jackson",
+"draft_year": 2011,
+"pick": 24,
+"college": "Boston College"
+},
+{
+"player_id": "brookma01",
+"name": "MarShon Brooks",
+"draft_year": 2011,
+"pick": 25,
+"college": "Providence"
+},
+{
+"player_id": "hamiljo02",
+"name": "Jordan Hamilton",
+"draft_year": 2011,
+"pick": 26,
+"college": "Texas"
+},
+{
+"player_id": "johnsja02",
+"name": "JaJuan Johnson",
+"draft_year": 2011,
+"pick": 27,
+"college": "Purdue"
+},
+{
+"player_id": "coleno01",
+"name": "Norris Cole",
+"draft_year": 2011,
+"pick": 28,
+"college": "Cleveland State University"
+},
+{
+"player_id": "josepco01",
+"name": "Cory Joseph",
+"draft_year": 2011,
+"pick": 29,
+"college": "Texas"
+},
+{
+"player_id": "butleji01",
+"name": "Jimmy Butler",
+"draft_year": 2011,
+"pick": 30,
+"college": "Marquette"
+},
+{
+"player_id": "bogdabo02",
+"name": "Bojan Bogdanović",
+"draft_year": 2011,
+"pick": 31,
+"college": "International"
+},
+{
+"player_id": "harpeju01",
+"name": "Justin Harper",
+"draft_year": 2011,
+"pick": 32,
+"college": "Richmond"
+},
+{
+"player_id": "singlky01",
+"name": "Kyle Singler",
+"draft_year": 2011,
+"pick": 33,
+"college": "Duke"
+},
+{
+"player_id": "macksh01",
+"name": "Shelvin Mack",
+"draft_year": 2011,
+"pick": 34,
+"college": "Butler"
+},
+{
+"player_id": "honeyty01",
+"name": "Tyler Honeycutt",
+"draft_year": 2011,
+"pick": 35,
+"college": "UCLA"
+},
+{
+"player_id": "willijo03",
+"name": "Jordan Williams",
+"draft_year": 2011,
+"pick": 36,
+"college": "Maryland"
+},
+{
+"player_id": "thomptr02",
+"name": "Trey Thompkins",
+"draft_year": 2011,
+"pick": 37,
+"college": "Georgia"
+},
+{
+"player_id": "parsoch01",
+"name": "Chandler Parsons",
+"draft_year": 2011,
+"pick": 38,
+"college": "Florida"
+},
+{
+"player_id": "tylerje01",
+"name": "Jeremy Tyler",
+"draft_year": 2011,
+"pick": 39,
+"college": "International"
+},
+{
+"player_id": "leuerjo01",
+"name": "Jon Leuer",
+"draft_year": 2011,
+"pick": 40,
+"college": "Wisconsin"
+},
+{
+"player_id": "morrida01",
+"name": "Darius Morris",
+"draft_year": 2011,
+"pick": 41,
+"college": "Michigan"
+},
+{
+"player_id": "bertada01",
+"name": "Dāvis Bertāns",
+"draft_year": 2011,
+"pick": 42,
+"college": "International"
+},
+{
+"player_id": "leema01",
+"name": "Malcolm Lee",
+"draft_year": 2011,
+"pick": 43,
+"college": "UCLA"
+},
+{
+"player_id": "jenkich01",
+"name": "Charles Jenkins",
+"draft_year": 2011,
+"pick": 44,
+"college": "Hofstra"
+},
+{
+"player_id": "harrejo01",
+"name": "Josh Harrellson",
+"draft_year": 2011,
+"pick": 45,
+"college": "Kentucky"
+},
+{
+"player_id": "goudean01",
+"name": "Andrew Goudelock",
+"draft_year": 2011,
+"pick": 46,
+"college": "College of Charleston"
+},
+{
+"player_id": "leslitr01",
+"name": "Travis Leslie",
+"draft_year": 2011,
+"pick": 47,
+"college": "Georgia"
+},
+{
+"player_id": "bensoke02",
+"name": "Keith Benson",
+"draft_year": 2011,
+"pick": 48,
+"college": "Oakland"
+},
+{
+"player_id": "selbyjo01",
+"name": "Josh Selby",
+"draft_year": 2011,
+"pick": 49,
+"college": "Kansas"
+},
+{
+"player_id": "allenla01",
+"name": "Lavoy Allen",
+"draft_year": 2011,
+"pick": 50,
+"college": "Temple"
+},
+{
+"player_id": "diebljo01",
+"name": "Jon Diebler",
+"draft_year": 2011,
+"pick": 51,
+"college": "Ohio State"
+},
+{
+"player_id": "macklve01",
+"name": "Vernon Macklin",
+"draft_year": 2011,
+"pick": 52,
+"college": "Florida"
+},
+{
+"player_id": "liggide01",
+"name": "DeAndre Liggins",
+"draft_year": 2011,
+"pick": 53,
+"college": "Kentucky"
+},
+{
+"player_id": "macvami01",
+"name": "Milan Mačvan",
+"draft_year": 2011,
+"pick": 54,
+"college": "International"
+},
+{
+"player_id": "mooreet01",
+"name": "E'Twaun Moore",
+"draft_year": 2011,
+"pick": 55,
+"college": "Purdue"
+},
+{
+"player_id": "maduach01",
+"name": "Chukwudiebere Maduabum",
+"draft_year": 2011,
+"pick": 56,
+"college": "International"
+},
+{
+"player_id": "ngombta01",
+"name": "Tanguy Ngombo",
+"draft_year": 2011,
+"pick": 57,
+"college": "International"
+},
+{
+"player_id": "majokat01",
+"name": "Ater Majok",
+"draft_year": 2011,
+"pick": 58,
+"college": "International"
+},
+{
+"player_id": "hangaad01",
+"name": "Ádám Hanga",
+"draft_year": 2011,
+"pick": 59,
+"college": "International"
+},
+{
+"player_id": "thomais02",
+"name": "Isaiah Thomas",
+"draft_year": 2011,
+"pick": 60,
+"college": "Washington"
+},
+{
+"player_id": "davisan02",
+"name": "Anthony Davis",
+"draft_year": 2012,
+"pick": 1,
+"college": "Kentucky"
+},
+{
+"player_id": "kiddgmi01",
+"name": "Michael Kidd-Gilchrist",
+"draft_year": 2012,
+"pick": 2,
+"college": "Kentucky"
+},
+{
+"player_id": "bealbr01",
+"name": "Bradley Beal",
+"draft_year": 2012,
+"pick": 3,
+"college": "Florida"
+},
+{
+"player_id": "waitedi01",
+"name": "Dion Waiters",
+"draft_year": 2012,
+"pick": 4,
+"college": "Syracuse"
+},
+{
+"player_id": "robinth01",
+"name": "Thomas Robinson",
+"draft_year": 2012,
+"pick": 5,
+"college": "Kansas"
+},
+{
+"player_id": "lillada01",
+"name": "Damian Lillard",
+"draft_year": 2012,
+"pick": 6,
+"college": "Weber State"
+},
+{
+"player_id": "barneha02",
+"name": "Harrison Barnes",
+"draft_year": 2012,
+"pick": 7,
+"college": "UNC"
+},
+{
+"player_id": "rosste01",
+"name": "Terrence Ross",
+"draft_year": 2012,
+"pick": 8,
+"college": "Washington"
+},
+{
+"player_id": "drumman01",
+"name": "Andre Drummond",
+"draft_year": 2012,
+"pick": 9,
+"college": "UConn"
+},
+{
+"player_id": "riverau01",
+"name": "Austin Rivers",
+"draft_year": 2012,
+"pick": 10,
+"college": "Duke"
+},
+{
+"player_id": "leoname01",
+"name": "Meyers Leonard",
+"draft_year": 2012,
+"pick": 11,
+"college": "Illinois"
+},
+{
+"player_id": "lambje01",
+"name": "Jeremy Lamb",
+"draft_year": 2012,
+"pick": 12,
+"college": "UConn"
+},
+{
+"player_id": "marshke01",
+"name": "Kendall Marshall",
+"draft_year": 2012,
+"pick": 13,
+"college": "UNC"
+},
+{
+"player_id": "hensojo01",
+"name": "John Henson",
+"draft_year": 2012,
+"pick": 14,
+"college": "UNC"
+},
+{
+"player_id": "harklma01",
+"name": "Maurice Harkless",
+"draft_year": 2012,
+"pick": 15,
+"college": "St. John's"
+},
+{
+"player_id": "whitero03",
+"name": "Royce White",
+"draft_year": 2012,
+"pick": 16,
+"college": "Iowa State"
+},
+{
+"player_id": "zellety01",
+"name": "Tyler Zeller",
+"draft_year": 2012,
+"pick": 17,
+"college": "UNC"
+},
+{
+"player_id": "joneste01",
+"name": "Terrence Jones",
+"draft_year": 2012,
+"pick": 18,
+"college": "Kentucky"
+},
+{
+"player_id": "nichoan01",
+"name": "Andrew Nicholson",
+"draft_year": 2012,
+"pick": 19,
+"college": "St. Bonaventure"
+},
+{
+"player_id": "fournev01",
+"name": "Evan Fournier",
+"draft_year": 2012,
+"pick": 20,
+"college": "International"
+},
+{
+"player_id": "sullija01",
+"name": "Jared Sullinger",
+"draft_year": 2012,
+"pick": 21,
+"college": "Ohio State"
+},
+{
+"player_id": "melofa01",
+"name": "Fab Melo",
+"draft_year": 2012,
+"pick": 22,
+"college": "Syracuse"
+},
+{
+"player_id": "jenkijo01",
+"name": "John Jenkins",
+"draft_year": 2012,
+"pick": 23,
+"college": "Vanderbilt"
+},
+{
+"player_id": "cunnija01",
+"name": "Jared Cunningham",
+"draft_year": 2012,
+"pick": 24,
+"college": "Oregon State"
+},
+{
+"player_id": "wroteto01",
+"name": "Tony Wroten",
+"draft_year": 2012,
+"pick": 25,
+"college": "Washington"
+},
+{
+"player_id": "plumlmi01",
+"name": "Miles Plumlee",
+"draft_year": 2012,
+"pick": 26,
+"college": "Duke"
+},
+{
+"player_id": "moultar01",
+"name": "Arnett Moultrie",
+"draft_year": 2012,
+"pick": 27,
+"college": "Mississippi State"
+},
+{
+"player_id": "jonespe01",
+"name": "Perry Jones",
+"draft_year": 2012,
+"pick": 28,
+"college": "Baylor"
+},
+{
+"player_id": "teaguma01",
+"name": "Marquis Teague",
+"draft_year": 2012,
+"pick": 29,
+"college": "Kentucky"
+},
+{
+"player_id": "ezelife01",
+"name": "Festus Ezeli",
+"draft_year": 2012,
+"pick": 30,
+"college": "Vanderbilt"
+},
+{
+"player_id": "tayloje03",
+"name": "Jeff Taylor",
+"draft_year": 2012,
+"pick": 31,
+"college": "Vanderbilt"
+},
+{
+"player_id": "satorto01",
+"name": "Tomáš Satoranský",
+"draft_year": 2012,
+"pick": 32,
+"college": "International"
+},
+{
+"player_id": "jamesbe01",
+"name": "Bernard James",
+"draft_year": 2012,
+"pick": 33,
+"college": "Florida State"
+},
+{
+"player_id": "crowdja01",
+"name": "Jae Crowder",
+"draft_year": 2012,
+"pick": 34,
+"college": "Marquette"
+},
+{
+"player_id": "greendr01",
+"name": "Draymond Green",
+"draft_year": 2012,
+"pick": 35,
+"college": "Michigan State"
+},
+{
+"player_id": "johnsor01",
+"name": "Orlando Johnson",
+"draft_year": 2012,
+"pick": 36,
+"college": "UC Santa Barbara"
+},
+{
+"player_id": "acyqu01",
+"name": "Quincy Acy",
+"draft_year": 2012,
+"pick": 37,
+"college": "Baylor"
+},
+{
+"player_id": "millequ01",
+"name": "Quincy Miller",
+"draft_year": 2012,
+"pick": 38,
+"college": "Baylor"
+},
+{
+"player_id": "middlkh01",
+"name": "Khris Middleton",
+"draft_year": 2012,
+"pick": 39,
+"college": "Texas A&M"
+},
+{
+"player_id": "bartowi01",
+"name": "Will Barton",
+"draft_year": 2012,
+"pick": 40,
+"college": "Memphis"
+},
+{
+"player_id": "tayloty01",
+"name": "Tyshawn Taylor",
+"draft_year": 2012,
+"pick": 41,
+"college": "Kansas"
+},
+{
+"player_id": "lambdo01",
+"name": "Doron Lamb",
+"draft_year": 2012,
+"pick": 42,
+"college": "Kentucky"
+},
+{
+"player_id": "scottmi01",
+"name": "Mike Scott",
+"draft_year": 2012,
+"pick": 43,
+"college": "Virginia"
+},
+{
+"player_id": "engliki01",
+"name": "Kim English",
+"draft_year": 2012,
+"pick": 44,
+"college": "Missouri"
+},
+{
+"player_id": "hamilju01",
+"name": "Justin Hamilton",
+"draft_year": 2012,
+"pick": 45,
+"college": "LSU"
+},
+{
+"player_id": "milleda01",
+"name": "Darius Miller",
+"draft_year": 2012,
+"pick": 46,
+"college": "Kentucky"
+},
+{
+"player_id": "murphke01",
+"name": "Kevin Murphy",
+"draft_year": 2012,
+"pick": 47,
+"college": "Tennessee Technological University"
+},
+{
+"player_id": "papanko01",
+"name": "Kostas Papanikolaou",
+"draft_year": 2012,
+"pick": 48,
+"college": "International"
+},
+{
+"player_id": "oquinky01",
+"name": "Kyle O'Quinn",
+"draft_year": 2012,
+"pick": 49,
+"college": "Norfolk State"
+},
+{
+"player_id": "turkyiz01",
+"name": "İzzet Türkyılmaz",
+"draft_year": 2012,
+"pick": 50,
+"college": "International"
+},
+{
+"player_id": "josepkr01",
+"name": "Kris Joseph",
+"draft_year": 2012,
+"pick": 51,
+"college": "Syracuse"
+},
+{
+"player_id": "kuzmiog01",
+"name": "Ognjen Kuzmić",
+"draft_year": 2012,
+"pick": 52,
+"college": "International"
+},
+{
+"player_id": "aldemfu01",
+"name": "Furkan Aldemir",
+"draft_year": 2012,
+"pick": 53,
+"college": "International"
+},
+{
+"player_id": "shengto01",
+"name": "Tornike Shengelia",
+"draft_year": 2012,
+"pick": 54,
+"college": "International"
+},
+{
+"player_id": "johnsda03",
+"name": "Darius Johnson-Odom",
+"draft_year": 2012,
+"pick": 55,
+"college": "Marquette"
+},
+{
+"player_id": "zubcito01",
+"name": "Tomislav Zubčić",
+"draft_year": 2012,
+"pick": 56,
+"college": "International"
+},
+{
+"player_id": "karamil01",
+"name": "İlkan Karaman",
+"draft_year": 2012,
+"pick": 57,
+"college": "International"
+},
+{
+"player_id": "hummero01",
+"name": "Robbie Hummel",
+"draft_year": 2012,
+"pick": 58,
+"college": "Purdue"
+},
+{
+"player_id": "denmoma01",
+"name": "Marcus Denmon",
+"draft_year": 2012,
+"pick": 59,
+"college": "Missouri"
+},
+{
+"player_id": "sacrero01",
+"name": "Robert Sacre",
+"draft_year": 2012,
+"pick": 60,
+"college": "Gonzaga"
+},
+{
+"player_id": "bennean01",
+"name": "Anthony Bennett",
+"draft_year": 2013,
+"pick": 1,
+"college": "UNLV"
+},
+{
+"player_id": "oladivi01",
+"name": "Victor Oladipo",
+"draft_year": 2013,
+"pick": 2,
+"college": "Indiana"
+},
+{
+"player_id": "porteot01",
+"name": "Otto Porter Jr.",
+"draft_year": 2013,
+"pick": 3,
+"college": "Georgetown"
+},
+{
+"player_id": "zelleco01",
+"name": "Cody Zeller",
+"draft_year": 2013,
+"pick": 4,
+"college": "Indiana"
+},
+{
+"player_id": "lenal01",
+"name": "Alex Len",
+"draft_year": 2013,
+"pick": 5,
+"college": "Maryland"
+},
+{
+"player_id": "noelne01",
+"name": "Nerlens Noel",
+"draft_year": 2013,
+"pick": 6,
+"college": "Kentucky"
+},
+{
+"player_id": "mclembe01",
+"name": "Ben McLemore",
+"draft_year": 2013,
+"pick": 7,
+"college": "Kansas"
+},
+{
+"player_id": "caldwke01",
+"name": "Kentavious Caldwell-Pope",
+"draft_year": 2013,
+"pick": 8,
+"college": "Georgia"
+},
+{
+"player_id": "burketr01",
+"name": "Trey Burke",
+"draft_year": 2013,
+"pick": 9,
+"college": "Michigan"
+},
+{
+"player_id": "mccolcj01",
+"name": "CJ McCollum",
+"draft_year": 2013,
+"pick": 10,
+"college": "Lehigh"
+},
+{
+"player_id": "cartemi01",
+"name": "Michael Carter-Williams",
+"draft_year": 2013,
+"pick": 11,
+"college": "Syracuse"
+},
+{
+"player_id": "adamsst01",
+"name": "Steven Adams",
+"draft_year": 2013,
+"pick": 12,
+"college": "Pitt"
+},
+{
+"player_id": "olynyke01",
+"name": "Kelly Olynyk",
+"draft_year": 2013,
+"pick": 13,
+"college": "Gonzaga"
+},
+{
+"player_id": "muhamsh01",
+"name": "Shabazz Muhammad",
+"draft_year": 2013,
+"pick": 14,
+"college": "UCLA"
+},
+{
+"player_id": "antetgi01",
+"name": "Giannis Antetokounmpo",
+"draft_year": 2013,
+"pick": 15,
+"college": "International"
+},
+{
+"player_id": "noguelu01",
+"name": "Lucas Nogueira",
+"draft_year": 2013,
+"pick": 16,
+"college": "International"
+},
+{
+"player_id": "schrode01",
+"name": "Dennis Schröder",
+"draft_year": 2013,
+"pick": 17,
+"college": "International"
+},
+{
+"player_id": "larkish01",
+"name": "Shane Larkin",
+"draft_year": 2013,
+"pick": 18,
+"college": "Miami (FL)"
+},
+{
+"player_id": "karasse01",
+"name": "Sergey Karasev",
+"draft_year": 2013,
+"pick": 19,
+"college": "International"
+},
+{
+"player_id": "snellto01",
+"name": "Tony Snell",
+"draft_year": 2013,
+"pick": 20,
+"college": "New Mexico"
+},
+{
+"player_id": "dienggo01",
+"name": "Gorgui Dieng",
+"draft_year": 2013,
+"pick": 21,
+"college": "Louisville"
+},
+{
+"player_id": "plumlma01",
+"name": "Mason Plumlee",
+"draft_year": 2013,
+"pick": 22,
+"college": "Duke"
+},
+{
+"player_id": "hillso01",
+"name": "Solomon Hill",
+"draft_year": 2013,
+"pick": 23,
+"college": "Arizona"
+},
+{
+"player_id": "hardati02",
+"name": "Tim Hardaway Jr.",
+"draft_year": 2013,
+"pick": 24,
+"college": "Michigan"
+},
+{
+"player_id": "bullore01",
+"name": "Reggie Bullock",
+"draft_year": 2013,
+"pick": 25,
+"college": "UNC"
+},
+{
+"player_id": "roberan03",
+"name": "Andre Roberson",
+"draft_year": 2013,
+"pick": 26,
+"college": "Colorado"
+},
+{
+"player_id": "goberru01",
+"name": "Rudy Gobert",
+"draft_year": 2013,
+"pick": 27,
+"college": "International"
+},
+{
+"player_id": "jeancli01",
+"name": "Livio Jean-Charles",
+"draft_year": 2013,
+"pick": 28,
+"college": "International"
+},
+{
+"player_id": "goodwar01",
+"name": "Archie Goodwin",
+"draft_year": 2013,
+"pick": 29,
+"college": "Kentucky"
+},
+{
+"player_id": "nedovne01",
+"name": "Nemanja Nedović",
+"draft_year": 2013,
+"pick": 30,
+"college": "International"
+},
+{
+"player_id": "crabbal01",
+"name": "Allen Crabbe",
+"draft_year": 2013,
+"pick": 31,
+"college": "California"
+},
+{
+"player_id": "abrinal01",
+"name": "Álex Abrines",
+"draft_year": 2013,
+"pick": 32,
+"college": "International"
+},
+{
+"player_id": "felixca01",
+"name": "Carrick Felix",
+"draft_year": 2013,
+"pick": 33,
+"college": "Arizona State"
+},
+{
+"player_id": "canaais01",
+"name": "Isaiah Canaan",
+"draft_year": 2013,
+"pick": 34,
+"college": "Murray State"
+},
+{
+"player_id": "ricegl02",
+"name": "Glen Rice Jr.",
+"draft_year": 2013,
+"pick": 35,
+"college": "Georgia Tech"
+},
+{
+"player_id": "mccalra01",
+"name": "Ray McCallum",
+"draft_year": 2013,
+"pick": 36,
+"college": "Detroit Mercy"
+},
+{
+"player_id": "mitchto02",
+"name": "Tony Mitchell",
+"draft_year": 2013,
+"pick": 37,
+"college": "University of North Texas"
+},
+{
+"player_id": "woltena01",
+"name": "Nate Wolters",
+"draft_year": 2013,
+"pick": 38,
+"college": "South Dakota State"
+},
+{
+"player_id": "witheje01",
+"name": "Jeff Withey",
+"draft_year": 2013,
+"pick": 39,
+"college": "Kansas"
+},
+{
+"player_id": "jerregr01",
+"name": "Grant Jerrett",
+"draft_year": 2013,
+"pick": 40,
+"college": "Arizona"
+},
+{
+"player_id": "frankja01",
+"name": "Jamaal Franklin",
+"draft_year": 2013,
+"pick": 41,
+"college": "San Diego State"
+},
+{
+"player_id": "jackspi01",
+"name": "Pierre Jackson",
+"draft_year": 2013,
+"pick": 42,
+"college": "Baylor"
+},
+{
+"player_id": "ledori01",
+"name": "Ricky Ledo",
+"draft_year": 2013,
+"pick": 43,
+"college": "Providence"
+},
+{
+"player_id": "muscami01",
+"name": "Mike Muscala",
+"draft_year": 2013,
+"pick": 44,
+"college": "Bucknell"
+},
+{
+"player_id": "todorma01",
+"name": "Marko Todorović",
+"draft_year": 2013,
+"pick": 45,
+"college": "International"
+},
+{
+"player_id": "greener01",
+"name": "Erick Green",
+"draft_year": 2013,
+"pick": 46,
+"college": "Virginia Tech"
+},
+{
+"player_id": "netora01",
+"name": "Raul Neto",
+"draft_year": 2013,
+"pick": 47,
+"college": "International"
+},
+{
+"player_id": "kellyry01",
+"name": "Ryan Kelly",
+"draft_year": 2013,
+"pick": 48,
+"college": "Duke"
+},
+{
+"player_id": "murpher01",
+"name": "Erik Murphy",
+"draft_year": 2013,
+"pick": 49,
+"college": "Florida"
+},
+{
+"player_id": "ennisja01",
+"name": "James Ennis III",
+"draft_year": 2013,
+"pick": 50,
+"college": "Cal State Long Beach"
+},
+{
+"player_id": "osbyro01",
+"name": "Romero Osby",
+"draft_year": 2013,
+"pick": 51,
+"college": "Oklahoma"
+},
+{
+"player_id": "brownlo01",
+"name": "Lorenzo Brown",
+"draft_year": 2013,
+"pick": 52,
+"college": "NC State"
+},
+{
+"player_id": "iversco01",
+"name": "Colton Iverson",
+"draft_year": 2013,
+"pick": 53,
+"college": "Colorado State"
+},
+{
+"player_id": "kazemar01",
+"name": "Arsalan Kazemi",
+"draft_year": 2013,
+"pick": 54,
+"college": "Oregon"
+},
+{
+"player_id": "lauvejo01",
+"name": "Joffrey Lauvergne",
+"draft_year": 2013,
+"pick": 55,
+"college": "International"
+},
+{
+"player_id": "sivape01",
+"name": "Peyton Siva",
+"draft_year": 2013,
+"pick": 56,
+"college": "Louisville"
+},
+{
+"player_id": "oriakal01",
+"name": "Alex Oriakhi",
+"draft_year": 2013,
+"pick": 57,
+"college": "Missouri"
+},
+{
+"player_id": "thomade01",
+"name": "Deshaun Thomas",
+"draft_year": 2013,
+"pick": 58,
+"college": "Ohio State"
+},
+{
+"player_id": "dubljbo01",
+"name": "Bojan Dubljević",
+"draft_year": 2013,
+"pick": 59,
+"college": "International"
+},
+{
+"player_id": "timmaja01",
+"name": "Jānis Timma",
+"draft_year": 2013,
+"pick": 60,
+"college": "International"
+},
+{
+"player_id": "wiggian01",
+"name": "Andrew Wiggins",
+"draft_year": 2014,
+"pick": 1,
+"college": "Kansas"
+},
+{
+"player_id": "parkeja01",
+"name": "Jabari Parker",
+"draft_year": 2014,
+"pick": 2,
+"college": "Duke"
+},
+{
+"player_id": "embiijo01",
+"name": "Joel Embiid",
+"draft_year": 2014,
+"pick": 3,
+"college": "Kansas"
+},
+{
+"player_id": "gordoaa01",
+"name": "Aaron Gordon",
+"draft_year": 2014,
+"pick": 4,
+"college": "Arizona"
+},
+{
+"player_id": "exumda01",
+"name": "Danté Exum",
+"draft_year": 2014,
+"pick": 5,
+"college": "International"
+},
+{
+"player_id": "smartma01",
+"name": "Marcus Smart",
+"draft_year": 2014,
+"pick": 6,
+"college": "Oklahoma State"
+},
+{
+"player_id": "randlju01",
+"name": "Julius Randle",
+"draft_year": 2014,
+"pick": 7,
+"college": "Kentucky"
+},
+{
+"player_id": "stausni01",
+"name": "Nik Stauskas",
+"draft_year": 2014,
+"pick": 8,
+"college": "Michigan"
+},
+{
+"player_id": "vonleno01",
+"name": "Noah Vonleh",
+"draft_year": 2014,
+"pick": 9,
+"college": "Indiana"
+},
+{
+"player_id": "paytoel01",
+"name": "Elfrid Payton",
+"draft_year": 2014,
+"pick": 10,
+"college": "Louisiana"
+},
+{
+"player_id": "mcderdo01",
+"name": "Doug McDermott",
+"draft_year": 2014,
+"pick": 11,
+"college": "Creighton"
+},
+{
+"player_id": "saricda01",
+"name": "Dario Šarić",
+"draft_year": 2014,
+"pick": 12,
+"college": "International"
+},
+{
+"player_id": "lavinza01",
+"name": "Zach LaVine",
+"draft_year": 2014,
+"pick": 13,
+"college": "UCLA"
+},
+{
+"player_id": "warretj01",
+"name": "T.J. Warren",
+"draft_year": 2014,
+"pick": 14,
+"college": "NC State"
+},
+{
+"player_id": "paynead01",
+"name": "Adreian Payne",
+"draft_year": 2014,
+"pick": 15,
+"college": "Michigan State"
+},
+{
+"player_id": "nurkiju01",
+"name": "Jusuf Nurkić",
+"draft_year": 2014,
+"pick": 16,
+"college": "International"
+},
+{
+"player_id": "youngja01",
+"name": "James Young",
+"draft_year": 2014,
+"pick": 17,
+"college": "Kentucky"
+},
+{
+"player_id": "ennisty01",
+"name": "Tyler Ennis",
+"draft_year": 2014,
+"pick": 18,
+"college": "Syracuse"
+},
+{
+"player_id": "harriga01",
+"name": "Gary Harris",
+"draft_year": 2014,
+"pick": 19,
+"college": "Michigan State"
+},
+{
+"player_id": "cabocbr01",
+"name": "Bruno Caboclo",
+"draft_year": 2014,
+"pick": 20,
+"college": "International"
+},
+{
+"player_id": "mcgarmi01",
+"name": "Mitch McGary",
+"draft_year": 2014,
+"pick": 21,
+"college": "Michigan"
+},
+{
+"player_id": "adamsjo01",
+"name": "Jordan Adams",
+"draft_year": 2014,
+"pick": 22,
+"college": "UCLA"
+},
+{
+"player_id": "hoodro01",
+"name": "Rodney Hood",
+"draft_year": 2014,
+"pick": 23,
+"college": "Duke"
+},
+{
+"player_id": "napiesh01",
+"name": "Shabazz Napier",
+"draft_year": 2014,
+"pick": 24,
+"college": "UConn"
+},
+{
+"player_id": "capelca01",
+"name": "Clint Capela",
+"draft_year": 2014,
+"pick": 25,
+"college": "International"
+},
+{
+"player_id": "hairspj02",
+"name": "P.J. Hairston",
+"draft_year": 2014,
+"pick": 26,
+"college": "UNC"
+},
+{
+"player_id": "bogdabo01",
+"name": "Bogdan Bogdanović",
+"draft_year": 2014,
+"pick": 27,
+"college": "International"
+},
+{
+"player_id": "wilcocj01",
+"name": "C.J. Wilcox",
+"draft_year": 2014,
+"pick": 28,
+"college": "Washington"
+},
+{
+"player_id": "huestjo01",
+"name": "Josh Huestis",
+"draft_year": 2014,
+"pick": 29,
+"college": "Stanford"
+},
+{
+"player_id": "anderky01",
+"name": "Kyle Anderson",
+"draft_year": 2014,
+"pick": 30,
+"college": "UCLA"
+},
+{
+"player_id": "inglida01",
+"name": "Damien Inglis",
+"draft_year": 2014,
+"pick": 31,
+"college": "International"
+},
+{
+"player_id": "mcdankj01",
+"name": "K.J. McDaniels",
+"draft_year": 2014,
+"pick": 32,
+"college": "Clemson"
+},
+{
+"player_id": "harrijo01",
+"name": "Joe Harris",
+"draft_year": 2014,
+"pick": 33,
+"college": "Virginia"
+},
+{
+"player_id": "earlycl01",
+"name": "Cleanthony Early",
+"draft_year": 2014,
+"pick": 34,
+"college": "Wichita State"
+},
+{
+"player_id": "stokeja01",
+"name": "Jarnell Stokes",
+"draft_year": 2014,
+"pick": 35,
+"college": "Tennessee"
+},
+{
+"player_id": "obryajo01",
+"name": "Johnny O'Bryant",
+"draft_year": 2014,
+"pick": 36,
+"college": "LSU"
+},
+{
+"player_id": "daniede01",
+"name": "DeAndre Daniels",
+"draft_year": 2014,
+"pick": 37,
+"college": "UConn"
+},
+{
+"player_id": "dinwisp01",
+"name": "Spencer Dinwiddie",
+"draft_year": 2014,
+"pick": 38,
+"college": "Colorado"
+},
+{
+"player_id": "grantje01",
+"name": "Jerami Grant",
+"draft_year": 2014,
+"pick": 39,
+"college": "Syracuse"
+},
+{
+"player_id": "robingl02",
+"name": "Glenn Robinson III",
+"draft_year": 2014,
+"pick": 40,
+"college": "Michigan"
+},
+{
+"player_id": "jokicni01",
+"name": "Nikola Jokić",
+"draft_year": 2014,
+"pick": 41,
+"college": "International"
+},
+{
+"player_id": "johnsni01",
+"name": "Nick Johnson",
+"draft_year": 2014,
+"pick": 42,
+"college": "Arizona"
+},
+{
+"player_id": "tavarwa01",
+"name": "Edy Tavares",
+"draft_year": 2014,
+"pick": 43,
+"college": "International"
+},
+{
+"player_id": "brownma02",
+"name": "Markel Brown",
+"draft_year": 2014,
+"pick": 44,
+"college": "Oklahoma State"
+},
+{
+"player_id": "poweldw01",
+"name": "Dwight Powell",
+"draft_year": 2014,
+"pick": 45,
+"college": "Stanford"
+},
+{
+"player_id": "clarkjo01",
+"name": "Jordan Clarkson",
+"draft_year": 2014,
+"pick": 46,
+"college": "Missouri"
+},
+{
+"player_id": "smithru01",
+"name": "Russ Smith",
+"draft_year": 2014,
+"pick": 47,
+"college": "Louisville"
+},
+{
+"player_id": "pattela01",
+"name": "Lamar Patterson",
+"draft_year": 2014,
+"pick": 48,
+"college": "Pitt"
+},
+{
+"player_id": "bairsca01",
+"name": "Cameron Bairstow",
+"draft_year": 2014,
+"pick": 49,
+"college": "New Mexico"
+},
+{
+"player_id": "brownal01",
+"name": "Alec Brown",
+"draft_year": 2014,
+"pick": 50,
+"college": "Green Bay"
+},
+{
+"player_id": "antetth01",
+"name": "Thanasis Antetokounmpo",
+"draft_year": 2014,
+"pick": 51,
+"college": "International"
+},
+{
+"player_id": "micicva01",
+"name": "Vasilije Micić",
+"draft_year": 2014,
+"pick": 52,
+"college": "International"
+},
+{
+"player_id": "gential01",
+"name": "Alessandro Gentile",
+"draft_year": 2014,
+"pick": 53,
+"college": "International"
+},
+{
+"player_id": "dangune01",
+"name": "Nemanja Dangubić",
+"draft_year": 2014,
+"pick": 54,
+"college": "International"
+},
+{
+"player_id": "chrisse01",
+"name": "Semaj Christon",
+"draft_year": 2014,
+"pick": 55,
+"college": "Xavier"
+},
+{
+"player_id": "marblde01",
+"name": "Devyn Marble",
+"draft_year": 2014,
+"pick": 56,
+"college": "Iowa"
+},
+{
+"player_id": "labeylo01",
+"name": "Louis Labeyrie",
+"draft_year": 2014,
+"pick": 57,
+"college": "International"
+},
+{
+"player_id": "mcraejo01",
+"name": "Jordan McRae",
+"draft_year": 2014,
+"pick": 58,
+"college": "Tennessee"
+},
+{
+"player_id": "thamexa01",
+"name": "Xavier Thames",
+"draft_year": 2014,
+"pick": 59,
+"college": "San Diego State"
+},
+{
+"player_id": "jeffeco01",
+"name": "Cory Jefferson",
+"draft_year": 2014,
+"pick": 60,
+"college": "Baylor"
+},
+{
+"player_id": "townska01",
+"name": "Karl-Anthony Towns",
+"draft_year": 2015,
+"pick": 1,
+"college": "Kentucky"
+},
+{
+"player_id": "russeda01",
+"name": "D'Angelo Russell",
+"draft_year": 2015,
+"pick": 2,
+"college": "Ohio State"
+},
+{
+"player_id": "okafoja01",
+"name": "Jahlil Okafor",
+"draft_year": 2015,
+"pick": 3,
+"college": "Duke"
+},
+{
+"player_id": "porzikr01",
+"name": "Kristaps Porziņģis",
+"draft_year": 2015,
+"pick": 4,
+"college": "International"
+},
+{
+"player_id": "hezonma01",
+"name": "Mario Hezonja",
+"draft_year": 2015,
+"pick": 5,
+"college": "International"
+},
+{
+"player_id": "caulewi01",
+"name": "Willie Cauley-Stein",
+"draft_year": 2015,
+"pick": 6,
+"college": "Kentucky"
+},
+{
+"player_id": "mudiaem01",
+"name": "Emmanuel Mudiay",
+"draft_year": 2015,
+"pick": 7,
+"college": "International"
+},
+{
+"player_id": "johnsst04",
+"name": "Stanley Johnson",
+"draft_year": 2015,
+"pick": 8,
+"college": "Arizona"
+},
+{
+"player_id": "kaminfr01",
+"name": "Frank Kaminsky",
+"draft_year": 2015,
+"pick": 9,
+"college": "Wisconsin"
+},
+{
+"player_id": "winslju01",
+"name": "Justise Winslow",
+"draft_year": 2015,
+"pick": 10,
+"college": "Duke"
+},
+{
+"player_id": "turnemy01",
+"name": "Myles Turner",
+"draft_year": 2015,
+"pick": 11,
+"college": "Texas"
+},
+{
+"player_id": "lylestr01",
+"name": "Trey Lyles",
+"draft_year": 2015,
+"pick": 12,
+"college": "Kentucky"
+},
+{
+"player_id": "bookede01",
+"name": "Devin Booker",
+"draft_year": 2015,
+"pick": 13,
+"college": "Kentucky"
+},
+{
+"player_id": "payneca01",
+"name": "Cameron Payne",
+"draft_year": 2015,
+"pick": 14,
+"college": "Murray State"
+},
+{
+"player_id": "oubreke01",
+"name": "Kelly Oubre Jr.",
+"draft_year": 2015,
+"pick": 15,
+"college": "Kansas"
+},
+{
+"player_id": "roziete01",
+"name": "Terry Rozier",
+"draft_year": 2015,
+"pick": 16,
+"college": "Louisville"
+},
+{
+"player_id": "vaughra01",
+"name": "Rashad Vaughn",
+"draft_year": 2015,
+"pick": 17,
+"college": "UNLV"
+},
+{
+"player_id": "dekkesa01",
+"name": "Sam Dekker",
+"draft_year": 2015,
+"pick": 18,
+"college": "Wisconsin"
+},
+{
+"player_id": "grantje02",
+"name": "Jerian Grant",
+"draft_year": 2015,
+"pick": 19,
+"college": "Notre Dame"
+},
+{
+"player_id": "wrighde01",
+"name": "Delon Wright",
+"draft_year": 2015,
+"pick": 20,
+"college": "Utah"
+},
+{
+"player_id": "anderju01",
+"name": "Justin Anderson",
+"draft_year": 2015,
+"pick": 21,
+"college": "Virginia"
+},
+{
+"player_id": "portibo01",
+"name": "Bobby Portis",
+"draft_year": 2015,
+"pick": 22,
+"college": "Arkansas"
+},
+{
+"player_id": "holliro01",
+"name": "Rondae Hollis-Jefferson",
+"draft_year": 2015,
+"pick": 23,
+"college": "Arizona"
+},
+{
+"player_id": "jonesty01",
+"name": "Tyus Jones",
+"draft_year": 2015,
+"pick": 24,
+"college": "Duke"
+},
+{
+"player_id": "martija01",
+"name": "Jarell Martin",
+"draft_year": 2015,
+"pick": 25,
+"college": "LSU"
+},
+{
+"player_id": "milutni01",
+"name": "Nikola Milutinov",
+"draft_year": 2015,
+"pick": 26,
+"college": "International"
+},
+{
+"player_id": "nancela02",
+"name": "Larry Nance Jr.",
+"draft_year": 2015,
+"pick": 27,
+"college": "Wyoming"
+},
+{
+"player_id": "hunterj01",
+"name": "R.J. Hunter",
+"draft_year": 2015,
+"pick": 28,
+"college": "Georgia State University"
+},
+{
+"player_id": "mcculch01",
+"name": "Chris McCullough",
+"draft_year": 2015,
+"pick": 29,
+"college": "Syracuse"
+},
+{
+"player_id": "looneke01",
+"name": "Kevon Looney",
+"draft_year": 2015,
+"pick": 30,
+"college": "UCLA"
+},
+{
+"player_id": "osmande01",
+"name": "Cedi Osman",
+"draft_year": 2015,
+"pick": 31,
+"college": "International"
+},
+{
+"player_id": "harremo01",
+"name": "Montrezl Harrell",
+"draft_year": 2015,
+"pick": 32,
+"college": "Louisville"
+},
+{
+"player_id": "mickejo01",
+"name": "Jordan Mickey",
+"draft_year": 2015,
+"pick": 33,
+"college": "LSU"
+},
+{
+"player_id": "brownan02",
+"name": "Anthony Brown",
+"draft_year": 2015,
+"pick": 34,
+"college": "Stanford"
+},
+{
+"player_id": "hernawi01",
+"name": "Willy Hernangómez",
+"draft_year": 2015,
+"pick": 35,
+"college": "International"
+},
+{
+"player_id": "chrisra01",
+"name": "Rakeem Christmas",
+"draft_year": 2015,
+"pick": 36,
+"college": "Syracuse"
+},
+{
+"player_id": "holmeri01",
+"name": "Richaun Holmes",
+"draft_year": 2015,
+"pick": 37,
+"college": "Bowling Green"
+},
+{
+"player_id": "hillida01",
+"name": "Darrun Hilliard",
+"draft_year": 2015,
+"pick": 38,
+"college": "Villanova"
+},
+{
+"player_id": "vauleju01",
+"name": "Juan Pablo Vaulet",
+"draft_year": 2015,
+"pick": 39,
+"college": "International"
+},
+{
+"player_id": "richajo01",
+"name": "Josh Richardson",
+"draft_year": 2015,
+"pick": 40,
+"college": "Tennessee"
+},
+{
+"player_id": "connapa01",
+"name": "Pat Connaughton",
+"draft_year": 2015,
+"pick": 41,
+"college": "Notre Dame"
+},
+{
+"player_id": "hanlaol01",
+"name": "Olivier Hanlan",
+"draft_year": 2015,
+"pick": 42,
+"college": "Boston College"
+},
+{
+"player_id": "youngjo01",
+"name": "Joe Young",
+"draft_year": 2015,
+"pick": 43,
+"college": "Oregon"
+},
+{
+"player_id": "harrian01",
+"name": "Andrew Harrison",
+"draft_year": 2015,
+"pick": 44,
+"college": "Kentucky"
+},
+{
+"player_id": "thornma02",
+"name": "Marcus Thornton",
+"draft_year": 2015,
+"pick": 45,
+"college": "William & Mary"
+},
+{
+"player_id": "powelno01",
+"name": "Norman Powell",
+"draft_year": 2015,
+"pick": 46,
+"college": "UCLA"
+},
+{
+"player_id": "gudaiar01",
+"name": "Artūras Gudaitis",
+"draft_year": 2015,
+"pick": 47,
+"college": "International"
+},
+{
+"player_id": "johnsda04",
+"name": "Dakari Johnson",
+"draft_year": 2015,
+"pick": 48,
+"college": "Kentucky"
+},
+{
+"player_id": "whiteaa01",
+"name": "Aaron White",
+"draft_year": 2015,
+"pick": 49,
+"college": "Iowa"
+},
+{
+"player_id": "eriksma01",
+"name": "Marcus Eriksson",
+"draft_year": 2015,
+"pick": 50,
+"college": "International"
+},
+{
+"player_id": "harvety01",
+"name": "Tyler Harvey",
+"draft_year": 2015,
+"pick": 51,
+"college": "Eastern Washington"
+},
+{
+"player_id": "singhsa01",
+"name": "Satnam Singh",
+"draft_year": 2015,
+"pick": 52,
+"college": "International"
+},
+{
+"player_id": "pointsi01",
+"name": "Sir'Dominic Pointer",
+"draft_year": 2015,
+"pick": 53,
+"college": "St. John's"
+},
+{
+"player_id": "diezda01",
+"name": "Dani Díez",
+"draft_year": 2015,
+"pick": 54,
+"college": "International"
+},
+{
+"player_id": "lalanca01",
+"name": "Cady Lalanne",
+"draft_year": 2015,
+"pick": 55,
+"college": "UMass"
+},
+{
+"player_id": "dawsobr01",
+"name": "Branden Dawson",
+"draft_year": 2015,
+"pick": 56,
+"college": "Michigan State"
+},
+{
+"player_id": "radicni01",
+"name": "Nikola Radičević",
+"draft_year": 2015,
+"pick": 57,
+"college": "International"
+},
+{
+"player_id": "tokotjp01",
+"name": "J.P. Tokoto",
+"draft_year": 2015,
+"pick": 58,
+"college": "UNC"
+},
+{
+"player_id": "agravdi01",
+"name": "Dimitrios Agravanis",
+"draft_year": 2015,
+"pick": 59,
+"college": "International"
+},
+{
+"player_id": "mitrolu01",
+"name": "Luka Mitrović",
+"draft_year": 2015,
+"pick": 60,
+"college": "International"
+},
+{
+"player_id": "simmobe01",
+"name": "Ben Simmons",
+"draft_year": 2016,
+"pick": 1,
+"college": "LSU"
+},
+{
+"player_id": "ingrabr01",
+"name": "Brandon Ingram",
+"draft_year": 2016,
+"pick": 2,
+"college": "Duke"
+},
+{
+"player_id": "brownja02",
+"name": "Jaylen Brown",
+"draft_year": 2016,
+"pick": 3,
+"college": "California"
+},
+{
+"player_id": "bendedr01",
+"name": "Dragan Bender",
+"draft_year": 2016,
+"pick": 4,
+"college": "International"
+},
+{
+"player_id": "dunnkr01",
+"name": "Kris Dunn",
+"draft_year": 2016,
+"pick": 5,
+"college": "Providence"
+},
+{
+"player_id": "hieldbu01",
+"name": "Buddy Hield",
+"draft_year": 2016,
+"pick": 6,
+"college": "Oklahoma"
+},
+{
+"player_id": "murraja01",
+"name": "Jamal Murray",
+"draft_year": 2016,
+"pick": 7,
+"college": "Kentucky"
+},
+{
+"player_id": "chrisma01",
+"name": "Marquese Chriss",
+"draft_year": 2016,
+"pick": 8,
+"college": "Washington"
+},
+{
+"player_id": "poeltja01",
+"name": "Jakob Poeltl",
+"draft_year": 2016,
+"pick": 9,
+"college": "Utah"
+},
+{
+"player_id": "makerth01",
+"name": "Thon Maker",
+"draft_year": 2016,
+"pick": 10,
+"college": "International"
+},
+{
+"player_id": "sabondo01",
+"name": "Domantas Sabonis",
+"draft_year": 2016,
+"pick": 11,
+"college": "Gonzaga"
+},
+{
+"player_id": "princta02",
+"name": "Taurean Prince",
+"draft_year": 2016,
+"pick": 12,
+"college": "Baylor"
+},
+{
+"player_id": "papagge01",
+"name": "Georgios Papagiannis",
+"draft_year": 2016,
+"pick": 13,
+"college": "International"
+},
+{
+"player_id": "valende01",
+"name": "Denzel Valentine",
+"draft_year": 2016,
+"pick": 14,
+"college": "Michigan State"
+},
+{
+"player_id": "hernaju01",
+"name": "Juancho Hernangómez",
+"draft_year": 2016,
+"pick": 15,
+"college": "International"
+},
+{
+"player_id": "yabusgu01",
+"name": "Guerschon Yabusele",
+"draft_year": 2016,
+"pick": 16,
+"college": "International"
+},
+{
+"player_id": "baldwwa01",
+"name": "Wade Baldwin",
+"draft_year": 2016,
+"pick": 17,
+"college": "Vanderbilt"
+},
+{
+"player_id": "ellenhe01",
+"name": "Henry Ellenson",
+"draft_year": 2016,
+"pick": 18,
+"college": "Marquette"
+},
+{
+"player_id": "beaslma01",
+"name": "Malik Beasley",
+"draft_year": 2016,
+"pick": 19,
+"college": "Florida State"
+},
+{
+"player_id": "leverca01",
+"name": "Caris LeVert",
+"draft_year": 2016,
+"pick": 20,
+"college": "Michigan"
+},
+{
+"player_id": "bembrde01",
+"name": "DeAndre' Bembry",
+"draft_year": 2016,
+"pick": 21,
+"college": "Saint Joseph's"
+},
+{
+"player_id": "richama01",
+"name": "Malachi Richardson",
+"draft_year": 2016,
+"pick": 22,
+"college": "Syracuse"
+},
+{
+"player_id": "zizican01",
+"name": "Ante Žižić",
+"draft_year": 2016,
+"pick": 23,
+"college": "International"
+},
+{
+"player_id": "luwawti01",
+"name": "Timothé Luwawu-Cabarrot",
+"draft_year": 2016,
+"pick": 24,
+"college": "International"
+},
+{
+"player_id": "johnsbr02",
+"name": "Brice Johnson",
+"draft_year": 2016,
+"pick": 25,
+"college": "UNC"
+},
+{
+"player_id": "korkmfu01",
+"name": "Furkan Korkmaz",
+"draft_year": 2016,
+"pick": 26,
+"college": "International"
+},
+{
+"player_id": "siakapa01",
+"name": "Pascal Siakam",
+"draft_year": 2016,
+"pick": 27,
+"college": "New Mexico State"
+},
+{
+"player_id": "labissk01",
+"name": "Skal Labissière",
+"draft_year": 2016,
+"pick": 28,
+"college": "Kentucky"
+},
+{
+"player_id": "murrade01",
+"name": "Dejounte Murray",
+"draft_year": 2016,
+"pick": 29,
+"college": "Washington"
+},
+{
+"player_id": "jonesda03",
+"name": "Damian Jones",
+"draft_year": 2016,
+"pick": 30,
+"college": "Vanderbilt"
+},
+{
+"player_id": "davisde01",
+"name": "Deyonta Davis",
+"draft_year": 2016,
+"pick": 31,
+"college": "Michigan State"
+},
+{
+"player_id": "zubaciv01",
+"name": "Ivica Zubac",
+"draft_year": 2016,
+"pick": 32,
+"college": "International"
+},
+{
+"player_id": "diallch01",
+"name": "Cheick Diallo",
+"draft_year": 2016,
+"pick": 33,
+"college": "Kansas"
+},
+{
+"player_id": "ulisty01",
+"name": "Tyler Ulis",
+"draft_year": 2016,
+"pick": 34,
+"college": "Kentucky"
+},
+{
+"player_id": "zagorra01",
+"name": "Rade Zagorac",
+"draft_year": 2016,
+"pick": 35,
+"college": "International"
+},
+{
+"player_id": "brogdma01",
+"name": "Malcolm Brogdon",
+"draft_year": 2016,
+"pick": 36,
+"college": "Virginia"
+},
+{
+"player_id": "onuakch01",
+"name": "Chinanu Onuaku",
+"draft_year": 2016,
+"pick": 37,
+"college": "Louisville"
+},
+{
+"player_id": "mccawpa01",
+"name": "Patrick McCaw",
+"draft_year": 2016,
+"pick": 38,
+"college": "UNLV"
+},
+{
+"player_id": "michida01",
+"name": "David Michineau",
+"draft_year": 2016,
+"pick": 39,
+"college": "International"
+},
+{
+"player_id": "stonedi01",
+"name": "Diamond Stone",
+"draft_year": 2016,
+"pick": 40,
+"college": "Maryland"
+},
+{
+"player_id": "zimmest01",
+"name": "Stephen Zimmerman",
+"draft_year": 2016,
+"pick": 41,
+"college": "UNLV"
+},
+{
+"player_id": "whiteis01",
+"name": "Isaiah Whitehead",
+"draft_year": 2016,
+"pick": 42,
+"college": "Seton Hall"
+},
+{
+"player_id": "qizh01",
+"name": "Zhou Qi",
+"draft_year": 2016,
+"pick": 43,
+"college": "International"
+},
+{
+"player_id": "cordiis01",
+"name": "Isaïa Cordinier",
+"draft_year": 2016,
+"pick": 44,
+"college": "International"
+},
+{
+"player_id": "jacksde01",
+"name": "Demetrius Jackson",
+"draft_year": 2016,
+"pick": 45,
+"college": "Notre Dame"
+},
+{
+"player_id": "hammoaj01",
+"name": "A.J. Hammons",
+"draft_year": 2016,
+"pick": 46,
+"college": "Purdue"
+},
+{
+"player_id": "laymaja01",
+"name": "Jake Layman",
+"draft_year": 2016,
+"pick": 47,
+"college": "Maryland"
+},
+{
+"player_id": "zipsepa01",
+"name": "Paul Zipser",
+"draft_year": 2016,
+"pick": 48,
+"college": "International"
+},
+{
+"player_id": "gbinimi01",
+"name": "Michael Gbinije",
+"draft_year": 2016,
+"pick": 49,
+"college": "Syracuse"
+},
+{
+"player_id": "niangge01",
+"name": "Georges Niang",
+"draft_year": 2016,
+"pick": 50,
+"college": "Iowa State"
+},
+{
+"player_id": "bentibe01",
+"name": "Ben Bentil",
+"draft_year": 2016,
+"pick": 51,
+"college": "Providence"
+},
+{
+"player_id": "bolomjo01",
+"name": "Joel Bolomboy",
+"draft_year": 2016,
+"pick": 52,
+"college": "Weber State"
+},
+{
+"player_id": "cornepe01",
+"name": "Petr Cornelie",
+"draft_year": 2016,
+"pick": 53,
+"college": "International"
+},
+{
+"player_id": "feldeka01",
+"name": "Kay Felder",
+"draft_year": 2016,
+"pick": 54,
+"college": "Oakland"
+},
+{
+"player_id": "paigema01",
+"name": "Marcus Paige",
+"draft_year": 2016,
+"pick": 55,
+"college": "UNC"
+},
+{
+"player_id": "hamilda02",
+"name": "Daniel Hamilton",
+"draft_year": 2016,
+"pick": 56,
+"college": "UConn"
+},
+{
+"player_id": "sheliwa01",
+"name": "Wang Zhelin",
+"draft_year": 2016,
+"pick": 57,
+"college": "International"
+},
+{
+"player_id": "naderab01",
+"name": "Abdel Nader",
+"draft_year": 2016,
+"pick": 58,
+"college": "Iowa State"
+},
+{
+"player_id": "cousiis01",
+"name": "Isaiah Cousins",
+"draft_year": 2016,
+"pick": 59,
+"college": "Oklahoma"
+},
+{
+"player_id": "wallaty01",
+"name": "Tyrone Wallace",
+"draft_year": 2016,
+"pick": 60,
+"college": "California"
+},
+{
+"player_id": "fultzma01",
+"name": "Markelle Fultz",
+"draft_year": 2017,
+"pick": 1,
+"college": "Washington"
+},
+{
+"player_id": "balllo01",
+"name": "Lonzo Ball",
+"draft_year": 2017,
+"pick": 2,
+"college": "UCLA"
+},
+{
+"player_id": "tatumja01",
+"name": "Jayson Tatum",
+"draft_year": 2017,
+"pick": 3,
+"college": "Duke"
+},
+{
+"player_id": "jacksjo02",
+"name": "Josh Jackson",
+"draft_year": 2017,
+"pick": 4,
+"college": "Kansas"
+},
+{
+"player_id": "foxde01",
+"name": "De'Aaron Fox",
+"draft_year": 2017,
+"pick": 5,
+"college": "Kentucky"
+},
+{
+"player_id": "isaacjo01",
+"name": "Jonathan Isaac",
+"draft_year": 2017,
+"pick": 6,
+"college": "Florida State"
+},
+{
+"player_id": "markkla01",
+"name": "Lauri Markkanen",
+"draft_year": 2017,
+"pick": 7,
+"college": "Arizona"
+},
+{
+"player_id": "ntilila01",
+"name": "Frank Ntilikina",
+"draft_year": 2017,
+"pick": 8,
+"college": "International"
+},
+{
+"player_id": "smithde03",
+"name": "Dennis Smith Jr.",
+"draft_year": 2017,
+"pick": 9,
+"college": "NC State"
+},
+{
+"player_id": "colliza01",
+"name": "Zach Collins",
+"draft_year": 2017,
+"pick": 10,
+"college": "Gonzaga"
+},
+{
+"player_id": "monkma01",
+"name": "Malik Monk",
+"draft_year": 2017,
+"pick": 11,
+"college": "Kentucky"
+},
+{
+"player_id": "kennalu01",
+"name": "Luke Kennard",
+"draft_year": 2017,
+"pick": 12,
+"college": "Duke"
+},
+{
+"player_id": "mitchdo01",
+"name": "Donovan Mitchell",
+"draft_year": 2017,
+"pick": 13,
+"college": "Louisville"
+},
+{
+"player_id": "adebaba01",
+"name": "Bam Adebayo",
+"draft_year": 2017,
+"pick": 14,
+"college": "Kentucky"
+},
+{
+"player_id": "jacksju01",
+"name": "Justin Jackson",
+"draft_year": 2017,
+"pick": 15,
+"college": "UNC"
+},
+{
+"player_id": "pattoju01",
+"name": "Justin Patton",
+"draft_year": 2017,
+"pick": 16,
+"college": "Creighton"
+},
+{
+"player_id": "wilsodj01",
+"name": "D.J. Wilson",
+"draft_year": 2017,
+"pick": 17,
+"college": "Michigan"
+},
+{
+"player_id": "leaftj01",
+"name": "T.J. Leaf",
+"draft_year": 2017,
+"pick": 18,
+"college": "UCLA"
+},
+{
+"player_id": "collijo01",
+"name": "John Collins",
+"draft_year": 2017,
+"pick": 19,
+"college": "Wake Forest"
+},
+{
+"player_id": "gilesha01",
+"name": "Harry Giles",
+"draft_year": 2017,
+"pick": 20,
+"college": "Duke"
+},
+{
+"player_id": "fergute01",
+"name": "Terrance Ferguson",
+"draft_year": 2017,
+"pick": 21,
+"college": "International"
+},
+{
+"player_id": "allenja01",
+"name": "Jarrett Allen",
+"draft_year": 2017,
+"pick": 22,
+"college": "Texas"
+},
+{
+"player_id": "anunoog01",
+"name": "OG Anunoby",
+"draft_year": 2017,
+"pick": 23,
+"college": "Indiana"
+},
+{
+"player_id": "lydonty01",
+"name": "Tyler Lydon",
+"draft_year": 2017,
+"pick": 24,
+"college": "Syracuse"
+},
+{
+"player_id": "pasecan01",
+"name": "Anžejs Pasečņiks",
+"draft_year": 2017,
+"pick": 25,
+"college": "International"
+},
+{
+"player_id": "swanica01",
+"name": "Caleb Swanigan",
+"draft_year": 2017,
+"pick": 26,
+"college": "Purdue"
+},
+{
+"player_id": "kuzmaky01",
+"name": "Kyle Kuzma",
+"draft_year": 2017,
+"pick": 27,
+"college": "Utah"
+},
+{
+"player_id": "bradlto01",
+"name": "Tony Bradley",
+"draft_year": 2017,
+"pick": 28,
+"college": "UNC"
+},
+{
+"player_id": "whitede01",
+"name": "Derrick White",
+"draft_year": 2017,
+"pick": 29,
+"college": "Colorado"
+},
+{
+"player_id": "hartjo01",
+"name": "Josh Hart",
+"draft_year": 2017,
+"pick": 30,
+"college": "Villanova"
+},
+{
+"player_id": "jacksfr01",
+"name": "Frank Jackson",
+"draft_year": 2017,
+"pick": 31,
+"college": "Duke"
+},
+{
+"player_id": "reedda01",
+"name": "Davon Reed",
+"draft_year": 2017,
+"pick": 32,
+"college": "Miami (FL)"
+},
+{
+"player_id": "iwundwe01",
+"name": "Wes Iwundu",
+"draft_year": 2017,
+"pick": 33,
+"college": "Kansas State"
+},
+{
+"player_id": "masonfr01",
+"name": "Frank Mason III",
+"draft_year": 2017,
+"pick": 34,
+"college": "Kansas"
+},
+{
+"player_id": "rabbiv01",
+"name": "Ivan Rabb",
+"draft_year": 2017,
+"pick": 35,
+"college": "California"
+},
+{
+"player_id": "boldejo01",
+"name": "Jonah Bolden",
+"draft_year": 2017,
+"pick": 36,
+"college": "International"
+},
+{
+"player_id": "ojelese01",
+"name": "Semi Ojeleye",
+"draft_year": 2017,
+"pick": 37,
+"college": "SMU"
+},
+{
+"player_id": "belljo01",
+"name": "Jordan Bell",
+"draft_year": 2017,
+"pick": 38,
+"college": "Oregon"
+},
+{
+"player_id": "evansja01",
+"name": "Jawun Evans",
+"draft_year": 2017,
+"pick": 39,
+"college": "Oklahoma State"
+},
+{
+"player_id": "bacondw01",
+"name": "Dwayne Bacon",
+"draft_year": 2017,
+"pick": 40,
+"college": "Florida State"
+},
+{
+"player_id": "dorsety01",
+"name": "Tyler Dorsey",
+"draft_year": 2017,
+"pick": 41,
+"college": "Oregon"
+},
+{
+"player_id": "bryanth01",
+"name": "Thomas Bryant",
+"draft_year": 2017,
+"pick": 42,
+"college": "Indiana"
+},
+{
+"player_id": "harteis01",
+"name": "Isaiah Hartenstein",
+"draft_year": 2017,
+"pick": 43,
+"college": "International"
+},
+{
+"player_id": "dotsoda01",
+"name": "Damyean Dotson",
+"draft_year": 2017,
+"pick": 44,
+"college": "Oregon"
+},
+{
+"player_id": "brookdi01",
+"name": "Dillon Brooks",
+"draft_year": 2017,
+"pick": 45,
+"college": "Oregon"
+},
+{
+"player_id": "brownst02",
+"name": "Sterling Brown",
+"draft_year": 2017,
+"pick": 46,
+"college": "SMU"
+},
+{
+"player_id": "anigbik01",
+"name": "Ike Anigbogu",
+"draft_year": 2017,
+"pick": 47,
+"college": "UCLA"
+},
+{
+"player_id": "thornsi01",
+"name": "Sindarius Thornwell",
+"draft_year": 2017,
+"pick": 48,
+"college": "South Carolina"
+},
+{
+"player_id": "cancavl01",
+"name": "Vlatko Čančar",
+"draft_year": 2017,
+"pick": 49,
+"college": "International"
+},
+{
+"player_id": "lessoma01",
+"name": "Mathias Lessort",
+"draft_year": 2017,
+"pick": 50,
+"college": "International"
+},
+{
+"player_id": "morrimo01",
+"name": "Monte Morris",
+"draft_year": 2017,
+"pick": 51,
+"college": "Iowa State"
+},
+{
+"player_id": "sumneed01",
+"name": "Edmond Sumner",
+"draft_year": 2017,
+"pick": 52,
+"college": "Xavier"
+},
+{
+"player_id": "allenka01",
+"name": "Kadeem Allen",
+"draft_year": 2017,
+"pick": 53,
+"college": "Arizona"
+},
+{
+"player_id": "peteral01",
+"name": "Alec Peters",
+"draft_year": 2017,
+"pick": 54,
+"college": "Valparaiso"
+},
+{
+"player_id": "willini01",
+"name": "Nigel Williams-Goss",
+"draft_year": 2017,
+"pick": 55,
+"college": "Gonzaga"
+},
+{
+"player_id": "birdja01",
+"name": "Jabari Bird",
+"draft_year": 2017,
+"pick": 56,
+"college": "California"
+},
+{
+"player_id": "vezenal01",
+"name": "Sasha Vezenkov",
+"draft_year": 2017,
+"pick": 57,
+"college": "International"
+},
+{
+"player_id": "jaramog01",
+"name": "Ognjen Jaramaz",
+"draft_year": 2017,
+"pick": 58,
+"college": "International"
+},
+{
+"player_id": "blossja01",
+"name": "Jaron Blossomgame",
+"draft_year": 2017,
+"pick": 59,
+"college": "Clemson"
+},
+{
+"player_id": "kabaal01",
+"name": "Alpha Kaba",
+"draft_year": 2017,
+"pick": 60,
+"college": "International"
+},
+{
+"player_id": "aytonde01",
+"name": "Deandre Ayton",
+"draft_year": 2018,
+"pick": 1,
+"college": "Arizona"
+},
+{
+"player_id": "baglema01",
+"name": "Marvin Bagley III",
+"draft_year": 2018,
+"pick": 2,
+"college": "Duke"
+},
+{
+"player_id": "doncilu01",
+"name": "Luka Dončić",
+"draft_year": 2018,
+"pick": 3,
+"college": "International"
+},
+{
+"player_id": "jacksja02",
+"name": "Jaren Jackson Jr.",
+"draft_year": 2018,
+"pick": 4,
+"college": "Michigan State"
+},
+{
+"player_id": "youngtr01",
+"name": "Trae Young",
+"draft_year": 2018,
+"pick": 5,
+"college": "Oklahoma"
+},
+{
+"player_id": "bambamo01",
+"name": "Mo Bamba",
+"draft_year": 2018,
+"pick": 6,
+"college": "Texas"
+},
+{
+"player_id": "cartewe01",
+"name": "Wendell Carter Jr.",
+"draft_year": 2018,
+"pick": 7,
+"college": "Duke"
+},
+{
+"player_id": "sextoco01",
+"name": "Collin Sexton",
+"draft_year": 2018,
+"pick": 8,
+"college": "Alabama"
+},
+{
+"player_id": "knoxke01",
+"name": "Kevin Knox",
+"draft_year": 2018,
+"pick": 9,
+"college": "Kentucky"
+},
+{
+"player_id": "bridgmi01",
+"name": "Mikal Bridges",
+"draft_year": 2018,
+"pick": 10,
+"college": "Villanova"
+},
+{
+"player_id": "gilgesh01",
+"name": "Shai Gilgeous-Alexander",
+"draft_year": 2018,
+"pick": 11,
+"college": "Kentucky"
+},
+{
+"player_id": "bridgmi02",
+"name": "Miles Bridges",
+"draft_year": 2018,
+"pick": 12,
+"college": "Michigan State"
+},
+{
+"player_id": "robinje01",
+"name": "Jerome Robinson",
+"draft_year": 2018,
+"pick": 13,
+"college": "Boston College"
+},
+{
+"player_id": "portemi01",
+"name": "Michael Porter Jr.",
+"draft_year": 2018,
+"pick": 14,
+"college": "Missouri"
+},
+{
+"player_id": "browntr01",
+"name": "Troy Brown Jr.",
+"draft_year": 2018,
+"pick": 15,
+"college": "Oregon"
+},
+{
+"player_id": "smithzh01",
+"name": "Zhaire Smith",
+"draft_year": 2018,
+"pick": 16,
+"college": "Texas Tech"
+},
+{
+"player_id": "divindo01",
+"name": "Donte DiVincenzo",
+"draft_year": 2018,
+"pick": 17,
+"college": "Villanova"
+},
+{
+"player_id": "walkelo01",
+"name": "Lonnie Walker IV",
+"draft_year": 2018,
+"pick": 18,
+"college": "Miami (FL)"
+},
+{
+"player_id": "huertke01",
+"name": "Kevin Huerter",
+"draft_year": 2018,
+"pick": 19,
+"college": "Maryland"
+},
+{
+"player_id": "okogijo01",
+"name": "Josh Okogie",
+"draft_year": 2018,
+"pick": 20,
+"college": "Georgia Tech"
+},
+{
+"player_id": "allengr01",
+"name": "Grayson Allen",
+"draft_year": 2018,
+"pick": 21,
+"college": "Duke"
+},
+{
+"player_id": "hutchch01",
+"name": "Chandler Hutchison",
+"draft_year": 2018,
+"pick": 22,
+"college": "Boise State"
+},
+{
+"player_id": "holidaa01",
+"name": "Aaron Holiday",
+"draft_year": 2018,
+"pick": 23,
+"college": "UCLA"
+},
+{
+"player_id": "simonan01",
+"name": "Anfernee Simons",
+"draft_year": 2018,
+"pick": 24,
+"college": "International"
+},
+{
+"player_id": "wagnemo01",
+"name": "Moritz Wagner",
+"draft_year": 2018,
+"pick": 25,
+"college": "Michigan"
+},
+{
+"player_id": "shamela01",
+"name": "Landry Shamet",
+"draft_year": 2018,
+"pick": 26,
+"college": "Wichita State"
+},
+{
+"player_id": "williro04",
+"name": "Robert Williams",
+"draft_year": 2018,
+"pick": 27,
+"college": "Texas A&M"
+},
+{
+"player_id": "evansja02",
+"name": "Jacob Evans",
+"draft_year": 2018,
+"pick": 28,
+"college": "Cincinnati"
+},
+{
+"player_id": "musadz01",
+"name": "Džanan Musa",
+"draft_year": 2018,
+"pick": 29,
+"college": "International"
+},
+{
+"player_id": "spellom01",
+"name": "Omari Spellman",
+"draft_year": 2018,
+"pick": 30,
+"college": "Villanova"
+},
+{
+"player_id": "okoboel01",
+"name": "Elie Okobo",
+"draft_year": 2018,
+"pick": 31,
+"college": "International"
+},
+{
+"player_id": "carteje01",
+"name": "Jevon Carter",
+"draft_year": 2018,
+"pick": 32,
+"college": "West Virginia"
+},
+{
+"player_id": "brunsja01",
+"name": "Jalen Brunson",
+"draft_year": 2018,
+"pick": 33,
+"college": "Villanova"
+},
+{
+"player_id": "grahade01",
+"name": "Devonte' Graham",
+"draft_year": 2018,
+"pick": 34,
+"college": "Kansas"
+},
+{
+"player_id": "frazime01",
+"name": "Melvin Frazier",
+"draft_year": 2018,
+"pick": 35,
+"college": "Tulane"
+},
+{
+"player_id": "robinmi01",
+"name": "Mitchell Robinson",
+"draft_year": 2018,
+"pick": 36,
+"college": "International"
+},
+{
+"player_id": "trentga02",
+"name": "Gary Trent Jr.",
+"draft_year": 2018,
+"pick": 37,
+"college": "Duke"
+},
+{
+"player_id": "thomakh01",
+"name": "Khyri Thomas",
+"draft_year": 2018,
+"pick": 38,
+"college": "Creighton"
+},
+{
+"player_id": "bongais01",
+"name": "Isaac Bonga",
+"draft_year": 2018,
+"pick": 39,
+"college": "International"
+},
+{
+"player_id": "kurucro01",
+"name": "Rodions Kurucs",
+"draft_year": 2018,
+"pick": 40,
+"college": "International"
+},
+{
+"player_id": "vandeja01",
+"name": "Jarred Vanderbilt",
+"draft_year": 2018,
+"pick": 41,
+"college": "Kentucky"
+},
+{
+"player_id": "brownbr01",
+"name": "Bruce Brown",
+"draft_year": 2018,
+"pick": 42,
+"college": "Miami (FL)"
+},
+{
+"player_id": "jacksju02",
+"name": "Justin Jackson",
+"draft_year": 2018,
+"pick": 43,
+"college": "Maryland"
+},
+{
+"player_id": "sanonis01",
+"name": "Issuf Sanon",
+"draft_year": 2018,
+"pick": 44,
+"college": "International"
+},
+{
+"player_id": "diallha01",
+"name": "Hamidou Diallo",
+"draft_year": 2018,
+"pick": 45,
+"college": "Kentucky"
+},
+{
+"player_id": "meltode01",
+"name": "De'Anthony Melton",
+"draft_year": 2018,
+"pick": 46,
+"college": "USC"
+},
+{
+"player_id": "mykhasv01",
+"name": "Svi Mykhailiuk",
+"draft_year": 2018,
+"pick": 47,
+"college": "Kansas"
+},
+{
+"player_id": "bateske01",
+"name": "Keita Bates-Diop",
+"draft_year": 2018,
+"pick": 48,
+"college": "Ohio State"
+},
+{
+"player_id": "metuch01",
+"name": "Chimezie Metu",
+"draft_year": 2018,
+"pick": 49,
+"college": "USC"
+},
+{
+"player_id": "johnsal02",
+"name": "Alize Johnson",
+"draft_year": 2018,
+"pick": 50,
+"college": "Missouri State"
+},
+{
+"player_id": "carrto01",
+"name": "Tony Carr",
+"draft_year": 2018,
+"pick": 51,
+"college": "Penn State"
+},
+{
+"player_id": "edwarvi01",
+"name": "Vince Edwards",
+"draft_year": 2018,
+"pick": 52,
+"college": "Purdue"
+},
+{
+"player_id": "hallde01",
+"name": "Devon Hall",
+"draft_year": 2018,
+"pick": 53,
+"college": "Virginia"
+},
+{
+"player_id": "miltosh01",
+"name": "Shake Milton",
+"draft_year": 2018,
+"pick": 54,
+"college": "SMU"
+},
+{
+"player_id": "kulboar01",
+"name": "Arnoldas Kulboka",
+"draft_year": 2018,
+"pick": 55,
+"college": "International"
+},
+{
+"player_id": "spaldra01",
+"name": "Ray Spalding",
+"draft_year": 2018,
+"pick": 56,
+"college": "Louisville"
+},
+{
+"player_id": "herveke01",
+"name": "Kevin Hervey",
+"draft_year": 2018,
+"pick": 57,
+"college": "UT Arlington"
+},
+{
+"player_id": "welshth01",
+"name": "Thomas Welsh",
+"draft_year": 2018,
+"pick": 58,
+"college": "UCLA"
+},
+{
+"player_id": "kingge03",
+"name": "George King",
+"draft_year": 2018,
+"pick": 59,
+"college": "Colorado"
+},
+{
+"player_id": "antetko01",
+"name": "Kostas Antetokounmpo",
+"draft_year": 2018,
+"pick": 60,
+"college": "Dayton"
+},
+{
+"player_id": "willizi01",
+"name": "Zion Williamson",
+"draft_year": 2019,
+"pick": 1,
+"college": "Duke"
+},
+{
+"player_id": "moranja01",
+"name": "Ja Morant",
+"draft_year": 2019,
+"pick": 2,
+"college": "Murray State"
+},
+{
+"player_id": "barrerj01",
+"name": "RJ Barrett",
+"draft_year": 2019,
+"pick": 3,
+"college": "Duke"
+},
+{
+"player_id": "huntede01",
+"name": "De'Andre Hunter",
+"draft_year": 2019,
+"pick": 4,
+"college": "Virginia"
+},
+{
+"player_id": "garlada01",
+"name": "Darius Garland",
+"draft_year": 2019,
+"pick": 5,
+"college": "Vanderbilt"
+},
+{
+"player_id": "culveja01",
+"name": "Jarrett Culver",
+"draft_year": 2019,
+"pick": 6,
+"college": "Texas Tech"
+},
+{
+"player_id": "whiteco01",
+"name": "Coby White",
+"draft_year": 2019,
+"pick": 7,
+"college": "UNC"
+},
+{
+"player_id": "hayesja02",
+"name": "Jaxson Hayes",
+"draft_year": 2019,
+"pick": 8,
+"college": "Texas"
+},
+{
+"player_id": "hachiru01",
+"name": "Rui Hachimura",
+"draft_year": 2019,
+"pick": 9,
+"college": "Gonzaga"
+},
+{
+"player_id": "reddica01",
+"name": "Cam Reddish",
+"draft_year": 2019,
+"pick": 10,
+"college": "Duke"
+},
+{
+"player_id": "johnsca02",
+"name": "Cameron Johnson",
+"draft_year": 2019,
+"pick": 11,
+"college": "UNC"
+},
+{
+"player_id": "washipj01",
+"name": "P.J. Washington",
+"draft_year": 2019,
+"pick": 12,
+"college": "Kentucky"
+},
+{
+"player_id": "herroty01",
+"name": "Tyler Herro",
+"draft_year": 2019,
+"pick": 13,
+"college": "Kentucky"
+},
+{
+"player_id": "langfro01",
+"name": "Romeo Langford",
+"draft_year": 2019,
+"pick": 14,
+"college": "Indiana"
+},
+{
+"player_id": "doumbse01",
+"name": "Sekou Doumbouya",
+"draft_year": 2019,
+"pick": 15,
+"college": "International"
+},
+{
+"player_id": "okekech01",
+"name": "Chuma Okeke",
+"draft_year": 2019,
+"pick": 16,
+"college": "Auburn"
+},
+{
+"player_id": "alexani01",
+"name": "Nickeil Alexander-Walker",
+"draft_year": 2019,
+"pick": 17,
+"college": "Virginia Tech"
+},
+{
+"player_id": "bitadgo01",
+"name": "Goga Bitadze",
+"draft_year": 2019,
+"pick": 18,
+"college": "International"
+},
+{
+"player_id": "samanlu01",
+"name": "Luka Šamanić",
+"draft_year": 2019,
+"pick": 19,
+"college": "International"
+},
+{
+"player_id": "thybuma01",
+"name": "Matisse Thybulle",
+"draft_year": 2019,
+"pick": 20,
+"college": "Washington"
+},
+{
+"player_id": "clarkbr01",
+"name": "Brandon Clarke",
+"draft_year": 2019,
+"pick": 21,
+"college": "Gonzaga"
+},
+{
+"player_id": "willigr01",
+"name": "Grant Williams",
+"draft_year": 2019,
+"pick": 22,
+"college": "Tennessee"
+},
+{
+"player_id": "bazleda01",
+"name": "Darius Bazley",
+"draft_year": 2019,
+"pick": 23,
+"college": "International"
+},
+{
+"player_id": "jeromty01",
+"name": "Ty Jerome",
+"draft_year": 2019,
+"pick": 24,
+"college": "Virginia"
+},
+{
+"player_id": "littlna01",
+"name": "Nassir Little",
+"draft_year": 2019,
+"pick": 25,
+"college": "UNC"
+},
+{
+"player_id": "windldy01",
+"name": "Dylan Windler",
+"draft_year": 2019,
+"pick": 26,
+"college": "Belmont"
+},
+{
+"player_id": "kabenmf01",
+"name": "Mfiondu Kabengele",
+"draft_year": 2019,
+"pick": 27,
+"college": "Florida State"
+},
+{
+"player_id": "poolejo01",
+"name": "Jordan Poole",
+"draft_year": 2019,
+"pick": 28,
+"college": "Michigan"
+},
+{
+"player_id": "johnske04",
+"name": "Keldon Johnson",
+"draft_year": 2019,
+"pick": 29,
+"college": "Kentucky"
+},
+{
+"player_id": "porteke02",
+"name": "Kevin Porter Jr.",
+"draft_year": 2019,
+"pick": 30,
+"college": "USC"
+},
+{
+"player_id": "claxtni01",
+"name": "Nic Claxton",
+"draft_year": 2019,
+"pick": 31,
+"college": "Georgia"
+},
+{
+"player_id": "okpalkz01",
+"name": "KZ Okpala",
+"draft_year": 2019,
+"pick": 32,
+"college": "Stanford"
+},
+{
+"player_id": "edwarca01",
+"name": "Carsen Edwards",
+"draft_year": 2019,
+"pick": 33,
+"college": "Purdue"
+},
+{
+"player_id": "fernabr01",
+"name": "Bruno Fernando",
+"draft_year": 2019,
+"pick": 34,
+"college": "Maryland"
+},
+{
+"player_id": "louzama01",
+"name": "Didi Louzada",
+"draft_year": 2019,
+"pick": 35,
+"college": "International"
+},
+{
+"player_id": "martico01",
+"name": "Cody Martin",
+"draft_year": 2019,
+"pick": 36,
+"college": "Nevada"
+},
+{
+"player_id": "sirvyde01",
+"name": "Deividas Sirvydis",
+"draft_year": 2019,
+"pick": 37,
+"college": "International"
+},
+{
+"player_id": "gaffoda01",
+"name": "Daniel Gafford",
+"draft_year": 2019,
+"pick": 38,
+"college": "Arkansas"
+},
+{
+"player_id": "smailal01",
+"name": "Alen Smailagić",
+"draft_year": 2019,
+"pick": 39,
+"college": "International"
+},
+{
+"player_id": "jamesju01",
+"name": "Justin James",
+"draft_year": 2019,
+"pick": 40,
+"college": "Wyoming"
+},
+{
+"player_id": "pascher01",
+"name": "Eric Paschall",
+"draft_year": 2019,
+"pick": 41,
+"college": "Villanova"
+},
+{
+"player_id": "schofad01",
+"name": "Admiral Schofield",
+"draft_year": 2019,
+"pick": 42,
+"college": "Tennessee"
+},
+{
+"player_id": "nowelja01",
+"name": "Jaylen Nowell",
+"draft_year": 2019,
+"pick": 43,
+"college": "Washington"
+},
+{
+"player_id": "bolbo01",
+"name": "Bol Bol",
+"draft_year": 2019,
+"pick": 44,
+"college": "Oregon"
+},
+{
+"player_id": "robyis01",
+"name": "Isaiah Roby",
+"draft_year": 2019,
+"pick": 45,
+"college": "Nebraska"
+},
+{
+"player_id": "hortota01",
+"name": "Talen Horton-Tucker",
+"draft_year": 2019,
+"pick": 46,
+"college": "Iowa State"
+},
+{
+"player_id": "brazdig01",
+"name": "Ignas Brazdeikis",
+"draft_year": 2019,
+"pick": 47,
+"college": "Michigan"
+},
+{
+"player_id": "mannte01",
+"name": "Terance Mann",
+"draft_year": 2019,
+"pick": 48,
+"college": "Florida State"
+},
+{
+"player_id": "weathqu01",
+"name": "Quinndary Weatherspoon",
+"draft_year": 2019,
+"pick": 49,
+"college": "Mississippi State"
+},
+{
+"player_id": "brantja01",
+"name": "Jarrell Brantley",
+"draft_year": 2019,
+"pick": 50,
+"college": "College of Charleston"
+},
+{
+"player_id": "watertr01",
+"name": "Tremont Waters",
+"draft_year": 2019,
+"pick": 51,
+"college": "LSU"
+},
+{
+"player_id": "mcdanja01",
+"name": "Jalen McDaniels",
+"draft_year": 2019,
+"pick": 52,
+"college": "San Diego State"
+},
+{
+"player_id": "wrighju02",
+"name": "Justin Wright-Foreman",
+"draft_year": 2019,
+"pick": 53,
+"college": "Hofstra"
+},
+{
+"player_id": "shayoma01",
+"name": "Marial Shayok",
+"draft_year": 2019,
+"pick": 54,
+"college": "Iowa State"
+},
+{
+"player_id": "guyky01",
+"name": "Kyle Guy",
+"draft_year": 2019,
+"pick": 55,
+"college": "Virginia"
+},
+{
+"player_id": "handsja01",
+"name": "Jaylen Hands",
+"draft_year": 2019,
+"pick": 56,
+"college": "UCLA"
+},
+{
+"player_id": "bonejo01",
+"name": "Jordan Bone",
+"draft_year": 2019,
+"pick": 57,
+"college": "Tennessee"
+},
+{
+"player_id": "onimi01",
+"name": "Miye Oni",
+"draft_year": 2019,
+"pick": 58,
+"college": "Yale"
+},
+{
+"player_id": "hernade01",
+"name": "Dewan Hernandez",
+"draft_year": 2019,
+"pick": 59,
+"college": "Miami (FL)"
+},
+{
+"player_id": "marinva01",
+"name": "Vanja Marinković",
+"draft_year": 2019,
+"pick": 60,
+"college": "International"
+},
+{
+"player_id": "edwaran01",
+"name": "Anthony Edwards",
+"draft_year": 2020,
+"pick": 1,
+"college": "Georgia"
+},
+{
+"player_id": "wisemja01",
+"name": "James Wiseman",
+"draft_year": 2020,
+"pick": 2,
+"college": "Memphis"
+},
+{
+"player_id": "ballla01",
+"name": "LaMelo Ball",
+"draft_year": 2020,
+"pick": 3,
+"college": "International"
+},
+{
+"player_id": "willipa01",
+"name": "Patrick Williams",
+"draft_year": 2020,
+"pick": 4,
+"college": "Florida State"
+},
+{
+"player_id": "okorois01",
+"name": "Isaac Okoro",
+"draft_year": 2020,
+"pick": 5,
+"college": "Auburn"
+},
+{
+"player_id": "okongon01",
+"name": "Onyeka Okongwu",
+"draft_year": 2020,
+"pick": 6,
+"college": "USC"
+},
+{
+"player_id": "hayeski01",
+"name": "Killian Hayes",
+"draft_year": 2020,
+"pick": 7,
+"college": "International"
+},
+{
+"player_id": "toppiob01",
+"name": "Obi Toppin",
+"draft_year": 2020,
+"pick": 8,
+"college": "Dayton"
+},
+{
+"player_id": "avdijde01",
+"name": "Deni Avdija",
+"draft_year": 2020,
+"pick": 9,
+"college": "International"
+},
+{
+"player_id": "smithja04",
+"name": "Jalen Smith",
+"draft_year": 2020,
+"pick": 10,
+"college": "Maryland"
+},
+{
+"player_id": "vassede01",
+"name": "Devin Vassell",
+"draft_year": 2020,
+"pick": 11,
+"college": "Florida State"
+},
+{
+"player_id": "halibty01",
+"name": "Tyrese Haliburton",
+"draft_year": 2020,
+"pick": 12,
+"college": "Iowa State"
+},
+{
+"player_id": "lewiski01",
+"name": "Kira Lewis Jr.",
+"draft_year": 2020,
+"pick": 13,
+"college": "Alabama"
+},
+{
+"player_id": "nesmiaa01",
+"name": "Aaron Nesmith",
+"draft_year": 2020,
+"pick": 14,
+"college": "Vanderbilt"
+},
+{
+"player_id": "anthoco01",
+"name": "Cole Anthony",
+"draft_year": 2020,
+"pick": 15,
+"college": "UNC"
+},
+{
+"player_id": "stewais01",
+"name": "Isaiah Stewart",
+"draft_year": 2020,
+"pick": 16,
+"college": "Washington"
+},
+{
+"player_id": "pokusal01",
+"name": "Aleksej Pokusevski",
+"draft_year": 2020,
+"pick": 17,
+"college": "International"
+},
+{
+"player_id": "greenjo02",
+"name": "Josh Green",
+"draft_year": 2020,
+"pick": 18,
+"college": "Arizona"
+},
+{
+"player_id": "beysa01",
+"name": "Saddiq Bey",
+"draft_year": 2020,
+"pick": 19,
+"college": "Villanova"
+},
+{
+"player_id": "achiupr01",
+"name": "Precious Achiuwa",
+"draft_year": 2020,
+"pick": 20,
+"college": "Memphis"
+},
+{
+"player_id": "maxeyty01",
+"name": "Tyrese Maxey",
+"draft_year": 2020,
+"pick": 21,
+"college": "Kentucky"
+},
+{
+"player_id": "nnajize01",
+"name": "Zeke Nnaji",
+"draft_year": 2020,
+"pick": 22,
+"college": "Arizona"
+},
+{
+"player_id": "bolmale01",
+"name": "Leandro Bolmaro",
+"draft_year": 2020,
+"pick": 23,
+"college": "International"
+},
+{
+"player_id": "hamptrj01",
+"name": "R.J. Hampton",
+"draft_year": 2020,
+"pick": 24,
+"college": "International"
+},
+{
+"player_id": "quickim01",
+"name": "Immanuel Quickley",
+"draft_year": 2020,
+"pick": 25,
+"college": "Kentucky"
+},
+{
+"player_id": "pritcpa01",
+"name": "Payton Pritchard",
+"draft_year": 2020,
+"pick": 26,
+"college": "Oregon"
+},
+{
+"player_id": "azubuud01",
+"name": "Udoka Azubuike",
+"draft_year": 2020,
+"pick": 27,
+"college": "Kansas"
+},
+{
+"player_id": "mcdanja02",
+"name": "Jaden McDaniels",
+"draft_year": 2020,
+"pick": 28,
+"college": "Washington"
+},
+{
+"player_id": "flynnma01",
+"name": "Malachi Flynn",
+"draft_year": 2020,
+"pick": 29,
+"college": "San Diego State"
+},
+{
+"player_id": "banede01",
+"name": "Desmond Bane",
+"draft_year": 2020,
+"pick": 30,
+"college": "TCU"
+},
+{
+"player_id": "terryty01",
+"name": "Tyrell Terry",
+"draft_year": 2020,
+"pick": 31,
+"college": "Stanford"
+},
+{
+"player_id": "careyve01",
+"name": "Vernon Carey Jr.",
+"draft_year": 2020,
+"pick": 32,
+"college": "Duke"
+},
+{
+"player_id": "oturuda01",
+"name": "Daniel Oturu",
+"draft_year": 2020,
+"pick": 33,
+"college": "Minnesota"
+},
+{
+"player_id": "maledth01",
+"name": "Théo Maledon",
+"draft_year": 2020,
+"pick": 34,
+"college": "International"
+},
+{
+"player_id": "tillmxa01",
+"name": "Xavier Tillman Sr.",
+"draft_year": 2020,
+"pick": 35,
+"college": "Michigan State"
+},
+{
+"player_id": "beyty01",
+"name": "Tyler Bey",
+"draft_year": 2020,
+"pick": 36,
+"college": "Colorado"
+},
+{
+"player_id": "krejcvi01",
+"name": "Vít Krejčí",
+"draft_year": 2020,
+"pick": 37,
+"college": "International"
+},
+{
+"player_id": "leesa01",
+"name": "Saben Lee",
+"draft_year": 2020,
+"pick": 38,
+"college": "Vanderbilt"
+},
+{
+"player_id": "hugheel01",
+"name": "Elijah Hughes",
+"draft_year": 2020,
+"pick": 39,
+"college": "Syracuse"
+},
+{
+"player_id": "woodaro01",
+"name": "Robert Woodard II",
+"draft_year": 2020,
+"pick": 40,
+"college": "Mississippi State"
+},
+{
+"player_id": "jonestr01",
+"name": "Tre Jones",
+"draft_year": 2020,
+"pick": 41,
+"college": "Duke"
+},
+{
+"player_id": "richani01",
+"name": "Nick Richards",
+"draft_year": 2020,
+"pick": 42,
+"college": "Kentucky"
+},
+{
+"player_id": "ramseja01",
+"name": "Jahmi'us Ramsey",
+"draft_year": 2020,
+"pick": 43,
+"college": "Texas Tech"
+},
+{
+"player_id": "simonma01",
+"name": "Marko Simonovic",
+"draft_year": 2020,
+"pick": 44,
+"college": "International"
+},
+{
+"player_id": "nworajo01",
+"name": "Jordan Nwora",
+"draft_year": 2020,
+"pick": 45,
+"college": "Louisville"
+},
+{
+"player_id": "ellebcj01",
+"name": "CJ Elleby",
+"draft_year": 2020,
+"pick": 46,
+"college": "Washington State"
+},
+{
+"player_id": "madarya01",
+"name": "Yam Madar",
+"draft_year": 2020,
+"pick": 47,
+"college": "International"
+},
+{
+"player_id": "mannini01",
+"name": "Nico Mannion",
+"draft_year": 2020,
+"pick": 48,
+"college": "Arizona"
+},
+{
+"player_id": "joeis01",
+"name": "Isaiah Joe",
+"draft_year": 2020,
+"pick": 49,
+"college": "Arkansas"
+},
+{
+"player_id": "mayssk01",
+"name": "Skylar Mays",
+"draft_year": 2020,
+"pick": 50,
+"college": "LSU"
+},
+{
+"player_id": "jessuju01",
+"name": "Justinian Jessup",
+"draft_year": 2020,
+"pick": 51,
+"college": "Boise State"
+},
+{
+"player_id": "martike04",
+"name": "KJ Martin",
+"draft_year": 2020,
+"pick": 52,
+"college": "International"
+},
+{
+"player_id": "winstca01",
+"name": "Cassius Winston",
+"draft_year": 2020,
+"pick": 53,
+"college": "Michigan State"
+},
+{
+"player_id": "stanlca01",
+"name": "Cassius Stanley",
+"draft_year": 2020,
+"pick": 54,
+"college": "Duke"
+},
+{
+"player_id": "scrubja01",
+"name": "Jay Scrubb",
+"draft_year": 2020,
+"pick": 55,
+"college": "John A. Logan College"
+},
+{
+"player_id": "rillegr01",
+"name": "Grant Riller",
+"draft_year": 2020,
+"pick": 56,
+"college": "College of Charleston"
+},
+{
+"player_id": "perryre01",
+"name": "Reggie Perry",
+"draft_year": 2020,
+"pick": 57,
+"college": "Mississippi State"
+},
+{
+"player_id": "reedpa01",
+"name": "Paul Reed",
+"draft_year": 2020,
+"pick": 58,
+"college": "DePaul"
+},
+{
+"player_id": "harrija01",
+"name": "Jalen Harris",
+"draft_year": 2020,
+"pick": 59,
+"college": "Nevada"
+},
+{
+"player_id": "merrisa01",
+"name": "Sam Merrill",
+"draft_year": 2020,
+"pick": 60,
+"college": "Utah State University"
+},
+{
+"player_id": "cunnica01",
+"name": "Cade Cunningham",
+"draft_year": 2021,
+"pick": 1,
+"college": "Oklahoma State"
+},
+{
+"player_id": "greenja05",
+"name": "Jalen Green",
+"draft_year": 2021,
+"pick": 2,
+"college": "International"
+},
+{
+"player_id": "mobleev01",
+"name": "Evan Mobley",
+"draft_year": 2021,
+"pick": 3,
+"college": "USC"
+},
+{
+"player_id": "barnesc01",
+"name": "Scottie Barnes",
+"draft_year": 2021,
+"pick": 4,
+"college": "Florida State"
+},
+{
+"player_id": "suggsja01",
+"name": "Jalen Suggs",
+"draft_year": 2021,
+"pick": 5,
+"college": "Gonzaga"
+},
+{
+"player_id": "giddejo01",
+"name": "Josh Giddey",
+"draft_year": 2021,
+"pick": 6,
+"college": "International"
+},
+{
+"player_id": "kuminjo01",
+"name": "Jonathan Kuminga",
+"draft_year": 2021,
+"pick": 7,
+"college": "International"
+},
+{
+"player_id": "wagnefr01",
+"name": "Franz Wagner",
+"draft_year": 2021,
+"pick": 8,
+"college": "Michigan"
+},
+{
+"player_id": "mitchda01",
+"name": "Davion Mitchell",
+"draft_year": 2021,
+"pick": 9,
+"college": "Baylor"
+},
+{
+"player_id": "willizi02",
+"name": "Ziaire Williams",
+"draft_year": 2021,
+"pick": 10,
+"college": "Stanford"
+},
+{
+"player_id": "bouknja01",
+"name": "James Bouknight",
+"draft_year": 2021,
+"pick": 11,
+"college": "UConn"
+},
+{
+"player_id": "primojo01",
+"name": "Joshua Primo",
+"draft_year": 2021,
+"pick": 12,
+"college": "Alabama"
+},
+{
+"player_id": "duartch01",
+"name": "Chris Duarte",
+"draft_year": 2021,
+"pick": 13,
+"college": "Oregon"
+},
+{
+"player_id": "moodymo01",
+"name": "Moses Moody",
+"draft_year": 2021,
+"pick": 14,
+"college": "Arkansas"
+},
+{
+"player_id": "kispeco01",
+"name": "Corey Kispert",
+"draft_year": 2021,
+"pick": 15,
+"college": "Gonzaga"
+},
+{
+"player_id": "sengual01",
+"name": "Alperen Şengün",
+"draft_year": 2021,
+"pick": 16,
+"college": "International"
+},
+{
+"player_id": "murphtr02",
+"name": "Trey Murphy III",
+"draft_year": 2021,
+"pick": 17,
+"college": "Virginia"
+},
+{
+"player_id": "manntr01",
+"name": "Tre Mann",
+"draft_year": 2021,
+"pick": 18,
+"college": "Florida"
+},
+{
+"player_id": "joneska01",
+"name": "Kai Jones",
+"draft_year": 2021,
+"pick": 19,
+"college": "Texas"
+},
+{
+"player_id": "johnsja05",
+"name": "Jalen Johnson",
+"draft_year": 2021,
+"pick": 20,
+"college": "Duke"
+},
+{
+"player_id": "johnske07",
+"name": "Keon Johnson",
+"draft_year": 2021,
+"pick": 21,
+"college": "Tennessee"
+},
+{
+"player_id": "jacksis01",
+"name": "Isaiah Jackson",
+"draft_year": 2021,
+"pick": 22,
+"college": "Kentucky"
+},
+{
+"player_id": "garubus01",
+"name": "Usman Garuba",
+"draft_year": 2021,
+"pick": 23,
+"college": "International"
+},
+{
+"player_id": "chrisjo01",
+"name": "Josh Christopher",
+"draft_year": 2021,
+"pick": 24,
+"college": "Arizona State"
+},
+{
+"player_id": "grimequ01",
+"name": "Quentin Grimes",
+"draft_year": 2021,
+"pick": 25,
+"college": "Houston"
+},
+{
+"player_id": "hylanbo01",
+"name": "Bones Hyland",
+"draft_year": 2021,
+"pick": 26,
+"college": "VCU"
+},
+{
+"player_id": "thomaca02",
+"name": "Cam Thomas",
+"draft_year": 2021,
+"pick": 27,
+"college": "LSU"
+},
+{
+"player_id": "sprinja01",
+"name": "Jaden Springer",
+"draft_year": 2021,
+"pick": 28,
+"college": "Tennessee"
+},
+{
+"player_id": "sharpda01",
+"name": "Day'Ron Sharpe",
+"draft_year": 2021,
+"pick": 29,
+"college": "UNC"
+},
+{
+"player_id": "aldamsa01",
+"name": "Santi Aldama",
+"draft_year": 2021,
+"pick": 30,
+"college": "Loyola (MD)"
+},
+{
+"player_id": "toddis01",
+"name": "Isaiah Todd",
+"draft_year": 2021,
+"pick": 31,
+"college": "International"
+},
+{
+"player_id": "robinje02",
+"name": "Jeremiah Robinson-Earl",
+"draft_year": 2021,
+"pick": 32,
+"college": "Villanova"
+},
+{
+"player_id": "prestja01",
+"name": "Jason Preston",
+"draft_year": 2021,
+"pick": 33,
+"college": "Ohio University"
+},
+{
+"player_id": "jokubro01",
+"name": "Rokas Jokubaitis",
+"draft_year": 2021,
+"pick": 34,
+"college": "International"
+},
+{
+"player_id": "joneshe01",
+"name": "Herbert Jones",
+"draft_year": 2021,
+"pick": 35,
+"college": "Alabama"
+},
+{
+"player_id": "mcbrimi01",
+"name": "Miles McBride",
+"draft_year": 2021,
+"pick": 36,
+"college": "West Virginia"
+},
+{
+"player_id": "thorjt01",
+"name": "JT Thor",
+"draft_year": 2021,
+"pick": 37,
+"college": "Auburn"
+},
+{
+"player_id": "dosunay01",
+"name": "Ayo Dosunmu",
+"draft_year": 2021,
+"pick": 38,
+"college": "Illinois"
+},
+{
+"player_id": "quetane01",
+"name": "Neemias Queta",
+"draft_year": 2021,
+"pick": 39,
+"college": "Utah State University"
+},
+{
+"player_id": "butleja02",
+"name": "Jared Butler",
+"draft_year": 2021,
+"pick": 40,
+"college": "Baylor"
+},
+{
+"player_id": "wieskjo01",
+"name": "Joe Wieskamp",
+"draft_year": 2021,
+"pick": 41,
+"college": "Iowa"
+},
+{
+"player_id": "liveris01",
+"name": "Isaiah Livers",
+"draft_year": 2021,
+"pick": 42,
+"college": "Michigan"
+},
+{
+"player_id": "browngr01",
+"name": "Greg Brown III",
+"draft_year": 2021,
+"pick": 43,
+"college": "Texas"
+},
+{
+"player_id": "edwarke02",
+"name": "Kessler Edwards",
+"draft_year": 2021,
+"pick": 44,
+"college": "Pepperdine"
+},
+{
+"player_id": "begarju01",
+"name": "Juhann Begarin",
+"draft_year": 2021,
+"pick": 45,
+"college": "International"
+},
+{
+"player_id": "bantoda01",
+"name": "Dalano Banton",
+"draft_year": 2021,
+"pick": 46,
+"college": "Nebraska"
+},
+{
+"player_id": "johnsda08",
+"name": "David Johnson",
+"draft_year": 2021,
+"pick": 47,
+"college": "Louisville"
+},
+{
+"player_id": "coopesh01",
+"name": "Sharife Cooper",
+"draft_year": 2021,
+"pick": 48,
+"college": "Auburn"
+},
+{
+"player_id": "zegarma01",
+"name": "Marcus Zegarowski",
+"draft_year": 2021,
+"pick": 49,
+"college": "Creighton"
+},
+{
+"player_id": "petrufi01",
+"name": "Filip Petrušev",
+"draft_year": 2021,
+"pick": 50,
+"college": "Gonzaga"
+},
+{
+"player_id": "bostobr01",
+"name": "Brandon Boston Jr.",
+"draft_year": 2021,
+"pick": 51,
+"college": "Kentucky"
+},
+{
+"player_id": "garzalu01",
+"name": "Luka Garza",
+"draft_year": 2021,
+"pick": 52,
+"college": "Iowa"
+},
+{
+"player_id": "bassech01",
+"name": "Charles Bassey",
+"draft_year": 2021,
+"pick": 53,
+"college": "Western Kentucky"
+},
+{
+"player_id": "mamuksa01",
+"name": "Sandro Mamukelashvili",
+"draft_year": 2021,
+"pick": 54,
+"college": "Seton Hall"
+},
+{
+"player_id": "wiggiaa01",
+"name": "Aaron Wiggins",
+"draft_year": 2021,
+"pick": 55,
+"college": "Maryland"
+},
+{
+"player_id": "lewissc01",
+"name": "Scottie Lewis",
+"draft_year": 2021,
+"pick": 56,
+"college": "Florida"
+},
+{
+"player_id": "kopriba01",
+"name": "Balša Koprivica",
+"draft_year": 2021,
+"pick": 57,
+"college": "Florida State"
+},
+{
+"player_id": "simsje01",
+"name": "Jericho Sims",
+"draft_year": 2021,
+"pick": 58,
+"college": "Texas"
+},
+{
+"player_id": "grayra01",
+"name": "RaiQuan Gray",
+"draft_year": 2021,
+"pick": 59,
+"college": "Florida State"
+},
+{
+"player_id": "kalaige01",
+"name": "Georgios Kalaitzakis",
+"draft_year": 2021,
+"pick": 60,
+"college": "International"
+},
+{
+"player_id": "banchpa01",
+"name": "Paolo Banchero",
+"draft_year": 2022,
+"pick": 1,
+"college": "Duke"
+},
+{
+"player_id": "holmgch01",
+"name": "Chet Holmgren",
+"draft_year": 2022,
+"pick": 2,
+"college": "Gonzaga"
+},
+{
+"player_id": "smithja05",
+"name": "Jabari Smith Jr.",
+"draft_year": 2022,
+"pick": 3,
+"college": "Auburn"
+},
+{
+"player_id": "murrake02",
+"name": "Keegan Murray",
+"draft_year": 2022,
+"pick": 4,
+"college": "Iowa"
+},
+{
+"player_id": "iveyja01",
+"name": "Jaden Ivey",
+"draft_year": 2022,
+"pick": 5,
+"college": "Purdue"
+},
+{
+"player_id": "mathube01",
+"name": "Bennedict Mathurin",
+"draft_year": 2022,
+"pick": 6,
+"college": "Arizona"
+},
+{
+"player_id": "sharpsh01",
+"name": "Shaedon Sharpe",
+"draft_year": 2022,
+"pick": 7,
+"college": "Kentucky"
+},
+{
+"player_id": "daniedy01",
+"name": "Dyson Daniels",
+"draft_year": 2022,
+"pick": 8,
+"college": "International"
+},
+{
+"player_id": "sochaje01",
+"name": "Jeremy Sochan",
+"draft_year": 2022,
+"pick": 9,
+"college": "Baylor"
+},
+{
+"player_id": "davisjo06",
+"name": "Johnny Davis",
+"draft_year": 2022,
+"pick": 10,
+"college": "Wisconsin"
+},
+{
+"player_id": "diengou01",
+"name": "Ousmane Dieng",
+"draft_year": 2022,
+"pick": 11,
+"college": "International"
+},
+{
+"player_id": "willija06",
+"name": "Jalen Williams",
+"draft_year": 2022,
+"pick": 12,
+"college": "Santa Clara"
+},
+{
+"player_id": "durenja01",
+"name": "Jalen Duren",
+"draft_year": 2022,
+"pick": 13,
+"college": "Memphis"
+},
+{
+"player_id": "agbajoc01",
+"name": "Ochai Agbaji",
+"draft_year": 2022,
+"pick": 14,
+"college": "Kansas"
+},
+{
+"player_id": "willima07",
+"name": "Mark Williams",
+"draft_year": 2022,
+"pick": 15,
+"college": "Duke"
+},
+{
+"player_id": "griffaj01",
+"name": "AJ Griffin",
+"draft_year": 2022,
+"pick": 16,
+"college": "Duke"
+},
+{
+"player_id": "easonta01",
+"name": "Tari Eason",
+"draft_year": 2022,
+"pick": 17,
+"college": "LSU"
+},
+{
+"player_id": "terryda01",
+"name": "Dalen Terry",
+"draft_year": 2022,
+"pick": 18,
+"college": "Arizona"
+},
+{
+"player_id": "laravja01",
+"name": "Jake LaRavia",
+"draft_year": 2022,
+"pick": 19,
+"college": "Wake Forest"
+},
+{
+"player_id": "branhma01",
+"name": "Malaki Branham",
+"draft_year": 2022,
+"pick": 20,
+"college": "Ohio State"
+},
+{
+"player_id": "braunch01",
+"name": "Christian Braun",
+"draft_year": 2022,
+"pick": 21,
+"college": "Kansas"
+},
+{
+"player_id": "kesslwa01",
+"name": "Walker Kessler",
+"draft_year": 2022,
+"pick": 22,
+"college": "Auburn"
+},
+{
+"player_id": "roddyda01",
+"name": "David Roddy",
+"draft_year": 2022,
+"pick": 23,
+"college": "Colorado State"
+},
+{
+"player_id": "beaucma01",
+"name": "MarJon Beauchamp",
+"draft_year": 2022,
+"pick": 24,
+"college": "International"
+},
+{
+"player_id": "weslebl01",
+"name": "Blake Wesley",
+"draft_year": 2022,
+"pick": 25,
+"college": "Notre Dame"
+},
+{
+"player_id": "moorewe01",
+"name": "Wendell Moore Jr.",
+"draft_year": 2022,
+"pick": 26,
+"college": "Duke"
+},
+{
+"player_id": "jovicni01",
+"name": "Nikola Jović",
+"draft_year": 2022,
+"pick": 27,
+"college": "International"
+},
+{
+"player_id": "baldwpa01",
+"name": "Patrick Baldwin Jr.",
+"draft_year": 2022,
+"pick": 28,
+"college": "UW-Milwaukee"
+},
+{
+"player_id": "washity02",
+"name": "TyTy Washington Jr.",
+"draft_year": 2022,
+"pick": 29,
+"college": "Kentucky"
+},
+{
+"player_id": "watsope01",
+"name": "Peyton Watson",
+"draft_year": 2022,
+"pick": 30,
+"college": "UCLA"
+},
+{
+"player_id": "nembhan01",
+"name": "Andrew Nembhard",
+"draft_year": 2022,
+"pick": 31,
+"college": "Gonzaga"
+},
+{
+"player_id": "houstca01",
+"name": "Caleb Houstan",
+"draft_year": 2022,
+"pick": 32,
+"college": "Michigan"
+},
+{
+"player_id": "kolokch01",
+"name": "Christian Koloko",
+"draft_year": 2022,
+"pick": 33,
+"college": "Arizona"
+},
+{
+"player_id": "willija07",
+"name": "Jaylin Williams",
+"draft_year": 2022,
+"pick": 34,
+"college": "Arkansas"
+},
+{
+"player_id": "chrisma02",
+"name": "Max Christie",
+"draft_year": 2022,
+"pick": 35,
+"college": "Michigan State"
+},
+{
+"player_id": "prociga01",
+"name": "Gabriele Procida",
+"draft_year": 2022,
+"pick": 36,
+"college": "International"
+},
+{
+"player_id": "hardyja02",
+"name": "Jaden Hardy",
+"draft_year": 2022,
+"pick": 37,
+"college": "International"
+},
+{
+"player_id": "chandke01",
+"name": "Kennedy Chandler",
+"draft_year": 2022,
+"pick": 38,
+"college": "Tennessee"
+},
+{
+"player_id": "diopkh01",
+"name": "Khalifa Diop",
+"draft_year": 2022,
+"pick": 39,
+"college": "International"
+},
+{
+"player_id": "mcgowbr01",
+"name": "Bryce McGowens",
+"draft_year": 2022,
+"pick": 40,
+"college": "Nebraska"
+},
+{
+"player_id": "liddeej01",
+"name": "E.J. Liddell",
+"draft_year": 2022,
+"pick": 41,
+"college": "Ohio State"
+},
+{
+"player_id": "keelstr01",
+"name": "Trevor Keels",
+"draft_year": 2022,
+"pick": 42,
+"college": "Duke"
+},
+{
+"player_id": "diabamo01",
+"name": "Moussa Diabaté",
+"draft_year": 2022,
+"pick": 43,
+"college": "Michigan"
+},
+{
+"player_id": "rolliry01",
+"name": "Ryan Rollins",
+"draft_year": 2022,
+"pick": 44,
+"college": "Toledo"
+},
+{
+"player_id": "minotjo01",
+"name": "Josh Minott",
+"draft_year": 2022,
+"pick": 45,
+"college": "Memphis"
+},
+{
+"player_id": "kamagis01",
+"name": "Ismael Kamagate",
+"draft_year": 2022,
+"pick": 46,
+"college": "International"
+},
+{
+"player_id": "willivi01",
+"name": "Vince Williams Jr.",
+"draft_year": 2022,
+"pick": 47,
+"college": "VCU"
+},
+{
+"player_id": "brownke03",
+"name": "Kendall Brown",
+"draft_year": 2022,
+"pick": 48,
+"college": "Baylor"
+},
+{
+"player_id": "mobleis01",
+"name": "Isaiah Mobley",
+"draft_year": 2022,
+"pick": 49,
+"college": "USC"
+},
+{
+"player_id": "spagnma01",
+"name": "Matteo Spagnolo",
+"draft_year": 2022,
+"pick": 50,
+"college": "International"
+},
+{
+"player_id": "martity01",
+"name": "Tyrese Martin",
+"draft_year": 2022,
+"pick": 51,
+"college": "UConn"
+},
+{
+"player_id": "matkoka01",
+"name": "Karlo Matković",
+"draft_year": 2022,
+"pick": 52,
+"college": "International"
+},
+{
+"player_id": "davisjd01",
+"name": "JD Davison",
+"draft_year": 2022,
+"pick": 53,
+"college": "Alabama"
+},
+{
+"player_id": "nzosaya01",
+"name": "Yannick Nzosa",
+"draft_year": 2022,
+"pick": 54,
+"college": "International"
+},
+{
+"player_id": "santogu01",
+"name": "Gui Santos",
+"draft_year": 2022,
+"pick": 55,
+"college": "International"
+},
+{
+"player_id": "travelu01",
+"name": "Luke Travers",
+"draft_year": 2022,
+"pick": 56,
+"college": "International"
+},
+{
+"player_id": "walkeja01",
+"name": "Jabari Walker",
+"draft_year": 2022,
+"pick": 57,
+"college": "Colorado"
+},
+{
+"player_id": "bessohu01",
+"name": "Hugo Besson",
+"draft_year": 2022,
+"pick": 58,
+"college": "International"
+},
+{
+"player_id": "wembavi01",
+"name": "Victor Wembanyama",
+"draft_year": 2023,
+"pick": 1,
+"college": "International"
+},
+{
+"player_id": "millebr02",
+"name": "Brandon Miller",
+"draft_year": 2023,
+"pick": 2,
+"college": "Alabama"
+},
+{
+"player_id": "hendesc01",
+"name": "Scoot Henderson",
+"draft_year": 2023,
+"pick": 3,
+"college": "International"
+},
+{
+"player_id": "thompam01",
+"name": "Amen Thompson",
+"draft_year": 2023,
+"pick": 4,
+"college": "International"
+},
+{
+"player_id": "thompau01",
+"name": "Ausar Thompson",
+"draft_year": 2023,
+"pick": 5,
+"college": "International"
+},
+{
+"player_id": "blackan01",
+"name": "Anthony Black",
+"draft_year": 2023,
+"pick": 6,
+"college": "Arkansas"
+},
+{
+"player_id": "coulibi01",
+"name": "Bilal Coulibaly",
+"draft_year": 2023,
+"pick": 7,
+"college": "International"
+},
+{
+"player_id": "walkeja02",
+"name": "Jarace Walker",
+"draft_year": 2023,
+"pick": 8,
+"college": "Houston"
+},
+{
+"player_id": "hendrta01",
+"name": "Taylor Hendricks",
+"draft_year": 2023,
+"pick": 9,
+"college": "Central Florida"
+},
+{
+"player_id": "wallaca01",
+"name": "Cason Wallace",
+"draft_year": 2023,
+"pick": 10,
+"college": "Kentucky"
+},
+{
+"player_id": "howarje01",
+"name": "Jett Howard",
+"draft_year": 2023,
+"pick": 11,
+"college": "Michigan"
+},
+{
+"player_id": "livelde01",
+"name": "Dereck Lively II",
+"draft_year": 2023,
+"pick": 12,
+"college": "Duke"
+},
+{
+"player_id": "dickgr01",
+"name": "Gradey Dick",
+"draft_year": 2023,
+"pick": 13,
+"college": "Kansas"
+},
+{
+"player_id": "hawkijo01",
+"name": "Jordan Hawkins",
+"draft_year": 2023,
+"pick": 14,
+"college": "UConn"
+},
+{
+"player_id": "bufkiko01",
+"name": "Kobe Bufkin",
+"draft_year": 2023,
+"pick": 15,
+"college": "Michigan"
+},
+{
+"player_id": "georgke01",
+"name": "Keyonte George",
+"draft_year": 2023,
+"pick": 16,
+"college": "Baylor"
+},
+{
+"player_id": "hoodsja01",
+"name": "Jalen Hood-Schifino",
+"draft_year": 2023,
+"pick": 17,
+"college": "Indiana"
+},
+{
+"player_id": "jaqueja01",
+"name": "Jaime Jaquez Jr.",
+"draft_year": 2023,
+"pick": 18,
+"college": "UCLA"
+},
+{
+"player_id": "podzibr01",
+"name": "Brandin Podziemski",
+"draft_year": 2023,
+"pick": 19,
+"college": "Santa Clara"
+},
+{
+"player_id": "whitmca01",
+"name": "Cam Whitmore",
+"draft_year": 2023,
+"pick": 20,
+"college": "Villanova"
+},
+{
+"player_id": "clownno01",
+"name": "Noah Clowney",
+"draft_year": 2023,
+"pick": 21,
+"college": "Alabama"
+},
+{
+"player_id": "whiteda01",
+"name": "Dariq Whitehead",
+"draft_year": 2023,
+"pick": 22,
+"college": "Duke"
+},
+{
+"player_id": "murrakr01",
+"name": "Kris Murray",
+"draft_year": 2023,
+"pick": 23,
+"college": "Iowa"
+},
+{
+"player_id": "prospol01",
+"name": "Olivier-Maxence Prosper",
+"draft_year": 2023,
+"pick": 24,
+"college": "Marquette"
+},
+{
+"player_id": "sassema01",
+"name": "Marcus Sasser",
+"draft_year": 2023,
+"pick": 25,
+"college": "Houston"
+},
+{
+"player_id": "sheppbe01",
+"name": "Ben Sheppard",
+"draft_year": 2023,
+"pick": 26,
+"college": "Belmont"
+},
+{
+"player_id": "smithni01",
+"name": "Nick Smith Jr.",
+"draft_year": 2023,
+"pick": 27,
+"college": "Arkansas"
+},
+{
+"player_id": "sensabr01",
+"name": "Brice Sensabaugh",
+"draft_year": 2023,
+"pick": 28,
+"college": "Ohio State"
+},
+{
+"player_id": "strawju01",
+"name": "Julian Strawther",
+"draft_year": 2023,
+"pick": 29,
+"college": "Gonzaga"
+},
+{
+"player_id": "brownko01",
+"name": "Kobe Brown",
+"draft_year": 2023,
+"pick": 30,
+"college": "Missouri"
+},
+{
+"player_id": "nnajija01",
+"name": "James Nnaji",
+"draft_year": 2023,
+"pick": 31,
+"college": "International"
+},
+{
+"player_id": "pickeja02",
+"name": "Jalen Pickett",
+"draft_year": 2023,
+"pick": 32,
+"college": "Penn State"
+},
+{
+"player_id": "millele01",
+"name": "Leonard Miller",
+"draft_year": 2023,
+"pick": 33,
+"college": "International"
+},
+{
+"player_id": "jonesco02",
+"name": "Colby Jones",
+"draft_year": 2023,
+"pick": 34,
+"college": "Xavier"
+},
+{
+"player_id": "phillju01",
+"name": "Julian Phillips",
+"draft_year": 2023,
+"pick": 35,
+"college": "Tennessee"
+},
+{
+"player_id": "jacksan01",
+"name": "Andre Jackson Jr.",
+"draft_year": 2023,
+"pick": 36,
+"college": "UConn"
+},
+{
+"player_id": "tysonhu01",
+"name": "Hunter Tyson",
+"draft_year": 2023,
+"pick": 37,
+"college": "Clemson"
+},
+{
+"player_id": "walshjo01",
+"name": "Jordan Walsh",
+"draft_year": 2023,
+"pick": 38,
+"college": "Arkansas"
+},
+{
+"player_id": "gueyemo02",
+"name": "Mouhamed Gueye",
+"draft_year": 2023,
+"pick": 39,
+"college": "Washington State"
+},
+{
+"player_id": "lewisma05",
+"name": "Maxwell Lewis",
+"draft_year": 2023,
+"pick": 40,
+"college": "Pepperdine"
+},
+{
+"player_id": "baileam01",
+"name": "Amari Bailey",
+"draft_year": 2023,
+"pick": 41,
+"college": "UCLA"
+},
+{
+"player_id": "vukcetr01",
+"name": "Tristan Vukcevic",
+"draft_year": 2023,
+"pick": 42,
+"college": "International"
+},
+{
+"player_id": "ruperra01",
+"name": "Rayan Rupert",
+"draft_year": 2023,
+"pick": 43,
+"college": "International"
+},
+{
+"player_id": "cissosi01",
+"name": "Sidy Cissoko",
+"draft_year": 2023,
+"pick": 44,
+"college": "International"
+},
+{
+"player_id": "jacksgg01",
+"name": "GG Jackson II",
+"draft_year": 2023,
+"pick": 45,
+"college": "South Carolina"
+},
+{
+"player_id": "lundyse01",
+"name": "Seth Lundy",
+"draft_year": 2023,
+"pick": 46,
+"college": "Penn State"
+},
+{
+"player_id": "kingmo01",
+"name": "Mojave King",
+"draft_year": 2023,
+"pick": 47,
+"college": "International"
+},
+{
+"player_id": "millejo02",
+"name": "Jordan Miller",
+"draft_year": 2023,
+"pick": 48,
+"college": "Miami (FL)"
+},
+{
+"player_id": "batesem01",
+"name": "Emoni Bates",
+"draft_year": 2023,
+"pick": 49,
+"college": "Eastern Michigan"
+},
+{
+"player_id": "johnske08",
+"name": "Keyontae Johnson",
+"draft_year": 2023,
+"pick": 50,
+"college": "Kansas State"
+},
+{
+"player_id": "wilsoja03",
+"name": "Jalen Wilson",
+"draft_year": 2023,
+"pick": 51,
+"college": "Kansas"
+},
+{
+"player_id": "camarto01",
+"name": "Toumani Camara",
+"draft_year": 2023,
+"pick": 52,
+"college": "Dayton"
+},
+{
+"player_id": "clarkja02",
+"name": "Jaylen Clark",
+"draft_year": 2023,
+"pick": 53,
+"college": "UCLA"
+},
+{
+"player_id": "slawsja01",
+"name": "Jalen Slawson",
+"draft_year": 2023,
+"pick": 54,
+"college": "Furman University"
+},
+{
+"player_id": "wongis01",
+"name": "Isaiah Wong",
+"draft_year": 2023,
+"pick": 55,
+"college": "Miami (FL)"
+},
+{
+"player_id": "biberta01",
+"name": "Tarik Biberovic",
+"draft_year": 2023,
+"pick": 56,
+"college": "International"
+},
+{
+"player_id": "jackstr02",
+"name": "Trayce Jackson-Davis",
+"draft_year": 2023,
+"pick": 57,
+"college": "Indiana"
+},
+{
+"player_id": "livinch01",
+"name": "Chris Livingston",
+"draft_year": 2023,
+"pick": 58,
+"college": "Kentucky"
+},
+{
+"player_id": "risacza01",
+"name": "Zaccharie Risacher",
+"draft_year": 2024,
+"pick": 1,
+"college": "International"
+},
+{
+"player_id": "sarral01",
+"name": "Alex Sarr",
+"draft_year": 2024,
+"pick": 2,
+"college": "International"
+},
+{
+"player_id": "sheppre01",
+"name": "Reed Sheppard",
+"draft_year": 2024,
+"pick": 3,
+"college": "Kentucky"
+},
+{
+"player_id": "castlst01",
+"name": "Stephon Castle",
+"draft_year": 2024,
+"pick": 4,
+"college": "UConn"
+},
+{
+"player_id": "hollaro01",
+"name": "Ron Holland",
+"draft_year": 2024,
+"pick": 5,
+"college": "International"
+},
+{
+"player_id": "salauti01",
+"name": "Tidjane Salaün",
+"draft_year": 2024,
+"pick": 6,
+"college": "International"
+},
+{
+"player_id": "clingdo01",
+"name": "Donovan Clingan",
+"draft_year": 2024,
+"pick": 7,
+"college": "UConn"
+},
+{
+"player_id": "dilliro01",
+"name": "Rob Dillingham",
+"draft_year": 2024,
+"pick": 8,
+"college": "Kentucky"
+},
+{
+"player_id": "edeyza01",
+"name": "Zach Edey",
+"draft_year": 2024,
+"pick": 9,
+"college": "Purdue"
+},
+{
+"player_id": "willico04",
+"name": "Cody Williams",
+"draft_year": 2024,
+"pick": 10,
+"college": "Colorado"
+},
+{
+"player_id": "buzelma01",
+"name": "Matas Buzelis",
+"draft_year": 2024,
+"pick": 11,
+"college": "International"
+},
+{
+"player_id": "topicni01",
+"name": "Nikola Topić",
+"draft_year": 2024,
+"pick": 12,
+"college": "International"
+},
+{
+"player_id": "cartede02",
+"name": "Devin Carter",
+"draft_year": 2024,
+"pick": 13,
+"college": "Providence"
+},
+{
+"player_id": "carrica01",
+"name": "Bub Carrington",
+"draft_year": 2024,
+"pick": 14,
+"college": "Pitt"
+},
+{
+"player_id": "wareke01",
+"name": "Kel'el Ware",
+"draft_year": 2024,
+"pick": 15,
+"college": "Indiana"
+},
+{
+"player_id": "mccaija01",
+"name": "Jared McCain",
+"draft_year": 2024,
+"pick": 16,
+"college": "Duke"
+},
+{
+"player_id": "knechda01",
+"name": "Dalton Knecht",
+"draft_year": 2024,
+"pick": 17,
+"college": "Tennessee"
+},
+{
+"player_id": "dasiltr01",
+"name": "Tristan Da Silva",
+"draft_year": 2024,
+"pick": 18,
+"college": "Colorado"
+},
+{
+"player_id": "walteja01",
+"name": "Ja'Kobe Walter",
+"draft_year": 2024,
+"pick": 19,
+"college": "Baylor"
+},
+{
+"player_id": "tysonja01",
+"name": "Jaylon Tyson",
+"draft_year": 2024,
+"pick": 20,
+"college": "California"
+},
+{
+"player_id": "missiyv01",
+"name": "Yves Missi",
+"draft_year": 2024,
+"pick": 21,
+"college": "Baylor"
+},
+{
+"player_id": "holmeda01",
+"name": "DaRon Holmes",
+"draft_year": 2024,
+"pick": 22,
+"college": "Dayton"
+},
+{
+"player_id": "johnsaj01",
+"name": "AJ Johnson",
+"draft_year": 2024,
+"pick": 23,
+"college": "International"
+},
+{
+"player_id": "georgky01",
+"name": "Kyshawn George",
+"draft_year": 2024,
+"pick": 24,
+"college": "Miami (FL)"
+},
+{
+"player_id": "dadiepa01",
+"name": "Pacôme Dadiet",
+"draft_year": 2024,
+"pick": 25,
+"college": "International"
+},
+{
+"player_id": "jonesdi01",
+"name": "Dillon Jones",
+"draft_year": 2024,
+"pick": 26,
+"college": "Weber State"
+},
+{
+"player_id": "shannte01",
+"name": "Terrence Shannon Jr.",
+"draft_year": 2024,
+"pick": 27,
+"college": "Illinois"
+},
+{
+"player_id": "dunnry01",
+"name": "Ryan Dunn",
+"draft_year": 2024,
+"pick": 28,
+"college": "Virginia"
+},
+{
+"player_id": "colliis01",
+"name": "Isaiah Collier",
+"draft_year": 2024,
+"pick": 29,
+"college": "USC"
+},
+{
+"player_id": "scheiba01",
+"name": "Baylor Scheierman",
+"draft_year": 2024,
+"pick": 30,
+"college": "Creighton"
+},
+{
+"player_id": "mogbojo01",
+"name": "Jonathan Mogbo",
+"draft_year": 2024,
+"pick": 31,
+"college": "San Francisco"
+},
+{
+"player_id": "filipky01",
+"name": "Kyle Filipowski",
+"draft_year": 2024,
+"pick": 32,
+"college": "Duke"
+},
+{
+"player_id": "smithty02",
+"name": "Tyler Smith",
+"draft_year": 2024,
+"pick": 33,
+"college": "International"
+},
+{
+"player_id": "kolekty01",
+"name": "Tyler Kolek",
+"draft_year": 2024,
+"pick": 34,
+"college": "Marquette"
+},
+{
+"player_id": "furphjo01",
+"name": "Johnny Furphy",
+"draft_year": 2024,
+"pick": 35,
+"college": "Kansas"
+},
+{
+"player_id": "nunezju01",
+"name": "Juan Nunez",
+"draft_year": 2024,
+"pick": 36,
+"college": "International"
+},
+{
+"player_id": "klintbo01",
+"name": "Bobi Klintman",
+"draft_year": 2024,
+"pick": 37,
+"college": "International"
+},
+{
+"player_id": "mitchaj01",
+"name": "Ajay Mitchell",
+"draft_year": 2024,
+"pick": 38,
+"college": "UC Santa Barbara"
+},
+{
+"player_id": "wellsja01",
+"name": "Jaylen Wells",
+"draft_year": 2024,
+"pick": 39,
+"college": "Washington State"
+},
+{
+"player_id": "ighodos01",
+"name": "Oso Ighodaro",
+"draft_year": 2024,
+"pick": 40,
+"college": "Marquette"
+},
+{
+"player_id": "bonaad01",
+"name": "Adem Bona",
+"draft_year": 2024,
+"pick": 41,
+"college": "UCLA"
+},
+{
+"player_id": "simpskj01",
+"name": "KJ Simpson",
+"draft_year": 2024,
+"pick": 42,
+"college": "Colorado"
+},
+{
+"player_id": "djurini01",
+"name": "Nikola Djurisic",
+"draft_year": 2024,
+"pick": 43,
+"college": "International"
+},
+{
+"player_id": "larsspe01",
+"name": "Pelle Larsson",
+"draft_year": 2024,
+"pick": 44,
+"college": "Arizona"
+},
+{
+"player_id": "sheadja01",
+"name": "Jamal Shead",
+"draft_year": 2024,
+"pick": 45,
+"college": "Houston"
+},
+{
+"player_id": "chrisca02",
+"name": "Cam Christie",
+"draft_year": 2024,
+"pick": 46,
+"college": "Minnesota"
+},
+{
+"player_id": "reevean01",
+"name": "Antonio Reeves",
+"draft_year": 2024,
+"pick": 47,
+"college": "Kentucky"
+},
+{
+"player_id": "ingraha01",
+"name": "Harrison Ingram",
+"draft_year": 2024,
+"pick": 48,
+"college": "UNC"
+},
+{
+"player_id": "newtotr01",
+"name": "Tristen Newton",
+"draft_year": 2024,
+"pick": 49,
+"college": "UConn"
+},
+{
+"player_id": "freemen01",
+"name": "Enrique Freeman",
+"draft_year": 2024,
+"pick": 50,
+"college": "University of Akron"
+},
+{
+"player_id": "ajincme01",
+"name": "Melvin Ajinça",
+"draft_year": 2024,
+"pick": 51,
+"college": "International"
+},
+{
+"player_id": "postqu01",
+"name": "Quinten Post",
+"draft_year": 2024,
+"pick": 52,
+"college": "Boston College"
+},
+{
+"player_id": "spencca01",
+"name": "Cam Spencer",
+"draft_year": 2024,
+"pick": 53,
+"college": "UConn"
+},
+{
+"player_id": "watsoan02",
+"name": "Anton Watson",
+"draft_year": 2024,
+"pick": 54,
+"college": "Gonzaga"
+},
+{
+"player_id": "jamesbr02",
+"name": "Bronny James",
+"draft_year": 2024,
+"pick": 55,
+"college": "USC"
+},
+{
+"player_id": "mcculke01",
+"name": "Kevin McCullar Jr.",
+"draft_year": 2024,
+"pick": 56,
+"college": "Kansas"
+},
+{
+"player_id": "chomcul01",
+"name": "Ulrich Chomche",
+"draft_year": 2024,
+"pick": 57,
+"college": "International"
+},
+{
+"player_id": "hukpoar01",
+"name": "Ariel Hukporti",
+"draft_year": 2024,
+"pick": 58,
+"college": "International"
+},
+{
+"player_id": "flaggco01",
+"name": "Cooper Flagg",
+"draft_year": 2025,
+"pick": 1,
+"college": "Duke"
+},
+{
+"player_id": "harpedy01",
+"name": "Dylan Harper",
+"draft_year": 2025,
+"pick": 2,
+"college": "Rutgers University"
+},
+{
+"player_id": "edgecvj01",
+"name": "VJ Edgecombe",
+"draft_year": 2025,
+"pick": 3,
+"college": "Baylor"
+},
+{
+"player_id": "knuepko01",
+"name": "Kon Knueppel",
+"draft_year": 2025,
+"pick": 4,
+"college": "Duke"
+},
+{
+"player_id": "baileac01",
+"name": "Ace Bailey",
+"draft_year": 2025,
+"pick": 5,
+"college": "Rutgers University"
+},
+{
+"player_id": "johnstr03",
+"name": "Tre Johnson",
+"draft_year": 2025,
+"pick": 6,
+"college": "Texas"
+},
+{
+"player_id": "fearsje01",
+"name": "Jeremiah Fears",
+"draft_year": 2025,
+"pick": 7,
+"college": "Oklahoma"
+},
+{
+"player_id": "demineg01",
+"name": "Egor Dёmin",
+"draft_year": 2025,
+"pick": 8,
+"college": "BYU"
+},
+{
+"player_id": "murraco01",
+"name": "Collin Murray-Boyles",
+"draft_year": 2025,
+"pick": 9,
+"college": "South Carolina"
+},
+{
+"player_id": "maluakh01",
+"name": "Khaman Maluach",
+"draft_year": 2025,
+"pick": 10,
+"college": "Duke"
+},
+{
+"player_id": "cowarce01",
+"name": "Cedric Coward",
+"draft_year": 2025,
+"pick": 11,
+"college": "Washington State"
+},
+{
+"player_id": "essenno01",
+"name": "Noa Essengue",
+"draft_year": 2025,
+"pick": 12,
+"college": "International"
+},
+{
+"player_id": "queende01",
+"name": "Derik Queen",
+"draft_year": 2025,
+"pick": 13,
+"college": "Maryland"
+},
+{
+"player_id": "bryanca01",
+"name": "Carter Bryant",
+"draft_year": 2025,
+"pick": 14,
+"college": "Arizona"
+},
+{
+"player_id": "sorbeth01",
+"name": "Thomas Sorber",
+"draft_year": 2025,
+"pick": 15,
+"college": "Georgetown"
+},
+{
+"player_id": "yangha01",
+"name": "Yang Hansen",
+"draft_year": 2025,
+"pick": 16,
+"college": "International"
+},
+{
+"player_id": "berinjo01",
+"name": "Joan Beringer",
+"draft_year": 2025,
+"pick": 17,
+"college": "International"
+},
+{
+"player_id": "claytwa01",
+"name": "Walter Clayton",
+"draft_year": 2025,
+"pick": 18,
+"college": "Florida"
+},
+{
+"player_id": "traorno01",
+"name": "Nolan Traoré",
+"draft_year": 2025,
+"pick": 19,
+"college": "International"
+},
+{
+"player_id": "jakucka01",
+"name": "Kasparas Jakučionis",
+"draft_year": 2025,
+"pick": 20,
+"college": "Illinois"
+},
+{
+"player_id": "rileywi01",
+"name": "Will Riley",
+"draft_year": 2025,
+"pick": 21,
+"college": "Illinois"
+},
+{
+"player_id": "poweldr01",
+"name": "Drake Powell",
+"draft_year": 2025,
+"pick": 22,
+"college": "UNC"
+},
+{
+"player_id": "newelas01",
+"name": "Asa Newell",
+"draft_year": 2025,
+"pick": 23,
+"college": "Georgia"
+},
+{
+"player_id": "cliffni01",
+"name": "Nique Clifford",
+"draft_year": 2025,
+"pick": 24,
+"college": "Colorado State"
+},
+{
+"player_id": "richaja02",
+"name": "Jase Richardson",
+"draft_year": 2025,
+"pick": 25,
+"college": "Michigan State"
+},
+{
+"player_id": "sarafbe01",
+"name": "Ben Saraf",
+"draft_year": 2025,
+"pick": 26,
+"college": "International"
+},
+{
+"player_id": "wolfda01",
+"name": "Danny Wolf",
+"draft_year": 2025,
+"pick": 27,
+"college": "Michigan"
+},
+{
+"player_id": "gonzahu01",
+"name": "Hugo González",
+"draft_year": 2025,
+"pick": 28,
+"college": "International"
+},
+{
+"player_id": "mcneeli01",
+"name": "Liam McNeeley",
+"draft_year": 2025,
+"pick": 29,
+"college": "UConn"
+},
+{
+"player_id": "konanya01",
+"name": "Yanic Konan Niederhäuser",
+"draft_year": 2025,
+"pick": 30,
+"college": "Penn State"
+},
+{
+"player_id": "flemira01",
+"name": "Rasheer Fleming",
+"draft_year": 2025,
+"pick": 31,
+"college": "Saint Joseph's"
+},
+{
+"player_id": "pendano01",
+"name": "Noah Penda",
+"draft_year": 2025,
+"pick": 32,
+"college": "International"
+},
+{
+"player_id": "jamessi01",
+"name": "Sion James",
+"draft_year": 2025,
+"pick": 33,
+"college": "Duke"
+},
+{
+"player_id": "kalkbry01",
+"name": "Ryan Kalkbrenner",
+"draft_year": 2025,
+"pick": 34,
+"college": "Creighton"
+},
+{
+"player_id": "broomjo01",
+"name": "Johni Broome",
+"draft_year": 2025,
+"pick": 35,
+"college": "Auburn"
+},
+{
+"player_id": "thierad01",
+"name": "Adou Thiero",
+"draft_year": 2025,
+"pick": 36,
+"college": "Arkansas"
+},
+{
+"player_id": "laniech01",
+"name": "Chaz Lanier",
+"draft_year": 2025,
+"pick": 37,
+"college": "Tennessee"
+},
+{
+"player_id": "joneska03",
+"name": "Kam Jones",
+"draft_year": 2025,
+"pick": 38,
+"college": "Marquette"
+},
+{
+"player_id": "martial01",
+"name": "Alijah Martin",
+"draft_year": 2025,
+"pick": 39,
+"college": "Florida"
+},
+{
+"player_id": "peavymi01",
+"name": "Micah Peavy",
+"draft_year": 2025,
+"pick": 40,
+"college": "Georgetown"
+},
+{
+"player_id": "breako01",
+"name": "Koby Brea",
+"draft_year": 2025,
+"pick": 41,
+"college": "Kentucky"
+},
+{
+"player_id": "raynama01",
+"name": "Maxime Raynaud",
+"draft_year": 2025,
+"pick": 42,
+"college": "Stanford"
+},
+{
+"player_id": "watkija01",
+"name": "Jamir Watkins",
+"draft_year": 2025,
+"pick": 43,
+"college": "Florida State"
+},
+{
+"player_id": "barnhbr01",
+"name": "Brooks Barnhizer",
+"draft_year": 2025,
+"pick": 44,
+"college": "Northwestern"
+},
+{
+"player_id": "zikarro01",
+"name": "Rocco Zikarsky",
+"draft_year": 2025,
+"pick": 45,
+"college": "International"
+},
+{
+"player_id": "william01",
+"name": "Amari Williams",
+"draft_year": 2025,
+"pick": 46,
+"college": "Kentucky"
+},
+{
+"player_id": "markobo01",
+"name": "Bogoljub Markovic",
+"draft_year": 2025,
+"pick": 47,
+"college": "International"
+},
+{
+"player_id": "smallja01",
+"name": "Javon Small",
+"draft_year": 2025,
+"pick": 48,
+"college": "West Virginia"
+},
+{
+"player_id": "proctty01",
+"name": "Tyrese Proctor",
+"draft_year": 2025,
+"pick": 49,
+"college": "Duke"
+},
+{
+"player_id": "sandeko01",
+"name": "Kobe Sanders",
+"draft_year": 2025,
+"pick": 50,
+"college": "Nevada"
+},
+{
+"player_id": "diawamo01",
+"name": "Mohamed Diawara",
+"draft_year": 2025,
+"pick": 51,
+"college": "International"
+},
+{
+"player_id": "tooheal01",
+"name": "Alex Toohey",
+"draft_year": 2025,
+"pick": 52,
+"college": "International"
+},
+{
+"player_id": "tonjejo01",
+"name": "John Tonje",
+"draft_year": 2025,
+"pick": 53,
+"college": "Wisconsin"
+},
+{
+"player_id": "peterta01",
+"name": "Taelon Peter",
+"draft_year": 2025,
+"pick": 54,
+"college": "Liberty"
+},
+{
+"player_id": "olbrila01",
+"name": "Lachlan Olbrich",
+"draft_year": 2025,
+"pick": 55,
+"college": "International"
+},
+{
+"player_id": "richawi02",
+"name": "Will Richard",
+"draft_year": 2025,
+"pick": 56,
+"college": "Florida"
+},
+{
+"player_id": "shulgma01",
+"name": "Max Shulga",
+"draft_year": 2025,
+"pick": 57,
+"college": "VCU"
+},
+{
+"player_id": "niangsa01",
+"name": "Saliou Niang",
+"draft_year": 2025,
+"pick": 58,
+"college": "International"
+},
+{
+"player_id": "mashaja01",
+"name": "Jahmai Mashack",
+"draft_year": 2025,
+"pick": 59,
+"college": "Tennessee"
+}
+]
