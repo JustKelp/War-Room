@@ -14,7 +14,7 @@
 <meta name="twitter:description" content="Scout real NFL prospects blind, draft your five, and see how their careers actually turned out.">
 <meta name="twitter:image" content="/static/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Saira+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
 <style>
   :root{
@@ -22,6 +22,7 @@
     --bg:#0b0f17; --surface:#141a25; --surface2:#1b2230; --line:#28303f;
     --ink:#f3f6fb; --dim:#99a5b7; --faint:#5f6b7e; --good:#27c281; --bad:#ef4d5e;
     --mono:"JetBrains Mono",ui-monospace,monospace; --head:"Source Sans 3",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif; --disp:"Oswald",sans-serif;
+    --num:"Saira Condensed","Oswald",sans-serif;   /* athletic stat numerals (free Endzone Sans stand-in) */
     --soft:0 2px 10px rgba(0,0,0,.35);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -128,8 +129,8 @@
   .clockbar .slot small{display:block;font-family:var(--body);font-size:10px;font-weight:700;letter-spacing:1px;color:var(--faint);margin-top:5px;text-transform:uppercase}
   .clockbar .pickno{font-family:var(--body);text-align:right;align-items:flex-end;border-left:1px solid var(--line)}
   .clockbar .pickno .rd{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
-  .clockbar .pickno .pk{font-family:var(--mono);font-size:24px;font-weight:700;color:#fff;line-height:1}
-  .clockbar .pickno .pk i{color:var(--faint);font-style:normal;font-size:14px}
+  .clockbar .pickno .pk{font-family:var(--num);font-size:30px;font-weight:600;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+  .clockbar .pickno .pk .of{color:var(--faint);font-size:16px}
   .clockbar .pickno .sm{margin-top:8px}
   @keyframes tick{0%,50%{opacity:1}51%,100%{opacity:.2}}
   .waitbar{margin-bottom:18px;padding:12px 16px;border-radius:10px;background:var(--surface);
@@ -149,15 +150,15 @@
   .scout .tag{display:flex;align-items:center;justify-content:space-between}
   .scout .alias{font-family:var(--body);font-weight:800;font-size:24px;letter-spacing:.5px;color:#fff}
   .scout .pos{font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:.5px;color:#fff;background:var(--nfl);padding:4px 10px;border-radius:6px}
-  .scout .meas{display:flex;justify-content:space-around;padding:10px 6px;font-family:var(--mono);background:#0e131d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .scout .meas{display:flex;justify-content:space-around;padding:10px 6px;background:#0e131d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .scout .meas .lab{font:700 9px var(--body);letter-spacing:.5px;text-transform:uppercase;color:var(--faint);text-align:center}
-  .scout .meas .val{font-size:15px;font-weight:700;text-align:center;color:var(--ink)}
+  .scout .meas .val{font-family:var(--num);font-size:18px;font-weight:600;letter-spacing:.3px;text-align:center;color:var(--ink);font-variant-numeric:tabular-nums}
   .scout .conf{display:flex;justify-content:space-between;padding:10px 16px 4px;font:700 11px var(--body);letter-spacing:.5px;text-transform:uppercase;color:var(--nfl-lite)}
   .scout .conf span{color:var(--faint)}
   .scout .stats{padding:6px 16px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
-  .scout .stat{display:flex;justify-content:space-between;font-size:13px}
+  .scout .stat{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
   .scout .stat .k{color:var(--dim)}
-  .scout .stat .v{font-family:var(--mono);font-weight:700;color:#fff}
+  .scout .stat .v{font-family:var(--num);font-weight:600;font-size:17px;letter-spacing:.3px;color:#fff;font-variant-numeric:tabular-nums}
   .scout .draftbtn{margin:0;border-radius:0;background:var(--nfl);color:#fff;border:none;font-weight:800;font-size:13px;letter-spacing:.5px;padding:13px}
   .scout .draftbtn:hover:not(:disabled){background:#1b78ee;transform:none}
   .scout .draftbtn:disabled{background:var(--surface2);color:var(--faint)}
@@ -168,7 +169,7 @@
   .room .rn .cnt{font-family:var(--mono);font-size:12px;color:var(--faint)}
   .rrow{display:flex;align-items:center;gap:10px;font-size:13px;border:1px solid var(--line);border-left:3px solid var(--pc);padding:8px 11px;margin-bottom:6px;background:var(--surface);border-radius:8px}
   .rrow .s{font-family:var(--body);font-weight:800;font-size:11px;letter-spacing:.5px;color:var(--nfl-lite);width:30px}
-  .rrow.empty{color:var(--faint);font-style:italic;border-left-color:var(--line)}
+  .rrow.empty{color:var(--faint);border-left-color:var(--line)}
   .rrow .cd{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint)}
   /* reveal */
   .standing{display:flex;align-items:center;gap:22px;flex-wrap:wrap;background:var(--surface);
@@ -176,14 +177,14 @@
   .standing>div{flex:0 0 auto}
   .standing .big{font-family:var(--body);font-weight:800;font-size:46px;line-height:1;letter-spacing:-1px;color:#fff}
   .standing .lab{font-family:var(--body);font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-size:11px;color:var(--nfl-lite);margin-top:3px}
-  .standing .val{font-family:var(--mono);font-size:22px;font-weight:700;color:#fff}
+  .standing .val{font-family:var(--num);font-size:26px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
   .ranks{display:flex;flex-direction:column;gap:14px}
   .rank{background:var(--surface);border:1px solid var(--line);border-radius:13px;overflow:hidden}
   .rank.win{border-color:var(--nfl)}
   .rank .rh{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-left:4px solid var(--pc)}
   .rank .rh .name{font-family:var(--body);font-weight:800;font-size:22px;color:#fff}
   .rank .rh .rk{font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--faint)}
-  .rank .rh .tot{font-family:var(--mono);font-size:28px;font-weight:700;color:#fff;text-align:right}
+  .rank .rh .tot{font-family:var(--num);font-size:34px;font-weight:600;color:#fff;text-align:right;font-variant-numeric:tabular-nums}
   .rank .rh .tot .totlab{display:block;font-family:var(--body);font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--nfl-lite);font-weight:700}
   table{width:100%;border-collapse:collapse;font-size:13px}
   th,td{text-align:left;padding:10px 18px;border-bottom:1px solid var(--line)}
@@ -489,7 +490,7 @@ function renderDraft(){
     <div class="clockbar live" style="--pc:${pc}">
       <div class="who">On the Clock<b>${esc(c.name)}</b></div>
       <div class="slot">${esc(c.slot)}<small>${esc(c.slotLabel||"on the board")}</small></div>
-      <div class="pickno"><span class="rd">Round ${c.round}</span><span class="pk">${S.pickNumber}<i>/${S.totalPicks}</i></span><span class="sm">${resetBtn}</span></div>
+      <div class="pickno"><span class="rd">Round ${c.round}</span><span class="pk">${S.pickNumber}<span class="of">/${S.totalPicks}</span></span><span class="sm">${resetBtn}</span></div>
     </div>
     ${(!canPick)?`<div class="waitbar" style="--pc:${pc}">Waiting for ${esc(c.name)} to pick…</div>`:""}
     <div class="columns">
