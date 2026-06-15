@@ -375,19 +375,19 @@
 "name": "Kevin Séraphin",
 "draft_year": 2010,
 "pick": 17,
-"conference": "EuroLeague",
+"conference": "Jeep Elite",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2011-12",
-"ppg": 8.9,
-"rpg": 5.0,
-"apg": 0.6,
-"fg_pct": 0.551,
-"fg3_pct": null,
-"ft_pct": 0.8,
-"mpg": 19.1,
-"gp": 7.0,
-"source": "wikipedia"
+"conference": "Jeep Elite",
+"last_year": "2009-10",
+"ppg": 6.1,
+"rpg": 4.6,
+"apg": 0.5,
+"fg_pct": 0.52,
+"fg3_pct": 0.0,
+"ft_pct": 0.571,
+"mpg": 16.2,
+"gp": 38.0,
+"source": "realgm"
 }
 },
 "bledser01": {
@@ -605,19 +605,19 @@
 "name": "Nemanja Bjelica",
 "draft_year": 2010,
 "pick": 35,
-"conference": "EuroLeague",
+"conference": "Eurocup",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2010-11",
-"ppg": 1.2,
-"rpg": 1.7,
-"apg": 0.5,
-"fg_pct": 0.25,
-"fg3_pct": 0.222,
-"ft_pct": 0.5,
-"mpg": 9.0,
-"gp": 13.0,
-"source": "wikipedia"
+"conference": "Eurocup",
+"last_year": "2009-10",
+"ppg": 8.5,
+"rpg": 5.8,
+"apg": 2.0,
+"fg_pct": 0.402,
+"fg3_pct": 0.235,
+"ft_pct": 0.667,
+"mpg": 23.3,
+"gp": 12.0,
+"source": "realgm"
 }
 },
 "fieldla01": {
@@ -766,9 +766,9 @@
 "name": "Enes Freedom",
 "draft_year": 2011,
 "pick": 3,
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "college": {
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "last_year": "2008-09",
 "ppg": 2.0,
 "rpg": 1.5,
@@ -778,7 +778,7 @@
 "ft_pct": 0.667,
 "mpg": 7.8,
 "gp": 4.0,
-"source": "wikipedia"
+"source": "realgm"
 }
 },
 "thomptr01": {
@@ -812,19 +812,19 @@
 "name": "Jonas Valančiūnas",
 "draft_year": 2011,
 "pick": 5,
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "college": {
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "last_year": "2010-11",
 "ppg": 7.7,
 "rpg": 5.8,
 "apg": 0.2,
 "fg_pct": 0.708,
-"fg3_pct": null,
+"fg3_pct": 0.0,
 "ft_pct": 0.885,
 "mpg": 15.4,
 "gp": 15.0,
-"source": "wikipedia"
+"source": "realgm"
 }
 },
 "veselja01": {
@@ -835,19 +835,19 @@
 "name": "Jan Veselý",
 "draft_year": 2011,
 "pick": 6,
-"conference": "Domestic leagues",
+"conference": "Euroleague",
 "college": {
-"conference": "Domestic leagues",
+"conference": "Euroleague",
 "last_year": "2010-11",
-"ppg": 10.4,
-"rpg": 4.3,
-"apg": 1.4,
-"fg_pct": 0.607,
-"fg3_pct": 0.289,
-"ft_pct": 0.554,
-"mpg": 23.7,
-"gp": 24.0,
-"source": "wikipedia"
+"ppg": 10.1,
+"rpg": 3.6,
+"apg": 1.1,
+"fg_pct": 0.536,
+"fg3_pct": 0.357,
+"ft_pct": 0.444,
+"mpg": 27.0,
+"gp": 15.0,
+"source": "realgm"
 }
 },
 "biyombi01": {
@@ -858,7 +858,20 @@
 "name": "Bismack Biyombo",
 "draft_year": 2011,
 "pick": 7,
-"conference": "International"
+"conference": "ACB",
+"college": {
+"conference": "ACB",
+"last_year": "2010-11",
+"ppg": 6.4,
+"rpg": 5.1,
+"apg": 0.3,
+"fg_pct": 0.552,
+"fg3_pct": 0.0,
+"ft_pct": 0.553,
+"mpg": 17.1,
+"gp": 14.0,
+"source": "realgm"
+}
 },
 "knighbr03": {
 "height": "6-2",
@@ -1144,19 +1157,19 @@
 "name": "Donatas Motiejūnas",
 "draft_year": 2011,
 "pick": 20,
-"conference": "Domestic leagues",
+"conference": "Lega A",
 "college": {
-"conference": "Domestic leagues",
+"conference": "Lega A",
 "last_year": "2010-11",
-"ppg": 12.8,
-"rpg": 4.3,
-"apg": 0.9,
-"fg_pct": 0.525,
-"fg3_pct": 0.429,
-"ft_pct": 0.715,
-"mpg": 25.6,
-"gp": 37.0,
-"source": "wikipedia"
+"ppg": 12.2,
+"rpg": 4.7,
+"apg": 0.8,
+"fg_pct": 0.499,
+"fg3_pct": 0.341,
+"ft_pct": 0.686,
+"mpg": 26.2,
+"gp": 53.0,
+"source": "realgm"
 }
 },
 "smithno01": {
@@ -1213,19 +1226,19 @@
 "name": "Nikola Mirotić",
 "draft_year": 2011,
 "pick": 23,
-"conference": "Domestic leagues stats",
+"conference": "ACB",
 "college": {
-"conference": "Domestic leagues stats",
+"conference": "ACB",
 "last_year": "2010-11",
-"ppg": 7.9,
+"ppg": 7.4,
 "rpg": 3.5,
-"apg": 0.7,
-"fg_pct": 0.505,
-"fg3_pct": 0.393,
-"ft_pct": 0.89,
-"mpg": 16.5,
-"gp": 35.0,
-"source": "wikipedia"
+"apg": 0.6,
+"fg_pct": 0.5,
+"fg3_pct": 0.389,
+"ft_pct": 0.881,
+"mpg": 15.9,
+"gp": 54.0,
+"source": "realgm"
 }
 },
 "jacksre01": {
@@ -1374,19 +1387,19 @@
 "name": "Bojan Bogdanović",
 "draft_year": 2011,
 "pick": 31,
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2009-10",
-"ppg": 8.1,
-"rpg": 2.9,
-"apg": 0.5,
-"fg_pct": 0.436,
-"fg3_pct": 0.387,
-"ft_pct": 0.435,
-"mpg": 23.3,
-"gp": 15.0,
-"source": "wikipedia"
+"conference": "Euroleague",
+"last_year": "2010-11",
+"ppg": 18.0,
+"rpg": 3.5,
+"apg": 1.8,
+"fg_pct": 0.411,
+"fg3_pct": 0.309,
+"ft_pct": 0.765,
+"mpg": 35.5,
+"gp": 10.0,
+"source": "realgm"
 }
 },
 "singlky01": {
@@ -1489,7 +1502,20 @@
 "name": "Jeremy Tyler",
 "draft_year": 2011,
 "pick": 39,
-"conference": "International"
+"conference": "CBA",
+"college": {
+"conference": "CBA",
+"last_year": "2014-15",
+"ppg": 22.1,
+"rpg": 11.2,
+"apg": 1.2,
+"fg_pct": 0.535,
+"fg3_pct": 0.0,
+"ft_pct": 0.706,
+"mpg": 28.9,
+"gp": 41.0,
+"source": "realgm"
+}
 },
 "leuerjo01": {
 "height": "6-10",
@@ -1545,19 +1571,19 @@
 "name": "Dāvis Bertāns",
 "draft_year": 2011,
 "pick": 42,
-"conference": "EuroLeague",
+"conference": "KLS",
 "college": {
-"conference": "EuroLeague",
+"conference": "KLS",
 "last_year": "2011-12",
-"ppg": 3.0,
-"rpg": 2.2,
-"apg": 0.5,
-"fg_pct": 0.282,
-"fg3_pct": 0.217,
-"ft_pct": 1.0,
-"mpg": 15.6,
-"gp": 10.0,
-"source": "wikipedia"
+"ppg": 3.9,
+"rpg": 1.7,
+"apg": 0.6,
+"fg_pct": 0.432,
+"fg3_pct": 0.373,
+"ft_pct": 0.769,
+"mpg": 13.4,
+"gp": 52.0,
+"source": "realgm"
 }
 },
 "jenkich01": {
@@ -2120,9 +2146,9 @@
 "name": "Evan Fournier",
 "draft_year": 2012,
 "pick": 20,
-"conference": "Domestic leagues stats",
+"conference": "Jeep Elite",
 "college": {
-"conference": "Domestic leagues stats",
+"conference": "Jeep Elite",
 "last_year": "2011-12",
 "ppg": 14.0,
 "rpg": 3.2,
@@ -2132,7 +2158,7 @@
 "ft_pct": 0.754,
 "mpg": 26.0,
 "gp": 30.0,
-"source": "wikipedia"
+"source": "realgm"
 }
 },
 "sullija01": {
@@ -2327,19 +2353,19 @@
 "name": "Tomáš Satoranský",
 "draft_year": 2012,
 "pick": 32,
-"conference": "Domestic leagues",
+"conference": "ACB",
 "college": {
-"conference": "Domestic leagues",
+"conference": "ACB",
 "last_year": "2011-12",
 "ppg": 4.8,
 "rpg": 2.1,
 "apg": 1.3,
-"fg_pct": 0.43,
-"fg3_pct": 0.273,
-"ft_pct": 0.702,
-"mpg": 17.2,
-"gp": 36.0,
-"source": "wikipedia"
+"fg_pct": 0.435,
+"fg3_pct": 0.283,
+"ft_pct": 0.698,
+"mpg": 17.0,
+"gp": 38.0,
+"source": "realgm"
 }
 },
 "crowdja01": {
@@ -2603,19 +2629,19 @@
 "name": "Kostas Papanikolaou",
 "draft_year": 2012,
 "pick": 48,
-"conference": "Domestic leagues",
+"conference": "HEBA A1",
 "college": {
-"conference": "Domestic leagues",
+"conference": "HEBA A1",
 "last_year": "2011-12",
-"ppg": 7.7,
-"rpg": 4.6,
+"ppg": 7.1,
+"rpg": 4.1,
 "apg": 0.7,
-"fg_pct": 0.497,
-"fg3_pct": 0.348,
-"ft_pct": 0.684,
-"mpg": 20.8,
-"gp": 32.0,
-"source": "wikipedia"
+"fg_pct": 0.494,
+"fg3_pct": 0.342,
+"ft_pct": 0.685,
+"mpg": 20.4,
+"gp": 54.0,
+"source": "realgm"
 }
 },
 "oquinky01": {
@@ -2649,19 +2675,19 @@
 "name": "Furkan Aldemir",
 "draft_year": 2012,
 "pick": 53,
-"conference": "EuroLeague",
+"conference": "T-BSL",
 "college": {
-"conference": "EuroLeague",
+"conference": "T-BSL",
 "last_year": "2011-12",
-"ppg": 6.6,
-"rpg": 4.8,
-"apg": 0.5,
-"fg_pct": 0.557,
+"ppg": 7.6,
+"rpg": 6.1,
+"apg": 0.6,
+"fg_pct": 0.582,
 "fg3_pct": 0.0,
-"ft_pct": 0.795,
-"mpg": 16.8,
-"gp": 15.0,
-"source": "wikipedia"
+"ft_pct": 0.677,
+"mpg": 19.3,
+"gp": 52.0,
+"source": "realgm"
 }
 },
 "hummero01": {
@@ -3050,7 +3076,20 @@
 "name": "Lucas Nogueira",
 "draft_year": 2013,
 "pick": 16,
-"conference": "International"
+"conference": "ACB",
+"college": {
+"conference": "ACB",
+"last_year": "2012-13",
+"ppg": 5.5,
+"rpg": 3.5,
+"apg": 0.3,
+"fg_pct": 0.667,
+"fg3_pct": 0.0,
+"ft_pct": 0.653,
+"mpg": 13.6,
+"gp": 35.0,
+"source": "realgm"
+}
 },
 "schrode01": {
 "height": "6-1",
@@ -3060,7 +3099,20 @@
 "name": "Dennis Schröder",
 "draft_year": 2013,
 "pick": 17,
-"conference": "International"
+"conference": "G-BBL",
+"college": {
+"conference": "G-BBL",
+"last_year": "2012-13",
+"ppg": 12.0,
+"rpg": 2.5,
+"apg": 3.2,
+"fg_pct": 0.422,
+"fg3_pct": 0.4,
+"ft_pct": 0.832,
+"mpg": 25.3,
+"gp": 32.0,
+"source": "realgm"
+}
 },
 "larkish01": {
 "height": "5-11",
@@ -3093,7 +3145,20 @@
 "name": "Sergey Karasev",
 "draft_year": 2013,
 "pick": 19,
-"conference": "International"
+"conference": "VTB United",
+"college": {
+"conference": "VTB United",
+"last_year": "2012-13",
+"ppg": 16.4,
+"rpg": 4.3,
+"apg": 2.1,
+"fg_pct": 0.423,
+"fg3_pct": 0.373,
+"ft_pct": 0.851,
+"mpg": 31.1,
+"gp": 41.0,
+"source": "realgm"
+}
 },
 "snellto01": {
 "height": "6-6",
@@ -3264,7 +3329,20 @@
 "name": "Rudy Gobert",
 "draft_year": 2013,
 "pick": 27,
-"conference": "International"
+"conference": "Jeep Elite",
+"college": {
+"conference": "Jeep Elite",
+"last_year": "2012-13",
+"ppg": 8.1,
+"rpg": 5.0,
+"apg": 0.4,
+"fg_pct": 0.725,
+"fg3_pct": 0.0,
+"ft_pct": 0.697,
+"mpg": 21.4,
+"gp": 30.0,
+"source": "realgm"
+}
 },
 "goodwar01": {
 "height": "6-5",
@@ -3320,19 +3398,19 @@
 "name": "Álex Abrines",
 "draft_year": 2013,
 "pick": 32,
-"conference": "Domestic leagues",
+"conference": "ACB",
 "college": {
-"conference": "Domestic leagues",
+"conference": "ACB",
 "last_year": "2012-13",
-"ppg": 3.3,
+"ppg": 3.9,
 "rpg": 1.0,
 "apg": 0.2,
-"fg_pct": 0.386,
-"fg3_pct": 0.288,
-"ft_pct": 0.682,
-"mpg": 10.5,
-"gp": 33.0,
-"source": "wikipedia"
+"fg_pct": 0.408,
+"fg3_pct": 0.301,
+"ft_pct": 0.816,
+"mpg": 10.8,
+"gp": 48.0,
+"source": "realgm"
 }
 },
 "canaais01": {
@@ -3458,7 +3536,20 @@
 "name": "Raul Neto",
 "draft_year": 2013,
 "pick": 47,
-"conference": "International"
+"conference": "ACB",
+"college": {
+"conference": "ACB",
+"last_year": "2012-13",
+"ppg": 8.5,
+"rpg": 2.4,
+"apg": 2.9,
+"fg_pct": 0.461,
+"fg3_pct": 0.39,
+"ft_pct": 0.792,
+"mpg": 24.5,
+"gp": 34.0,
+"source": "realgm"
+}
 },
 "kellyry01": {
 "height": "6-11",
@@ -3537,19 +3628,19 @@
 "name": "Joffrey Lauvergne",
 "draft_year": 2013,
 "pick": 55,
-"conference": "Domestic leagues",
+"conference": "KLS",
 "college": {
-"conference": "Domestic leagues",
+"conference": "KLS",
 "last_year": "2012-13",
-"ppg": 10.4,
-"rpg": 6.7,
-"apg": 1.4,
-"fg_pct": 0.639,
-"fg3_pct": 0.2,
-"ft_pct": 0.616,
-"mpg": 26.2,
-"gp": 20.0,
-"source": "wikipedia"
+"ppg": 7.6,
+"rpg": 4.8,
+"apg": 0.9,
+"fg_pct": 0.57,
+"fg3_pct": 0.308,
+"ft_pct": 0.656,
+"mpg": 18.9,
+"gp": 54.0,
+"source": "realgm"
 }
 },
 "wiggian01": {
@@ -3652,19 +3743,19 @@
 "name": "Dante Exum",
 "draft_year": 2014,
 "pick": 5,
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "college": {
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "last_year": "2021-22",
-"ppg": 6.3,
-"rpg": 2.5,
-"apg": 1.6,
-"fg_pct": 0.515,
-"fg3_pct": 0.545,
-"ft_pct": 0.849,
-"mpg": 17.0,
-"gp": 25.0,
-"source": "wikipedia"
+"ppg": 7.4,
+"rpg": 2.9,
+"apg": 1.5,
+"fg_pct": 0.527,
+"fg3_pct": 0.533,
+"ft_pct": 0.847,
+"mpg": 18.2,
+"gp": 49.0,
+"source": "realgm"
 }
 },
 "smartma01": {
@@ -3813,19 +3904,19 @@
 "name": "Dario Šarić",
 "draft_year": 2014,
 "pick": 12,
-"conference": "EuroLeague",
+"conference": "Liga ABA",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2011-12",
-"ppg": 2.0,
-"rpg": 4.5,
-"apg": 0.5,
-"fg_pct": 0.2,
-"fg3_pct": 0.167,
-"ft_pct": 0.5,
-"mpg": 15.0,
-"gp": 4.0,
-"source": "wikipedia"
+"conference": "Liga ABA",
+"last_year": "2013-14",
+"ppg": 16.9,
+"rpg": 9.4,
+"apg": 3.3,
+"fg_pct": 0.498,
+"fg3_pct": 0.318,
+"ft_pct": 0.716,
+"mpg": 32.4,
+"gp": 57.0,
+"source": "realgm"
 }
 },
 "lavinza01": {
@@ -3905,19 +3996,19 @@
 "name": "Jusuf Nurkić",
 "draft_year": 2014,
 "pick": 16,
-"conference": "Domestic leagues",
+"conference": "Liga ABA",
 "college": {
-"conference": "Domestic leagues",
+"conference": "Liga ABA",
 "last_year": "2013-14",
-"ppg": 11.7,
-"rpg": 5.7,
-"apg": 0.7,
-"fg_pct": 0.56,
-"fg3_pct": 0.143,
-"ft_pct": 0.701,
-"mpg": 16.6,
-"gp": 28.0,
-"source": "wikipedia"
+"ppg": 10.9,
+"rpg": 5.0,
+"apg": 0.8,
+"fg_pct": 0.552,
+"fg3_pct": 0.2,
+"ft_pct": 0.676,
+"mpg": 16.3,
+"gp": 58.0,
+"source": "realgm"
 }
 },
 "ennisty01": {
@@ -3974,19 +4065,19 @@
 "name": "Bruno Caboclo",
 "draft_year": 2014,
 "pick": 20,
-"conference": "FIBA Americas League",
+"conference": "NBB",
 "college": {
-"conference": "FIBA Americas League",
+"conference": "NBB",
 "last_year": "2013-14",
-"ppg": 4.8,
-"rpg": 3.1,
+"ppg": 5.0,
+"rpg": 2.8,
 "apg": 0.2,
-"fg_pct": 0.464,
-"fg3_pct": 0.304,
-"ft_pct": 0.733,
-"mpg": 13.2,
-"gp": 17.0,
-"source": "wikipedia"
+"fg_pct": 0.507,
+"fg3_pct": 0.379,
+"ft_pct": 0.75,
+"mpg": 12.8,
+"gp": 21.0,
+"source": "realgm"
 }
 },
 "hoodro01": {
@@ -4043,19 +4134,19 @@
 "name": "Clint Capela",
 "draft_year": 2014,
 "pick": 25,
-"conference": "EuroLeague",
+"conference": "Jeep Elite",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2012-13",
-"ppg": 2.3,
-"rpg": 3.0,
-"apg": 0.3,
-"fg_pct": 0.636,
+"conference": "Jeep Elite",
+"last_year": "2013-14",
+"ppg": 9.8,
+"rpg": 6.8,
+"apg": 1.0,
+"fg_pct": 0.654,
 "fg3_pct": 0.0,
-"ft_pct": 1.0,
-"mpg": 8.0,
-"gp": 7.0,
-"source": "wikipedia"
+"ft_pct": 0.56,
+"mpg": 21.5,
+"gp": 43.0,
+"source": "realgm"
 }
 },
 "hairspj02": {
@@ -4089,7 +4180,20 @@
 "name": "Bogdan Bogdanović",
 "draft_year": 2014,
 "pick": 27,
-"conference": "International"
+"conference": "Liga ABA",
+"college": {
+"conference": "Liga ABA",
+"last_year": "2013-14",
+"ppg": 14.9,
+"rpg": 3.7,
+"apg": 3.7,
+"fg_pct": 0.396,
+"fg3_pct": 0.337,
+"ft_pct": 0.79,
+"mpg": 30.2,
+"gp": 66.0,
+"source": "realgm"
+}
 },
 "huestjo01": {
 "height": "6-7",
@@ -4306,19 +4410,19 @@
 "name": "Nikola Jokić",
 "draft_year": 2014,
 "pick": 41,
-"conference": "ABA League",
+"conference": "Liga ABA",
 "college": {
-"conference": "ABA League",
+"conference": "Liga ABA",
 "last_year": "2013-14",
-"ppg": 11.4,
-"rpg": 6.4,
-"apg": 2.0,
-"fg_pct": 0.636,
-"fg3_pct": 0.221,
-"ft_pct": 0.667,
-"mpg": 25.0,
-"gp": 26.0,
-"source": "wikipedia"
+"ppg": 11.3,
+"rpg": 6.3,
+"apg": 2.5,
+"fg_pct": 0.532,
+"fg3_pct": 0.315,
+"ft_pct": 0.656,
+"mpg": 24.7,
+"gp": 39.0,
+"source": "realgm"
 }
 },
 "brownma02": {
@@ -4398,19 +4502,19 @@
 "name": "Thanasis Antetokounmpo",
 "draft_year": 2014,
 "pick": 51,
-"conference": "EuroLeague",
+"conference": "ACB",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2017-18",
-"ppg": 3.6,
-"rpg": 2.2,
-"apg": 0.4,
-"fg_pct": 0.528,
-"fg3_pct": 0.286,
-"ft_pct": 0.583,
-"mpg": 11.2,
-"gp": 33.0,
-"source": "wikipedia"
+"conference": "ACB",
+"last_year": "2016-17",
+"ppg": 7.8,
+"rpg": 3.8,
+"apg": 0.8,
+"fg_pct": 0.46,
+"fg3_pct": 0.224,
+"ft_pct": 0.553,
+"mpg": 17.4,
+"gp": 34.0,
+"source": "realgm"
 }
 },
 "micicva01": {
@@ -4421,19 +4525,19 @@
 "name": "Vasilije Micić",
 "draft_year": 2014,
 "pick": 52,
-"conference": "Domestic leagues",
+"conference": "Liga ABA",
 "college": {
-"conference": "Domestic leagues",
+"conference": "Liga ABA",
 "last_year": "2013-14",
-"ppg": 11.6,
+"ppg": 12.0,
 "rpg": 3.0,
-"apg": 5.6,
-"fg_pct": 0.46,
-"fg3_pct": 0.289,
-"ft_pct": 0.698,
-"mpg": 30.1,
-"gp": 26.0,
-"source": "wikipedia"
+"apg": 5.5,
+"fg_pct": 0.467,
+"fg3_pct": 0.309,
+"ft_pct": 0.735,
+"mpg": 29.9,
+"gp": 33.0,
+"source": "realgm"
 }
 },
 "chrisse01": {
@@ -4582,19 +4686,19 @@
 "name": "Kristaps Porziņģis",
 "draft_year": 2015,
 "pick": 4,
-"conference": "Liga ACB",
+"conference": "ACB",
 "college": {
-"conference": "Liga ACB",
+"conference": "ACB",
 "last_year": "2014-15",
-"ppg": 10.7,
-"rpg": 4.8,
-"apg": 0.4,
-"fg_pct": 0.471,
-"fg3_pct": 0.313,
-"ft_pct": 0.774,
-"mpg": 21.7,
-"gp": 34.0,
-"source": "wikipedia"
+"ppg": 11.0,
+"rpg": 4.6,
+"apg": 0.5,
+"fg_pct": 0.496,
+"fg3_pct": 0.359,
+"ft_pct": 0.752,
+"mpg": 21.4,
+"gp": 50.0,
+"source": "realgm"
 }
 },
 "hezonma01": {
@@ -4605,19 +4709,19 @@
 "name": "Mario Hezonja",
 "draft_year": 2015,
 "pick": 5,
-"conference": "Domestic leagues",
+"conference": "ACB",
 "college": {
-"conference": "Domestic leagues",
+"conference": "ACB",
 "last_year": "2014-15",
-"ppg": 4.7,
+"ppg": 5.8,
 "rpg": 2.0,
-"apg": 1.2,
-"fg_pct": 0.456,
-"fg3_pct": 0.38,
-"ft_pct": 0.667,
-"mpg": 14.2,
-"gp": 41.0,
-"source": "wikipedia"
+"apg": 1.1,
+"fg_pct": 0.46,
+"fg3_pct": 0.385,
+"ft_pct": 0.722,
+"mpg": 15.1,
+"gp": 66.0,
+"source": "realgm"
 }
 },
 "caulewi01": {
@@ -4656,14 +4760,14 @@
 "conference": "CBA",
 "last_year": "2014-15",
 "ppg": 18.0,
-"rpg": 6.3,
+"rpg": 6.2,
 "apg": 5.9,
 "fg_pct": 0.478,
 "fg3_pct": 0.342,
 "ft_pct": 0.574,
-"mpg": 31.6,
+"mpg": 31.5,
 "gp": 12.0,
-"source": "wikipedia"
+"source": "realgm"
 }
 },
 "johnsst04": {
@@ -5134,19 +5238,19 @@
 "name": "Cedi Osman",
 "draft_year": 2015,
 "pick": 31,
-"conference": "EuroLeague",
+"conference": "T-BSL",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2013-14",
-"ppg": 3.8,
-"rpg": 1.7,
-"apg": 0.9,
-"fg_pct": 0.436,
-"fg3_pct": 0.524,
-"ft_pct": 0.4,
-"mpg": 11.6,
-"gp": 13.0,
-"source": "wikipedia"
+"conference": "T-BSL",
+"last_year": "2014-15",
+"ppg": 7.6,
+"rpg": 4.0,
+"apg": 1.1,
+"fg_pct": 0.412,
+"fg3_pct": 0.331,
+"ft_pct": 0.675,
+"mpg": 20.5,
+"gp": 66.0,
+"source": "realgm"
 }
 },
 "harremo01": {
@@ -5203,19 +5307,19 @@
 "name": "Willy Hernangómez",
 "draft_year": 2015,
 "pick": 35,
-"conference": "Domestic leagues",
+"conference": "ACB",
 "college": {
-"conference": "Domestic leagues",
+"conference": "ACB",
 "last_year": "2014-15",
-"ppg": 10.6,
-"rpg": 6.2,
-"apg": 0.5,
-"fg_pct": 0.537,
-"fg3_pct": 0.167,
-"ft_pct": 0.692,
-"mpg": 21.1,
-"gp": 34.0,
-"source": "wikipedia"
+"ppg": 10.1,
+"rpg": 5.7,
+"apg": 0.6,
+"fg_pct": 0.532,
+"fg3_pct": 0.2,
+"ft_pct": 0.72,
+"mpg": 19.7,
+"gp": 50.0,
+"source": "realgm"
 }
 },
 "holmeri01": {
@@ -5433,19 +5537,19 @@
 "name": "Dragan Bender",
 "draft_year": 2016,
 "pick": 4,
-"conference": "EuroLeague",
+"conference": "I-BSL",
 "college": {
-"conference": "EuroLeague",
+"conference": "I-BSL",
 "last_year": "2015-16",
-"ppg": 2.1,
-"rpg": 1.4,
-"apg": 0.6,
-"fg_pct": 0.333,
-"fg3_pct": 0.25,
-"ft_pct": 0.5,
-"mpg": 10.5,
-"gp": 7.0,
-"source": "wikipedia"
+"ppg": 4.4,
+"rpg": 2.5,
+"apg": 0.7,
+"fg_pct": 0.423,
+"fg3_pct": 0.338,
+"ft_pct": 0.719,
+"mpg": 12.9,
+"gp": 38.0,
+"source": "realgm"
 }
 },
 "dunnkr01": {
@@ -5571,7 +5675,20 @@
 "name": "Thon Maker",
 "draft_year": 2016,
 "pick": 10,
-"conference": "International"
+"conference": "BCL-Eu",
+"college": {
+"conference": "BCL-Eu",
+"last_year": "2021-22",
+"ppg": 3.5,
+"rpg": 4.0,
+"apg": 0.8,
+"fg_pct": 0.238,
+"fg3_pct": 0.143,
+"ft_pct": 0.833,
+"mpg": 14.8,
+"gp": 6.0,
+"source": "realgm"
+}
 },
 "sabondo01": {
 "height": "6-10",
@@ -5650,19 +5767,19 @@
 "name": "Juancho Hernangómez",
 "draft_year": 2016,
 "pick": 15,
-"conference": "Domestic leagues",
+"conference": "ACB",
 "college": {
-"conference": "Domestic leagues",
-"last_year": "2013-14",
-"ppg": 0.7,
-"rpg": 0.5,
-"apg": null,
-"fg_pct": 0.333,
-"fg3_pct": 0.5,
-"ft_pct": null,
-"mpg": 3.4,
-"gp": 4.0,
-"source": "wikipedia"
+"conference": "ACB",
+"last_year": "2015-16",
+"ppg": 9.7,
+"rpg": 5.7,
+"apg": 0.6,
+"fg_pct": 0.455,
+"fg3_pct": 0.358,
+"ft_pct": 0.717,
+"mpg": 23.7,
+"gp": 34.0,
+"source": "realgm"
 }
 },
 "yabusgu01": {
@@ -5673,19 +5790,19 @@
 "name": "Guerschon Yabusele",
 "draft_year": 2016,
 "pick": 16,
-"conference": "EuroLeague",
+"conference": "Jeep Elite",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2019-20",
-"ppg": 8.0,
-"rpg": 3.5,
-"apg": null,
-"fg_pct": 0.429,
-"fg3_pct": 0.4,
-"ft_pct": null,
-"mpg": 23.0,
-"gp": 2.0,
-"source": "wikipedia"
+"conference": "Jeep Elite",
+"last_year": "2015-16",
+"ppg": 11.5,
+"rpg": 6.8,
+"apg": 1.1,
+"fg_pct": 0.539,
+"fg3_pct": 0.426,
+"ft_pct": 0.765,
+"mpg": 28.7,
+"gp": 34.0,
+"source": "realgm"
 }
 },
 "beaslma01": {
@@ -5765,19 +5882,19 @@
 "name": "Ante Žižić",
 "draft_year": 2016,
 "pick": 23,
-"conference": "EuroLeague",
+"conference": "Liga ABA",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2016-17",
-"ppg": 9.0,
-"rpg": 6.7,
-"apg": 0.4,
-"fg_pct": 0.649,
-"fg3_pct": null,
-"ft_pct": 0.643,
-"mpg": 21.9,
-"gp": 20.0,
-"source": "wikipedia"
+"conference": "Liga ABA",
+"last_year": "2015-16",
+"ppg": 14.4,
+"rpg": 8.5,
+"apg": 0.7,
+"fg_pct": 0.653,
+"fg3_pct": 0.0,
+"ft_pct": 0.724,
+"mpg": 26.6,
+"gp": 54.0,
+"source": "realgm"
 }
 },
 "luwawti01": {
@@ -5788,19 +5905,19 @@
 "name": "Timothé Luwawu-Cabarrot",
 "draft_year": 2016,
 "pick": 24,
-"conference": "Domestic leagues",
+"conference": "Liga ABA",
 "college": {
-"conference": "Domestic leagues",
+"conference": "Liga ABA",
 "last_year": "2015-16",
-"ppg": 14.6,
-"rpg": 4.8,
-"apg": 2.7,
-"fg_pct": 0.398,
-"fg3_pct": 0.372,
-"ft_pct": 0.69,
-"mpg": 31.1,
-"gp": 28.0,
-"source": "wikipedia"
+"ppg": 14.5,
+"rpg": 4.6,
+"apg": 2.8,
+"fg_pct": 0.402,
+"fg3_pct": 0.358,
+"ft_pct": 0.697,
+"mpg": 30.1,
+"gp": 33.0,
+"source": "realgm"
 }
 },
 "korkmfu01": {
@@ -5811,19 +5928,19 @@
 "name": "Furkan Korkmaz",
 "draft_year": 2016,
 "pick": 26,
-"conference": "EuroLeague",
+"conference": "T-BSL",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2014-15",
-"ppg": 3.5,
-"rpg": 1.4,
-"apg": 0.8,
-"fg_pct": 0.408,
-"fg3_pct": 0.414,
-"ft_pct": 0.789,
-"mpg": 10.7,
-"gp": 19.0,
-"source": "wikipedia"
+"conference": "T-BSL",
+"last_year": "2015-16",
+"ppg": 4.3,
+"rpg": 1.2,
+"apg": 0.6,
+"fg_pct": 0.457,
+"fg3_pct": 0.398,
+"ft_pct": 0.615,
+"mpg": 11.6,
+"gp": 56.0,
+"source": "realgm"
 }
 },
 "siakapa01": {
@@ -5949,7 +6066,20 @@
 "name": "Ivica Zubac",
 "draft_year": 2016,
 "pick": 32,
-"conference": "International"
+"conference": "KLS",
+"college": {
+"conference": "KLS",
+"last_year": "2015-16",
+"ppg": 10.0,
+"rpg": 4.7,
+"apg": 0.6,
+"fg_pct": 0.534,
+"fg3_pct": 0.0,
+"ft_pct": 0.765,
+"mpg": 19.9,
+"gp": 20.0,
+"source": "realgm"
+}
 },
 "diallch01": {
 "height": "6-8",
@@ -6097,19 +6227,19 @@
 "name": "Paul Zipser",
 "draft_year": 2016,
 "pick": 48,
-"conference": "EuroLeague",
+"conference": "G-BBL",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2013-14",
-"ppg": 4.2,
-"rpg": 1.0,
-"apg": 0.6,
-"fg_pct": 0.375,
-"fg3_pct": 0.333,
-"ft_pct": 1.0,
-"mpg": 7.6,
-"gp": 5.0,
-"source": "wikipedia"
+"conference": "G-BBL",
+"last_year": "2015-16",
+"ppg": 6.9,
+"rpg": 3.6,
+"apg": 1.4,
+"fg_pct": 0.495,
+"fg3_pct": 0.417,
+"ft_pct": 0.839,
+"mpg": 18.1,
+"gp": 60.0,
+"source": "realgm"
 }
 },
 "niangge01": {
@@ -6350,19 +6480,19 @@
 "name": "Frank Ntilikina",
 "draft_year": 2017,
 "pick": 8,
-"conference": "EuroLeague",
+"conference": "Jeep Elite",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2024-25",
-"ppg": 7.0,
-"rpg": 1.7,
-"apg": 2.0,
-"fg_pct": 0.458,
-"fg3_pct": 0.377,
-"ft_pct": 0.923,
-"mpg": 19.9,
-"gp": 21.0,
-"source": "wikipedia"
+"conference": "Jeep Elite",
+"last_year": "2016-17",
+"ppg": 5.8,
+"rpg": 2.1,
+"apg": 1.7,
+"fg_pct": 0.449,
+"fg3_pct": 0.375,
+"ft_pct": 0.641,
+"mpg": 19.1,
+"gp": 60.0,
+"source": "realgm"
 }
 },
 "smithde03": {
@@ -6626,9 +6756,9 @@
 "name": "Terrance Ferguson",
 "draft_year": 2017,
 "pick": 21,
-"conference": "NBL",
+"conference": "AUS NBL",
 "college": {
-"conference": "NBL",
+"conference": "AUS NBL",
 "last_year": "2016-17",
 "ppg": 4.6,
 "rpg": 1.1,
@@ -6638,7 +6768,7 @@
 "ft_pct": 0.6,
 "mpg": 15.2,
 "gp": 30.0,
-"source": "wikipedia"
+"source": "realgm"
 }
 },
 "allenja01": {
@@ -6902,19 +7032,19 @@
 "name": "Jonah Bolden",
 "draft_year": 2017,
 "pick": 36,
-"conference": "College",
+"conference": "Liga ABA",
 "college": {
-"conference": "College",
-"last_year": "2015-16",
-"ppg": 4.6,
-"rpg": 4.8,
-"apg": 1.1,
-"fg_pct": 0.415,
-"fg3_pct": 0.25,
-"ft_pct": 0.733,
-"mpg": 21.7,
-"gp": 31.0,
-"source": "wikipedia"
+"conference": "Liga ABA",
+"last_year": "2016-17",
+"ppg": 12.6,
+"rpg": 7.0,
+"apg": 1.6,
+"fg_pct": 0.481,
+"fg3_pct": 0.405,
+"ft_pct": 0.602,
+"mpg": 27.2,
+"gp": 40.0,
+"source": "realgm"
 }
 },
 "ojelese01": {
@@ -7063,19 +7193,19 @@
 "name": "Isaiah Hartenstein",
 "draft_year": 2017,
 "pick": 43,
-"conference": "Europe",
+"conference": "LKL",
 "college": {
-"conference": "Europe",
+"conference": "LKL",
 "last_year": "2016-17",
-"ppg": 4.7,
-"rpg": 3.5,
-"apg": 0.7,
-"fg_pct": 0.49,
-"fg3_pct": 0.286,
-"ft_pct": 0.705,
-"mpg": 12.2,
-"gp": 29.0,
-"source": "wikipedia"
+"ppg": 4.2,
+"rpg": 3.1,
+"apg": 0.6,
+"fg_pct": 0.486,
+"fg3_pct": 0.267,
+"ft_pct": 0.711,
+"mpg": 11.3,
+"gp": 34.0,
+"source": "realgm"
 }
 },
 "dotsoda01": {
@@ -7178,7 +7308,20 @@
 "name": "Vlatko Čančar",
 "draft_year": 2017,
 "pick": 49,
-"conference": "International"
+"conference": "Liga ABA",
+"college": {
+"conference": "Liga ABA",
+"last_year": "2016-17",
+"ppg": 7.4,
+"rpg": 3.4,
+"apg": 1.6,
+"fg_pct": 0.467,
+"fg3_pct": 0.34,
+"ft_pct": 0.736,
+"mpg": 20.0,
+"gp": 43.0,
+"source": "realgm"
+}
 },
 "morrimo01": {
 "height": "6-2",
@@ -7234,19 +7377,19 @@
 "name": "Sasha Vezenkov",
 "draft_year": 2017,
 "pick": 57,
-"conference": "Domestic leagues stats",
+"conference": "ACB",
 "college": {
-"conference": "Domestic leagues stats",
+"conference": "ACB",
 "last_year": "2016-17",
-"ppg": 8.7,
+"ppg": 8.1,
 "rpg": 3.1,
-"apg": 0.8,
-"fg_pct": 0.528,
-"fg3_pct": 0.356,
-"ft_pct": 0.843,
+"apg": 0.9,
+"fg_pct": 0.547,
+"fg3_pct": 0.41,
+"ft_pct": 0.837,
 "mpg": 18.8,
-"gp": 35.0,
-"source": "wikipedia"
+"gp": 67.0,
+"source": "realgm"
 }
 },
 "aytonde01": {
@@ -7303,19 +7446,19 @@
 "name": "Luka Dončić",
 "draft_year": 2018,
 "pick": 3,
-"conference": "Liga ACB",
+"conference": "ACB",
 "college": {
-"conference": "Liga ACB",
+"conference": "ACB",
 "last_year": "2017-18",
-"ppg": 12.5,
-"rpg": 5.7,
-"apg": 4.7,
-"fg_pct": 0.462,
-"fg3_pct": 0.293,
-"ft_pct": 0.752,
-"mpg": 24.3,
-"gp": 37.0,
-"source": "wikipedia"
+"ppg": 14.2,
+"rpg": 5.3,
+"apg": 4.5,
+"fg_pct": 0.45,
+"fg3_pct": 0.31,
+"ft_pct": 0.789,
+"mpg": 25.1,
+"gp": 73.0,
+"source": "realgm"
 }
 },
 "jacksja02": {
@@ -7865,9 +8008,9 @@
 "name": "Elie Okobo",
 "draft_year": 2018,
 "pick": 31,
-"conference": "Domestic leagues",
+"conference": "Jeep Elite",
 "college": {
-"conference": "Domestic leagues",
+"conference": "Jeep Elite",
 "last_year": "2017-18",
 "ppg": 13.8,
 "rpg": 2.7,
@@ -7877,7 +8020,7 @@
 "ft_pct": 0.835,
 "mpg": 26.5,
 "gp": 36.0,
-"source": "wikipedia"
+"source": "realgm"
 }
 },
 "carteje01": {
@@ -7990,19 +8133,19 @@
 "name": "Isaac Bonga",
 "draft_year": 2018,
 "pick": 39,
-"conference": "Domestic leagues",
+"conference": "G-BBL",
 "college": {
-"conference": "Domestic leagues",
+"conference": "G-BBL",
 "last_year": "2017-18",
-"ppg": 6.0,
-"rpg": 3.1,
-"apg": 2.3,
-"fg_pct": 0.42,
-"fg3_pct": 0.343,
-"ft_pct": 0.921,
-"mpg": 21.3,
-"gp": 33.0,
-"source": "wikipedia"
+"ppg": 7.4,
+"rpg": 3.4,
+"apg": 2.4,
+"fg_pct": 0.431,
+"fg3_pct": 0.302,
+"ft_pct": 0.9,
+"mpg": 22.1,
+"gp": 41.0,
+"source": "realgm"
 }
 },
 "kurucro01": {
@@ -8013,7 +8156,20 @@
 "name": "Rodions Kurucs",
 "draft_year": 2018,
 "pick": 40,
-"conference": "International"
+"conference": "Primera FEB",
+"college": {
+"conference": "Primera FEB",
+"last_year": "2017-18",
+"ppg": 7.1,
+"rpg": 1.8,
+"apg": 1.0,
+"fg_pct": 0.441,
+"fg3_pct": 0.328,
+"ft_pct": 0.769,
+"mpg": 15.1,
+"gp": 26.0,
+"source": "realgm"
+}
 },
 "vandeja01": {
 "height": "6-8",
@@ -8529,19 +8685,19 @@
 "name": "Sekou Doumbouya",
 "draft_year": 2019,
 "pick": 15,
-"conference": "EuroCup",
+"conference": "Jeep Elite",
 "college": {
-"conference": "EuroCup",
+"conference": "Jeep Elite",
 "last_year": "2018-19",
-"ppg": 6.9,
-"rpg": 2.8,
-"apg": 0.6,
-"fg_pct": 0.548,
-"fg3_pct": 0.25,
-"ft_pct": 0.625,
-"mpg": 14.9,
-"gp": 8.0,
-"source": "wikipedia"
+"ppg": 7.2,
+"rpg": 3.0,
+"apg": 0.7,
+"fg_pct": 0.478,
+"fg3_pct": 0.315,
+"ft_pct": 0.756,
+"mpg": 18.1,
+"gp": 39.0,
+"source": "realgm"
 }
 },
 "okekech01": {
@@ -8598,19 +8754,19 @@
 "name": "Goga Bitadze",
 "draft_year": 2019,
 "pick": 18,
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "college": {
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "last_year": "2018-19",
-"ppg": 12.1,
-"rpg": 6.4,
-"apg": 1.2,
-"fg_pct": 0.548,
-"fg3_pct": 0.313,
-"ft_pct": 0.714,
-"mpg": 24.2,
-"gp": 13.0,
-"source": "wikipedia"
+"ppg": 13.9,
+"rpg": 6.3,
+"apg": 1.1,
+"fg_pct": 0.571,
+"fg3_pct": 0.4,
+"ft_pct": 0.679,
+"mpg": 23.4,
+"gp": 51.0,
+"source": "realgm"
 }
 },
 "thybuma01": {
@@ -8690,7 +8846,20 @@
 "name": "Darius Bazley",
 "draft_year": 2019,
 "pick": 23,
-"conference": "International"
+"conference": "CBA",
+"college": {
+"conference": "CBA",
+"last_year": "2024-25",
+"ppg": 12.9,
+"rpg": 7.7,
+"apg": 2.7,
+"fg_pct": 0.486,
+"fg3_pct": 0.333,
+"ft_pct": 0.67,
+"mpg": 24.9,
+"gp": 47.0,
+"source": "realgm"
+}
 },
 "jeromty01": {
 "height": "6-5",
@@ -9183,19 +9352,19 @@
 "name": "LaMelo Ball",
 "draft_year": 2020,
 "pick": 3,
-"conference": "NBL",
+"conference": "AUS NBL",
 "college": {
-"conference": "NBL",
+"conference": "AUS NBL",
 "last_year": "2019-20",
-"ppg": 17.0,
-"rpg": 7.4,
+"ppg": 17.2,
+"rpg": 7.8,
 "apg": 6.8,
-"fg_pct": 0.377,
-"fg3_pct": 0.25,
-"ft_pct": 0.723,
-"mpg": 31.2,
-"gp": 12.0,
-"source": "wikipedia"
+"fg_pct": 0.389,
+"fg3_pct": 0.279,
+"ft_pct": 0.7,
+"mpg": 31.3,
+"gp": 13.0,
+"source": "realgm"
 }
 },
 "willipa01": {
@@ -9275,19 +9444,19 @@
 "name": "Killian Hayes",
 "draft_year": 2020,
 "pick": 7,
-"conference": "EuroCup",
+"conference": "G-BBL",
 "college": {
-"conference": "EuroCup",
+"conference": "G-BBL",
 "last_year": "2019-20",
-"ppg": 12.8,
-"rpg": 2.3,
-"apg": 6.2,
-"fg_pct": 0.455,
-"fg3_pct": 0.39,
-"ft_pct": 0.909,
-"mpg": 26.8,
-"gp": 10.0,
-"source": "wikipedia"
+"ppg": 11.6,
+"rpg": 2.8,
+"apg": 5.4,
+"fg_pct": 0.482,
+"fg3_pct": 0.294,
+"ft_pct": 0.876,
+"mpg": 24.8,
+"gp": 33.0,
+"source": "realgm"
 }
 },
 "toppiob01": {
@@ -9321,19 +9490,19 @@
 "name": "Deni Avdija",
 "draft_year": 2020,
 "pick": 9,
-"conference": "EuroLeague",
+"conference": "I-BSL",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2018-19",
-"ppg": 3.9,
-"rpg": 1.5,
-"apg": 0.3,
-"fg_pct": 0.444,
-"fg3_pct": 0.5,
-"ft_pct": 1.0,
-"mpg": 6.4,
-"gp": 8.0,
-"source": "wikipedia"
+"conference": "I-BSL",
+"last_year": "2019-20",
+"ppg": 9.0,
+"rpg": 4.7,
+"apg": 2.0,
+"fg_pct": 0.505,
+"fg3_pct": 0.333,
+"ft_pct": 0.588,
+"mpg": 21.7,
+"gp": 59.0,
+"source": "realgm"
 }
 },
 "smithja04": {
@@ -9505,19 +9674,19 @@
 "name": "Aleksej Pokusevski",
 "draft_year": 2020,
 "pick": 17,
-"conference": "EuroLeague",
+"conference": "HEBA A2",
 "college": {
-"conference": "EuroLeague",
-"last_year": "2018-19",
-"ppg": 0.5,
-"rpg": 1.0,
-"apg": 0.5,
-"fg_pct": 0.0,
-"fg3_pct": 0.0,
-"ft_pct": 0.5,
-"mpg": 2.9,
-"gp": 2.0,
-"source": "wikipedia"
+"conference": "HEBA A2",
+"last_year": "2019-20",
+"ppg": 9.9,
+"rpg": 7.2,
+"apg": 2.8,
+"fg_pct": 0.4,
+"fg3_pct": 0.321,
+"ft_pct": 0.783,
+"mpg": 21.3,
+"gp": 12.0,
+"source": "realgm"
 }
 },
 "greenjo02": {
@@ -9781,19 +9950,19 @@
 "name": "Théo Maledon",
 "draft_year": 2020,
 "pick": 34,
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "college": {
-"conference": "EuroLeague",
+"conference": "Euroleague",
 "last_year": "2019-20",
-"ppg": 7.4,
-"rpg": 1.8,
-"apg": 3.1,
-"fg_pct": 0.456,
-"fg3_pct": 0.367,
-"ft_pct": 0.689,
-"mpg": 17.7,
-"gp": 22.0,
-"source": "wikipedia"
+"ppg": 7.3,
+"rpg": 1.9,
+"apg": 2.7,
+"fg_pct": 0.421,
+"fg3_pct": 0.333,
+"ft_pct": 0.776,
+"mpg": 17.3,
+"gp": 46.0,
+"source": "realgm"
 }
 },
 "tillmxa01": {
@@ -9827,7 +9996,20 @@
 "name": "Vit Krejci",
 "draft_year": 2020,
 "pick": 37,
-"conference": "International"
+"conference": "ACB",
+"college": {
+"conference": "ACB",
+"last_year": "2019-20",
+"ppg": 3.2,
+"rpg": 1.2,
+"apg": 0.7,
+"fg_pct": 0.554,
+"fg3_pct": 0.343,
+"ft_pct": 0.542,
+"mpg": 9.2,
+"gp": 37.0,
+"source": "realgm"
+}
 },
 "leesa01": {
 "height": "6-2",
@@ -9975,7 +10157,20 @@
 "name": "KJ Martin",
 "draft_year": 2020,
 "pick": 52,
-"conference": "International"
+"conference": "CBA",
+"college": {
+"conference": "CBA",
+"last_year": "2025-26",
+"ppg": 8.0,
+"rpg": 3.8,
+"apg": 0.6,
+"fg_pct": 0.614,
+"fg3_pct": 0.286,
+"ft_pct": 0.689,
+"mpg": 13.4,
+"gp": 22.0,
+"source": "realgm"
+}
 },
 "reedpa01": {
 "height": "6-9",
@@ -10133,19 +10328,19 @@
 "name": "Josh Giddey",
 "draft_year": 2021,
 "pick": 6,
-"conference": "NBL",
+"conference": "AUS NBL",
 "college": {
-"conference": "NBL",
+"conference": "AUS NBL",
 "last_year": "2020-21",
-"ppg": 10.9,
-"rpg": 7.3,
-"apg": 7.6,
+"ppg": 10.8,
+"rpg": 7.4,
+"apg": 7.4,
 "fg_pct": 0.425,
 "fg3_pct": 0.293,
 "ft_pct": 0.691,
 "mpg": 32.1,
 "gp": 28.0,
-"source": "wikipedia"
+"source": "realgm"
 }
 },
 "kuminjo01": {
@@ -10350,19 +10545,19 @@
 "name": "Alperen Şengün",
 "draft_year": 2021,
 "pick": 16,
-"conference": "Domestic leagues",
+"conference": "T-BSL",
 "college": {
-"conference": "Domestic leagues",
+"conference": "T-BSL",
 "last_year": "2020-21",
-"ppg": 18.6,
-"rpg": 8.8,
+"ppg": 19.0,
+"rpg": 8.7,
 "apg": 2.7,
-"fg_pct": 0.626,
-"fg3_pct": 0.212,
-"ft_pct": 0.812,
-"mpg": 28.0,
-"gp": 34.0,
-"source": "wikipedia"
+"fg_pct": 0.632,
+"fg3_pct": 0.2,
+"ft_pct": 0.794,
+"mpg": 28.2,
+"gp": 37.0,
+"source": "realgm"
 }
 },
 "murphtr02": {
@@ -10511,7 +10706,20 @@
 "name": "Usman Garuba",
 "draft_year": 2021,
 "pick": 23,
-"conference": "International"
+"conference": "ACB",
+"college": {
+"conference": "ACB",
+"last_year": "2020-21",
+"ppg": 4.7,
+"rpg": 4.6,
+"apg": 0.8,
+"fg_pct": 0.471,
+"fg3_pct": 0.316,
+"ft_pct": 0.659,
+"mpg": 17.2,
+"gp": 86.0,
+"source": "realgm"
+}
 },
 "chrisjo01": {
 "height": "6-4",
@@ -11301,7 +11509,20 @@
 "name": "Ousmane Dieng",
 "draft_year": 2022,
 "pick": 11,
-"conference": "International"
+"conference": "AUS NBL",
+"college": {
+"conference": "AUS NBL",
+"last_year": "2021-22",
+"ppg": 8.9,
+"rpg": 3.1,
+"apg": 1.0,
+"fg_pct": 0.398,
+"fg3_pct": 0.271,
+"ft_pct": 0.667,
+"mpg": 20.8,
+"gp": 23.0,
+"source": "realgm"
+}
 },
 "willija06": {
 "height": "6-5",
@@ -11633,19 +11854,19 @@
 "name": "Nikola Jović",
 "draft_year": 2022,
 "pick": 27,
-"conference": "Regular season",
+"conference": "Liga ABA",
 "college": {
-"conference": "Regular season",
-"last_year": "2020-21",
-"ppg": 11.8,
-"rpg": 5.5,
-"apg": 1.0,
-"fg_pct": 0.55,
-"fg3_pct": 0.4,
-"ft_pct": 0.75,
-"mpg": 24.7,
-"gp": 4.0,
-"source": "wikipedia"
+"conference": "Liga ABA",
+"last_year": "2021-22",
+"ppg": 12.0,
+"rpg": 4.8,
+"apg": 3.6,
+"fg_pct": 0.414,
+"fg3_pct": 0.315,
+"ft_pct": 0.718,
+"mpg": 28.5,
+"gp": 29.0,
+"source": "realgm"
 }
 },
 "watsope01": {
@@ -11942,7 +12163,20 @@
 "name": "Karlo Matković",
 "draft_year": 2022,
 "pick": 52,
-"conference": "International"
+"conference": "Liga ABA",
+"college": {
+"conference": "Liga ABA",
+"last_year": "2021-22",
+"ppg": 11.6,
+"rpg": 6.2,
+"apg": 1.0,
+"fg_pct": 0.609,
+"fg3_pct": 0.0,
+"ft_pct": 0.704,
+"mpg": 22.1,
+"gp": 27.0,
+"source": "realgm"
+}
 },
 "santogu01": {
 "height": "6-7",
@@ -11952,7 +12186,20 @@
 "name": "Gui Santos",
 "draft_year": 2022,
 "pick": 55,
-"conference": "International"
+"conference": "NBB",
+"college": {
+"conference": "NBB",
+"last_year": "2021-22",
+"ppg": 10.5,
+"rpg": 5.0,
+"apg": 2.2,
+"fg_pct": 0.45,
+"fg3_pct": 0.326,
+"ft_pct": 0.729,
+"mpg": 25.8,
+"gp": 46.0,
+"source": "realgm"
+}
 },
 "walkeja01": {
 "height": "6-7",
@@ -11985,19 +12232,19 @@
 "name": "Victor Wembanyama",
 "draft_year": 2023,
 "pick": 1,
-"conference": "Regular season",
+"conference": "Jeep Elite",
 "college": {
-"conference": "Regular season",
+"conference": "Jeep Elite",
 "last_year": "2022-23",
-"ppg": 21.6,
-"rpg": 10.4,
+"ppg": 20.9,
+"rpg": 10.3,
 "apg": 2.4,
-"fg_pct": 0.561,
-"fg3_pct": 0.275,
-"ft_pct": 0.828,
-"mpg": 32.1,
-"gp": 34.0,
-"source": "wikipedia"
+"fg_pct": 0.468,
+"fg3_pct": 0.272,
+"ft_pct": 0.818,
+"mpg": 32.2,
+"gp": 44.0,
+"source": "realgm"
 }
 },
 "millebr02": {
@@ -12097,7 +12344,20 @@
 "name": "Bilal Coulibaly",
 "draft_year": 2023,
 "pick": 7,
-"conference": "International"
+"conference": "Jeep Elite",
+"college": {
+"conference": "Jeep Elite",
+"last_year": "2022-23",
+"ppg": 10.9,
+"rpg": 4.1,
+"apg": 1.4,
+"fg_pct": 0.527,
+"fg3_pct": 0.336,
+"ft_pct": 0.705,
+"mpg": 24.0,
+"gp": 53.0,
+"source": "realgm"
+}
 },
 "walkeja02": {
 "height": "6-7",
@@ -12705,19 +12965,19 @@
 "name": "Tristan Vukcevic",
 "draft_year": 2023,
 "pick": 42,
-"conference": "EuroLeague",
+"conference": "Liga ABA",
 "college": {
-"conference": "EuroLeague",
+"conference": "Liga ABA",
 "last_year": "2022-23",
-"ppg": 1.2,
-"rpg": 1.2,
-"apg": 0.5,
-"fg_pct": 0.3,
-"fg3_pct": 0.222,
-"ft_pct": 1.0,
-"mpg": 6.4,
-"gp": 13.0,
-"source": "wikipedia"
+"ppg": 5.5,
+"rpg": 2.4,
+"apg": 0.9,
+"fg_pct": 0.558,
+"fg3_pct": 0.373,
+"ft_pct": 0.8,
+"mpg": 11.6,
+"gp": 40.0,
+"source": "realgm"
 }
 },
 "ruperra01": {
@@ -12728,7 +12988,20 @@
 "name": "Rayan Rupert",
 "draft_year": 2023,
 "pick": 43,
-"conference": "International"
+"conference": "AUS NBL",
+"college": {
+"conference": "AUS NBL",
+"last_year": "2022-23",
+"ppg": 6.8,
+"rpg": 2.4,
+"apg": 0.8,
+"fg_pct": 0.369,
+"fg3_pct": 0.313,
+"ft_pct": 0.738,
+"mpg": 18.1,
+"gp": 31.0,
+"source": "realgm"
+}
 },
 "cissosi01": {
 "height": "6-6",
@@ -12738,7 +13011,20 @@
 "name": "Sidy Cissoko",
 "draft_year": 2023,
 "pick": 44,
-"conference": "International"
+"conference": "Primera FEB",
+"college": {
+"conference": "Primera FEB",
+"last_year": "2021-22",
+"ppg": 10.5,
+"rpg": 2.9,
+"apg": 2.3,
+"fg_pct": 0.419,
+"fg3_pct": 0.248,
+"ft_pct": 0.628,
+"mpg": 22.6,
+"gp": 33.0,
+"source": "realgm"
+}
 },
 "jacksgg01": {
 "height": "6-9",
@@ -12886,7 +13172,20 @@
 "name": "Zaccharie Risacher",
 "draft_year": 2024,
 "pick": 1,
-"conference": "International"
+"conference": "Jeep Elite",
+"college": {
+"conference": "Jeep Elite",
+"last_year": "2023-24",
+"ppg": 11.1,
+"rpg": 4.0,
+"apg": 0.9,
+"fg_pct": 0.47,
+"fg3_pct": 0.387,
+"ft_pct": 0.707,
+"mpg": 23.3,
+"gp": 65.0,
+"source": "realgm"
+}
 },
 "sarral01": {
 "height": "7-0",
@@ -12896,19 +13195,19 @@
 "name": "Alex Sarr",
 "draft_year": 2024,
 "pick": 2,
-"conference": "NBL",
+"conference": "AUS NBL",
 "college": {
-"conference": "NBL",
+"conference": "AUS NBL",
 "last_year": "2023-24",
-"ppg": 9.4,
-"rpg": 4.3,
-"apg": 0.9,
-"fg_pct": 0.516,
-"fg3_pct": 0.286,
-"ft_pct": 0.71,
-"mpg": 17.3,
-"gp": 27.0,
-"source": "wikipedia"
+"ppg": 9.6,
+"rpg": 4.5,
+"apg": 1.0,
+"fg_pct": 0.5,
+"fg3_pct": 0.276,
+"ft_pct": 0.707,
+"mpg": 18.0,
+"gp": 30.0,
+"source": "realgm"
 }
 },
 "sheppre01": {
@@ -12965,7 +13264,20 @@
 "name": "Ron Holland",
 "draft_year": 2024,
 "pick": 5,
-"conference": "International"
+"conference": "Intercontinental Cup",
+"college": {
+"conference": "Intercontinental Cup",
+"last_year": "2023-24",
+"ppg": 15.3,
+"rpg": 7.0,
+"apg": 0.7,
+"fg_pct": 0.4,
+"fg3_pct": 0.273,
+"ft_pct": 1.0,
+"mpg": 24.3,
+"gp": 3.0,
+"source": "realgm"
+}
 },
 "salauti01": {
 "height": "6-10",
@@ -12975,7 +13287,20 @@
 "name": "Tidjane Salaün",
 "draft_year": 2024,
 "pick": 6,
-"conference": "International"
+"conference": "Jeep Elite",
+"college": {
+"conference": "Jeep Elite",
+"last_year": "2023-24",
+"ppg": 9.7,
+"rpg": 3.9,
+"apg": 0.9,
+"fg_pct": 0.406,
+"fg3_pct": 0.316,
+"ft_pct": 0.748,
+"mpg": 23.4,
+"gp": 54.0,
+"source": "realgm"
+}
 },
 "clingdo01": {
 "height": "7-2",
@@ -14053,7 +14378,20 @@
 "name": "Nolan Traoré",
 "draft_year": 2025,
 "pick": 19,
-"conference": "International"
+"conference": "Jeep Elite",
+"college": {
+"conference": "Jeep Elite",
+"last_year": "2024-25",
+"ppg": 12.2,
+"rpg": 1.9,
+"apg": 4.7,
+"fg_pct": 0.41,
+"fg3_pct": 0.314,
+"ft_pct": 0.711,
+"mpg": 22.7,
+"gp": 44.0,
+"source": "realgm"
+}
 },
 "jakucka01": {
 "height": "6-5",
@@ -14178,7 +14516,20 @@
 "name": "Ben Saraf",
 "draft_year": 2025,
 "pick": 26,
-"conference": "International"
+"conference": "G-BBL",
+"college": {
+"conference": "G-BBL",
+"last_year": "2024-25",
+"ppg": 12.0,
+"rpg": 2.8,
+"apg": 4.1,
+"fg_pct": 0.444,
+"fg3_pct": 0.29,
+"ft_pct": 0.749,
+"mpg": 23.4,
+"gp": 60.0,
+"source": "realgm"
+}
 },
 "wolfda01": {
 "height": "6-11",
@@ -14211,7 +14562,20 @@
 "name": "Hugo González",
 "draft_year": 2025,
 "pick": 28,
-"conference": "International"
+"conference": "ACB",
+"college": {
+"conference": "ACB",
+"last_year": "2024-25",
+"ppg": 3.4,
+"rpg": 1.8,
+"apg": 0.6,
+"fg_pct": 0.408,
+"fg3_pct": 0.284,
+"ft_pct": 0.758,
+"mpg": 10.7,
+"gp": 69.0,
+"source": "realgm"
+}
 },
 "flemira01": {
 "height": "6-9",
@@ -14244,7 +14608,20 @@
 "name": "Noah Penda",
 "draft_year": 2025,
 "pick": 32,
-"conference": "International"
+"conference": "Jeep Elite",
+"college": {
+"conference": "Jeep Elite",
+"last_year": "2024-25",
+"ppg": 10.2,
+"rpg": 5.5,
+"apg": 2.7,
+"fg_pct": 0.447,
+"fg3_pct": 0.322,
+"ft_pct": 0.667,
+"mpg": 27.3,
+"gp": 37.0,
+"source": "realgm"
+}
 },
 "jamessi01": {
 "height": "6-5",
@@ -14415,7 +14792,20 @@
 "name": "Mohamed Diawara",
 "draft_year": 2025,
 "pick": 51,
-"conference": "International"
+"conference": "Jeep Elite",
+"college": {
+"conference": "Jeep Elite",
+"last_year": "2024-25",
+"ppg": 6.1,
+"rpg": 3.2,
+"apg": 1.3,
+"fg_pct": 0.439,
+"fg3_pct": 0.282,
+"ft_pct": 0.557,
+"mpg": 19.6,
+"gp": 49.0,
+"source": "realgm"
+}
 },
 "richawi02": {
 "height": "6-3",
