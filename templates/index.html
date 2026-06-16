@@ -18,13 +18,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
 <style>
   :root{
-    --nfl:#1268d6; --nfl-lite:#4d93f0; --nfl-deep:#0a2a5e;
+    --nfl:#1268d6; --nfl-lite:#4d93f0; --nfl-deep:#0a2a5e; --nfl-hover:#1b78ee;
     --bg:#0b0f17; --surface:#141a25; --surface2:#1b2230; --line:#28303f;
     --ink:#f3f6fb; --dim:#99a5b7; --faint:#5f6b7e; --good:#27c281; --bad:#ef4d5e;
     --mono:"JetBrains Mono",ui-monospace,monospace; --head:"Source Sans 3",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif; --disp:"Oswald",sans-serif;
     --num:"Saira Condensed","Oswald",sans-serif;   /* athletic stat numerals (free Endzone Sans stand-in) */
     --soft:0 2px 10px rgba(0,0,0,.35);
   }
+  /* NBA mode — repaint the accent basketball orange (overrides cascade to the
+     whole subtree, so everything using var(--nfl*) flips). NFL keeps navy/blue. */
+  body.nba{ --nfl:#ed6f2c; --nfl-lite:#ff9d4d; --nfl-deep:#6b2f0e; --nfl-hover:#ff7f33; }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
   header{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:13px 22px;background:#0d121c;border-bottom:1px solid var(--line)}
@@ -38,7 +41,7 @@
     border:1px solid var(--line);background:var(--surface2);color:var(--ink);padding:11px 18px;border-radius:10px;transition:.13s}
   button:hover:not(:disabled){background:#222b3b;border-color:#33405a}
   button.go{background:var(--nfl);color:#fff;border-color:transparent}
-  button.go:hover{background:#1b78ee}
+  button.go:hover{background:var(--nfl-hover)}
   button:disabled{opacity:.4;cursor:not-allowed}
   button.sm{padding:7px 13px;font-size:12px;border-radius:8px}
   input,select{font:500 15px var(--body);background:#0e131d;border:1px solid var(--line);
@@ -54,7 +57,7 @@
     padding:9px 14px;border-radius:9px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);transition:.13s}
   .navbtn:hover{background:#222b3b;border-color:#33405a}
   .navbtn.primary{background:var(--nfl);border-color:transparent;color:#fff}
-  .navbtn.primary:hover{background:#1b78ee}
+  .navbtn.primary:hover{background:var(--nfl-hover)}
   /* sport switcher */
   .sportsw{display:inline-flex;gap:2px;background:#0e131d;border:1px solid var(--line);border-radius:9px;padding:3px}
   .sportbtn{font:800 12px var(--body);letter-spacing:.5px;cursor:pointer;border:none;background:transparent;color:var(--dim);
@@ -164,7 +167,7 @@
   .scout .stat .k{color:var(--dim)}
   .scout .stat .v{font-family:var(--num);font-weight:600;font-size:17px;letter-spacing:.3px;color:#fff;font-variant-numeric:tabular-nums}
   .scout .draftbtn{margin:0;border-radius:0;background:var(--nfl);color:#fff;border:none;font-weight:800;font-size:13px;letter-spacing:.5px;padding:13px}
-  .scout .draftbtn:hover:not(:disabled){background:#1b78ee;transform:none}
+  .scout .draftbtn:hover:not(:disabled){background:var(--nfl-hover);transform:none}
   .scout .draftbtn:disabled{background:var(--surface2);color:var(--faint)}
   /* war rooms */
   .rooms h3{font-family:var(--body);font-weight:800;letter-spacing:.5px;text-transform:uppercase;font-size:13px;margin-bottom:14px;color:var(--dim)}
@@ -383,6 +386,7 @@ async function applyState(ns, animate){
 }
 
 function render(){
+  if(S&&S.sport) applyTheme(S.sport);          // keep the accent matching the board on screen
   if(MODE==="friends") return renderFriends();
   if(MODE==="online"&&S&&S.phase==="online_home") return renderOnlineHome();
   if(!S) return;
@@ -715,12 +719,13 @@ async function deleteAccount(){
   ME=null; updateAccountBtn(); closeAccount();
 }
 
-// sport switcher (NFL / NBA)
+// sport switcher (NFL / NBA) — also repaints the accent theme (basketball orange for NBA)
+function applyTheme(sp){ document.body.classList.toggle("nba", (sp||SPORT)==="nba"); }
 function updateSportSwitch(){ document.querySelectorAll(".sportbtn").forEach(b=>b.classList.toggle("on", b.dataset.sport===SPORT)); }
 function setSport(s){ if(s===SPORT||!ROSTER_BY_SPORT[s]) return; SPORT=s; localStorage.setItem("wr_sport",s);
-  updateSportSwitch(); leaveIfOnline(); lastPickKey=null; goHome(); }   // re-enter Daily for the chosen sport
+  applyTheme(s); updateSportSwitch(); leaveIfOnline(); lastPickKey=null; goHome(); }   // re-enter Daily for the chosen sport
 document.querySelectorAll(".sportbtn").forEach(b=> b.onclick=()=>setSport(b.dataset.sport));
-updateSportSwitch();
+applyTheme(SPORT); updateSportSwitch();
 
 // header nav + how-to wiring (header persists across renders)
 $("brand").onclick = goHome;
