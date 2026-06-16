@@ -55,6 +55,12 @@
   .navbtn:hover{background:#222b3b;border-color:#33405a}
   .navbtn.primary{background:var(--nfl);border-color:transparent;color:#fff}
   .navbtn.primary:hover{background:#1b78ee}
+  /* sport switcher */
+  .sportsw{display:inline-flex;gap:2px;background:#0e131d;border:1px solid var(--line);border-radius:9px;padding:3px}
+  .sportbtn{font:800 12px var(--body);letter-spacing:.5px;cursor:pointer;border:none;background:transparent;color:var(--dim);
+    padding:6px 13px;border-radius:7px;transition:.13s}
+  .sportbtn:hover{color:var(--ink);background:transparent}
+  .sportbtn.on{background:var(--nfl);color:#fff}
   /* how to play */
   .howto .sheet{width:560px;max-width:100%;max-height:86vh;overflow:auto;background:var(--surface);border:1px solid var(--line);
     border-radius:14px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.6);text-align:left;position:relative;animation:rise .2s ease both}
@@ -238,6 +244,10 @@
 <header>
   <div class="brand" id="brand">War<b>Room</b></div>
   <nav class="nav">
+    <div class="sportsw" id="sportsw">
+      <button class="sportbtn" data-sport="nfl">NFL</button>
+      <button class="sportbtn" data-sport="nba">NBA</button>
+    </div>
     <button class="navbtn" id="nav-past">Past Boards</button>
     <button class="navbtn" id="nav-how">How to Play</button>
     <button class="navbtn primary" id="nav-friends">Play with Friends</button>
@@ -261,8 +271,8 @@
     <h2>How to Play</h2>
     <div class="lead">Draft a five-man roster from prospects whose names are hidden. You only see their college numbers — figure out who's who.</div>
     <div class="secs">
-      <div class="sec"><div class="lbl">The Goal</div><p>Fill all five slots: QB, RB, two WR, and a defender. The best roster wins.</p></div>
-      <div class="sec"><div class="lbl">The Cards</div><p>Each card shows a prospect's position, college conference, measurables, and his final college season — but not his name. The skill is recognizing who the stat line belongs to.</p></div>
+      <div class="sec"><div class="lbl">The Goal</div><p id="howto-goal">Fill all five slots: QB, RB, two WR, and a defender. The best roster wins.</p></div>
+      <div class="sec"><div class="lbl">The Cards</div><p id="howto-cards">Each card shows a prospect's position, college conference, measurables, and his final college season — but not his name. The skill is recognizing who the stat line belongs to.</p></div>
       <div class="sec"><div class="lbl">Making a Pick</div><p>It's a snake draft. A prospect's name is revealed the moment you pick him. No take-backs.</p></div>
       <div class="sec"><div class="lbl">Scoring</div><p>Each pick gets a letter grade against everyone at his position — A is elite, C is average. Your team score adds up how all five careers turned out; the highest total wins.</p></div>
       <div class="sec"><div class="lbl">Modes</div><p><strong style="color:var(--ink)">Daily</strong> — one board for everyone, ranked against the field. <strong style="color:var(--ink)">Play with Friends</strong> — draft live online, or pass one screen around.</p></div>
@@ -322,7 +332,9 @@ let socket = null;
 let MY = {team:null, host:false, code:null, token:null};
 let lastPickKey = null;
 let codeHidden = false;          // online room-code chip visibility
-const ROSTER_DEFAULT = ["QB","RB","WR","WR","DEF"];
+let SPORT = localStorage.getItem("wr_sport") || "nfl";   // 'nfl' | 'nba'
+const ROSTER_BY_SPORT = {nfl:["QB","RB","WR","WR","DEF"], nba:["PG","SG","SF","PF","C"]};
+const ROSTER_DEFAULT = ROSTER_BY_SPORT[SPORT] || ROSTER_BY_SPORT.nfl;
 let NAME = localStorage.getItem("wr_name") || "";
 
 const NFL_COLORS = ["#97233F","#A71930","#241773","#00338D","#0085CA","#C83803","#FB4F14","#FF3C00","#003594",
@@ -341,14 +353,25 @@ const col=i=>accent(teamColors(S&&S.players)[i%NFL_COLORS.length]);
 const gradeColor=g=>({A:"var(--good)",B:"var(--nfl-lite)",C:"var(--ink)",D:"var(--bad)",F:"var(--bad)"}[(g||" ")[0]]||"var(--dim)");
 
 async function api(path, body){const o={headers:{"Content-Type":"application/json"}};
-  if(body){o.method="POST";o.body=JSON.stringify(body);}return (await fetch(path,o)).json();}
+  const url=path+(path.includes("?")?"&":"?")+"sport="+SPORT;          // sport on every call
+  if(body){o.method="POST";o.body=JSON.stringify({...body, sport:SPORT});}return (await fetch(url,o)).json();}
 const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const fmtDate=iso=>{ if(!iso) return ""; const p=String(iso).split("-"); return p.length===3?`${p[1]}/${p[2]}/${p[0].slice(2)}`:iso; };
 
 function leaveIfOnline(){ if(MODE==="online"&&socket){ socket.emit("leave_room",{}); } MY={team:null,host:false,code:null,token:null}; try{sessionStorage.removeItem("wr_room");}catch(e){} }
 function goHome(){ leaveIfOnline(); lastPickKey=null; enterDaily(); }          // home == Daily
 function goFriends(){ leaveIfOnline(); lastPickKey=null; MODE="friends"; S=null; render(); }
-function openHowTo(){ document.getElementById("howto").classList.add("show"); }
+function openHowTo(){
+  const nba = SPORT==="nba";
+  const g=document.getElementById("howto-goal"), c=document.getElementById("howto-cards");
+  if(g) g.textContent = nba
+    ? "Fill all five slots: PG, SG, SF, PF, and C. The best roster wins."
+    : "Fill all five slots: QB, RB, two WR, and a defender. The best roster wins.";
+  if(c) c.textContent = nba
+    ? "Each card shows a prospect's position, pre-NBA league or conference, measurables, and their final pre-NBA season — but not their name. The skill is recognizing who the stat line belongs to."
+    : "Each card shows a prospect's position, college conference, measurables, and his final college season — but not his name. The skill is recognizing who the stat line belongs to.";
+  document.getElementById("howto").classList.add("show");
+}
 function closeHowTo(){ localStorage.setItem("wr_howto_seen","1"); document.getElementById("howto").classList.remove("show"); }
 
 async function applyState(ns, animate){
@@ -445,7 +468,7 @@ function renderOnlineHome(){
       <div class="err" id="err"></div>
     </div>`;
   const myname=()=> (NAME&&NAME.trim()) || "War Room";
-  document.getElementById("create").onclick=()=>{ socket.emit("create_room",{name:myname()}); };
+  document.getElementById("create").onclick=()=>{ socket.emit("create_room",{name:myname(), sport:SPORT}); };
   document.getElementById("join").onclick=()=>{ const c=document.getElementById("code").value.trim().toUpperCase();
     if(c.length!==4){ document.getElementById("err").textContent="Enter a 4-letter code."; return; }
     let saved=null; try{saved=JSON.parse(sessionStorage.getItem("wr_room")||"null");}catch(e){}
@@ -504,15 +527,17 @@ function renderDraft(){
   if(cct) cct.onclick=()=>{ codeHidden=!codeHidden; const cc=document.getElementById("ccode");
     cc.textContent=codeHidden?"••••":MY.code; cct.textContent=codeHidden?"show":"hide"; };
 
+  const isNBA = S.sport==="nba";
+  const confLabel = isNBA ? "League" : "Conference";
   document.getElementById("board").innerHTML=S.available.map(p=>`
     <div class="scout ${canPick?"":"locked"}">
       <div class="plate"><div class="tag"><span class="alias">${esc(p.codename)}</span><span class="pos">${esc(p.position||p.slot)}</span></div></div>
       <div class="meas">
         <div><div class="lab">HT</div><div class="val">${esc(p.height||"—")}</div></div>
         <div><div class="lab">WT</div><div class="val">${esc(p.weight||"—")}</div></div>
-        <div><div class="lab">40</div><div class="val">${esc(p.forty||"—")}</div></div>
+        ${isNBA?"":`<div><div class="lab">40</div><div class="val">${esc(p.forty||"—")}</div></div>`}
       </div>
-      <div class="conf"><span>Conference</span>${esc(p.conference||"—")}</div>
+      <div class="conf"><span>${confLabel}</span>${esc(p.conference||"—")}</div>
       <div class="stats">${(p.stats||[]).map(s=>`<div class="stat"><span class="k">${esc(s.k)}</span><span class="v">${esc(s.v)}</span></div>`).join("")}</div>
       <button class="draftbtn" data-pick="${p.id}" ${canPick?"":"disabled"}>${canPick?"Make the Pick":"Locked"}</button>
     </div>`).join("");
@@ -689,6 +714,13 @@ async function deleteAccount(){
   if(res.error){ $("acct-err").textContent=res.error; return; }
   ME=null; updateAccountBtn(); closeAccount();
 }
+
+// sport switcher (NFL / NBA)
+function updateSportSwitch(){ document.querySelectorAll(".sportbtn").forEach(b=>b.classList.toggle("on", b.dataset.sport===SPORT)); }
+function setSport(s){ if(s===SPORT||!ROSTER_BY_SPORT[s]) return; SPORT=s; localStorage.setItem("wr_sport",s);
+  updateSportSwitch(); leaveIfOnline(); lastPickKey=null; goHome(); }   // re-enter Daily for the chosen sport
+document.querySelectorAll(".sportbtn").forEach(b=> b.onclick=()=>setSport(b.dataset.sport));
+updateSportSwitch();
 
 // header nav + how-to wiring (header persists across renders)
 $("brand").onclick = goHome;

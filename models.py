@@ -159,9 +159,14 @@ def init_db() -> None:
         )
     """)
     con.execute("CREATE INDEX IF NOT EXISTS idx_daily_day ON daily_scores(day)")
+    _dcols = {r["name"] for r in con.execute("PRAGMA table_info(daily_scores)")}
     # attach daily results to an account (for per-account lock + streaks/history)
-    if "user_id" not in {r["name"] for r in con.execute("PRAGMA table_info(daily_scores)")}:
+    if "user_id" not in _dcols:
         con.execute("ALTER TABLE daily_scores ADD COLUMN user_id INTEGER")
+    # WarRoom runs more than one sport off this table; existing rows are NFL.
+    if "sport" not in _dcols:
+        con.execute("ALTER TABLE daily_scores ADD COLUMN sport TEXT DEFAULT 'nfl'")
+    con.execute("CREATE INDEX IF NOT EXISTS idx_daily_day_sport ON daily_scores(day, sport)")
 
     # Our own career-value inputs (public NFL honors/role) — replaces PFR's AV
     # for scoring. Keyed by pfr_id. See build_nfl_value.py / app._career_value.
@@ -517,30 +522,31 @@ def measurement_coverage() -> dict:
 
 
 def record_daily_score(day: str, score: float, name: str | None = None,
-                        user_id: int | None = None) -> None:
+                        user_id: int | None = None, sport: str = "nfl") -> None:
     con = connect()
-    con.execute("INSERT INTO daily_scores (day, score, name, user_id) VALUES (?,?,?,?)",
-                (day, float(score), (name or "")[:24], user_id))
+    con.execute("INSERT INTO daily_scores (day, score, name, user_id, sport) VALUES (?,?,?,?,?)",
+                (day, float(score), (name or "")[:24], user_id, sport))
     con.commit()
     con.close()
 
 
-def user_daily_score(day: str, user_id: int):
+def user_daily_score(day: str, user_id: int, sport: str = "nfl"):
     """A logged-in user's recorded score for a day (or None) — enforces one
-    submission per account per day and lets us re-show their result."""
+    submission per account per day (per sport) and lets us re-show their result."""
     con = connect()
-    row = con.execute("SELECT score FROM daily_scores WHERE day=? AND user_id=? "
-                      "ORDER BY id LIMIT 1", (day, user_id)).fetchone()
+    row = con.execute("SELECT score FROM daily_scores WHERE day=? AND user_id=? AND sport=? "
+                      "ORDER BY id LIMIT 1", (day, user_id, sport)).fetchone()
     con.close()
     return row["score"] if row else None
 
 
-def user_daily_streak(user_id: int) -> int:
-    """Consecutive days (ending today or yesterday) the user has a daily result."""
+def user_daily_streak(user_id: int, sport: str = "nfl") -> int:
+    """Consecutive days (ending today or yesterday) the user has a daily result
+    in this sport."""
     from datetime import date, timedelta
     con = connect()
     days = {r["day"] for r in con.execute(
-        "SELECT DISTINCT day FROM daily_scores WHERE user_id=?", (user_id,))}
+        "SELECT DISTINCT day FROM daily_scores WHERE user_id=? AND sport=?", (user_id, sport))}
     con.close()
     if not days:
         return 0
@@ -553,14 +559,16 @@ def user_daily_streak(user_id: int) -> int:
     return streak
 
 
-def daily_standing(day: str, score: float) -> dict:
-    """Where a given score lands among everyone who has played that day's board:
-    field size, rank (1 = best), and percentile (top X%)."""
+def daily_standing(day: str, score: float, sport: str = "nfl") -> dict:
+    """Where a given score lands among everyone who has played that day's board
+    (for this sport): field size, rank (1 = best), and percentile (top X%)."""
     con = connect()
-    field = con.execute("SELECT COUNT(*) FROM daily_scores WHERE day=?", (day,)).fetchone()[0]
-    better = con.execute("SELECT COUNT(*) FROM daily_scores WHERE day=? AND score>?",
-                         (day, float(score))).fetchone()[0]
-    best = con.execute("SELECT MAX(score) FROM daily_scores WHERE day=?", (day,)).fetchone()[0]
+    field = con.execute("SELECT COUNT(*) FROM daily_scores WHERE day=? AND sport=?",
+                        (day, sport)).fetchone()[0]
+    better = con.execute("SELECT COUNT(*) FROM daily_scores WHERE day=? AND sport=? AND score>?",
+                         (day, sport, float(score))).fetchone()[0]
+    best = con.execute("SELECT MAX(score) FROM daily_scores WHERE day=? AND sport=?",
+                       (day, sport)).fetchone()[0]
     con.close()
     rank = better + 1
     pct = max(1, round(100 * rank / field)) if field else 100       # top X% (best = small)

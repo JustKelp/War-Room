@@ -1,22 +1,26 @@
 """
-WarRoom — NFL blind scouting draft game.
+WarRoom — a blind scouting draft game, NFL and NBA.
 
-Players draft a 5-man roster (QB/RB/WR/WR/DEF) from compact scouting cards —
-position, college conference, measurements, and the prospect's final college stat
-line — with each prospect's identity hidden behind a codename until it is drafted.
-The skill is recognizing who a stat line belongs to. The reveal shows who each card
-was and how the roster scored.
+Players draft a 5-man roster (NFL: QB/RB/WR/WR/DEF · NBA: PG/SG/SF/PF/C) from
+compact scouting cards — position, league/conference, measurements, and the
+prospect's final pre-pro stat line — with each identity hidden behind a codename
+until it is drafted. The skill is recognizing who a stat line belongs to. The
+reveal shows who each card was and how the roster scored.
 
-Three ways to play, all sharing one draft engine:
+One engine, two sports (see SPORTS): NFL cards/scores come from the SQLite pool
+(models); NBA from data/nba_cards.json (a prebuilt pool — es_scoring_nba.py +
+the scraper_nba_* tools — loaded into memory at startup).
+
+Three ways to play, all sharing the engine:
   • Daily    — a global date-seeded board everyone gets that day; you draft solo
                and are ranked against everyone else who played the same board.
   • Online   — real-time multiplayer rooms (Socket.IO): create a room, share the
                code, snake-draft live against other people on their own devices.
   • Pass&Play— local hotseat on one screen.
 
-Scoring: each player's Career Excel Score (es_scoring.py) — a season-by-season,
-award-aware grade of their NFL career, comparable across positions. A team's score
-is the sum of its five picks' CES.
+Scoring: each player's Career Excel Score (es_scoring.py / es_scoring_nba.py) — a
+season-by-season, award-aware grade of their pro career, comparable across
+positions. A team's score is the sum of its five picks' CES.
 
 Run:  python app.py   ->   http://localhost:5053
 """
@@ -68,9 +72,6 @@ def _log_unhandled(e):
     return jsonify({"error": "Server error"}), 500
 
 # ── DRAFT RULES ──────────────────────────────────────────────────────────────
-SLOT_SEQUENCE = ["QB", "RB", "WR", "WR", "DEF"]
-SLOT_LABELS = {"QB": "Quarterback", "RB": "Running Back", "WR": "Wide Receiver",
-               "TE": "Tight End", "DEF": "Defense"}
 MIN_PLAYERS, MAX_PLAYERS = 1, 6
 POOL_CHOICE_BUFFER = 4
 DAILY_BUFFER = 5                       # a slightly richer board for the daily solo run
@@ -84,24 +85,65 @@ MIN_CARD_STATS_DEF = 1
 
 def _min_card_stats(slot: str) -> int:
     return MIN_CARD_STATS_DEF if slot == "DEF" else MIN_CARD_STATS
-# Player grade = Career Excel Score (es_scoring.py), already cross-position
-# comparable, so a team's rating is just the sum of its picks' CES — no
-# position weighting needed (the old POSITION_WEIGHTS are retired).
+
+
+# ── SPORTS ───────────────────────────────────────────────────────────────────
+# WarRoom runs two games off one engine. Each sport owns its roster slots, slot
+# labels, blind-card statline, and its own card/score/grade indexes. NFL cards +
+# scores come from the SQLite pool (models); NBA from data/nba_cards.json — a
+# small prebuilt pool (scoring via es_scoring_nba.py, cards via the scraper_nba_*
+# tools) loaded into memory at startup, so the running app needs no basketball DB.
+DEFAULT_SPORT = "nfl"
+NBA_CARDS_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "nba_cards.json")
+
+SPORTS: dict[str, dict] = {
+    "nfl": {"label": "NFL",
+            "slots": ["QB", "RB", "WR", "WR", "DEF"],
+            "slot_labels": {"QB": "Quarterback", "RB": "Running Back", "WR": "Wide Receiver",
+                            "TE": "Tight End", "DEF": "Defense"},
+            "cards": {}, "scores": {}, "by_slot": {}},
+    "nba": {"label": "NBA",
+            "slots": ["PG", "SG", "SF", "PF", "C"],
+            "slot_labels": {"PG": "Point Guard", "SG": "Shooting Guard", "SF": "Small Forward",
+                            "PF": "Power Forward", "C": "Center"},
+            "cards": {}, "scores": {}, "by_slot": {}},
+}
+
+_SCORING_NOTE = {
+    "nfl": "Each pick is graded against every prospect at its position — A is elite for the slot, "
+           "C is a middling pick. Your team score adds up how good all five NFL careers turned out; "
+           "the highest total wins.",
+    "nba": "Each pick is graded against every prospect at its position — A is elite for the slot, "
+           "C is a middling pick. Your team score adds up how good all five NBA careers turned out; "
+           "the highest total wins.",
+}
+
+
+def _valid_sport(s) -> str:
+    return s if s in SPORTS else DEFAULT_SPORT
+
+
+def _cards(sport): return SPORTS[sport]["cards"]
+def _scores(sport): return SPORTS[sport]["scores"]
+def _slots(sport): return SPORTS[sport]["slots"]
+def _slot_labels(sport): return SPORTS[sport]["slot_labels"]
+def _sport_of(game): return _valid_sport((game or {}).get("sport"))
 
 
 # ── CARD + SCORE INDEXES ─────────────────────────────────────────────────────
-CARDS: dict[int, dict] = {}
-SCORES: dict[int, dict] = {}
-
-
 def _num(v, nd=0):
     """Format a stat value; a real 0 shows as 0, a missing one as a dash."""
     return "—" if v is None else f"{v:,.{nd}f}"
 
 
+def _pct(v):
+    """A shooting rate stored 0–1 (e.g. .467) shown as a percentage (46.7)."""
+    return "—" if v is None else f"{v * 100:.1f}"
+
+
 def _statline(slot: str, cs: dict) -> list[dict]:
-    """The prospect's FINAL college season, shown as raw numbers (plus a couple of
-    derived rates). college_stats holds that last season's totals (see
+    """The NFL prospect's FINAL college season, shown as raw numbers (plus a couple
+    of derived rates). college_stats holds that last season's totals (see
     scraper_collegestats); a missing stat renders as a dash, a real zero as 0."""
     def n(k): return cs.get(k)
     if slot == "QB":
@@ -119,6 +161,15 @@ def _statline(slot: str, cs: dict) -> list[dict]:
                 {"k": "Yds/Catch", "v": _num(ypr, 1)}, {"k": "Rec TD", "v": _num(n("rec_td"))}]
     return [{"k": "Tackles", "v": _num(n("tackles"))}, {"k": "Sacks", "v": _num(n("sacks"), 1)},
             {"k": "INT", "v": _num(n("def_int"))}, {"k": "TFL", "v": _num(n("tfl"), 1)}]
+
+
+def _statline_nba(col: dict) -> list[dict]:
+    """The NBA prospect's final pre-NBA season (college or RealGM international) —
+    the five stats present across both sources, so every card reads the same."""
+    def n(k): return col.get(k)
+    return [{"k": "PPG", "v": _num(n("ppg"), 1)}, {"k": "RPG", "v": _num(n("rpg"), 1)},
+            {"k": "APG", "v": _num(n("apg"), 1)}, {"k": "FG%", "v": _pct(n("fg_pct"))},
+            {"k": "3P%", "v": _pct(n("fg3_pct"))}]
 
 
 def _make_card(p: dict, cs: dict) -> dict:
@@ -150,55 +201,97 @@ def _grade_from_pct(pct: float) -> str:
     return "F"
 
 
-def build_indexes() -> None:
-    """Precompute the card + score lookups for the pool. A player's score is the
-    Career Excel Score (computed offline by es_scoring.py and stored on the row),
-    so this is a cheap read with no dependency on the season-page cache. Prospects
-    whose card has too few real college stats (see _min_card_stats) are left out —
-    a near-blank card is no fun to scout and unfair to score."""
-    global CARDS, SCORES
+def _grade_and_index(sp: dict) -> None:
+    """Bucket a sport's cards by slot and assign each a letter grade by its
+    percentile within that slot (worst → best)."""
+    by_slot: dict[str, list] = {}
+    for pid, c in sp["cards"].items():
+        by_slot.setdefault(c["slot"], []).append(pid)
+    for pids in by_slot.values():
+        pids.sort(key=lambda pid: sp["scores"][pid]["score"])
+        m = len(pids)
+        for rank, pid in enumerate(pids):
+            sp["scores"][pid]["grade"] = _grade_from_pct((rank + 0.5) / m)
+    sp["by_slot"] = by_slot
+
+
+def _build_nfl_indexes() -> None:
+    """NFL card + score lookups from the SQLite pool. A player's score is the
+    Career Excel Score (computed offline by es_scoring.py and stored on the row).
+    Cards with too few real college stats (see _min_card_stats) are dropped — a
+    near-blank card is no fun to scout and unfair to score."""
+    sp = SPORTS["nfl"]
     cstats = models.college_stats_map()
-    pool = models.get_prospects()
-    CARDS, SCORES = {}, {}
-    for p in pool:
+    sp["cards"], sp["scores"] = {}, {}
+    for p in models.get_prospects():
         card = _make_card(p, cstats.get((models.norm_name(p["name"]), p["draft_year"]), {}))
         if _card_stat_count(card) < _min_card_stats(p["slot"]):
             continue
-        CARDS[p["id"]] = card
-        ces = p["ces"] if p.get("ces") is not None else 0.0
-        SCORES[p["id"]] = {"score": round(ces, 1)}                   # Career Excel Score
+        sp["cards"][p["id"]] = card
+        sp["scores"][p["id"]] = {"score": round(p["ces"] if p.get("ces") is not None else 0.0, 1)}
+    _grade_and_index(sp)
 
-    # Assign each player a letter grade by his percentile within his position.
-    by_slot: dict[str, list[int]] = {}
-    for pid, c in CARDS.items():
-        by_slot.setdefault(c["slot"], []).append(pid)
-    for pids in by_slot.values():
-        pids.sort(key=lambda pid: SCORES[pid]["score"])             # worst -> best
-        m = len(pids)
-        for rank, pid in enumerate(pids):
-            SCORES[pid]["grade"] = _grade_from_pct((rank + 0.5) / m)
+
+def _build_nba_indexes() -> None:
+    """NBA card + score lookups from data/nba_cards.json (prebuilt offline). Each
+    player gets a synthetic int id (offset to never collide with NFL ids).
+    Measurables-only cards (no pre-NBA stat line) are left off the board."""
+    import json
+    sp = SPORTS["nba"]
+    sp["cards"], sp["scores"] = {}, {}
+    try:
+        raw = json.load(open(NBA_CARDS_JSON, encoding="utf-8"))
+    except (FileNotFoundError, ValueError):
+        sp["by_slot"] = {}
+        return
+    for i, (_pid, c) in enumerate(sorted(raw.items())):
+        col = c.get("college")
+        if not col:                                   # no stat line → off the board
+            continue
+        gid, slot = 2_000_000 + i, c["pos"]
+        sp["cards"][gid] = {"id": gid, "slot": slot, "position": slot,
+                            "height": c.get("height"), "weight": c.get("weight"), "forty": None,
+                            "conference": c.get("conference") or "—", "stats": _statline_nba(col),
+                            "last_year": col.get("last_year"), "name": c["name"],
+                            "school": c.get("conference") or "—",
+                            "draft_year": c.get("draft_year"), "draft_round": None,
+                            "draft_pick": c.get("pick"), "is_starter": 0}
+        sp["scores"][gid] = {"score": round(c.get("ces") or 0.0, 1)}
+    _grade_and_index(sp)
+
+
+def build_indexes() -> None:
+    """Refresh NFL indexes (cheap DB read) and build NBA once (static JSON)."""
+    _build_nfl_indexes()
+    if not SPORTS["nba"]["cards"]:
+        _build_nba_indexes()
+
+
+def _ensure(sport: str) -> None:
+    if not SPORTS[sport]["cards"]:
+        build_indexes()
 
 
 # ── DRAFT ENGINE (mode-agnostic; operates on a plain game dict) ───────────────
 
-def _build_pick_plan(n_players: int) -> list[dict]:
+def _build_pick_plan(n_players: int, sport: str) -> list[dict]:
     base, plan = list(range(n_players)), []
-    for rnd, slot in enumerate(SLOT_SEQUENCE):
+    for rnd, slot in enumerate(_slots(sport)):
         for team in (base if rnd % 2 == 0 else base[::-1]):
             plan.append({"round": rnd, "slot": slot, "team": team})
     return plan
 
 
-def _build_pool(n_players: int, rng: random.Random, buffer: int = POOL_CHOICE_BUFFER):
+def _build_pool(n_players: int, rng: random.Random, buffer: int, sport: str):
     """Sample a per-game board (one bucket per slot) + per-slot codenames. `rng`
     makes it reproducible — the Daily board passes a date-seeded RNG so everyone
     gets the identical board."""
-    if not CARDS:
-        build_indexes()
+    _ensure(sport)
+    slots, by_slot = _slots(sport), SPORTS[sport]["by_slot"]
     chosen, codenames = [], {}
-    for slot in dict.fromkeys(SLOT_SEQUENCE):          # stable, de-duped slot set
-        ids = [p["id"] for p in models.get_prospects(slot) if p["id"] in CARDS]   # card-eligible only
-        need = SLOT_SEQUENCE.count(slot) * n_players
+    for slot in dict.fromkeys(slots):                  # stable, de-duped slot set
+        ids = list(by_slot.get(slot, []))             # card-eligible ids at this slot
+        need = slots.count(slot) * n_players
         if len(ids) < need:
             raise ValueError(f"need {need} {slot}, have {len(ids)}")
         sample = rng.sample(ids, min(need + buffer, len(ids)))
@@ -208,19 +301,20 @@ def _build_pool(n_players: int, rng: random.Random, buffer: int = POOL_CHOICE_BU
     return chosen, codenames
 
 
-def _new_game(names, rng=None, buffer=POOL_CHOICE_BUFFER, mode="local", day=None):
+def _new_game(names, rng=None, buffer=POOL_CHOICE_BUFFER, mode="local", day=None, sport=DEFAULT_SPORT):
     rng = rng or random
-    pool, codenames = _build_pool(len(names), rng, buffer)
-    return {"players": names, "plan": _build_pick_plan(len(names)), "pick_index": 0,
+    sport = _valid_sport(sport)
+    pool, codenames = _build_pool(len(names), rng, buffer, sport)
+    return {"players": names, "plan": _build_pick_plan(len(names), sport), "pick_index": 0,
             "picks": {str(t): [] for t in range(len(names))}, "pool": pool,
-            "codenames": codenames, "last_pick": None, "mode": mode, "day": day}
+            "codenames": codenames, "last_pick": None, "mode": mode, "day": day, "sport": sport}
 
 
 def _taken(game): return {pid for ps in game["picks"].values() for pid in ps}
 
 
-def _blind_card(pid, codename):
-    c = CARDS[pid]
+def _blind_card(pid, codename, sport):
+    c = _cards(sport)[pid]
     return {"id": pid, "codename": codename, "slot": c["slot"], "position": c["position"],
             "height": c["height"], "weight": c["weight"], "forty": c["forty"],
             "conference": c["conference"], "last_year": c["last_year"], "stats": c["stats"]}
@@ -228,11 +322,12 @@ def _blind_card(pid, codename):
 
 def _apply_pick(game, pid: int) -> str | None:
     """Validate + apply a pick to a game. Returns an error string or None."""
+    cards = _cards(_sport_of(game))
     plan, idx = game["plan"], game["pick_index"]
     if idx >= len(plan):
         return "Draft complete"
     cur, pool = plan[idx], set(game.get("pool") or [])
-    if pid not in pool or pid in _taken(game) or CARDS.get(pid, {}).get("slot") != cur["slot"]:
+    if pid not in pool or pid in _taken(game) or cards.get(pid, {}).get("slot") != cur["slot"]:
         return "Card not available for this pick"
     game["picks"][str(cur["team"])].append(pid)
     game["pick_index"] += 1
@@ -241,42 +336,46 @@ def _apply_pick(game, pid: int) -> str | None:
 
 
 def _serialize(game: dict) -> dict:
+    sport = _sport_of(game)
+    cards, scores = _cards(sport), _scores(sport)
     players, plan, idx = game["players"], game["plan"], game["pick_index"]
     cn, taken = game.get("codenames") or {}, _taken(game)
     rosters = []
     for t, name in enumerate(players):
-        picks = [{"id": pid, "slot": CARDS[pid]["slot"], "codename": cn.get(str(pid), CARDS[pid]["slot"]),
-                  "name": CARDS[pid]["name"], "grade": SCORES.get(pid, {}).get("grade", "—")}
-                 for pid in game["picks"][str(t)] if pid in CARDS]
+        picks = [{"id": pid, "slot": cards[pid]["slot"], "codename": cn.get(str(pid), cards[pid]["slot"]),
+                  "name": cards[pid]["name"], "grade": scores.get(pid, {}).get("grade", "—")}
+                 for pid in game["picks"][str(t)] if pid in cards]
         rosters.append({"team": t, "name": name, "picks": picks})
     lp = game.get("last_pick")
     last_pick = None
-    if lp in CARDS:
+    if lp in cards:
         lp_team = next((t for t in range(len(players)) if lp in game["picks"][str(t)]), 0)
-        last_pick = {"codename": cn.get(str(lp), CARDS[lp]["slot"]), "name": CARDS[lp]["name"], "team": lp_team}
+        last_pick = {"codename": cn.get(str(lp), cards[lp]["slot"]), "name": cards[lp]["name"], "team": lp_team}
 
+    base = {"mode": game.get("mode"), "sport": sport, "roster": _slots(sport), "players": players}
     if idx >= len(plan):
-        return {"phase": "reveal", "mode": game.get("mode"), "players": players, "rosters": rosters,
-                "reveal": _reveal(game), "last_pick": last_pick, "pickNumber": len(plan),
-                "totalPicks": len(plan), "current": None, "available": []}
+        return {**base, "phase": "reveal", "rosters": rosters, "reveal": _reveal(game),
+                "last_pick": last_pick, "pickNumber": len(plan), "totalPicks": len(plan),
+                "current": None, "available": []}
     cur = plan[idx]
     pool = set(game.get("pool") or [])
-    avail = [_blind_card(p["id"], cn.get(str(p["id"]), p["slot"]))
-             for p in models.get_prospects(cur["slot"]) if p["id"] in pool and p["id"] not in taken]
+    avail = [_blind_card(pid, cn.get(str(pid), cards[pid]["slot"]), sport)
+             for pid in pool if pid in cards and cards[pid]["slot"] == cur["slot"] and pid not in taken]
     avail.sort(key=lambda c: int(re.search(r"\d+", c["codename"]).group()) if re.search(r"\d+", c["codename"]) else 0)
-    return {"phase": "draft", "mode": game.get("mode"), "players": players,
-            "pickNumber": idx + 1, "totalPicks": len(plan),
+    return {**base, "phase": "draft", "pickNumber": idx + 1, "totalPicks": len(plan),
             "current": {"team": cur["team"], "name": players[cur["team"]], "round": cur["round"] + 1,
-                        "slot": cur["slot"], "slotLabel": SLOT_LABELS.get(cur["slot"], cur["slot"])},
+                        "slot": cur["slot"], "slotLabel": _slot_labels(sport).get(cur["slot"], cur["slot"])},
             "available": avail, "rosters": rosters, "last_pick": last_pick, "reveal": None}
 
 
 def _reveal(game: dict) -> dict:
+    sport = _sport_of(game)
+    cards, scores = _cards(sport), _scores(sport)
     teams = []
     for t, name in enumerate(game["players"]):
         picks, total = [], 0.0
         for pid in game["picks"][str(t)]:
-            c, sc = CARDS.get(pid), SCORES.get(pid, {"score": 0})
+            c, sc = cards.get(pid), scores.get(pid, {"score": 0})
             if not c:
                 continue
             total += sc["score"]                        # Career Excel Score drives the team total
@@ -287,10 +386,7 @@ def _reveal(game: dict) -> dict:
     teams.sort(key=lambda x: x["total"], reverse=True)
     for rank, team in enumerate(teams, 1):
         team["rank"] = rank
-    return {"teams": teams,
-            "scoring_note": "Each pick is graded against every prospect at its position — A is elite "
-                            "for the slot, C is a middling pick. Your team score adds up how good all "
-                            "five NFL careers turned out; the highest total wins."}
+    return {"teams": teams, "scoring_note": _SCORING_NOTE[sport]}
 
 
 # ── LOCAL (pass & play) ──────────────────────────────────────────────────────
@@ -392,47 +488,55 @@ def api_account_delete():
     return jsonify({"ok": True})
 
 
-def _eligible_summary() -> dict:
+def _req_sport() -> str:
+    """The sport for this request — from the query string or JSON body."""
+    s = request.args.get("sport") or (request.get_json(silent=True) or {}).get("sport")
+    return _valid_sport(s)
+
+
+def _eligible_summary(sport: str) -> dict:
     """Board counts by slot over the card-eligible pool (what's actually draftable)."""
-    if not CARDS:
-        build_indexes()
+    _ensure(sport)
     by_slot: dict[str, int] = {}
-    for c in CARDS.values():
+    for c in _cards(sport).values():
         by_slot[c["slot"]] = by_slot.get(c["slot"], 0) + 1
-    return {"total": len(CARDS), "by_slot": by_slot}
+    return {"total": len(_cards(sport)), "by_slot": by_slot}
 
 
-def _lobby_state():
-    return {"phase": "lobby", "minPlayers": MIN_PLAYERS, "maxPlayers": MAX_PLAYERS,
-            "roster": SLOT_SEQUENCE, "pool": _eligible_summary()}
+def _lobby_state(sport: str):
+    return {"phase": "lobby", "sport": sport, "minPlayers": MIN_PLAYERS, "maxPlayers": MAX_PLAYERS,
+            "roster": _slots(sport), "pool": _eligible_summary(sport)}
 
 
 @app.route("/api/state")
 def api_state():
-    if not CARDS:
-        build_indexes()
-    game = session.get("game")
-    return jsonify(_serialize(game) if game else _lobby_state())
+    sport = _req_sport()
+    _ensure(sport)
+    game = session.get(f"game_{sport}")
+    return jsonify(_serialize(game) if game else _lobby_state(sport))
 
 
 @app.route("/api/new", methods=["POST"])
 def api_new():
-    names = [str(n).strip()[:24] for n in (request.get_json(silent=True) or {}).get("players", []) if str(n).strip()]
+    d = request.get_json(silent=True) or {}
+    sport = _valid_sport(d.get("sport"))
+    names = [str(n).strip()[:24] for n in d.get("players", []) if str(n).strip()]
     if not (MIN_PLAYERS <= len(names) <= MAX_PLAYERS):
         return jsonify({"error": f"Need {MIN_PLAYERS}-{MAX_PLAYERS} players"}), 400
-    build_indexes()
+    _ensure(sport)
     try:
-        game = _new_game(names)
+        game = _new_game(names, sport=sport)
     except ValueError as e:
         return jsonify({"error": f"Pool too small: {e}."}), 400
-    session["game"] = game
+    session[f"game_{sport}"] = game
     session.modified = True
     return jsonify(_serialize(game))
 
 
 @app.route("/api/pick", methods=["POST"])
 def api_pick():
-    game = session.get("game")
+    sport = _req_sport()
+    game = session.get(f"game_{sport}")
     if not game:
         return jsonify({"error": "No active game"}), 400
     try:
@@ -442,16 +546,17 @@ def api_pick():
     err = _apply_pick(game, pid)
     if err:
         return jsonify({"error": err}), 400
-    session["game"] = game
+    session[f"game_{sport}"] = game
     session.modified = True
     return jsonify(_serialize(game))
 
 
 @app.route("/api/reset", methods=["POST"])
 def api_reset():
-    session.pop("game", None)
+    sport = _req_sport()
+    session.pop(f"game_{sport}", None)
     session.modified = True
-    return jsonify(_lobby_state())
+    return jsonify(_lobby_state(sport))
 
 
 # ── DAILY ────────────────────────────────────────────────────────────────────
@@ -462,8 +567,8 @@ def _today():
     return date.today().isoformat()
 
 
-def _daily_seed(day: str) -> int:
-    return int.from_bytes(day.encode(), "big") % (2**32)
+def _daily_seed(sport: str, day: str) -> int:
+    return int.from_bytes(f"{sport}:{day}".encode(), "big") % (2**32)
 
 
 def _valid_day(day: str, admin: bool = False) -> str | None:
@@ -480,6 +585,7 @@ def _valid_day(day: str, admin: bool = False) -> str | None:
 
 
 def _serialize_daily(game: dict, record: bool = False) -> dict:
+    sport = _sport_of(game)
     u = _current_user()
     # Keep a signed-in player's roster/result under their account name even if the
     # board was started anonymously earlier in the session.
@@ -491,63 +597,66 @@ def _serialize_daily(game: dict, record: bool = False) -> dict:
         total = state["reveal"]["teams"][0]["total"]
         # Admins play the archive as practice — their runs are never recorded.
         if record and not game.get("recorded") and not (u and u["admin"]):
-            already = models.user_daily_score(game["day"], u["user_id"]) if u else None
-            if already is None:                 # per-account lock: once per account per day
+            already = models.user_daily_score(game["day"], u["user_id"], sport) if u else None
+            if already is None:                 # per-account lock: once per account per day per sport
                 models.record_daily_score(game["day"], total, game["players"][0],
-                                          user_id=u["user_id"] if u else None)
+                                          user_id=u["user_id"] if u else None, sport=sport)
             game["recorded"] = True
-        state["reveal"]["standing"] = models.daily_standing(game["day"], total)
+        state["reveal"]["standing"] = models.daily_standing(game["day"], total, sport)
         state["reveal"]["yourTotal"] = total
         if u:
-            state["reveal"]["streak"] = models.user_daily_streak(u["user_id"])
+            state["reveal"]["streak"] = models.user_daily_streak(u["user_id"], sport)
     return state
 
 
 @app.route("/api/daily/state")
 def api_daily_state():
-    if not CARDS:
-        build_indexes()
+    sport = _req_sport()
+    _ensure(sport)
     day = _today()
-    game = session.get("daily")
+    game = session.get(f"daily_{sport}")
     if game and game.get("day") == day:
         return jsonify(_serialize_daily(game))
-    return jsonify({"phase": "daily_lobby", "day": day, "roster": SLOT_SEQUENCE,
-                    "field": models.daily_standing(day, -1)["field"]})
+    return jsonify({"phase": "daily_lobby", "sport": sport, "day": day, "roster": _slots(sport),
+                    "field": models.daily_standing(day, -1, sport)["field"]})
 
 
 @app.route("/api/daily/days")
 def api_daily_days():
     """The playable archive: recent days with field size + whether you've played."""
+    sport = _req_sport()
     u = _current_user()
     today = date.today()
     out = []
     for i in range(DAILY_WINDOW + 1):
         d = (today - timedelta(days=i)).isoformat()
-        out.append({"day": d, "field": models.daily_standing(d, -1)["field"],
-                    "played": bool(u and models.user_daily_score(d, u["user_id"]) is not None)})
+        out.append({"day": d, "field": models.daily_standing(d, -1, sport)["field"],
+                    "played": bool(u and models.user_daily_score(d, u["user_id"], sport) is not None)})
     return jsonify({"days": out})
 
 
 @app.route("/api/daily/new", methods=["POST"])
 def api_daily_new():
-    build_indexes()
-    u = _current_user()
     req = request.get_json(silent=True) or {}
+    sport = _valid_sport(req.get("sport"))
+    _ensure(sport)
+    u = _current_user()
     day = _valid_day(str(req.get("day") or ""), admin=bool(u and u["admin"])) or _today()
     client_name = str(req.get("name", "")).strip()[:24]
     name = (u["username"] if u else client_name) or "You"   # logged-in players use their account name
-    game = session.get("daily")
-    if not (game and game.get("day") == day):          # one board per day per session
-        game = _new_game([name], rng=random.Random(_daily_seed(day)), buffer=DAILY_BUFFER,
-                         mode="daily", day=day)
-    session["daily"] = game
+    game = session.get(f"daily_{sport}")
+    if not (game and game.get("day") == day):          # one board per day per session per sport
+        game = _new_game([name], rng=random.Random(_daily_seed(sport, day)), buffer=DAILY_BUFFER,
+                         mode="daily", day=day, sport=sport)
+    session[f"daily_{sport}"] = game
     session.modified = True
     return jsonify(_serialize_daily(game))
 
 
 @app.route("/api/daily/pick", methods=["POST"])
 def api_daily_pick():
-    game = session.get("daily")
+    sport = _req_sport()
+    game = session.get(f"daily_{sport}")
     if not game:
         return jsonify({"error": "No daily game"}), 400
     try:
@@ -557,7 +666,7 @@ def api_daily_pick():
     err = _apply_pick(game, pid)
     if err:
         return jsonify({"error": err}), 400
-    session["daily"] = game
+    session[f"daily_{sport}"] = game
     session.modified = True
     return jsonify(_serialize_daily(game, record=True))
 
@@ -588,9 +697,10 @@ def _is_host(room: dict, sid: str) -> bool:
 
 
 def _room_lobby(room: dict, code: str) -> dict:
-    return {"phase": "room_lobby", "code": code,
+    sport = _valid_sport(room.get("sport"))
+    return {"phase": "room_lobby", "code": code, "sport": sport,
             "players": [s["name"] for s in room["seats"]],
-            "minPlayers": MIN_PLAYERS, "maxPlayers": MAX_PLAYERS, "roster": SLOT_SEQUENCE}
+            "minPlayers": MIN_PLAYERS, "maxPlayers": MAX_PLAYERS, "roster": _slots(sport)}
 
 
 def _emit_room(code: str):
@@ -607,13 +717,13 @@ def _emit_room(code: str):
 
 @socketio.on("create_room")
 def on_create_room(data):
-    if not CARDS:
-        build_indexes()
+    sport = _valid_sport((data or {}).get("sport"))
+    _ensure(sport)
     name = (str((data or {}).get("name", "")).strip()[:24]) or "War Room 1"
     code = _gen_code()
     token = secrets.token_hex(8)
     ROOMS[code] = {"seats": [{"name": name, "sid": request.sid, "token": token}], "game": None,
-                   "phase": "lobby", "host_token": token}
+                   "phase": "lobby", "host_token": token, "sport": sport}
     SID_ROOM[request.sid] = code
     join_room(code)
     emit("joined", {"code": code, "team": 0, "host": True, "token": token})
@@ -649,7 +759,7 @@ def on_start_draft(data):
     if not (MIN_PLAYERS <= len(names) <= MAX_PLAYERS):
         emit("room_error", {"message": "Need at least one war room to start."}); return
     try:
-        room["game"] = _new_game(names, mode="online")
+        room["game"] = _new_game(names, mode="online", sport=_valid_sport(room.get("sport")))
     except ValueError as e:
         emit("room_error", {"message": f"Pool too small: {e}."}); return
     room["phase"] = "draft"
