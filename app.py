@@ -233,9 +233,11 @@ def _build_nfl_indexes() -> None:
 
 
 def _build_nba_indexes() -> None:
-    """NBA card + score lookups from data/nba_cards.json (prebuilt offline). Each
-    player gets a synthetic int id (offset to never collide with NFL ids).
-    Measurables-only cards (no pre-NBA stat line) are left off the board."""
+    """NBA card + score lookups from data/nba_cards.json (a prebuilt, curated
+    pool — every player is intentionally recognizable). Each player gets a
+    synthetic int id (offset to never collide with NFL ids). Measurables-only
+    cards (no pre-NBA stat line, e.g. Giannis/Jalen Green) stay on the board —
+    their stats render as dashes."""
     import json
     sp = SPORTS["nba"]
     sp["cards"], sp["scores"] = {}, {}
@@ -246,13 +248,11 @@ def _build_nba_indexes() -> None:
         return
     for i, (_pid, c) in enumerate(sorted(raw.items())):
         col = c.get("college")
-        if not col:                                   # no stat line → off the board
-            continue
         gid, slot = 2_000_000 + i, c["pos"]
         sp["cards"][gid] = {"id": gid, "slot": slot, "position": slot,
                             "height": c.get("height"), "weight": c.get("weight"), "forty": None,
-                            "conference": c.get("conference") or "—", "stats": _statline_nba(col),
-                            "last_year": col.get("last_year"), "name": c["name"],
+                            "conference": c.get("conference") or "—", "stats": _statline_nba(col or {}),
+                            "last_year": (col or {}).get("last_year"), "name": c["name"],
                             "school": c.get("conference") or "—",
                             "draft_year": c.get("draft_year"), "draft_round": None,
                             "draft_pick": c.get("pick"), "is_starter": 0}

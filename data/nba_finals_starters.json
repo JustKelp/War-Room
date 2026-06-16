@@ -1,0 +1,513 @@
+{
+"jamesle01": {
+"name": "LeBron James",
+"years": [
+2017,
+2018,
+2020
+]
+},
+"irvinky01": {
+"name": "Kyrie Irving",
+"years": [
+2017,
+2024
+]
+},
+"loveke01": {
+"name": "Kevin Love",
+"years": [
+2017,
+2018,
+2023
+]
+},
+"smithjr01": {
+"name": "J.R. Smith",
+"years": [
+2017,
+2018
+]
+},
+"thomptr01": {
+"name": "Tristan Thompson",
+"years": [
+2017,
+2018
+]
+},
+"duranke01": {
+"name": "Kevin Durant",
+"years": [
+2017,
+2018,
+2019
+]
+},
+"thompkl01": {
+"name": "Klay Thompson",
+"years": [
+2017,
+2018,
+2019,
+2022
+]
+},
+"greendr01": {
+"name": "Draymond Green",
+"years": [
+2017,
+2018,
+2019,
+2022
+]
+},
+"curryst01": {
+"name": "Stephen Curry",
+"years": [
+2017,
+2018,
+2019,
+2022
+]
+},
+"pachuza01": {
+"name": "Zaza Pachulia",
+"years": [
+2017
+]
+},
+"hillge01": {
+"name": "George Hill",
+"years": [
+2018
+]
+},
+"looneke01": {
+"name": "Kevon Looney",
+"years": [
+2018,
+2019,
+2022
+]
+},
+"mcgeeja01": {
+"name": "JaVale McGee",
+"years": [
+2018
+]
+},
+"iguodan01": {
+"name": "Andre Iguodala",
+"years": [
+2019
+]
+},
+"belljo01": {
+"name": "Jordan Bell",
+"years": [
+2019
+]
+},
+"leonaka01": {
+"name": "Kawhi Leonard",
+"years": [
+2019
+]
+},
+"siakapa01": {
+"name": "Pascal Siakam",
+"years": [
+2019,
+2025
+]
+},
+"lowryky01": {
+"name": "Kyle Lowry",
+"years": [
+2019
+]
+},
+"gasolma01": {
+"name": "Marc Gasol",
+"years": [
+2019
+]
+},
+"greenda02": {
+"name": "Danny Green",
+"years": [
+2019,
+2020
+]
+},
+"couside01": {
+"name": "DeMarcus Cousins",
+"years": [
+2019
+]
+},
+"livinsh01": {
+"name": "Shaun Livingston",
+"years": [
+2019
+]
+},
+"butleji01": {
+"name": "Jimmy Butler",
+"years": [
+2020,
+2023
+]
+},
+"robindu01": {
+"name": "Duncan Robinson",
+"years": [
+2020
+]
+},
+"crowdja01": {
+"name": "Jae Crowder",
+"years": [
+2020,
+2021
+]
+},
+"adebaba01": {
+"name": "Bam Adebayo",
+"years": [
+2020,
+2023
+]
+},
+"dragigo01": {
+"name": "Goran Dragić",
+"years": [
+2020
+]
+},
+"davisan02": {
+"name": "Anthony Davis",
+"years": [
+2020
+]
+},
+"caldwke01": {
+"name": "Kentavious Caldwell-Pope",
+"years": [
+2020,
+2023
+]
+},
+"howardw01": {
+"name": "Dwight Howard",
+"years": [
+2020
+]
+},
+"herroty01": {
+"name": "Tyler Herro",
+"years": [
+2020
+]
+},
+"leoname01": {
+"name": "Meyers Leonard",
+"years": [
+2020
+]
+},
+"carusal01": {
+"name": "Alex Caruso",
+"years": [
+2020
+]
+},
+"middlkh01": {
+"name": "Khris Middleton",
+"years": [
+2021
+]
+},
+"holidjr01": {
+"name": "Jrue Holiday",
+"years": [
+2021,
+2024
+]
+},
+"antetgi01": {
+"name": "Giannis Antetokounmpo",
+"years": [
+2021
+]
+},
+"tuckepj01": {
+"name": "P.J. Tucker",
+"years": [
+2021
+]
+},
+"lopezbr01": {
+"name": "Brook Lopez",
+"years": [
+2021
+]
+},
+"bookede01": {
+"name": "Devin Booker",
+"years": [
+2021
+]
+},
+"aytonde01": {
+"name": "Deandre Ayton",
+"years": [
+2021
+]
+},
+"paulch01": {
+"name": "Chris Paul",
+"years": [
+2021
+]
+},
+"bridgmi01": {
+"name": "Mikal Bridges",
+"years": [
+2021,
+2026
+]
+},
+"tatumja01": {
+"name": "Jayson Tatum",
+"years": [
+2022,
+2024
+]
+},
+"brownja02": {
+"name": "Jaylen Brown",
+"years": [
+2022,
+2024
+]
+},
+"horfoal01": {
+"name": "Al Horford",
+"years": [
+2022,
+2024
+]
+},
+"smartma01": {
+"name": "Marcus Smart",
+"years": [
+2022
+]
+},
+"williro04": {
+"name": "Robert Williams",
+"years": [
+2022
+]
+},
+"wiggian01": {
+"name": "Andrew Wiggins",
+"years": [
+2022
+]
+},
+"porteot01": {
+"name": "Otto Porter Jr.",
+"years": [
+2022
+]
+},
+"vincega01": {
+"name": "Gabe Vincent",
+"years": [
+2023
+]
+},
+"martica02": {
+"name": "Caleb Martin",
+"years": [
+2023
+]
+},
+"strusma01": {
+"name": "Max Strus",
+"years": [
+2023
+]
+},
+"murraja01": {
+"name": "Jamal Murray",
+"years": [
+2023
+]
+},
+"portemi01": {
+"name": "Michael Porter Jr.",
+"years": [
+2023
+]
+},
+"jokicni01": {
+"name": "Nikola Jokić",
+"years": [
+2023
+]
+},
+"gordoaa01": {
+"name": "Aaron Gordon",
+"years": [
+2023
+]
+},
+"doncilu01": {
+"name": "Luka Dončić",
+"years": [
+2024
+]
+},
+"washipj01": {
+"name": "P.J. Washington",
+"years": [
+2024
+]
+},
+"jonesde02": {
+"name": "Derrick Jones Jr.",
+"years": [
+2024
+]
+},
+"gaffoda01": {
+"name": "Daniel Gafford",
+"years": [
+2024
+]
+},
+"whitede01": {
+"name": "Derrick White",
+"years": [
+2024
+]
+},
+"halibty01": {
+"name": "Tyrese Haliburton",
+"years": [
+2025
+]
+},
+"nembhan01": {
+"name": "Andrew Nembhard",
+"years": [
+2025
+]
+},
+"nesmiaa01": {
+"name": "Aaron Nesmith",
+"years": [
+2025
+]
+},
+"turnemy01": {
+"name": "Myles Turner",
+"years": [
+2025
+]
+},
+"gilgesh01": {
+"name": "Shai Gilgeous-Alexander",
+"years": [
+2025
+]
+},
+"willija06": {
+"name": "Jalen Williams",
+"years": [
+2025
+]
+},
+"dortlu01": {
+"name": "Luguentz Dort",
+"years": [
+2025
+]
+},
+"wallaca01": {
+"name": "Cason Wallace",
+"years": [
+2025
+]
+},
+"holmgch01": {
+"name": "Chet Holmgren",
+"years": [
+2025
+]
+},
+"harteis01": {
+"name": "Isaiah Hartenstein",
+"years": [
+2025
+]
+},
+"brunsja01": {
+"name": "Jalen Brunson",
+"years": [
+2026
+]
+},
+"townska01": {
+"name": "Karl-Anthony Towns",
+"years": [
+2026
+]
+},
+"anunoog01": {
+"name": "OG Anunoby",
+"years": [
+2026
+]
+},
+"hartjo01": {
+"name": "Josh Hart",
+"years": [
+2026
+]
+},
+"foxde01": {
+"name": "De'Aaron Fox",
+"years": [
+2026
+]
+},
+"wembavi01": {
+"name": "Victor Wembanyama",
+"years": [
+2026
+]
+},
+"vassede01": {
+"name": "Devin Vassell",
+"years": [
+2026
+]
+},
+"castlst01": {
+"name": "Stephon Castle",
+"years": [
+2026
+]
+},
+"champju02": {
+"name": "Julian Champagnie",
+"years": [
+2026
+]
+}
+}
